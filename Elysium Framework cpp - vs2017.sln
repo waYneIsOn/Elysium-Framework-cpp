@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - libraries", "01 - libraries", "{E09767C9-9DEE-4A54-8521-B842D5CFE62B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Shared", "01 - Shared", "{9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Windows", "02 - Windows", "{2325FB35-B3BF-4759-914F-E7327A0CF920}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Linux", "03 - Linux", "{7F110176-0AB3-4577-876E-2D76D7733A0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Android", "04 - Android", "{9D72059A-7B2C-4D8E-9BE1-E9E60860F631}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 - unit tests", "10 - unit tests", "{2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11 - test applications", "11 - test applications", "{93938132-3DCD-485D-BA7C-F1EC52680F3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Samples", "20 - Samples", "{69837A8E-BCDD-4A1C-8EAD-B64AF59D604C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.PDF", "Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems", "{9B101A00-0BD9-40A4-AAAA-90C4C77F244E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.PDF", "Libraries\02-Windows\Elysium.IO.PDF\Elysium.IO.PDF.vcxproj", "{52049F21-B70D-44D1-9856-E3DB7824223A}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{9b101a00-0bd9-40a4-aaaa-90c4c77f244e}*SharedItemsImports = 9
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x64.ActiveCfg = Debug|x64
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x64.Build.0 = Debug|x64
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x86.ActiveCfg = Debug|Win32
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x86.Build.0 = Debug|Win32
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x64.ActiveCfg = Release|x64
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x64.Build.0 = Release|x64
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x86.ActiveCfg = Release|Win32
+		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B37F00A-CBC9-4A11-9E35-3F742FF22BE5} = {E09767C9-9DEE-4A54-8521-B842D5CFE62B}
+		{2325FB35-B3BF-4759-914F-E7327A0CF920} = {E09767C9-9DEE-4A54-8521-B842D5CFE62B}
+		{7F110176-0AB3-4577-876E-2D76D7733A0C} = {E09767C9-9DEE-4A54-8521-B842D5CFE62B}
+		{9D72059A-7B2C-4D8E-9BE1-E9E60860F631} = {E09767C9-9DEE-4A54-8521-B842D5CFE62B}
+		{9B101A00-0BD9-40A4-AAAA-90C4C77F244E} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
+		{52049F21-B70D-44D1-9856-E3DB7824223A} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1E542AA-7F2D-45E2-BCC0-11DEBB96C091}
+	EndGlobalSection
+EndGlobal
