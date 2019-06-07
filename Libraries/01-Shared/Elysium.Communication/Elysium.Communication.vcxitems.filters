@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Transport">
+      <UniqueIdentifier>{49b156ba-bf68-440b-b908-440b18f906cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{2e416f28-2a9e-438a-a651-4e8865b12bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{24bff1d9-9059-4cdd-8c02-914f46963a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\IRC">
+      <UniqueIdentifier>{3127fa31-c803-41c0-bf93-3363c52e2510}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP">
+      <UniqueIdentifier>{f7b6c346-c759-4bd3-a2cd-2818cadc7d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\SOAP">
+      <UniqueIdentifier>{1236e5f0-1792-4e94-9afe-5d983a4122db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\REST">
+      <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

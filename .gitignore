@@ -2,6 +2,18 @@
 
 /.vs
 
+/Libraries/02-Windows/Elysium.Communication/Debug
+/Libraries/02-Windows/Elysium.Communication/Debugbin
+/Libraries/02-Windows/Elysium.Communication/Releasebin
+
+/Libraries/02-Windows/Elysium.IO.DSV/Debug
+/Libraries/02-Windows/Elysium.IO.DSV/Debugbin
+/Libraries/02-Windows/Elysium.IO.DSV/Releasebin
+
 /Libraries/02-Windows/Elysium.IO.PDF/Debug
 /Libraries/02-Windows/Elysium.IO.PDF/Debugbin
 /Libraries/02-Windows/Elysium.IO.PDF/Releasebin
+
+/Libraries/02-Windows/Elysium.IO.Xml/Debug
+/Libraries/02-Windows/Elysium.IO.Xml/Debugbin
+/Libraries/02-Windows/Elysium.IO.Xml/Releasebin
