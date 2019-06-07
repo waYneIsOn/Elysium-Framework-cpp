@@ -14,15 +14,22 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Export.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)PdfDocument.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfObject.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)PdfPage.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)PdfPageDimensions.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)PdfPageRotation.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfVersion.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)PdfDocument.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)PdfPage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)PdfPageDimensions.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfVersion.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)01 - Info.txt" />
   </ItemGroup>
 </Project>

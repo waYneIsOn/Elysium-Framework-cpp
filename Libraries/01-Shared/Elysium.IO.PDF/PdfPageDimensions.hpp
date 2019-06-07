@@ -10,8 +10,8 @@ Copyright (C) 2017 waYne (CAM)
 #ifndef ELYSIUM_IO_PDF_PDFPAGEDIMENSIONS
 #define ELYSIUM_IO_PDF_PDFPAGEDIMENSIONS
 
-#ifndef ELYSIUM_IO_PDF_EXPORT
-#include "Export.hpp"
+#ifndef ELYSIUM_IO_PDF_API
+#include "API.hpp"
 #endif
 
 #ifndef ELYSIUM_CORE_MATH_GEOMETRY_RECTANGLESINGLE
@@ -24,7 +24,7 @@ namespace Elysium
 	{
 		namespace PDF
 		{
-			class EXPORT PdfPageDimensions final
+			class ELYSIUM_IO_PDF_API PdfPageDimensions final
 			{
 			public:
 				PdfPageDimensions();

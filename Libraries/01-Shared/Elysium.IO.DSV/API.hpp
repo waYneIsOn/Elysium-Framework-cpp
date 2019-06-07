@@ -7,11 +7,14 @@ Copyright (C) 2017 waYne (CAM)
 */
 #pragma once
 
-#ifndef ELYSIUM_IO_PDF_EXPORT
-#define ELYSIUM_IO_PDF_EXPORT
+#ifndef ELYSIUM_IO_DSV_API
 
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-#define EXPORT __declspec(dllexport)
+#ifdef ELYSIUMIODSV_EXPORTS
+#define ELYSIUM_IO_DSV_API __declspec(dllexport)
+#else
+#define ELYSIUM_IO_DSV_API __declspec(dllimport)
+#endif
 #elif defined(__ANDROID__)
 #define EXPORT
 #else

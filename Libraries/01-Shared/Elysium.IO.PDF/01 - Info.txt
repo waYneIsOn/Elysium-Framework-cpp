@@ -1,0 +1,17 @@
+links:
+https://www.pdf-online.com/osa/validate.aspx
+
+https://en.wikipedia.org/wiki/PDF#File_structure
+
+pdf:
+	- 7-bit ASCII file (certain elements may have binary content)
+	- starts with header
+	- comments start with % and may containt 8bit characters
+
+header:
+	- magic number: %PDF-1.7 (or other versions) [hex 25 50 44 46] - this seems to be the magic number
+
+trailer:
+	- dictionary
+	- offset to the start of the cross-reference table (the table starting with the xref keyword)
+	- %%EOF

@@ -10,8 +10,8 @@ Copyright (C) 2017 waYne (CAM)
 #ifndef ELYSIUM_IO_PDF_PDFPAGE
 #define ELYSIUM_IO_PDF_PDFPAGE
 
-#ifndef ELYSIUM_IO_PDF_EXPORT
-#include "Export.hpp"
+#ifndef ELYSIUM_IO_PDF_API
+#include "API.hpp"
 #endif
 
 #ifndef ELYSIUM_IO_PDF_PDFPAGEROTATION
@@ -28,7 +28,7 @@ namespace Elysium
 	{
 		namespace PDF
 		{
-			class EXPORT PdfPage final
+			class ELYSIUM_IO_PDF_API PdfPage final
 			{
 			public:
 				PdfPage();
