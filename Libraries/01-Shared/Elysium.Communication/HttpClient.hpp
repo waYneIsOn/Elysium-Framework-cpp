@@ -32,7 +32,7 @@ namespace Elysium
 					HttpClient();
 					~HttpClient();
 				private:
-					Service::Tcp::TcpClient _Client;
+					//Service::Tcp::TcpClient _Client;
 				};
 			}
 		}

@@ -48,6 +48,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp">
       <Filter>Service\HTTP</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\HttpClient.hpp">
       <Filter>Service\HTTP</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\BinaryProtocol.hpp">
+      <Filter>Protocol</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

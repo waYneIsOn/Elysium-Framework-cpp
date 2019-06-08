@@ -33,15 +33,15 @@ namespace Elysium
 				class ELYSIUM_COMMUNICATION_API TcpClient final
 				{
 				public:
-					TcpClient();
+					TcpClient(Elysium::Core::Net::Sockets::Socket* Socket, Elysium::Communication::Transport::TransportBase* Transport, Elysium::Communication::Protocol::ProtocolBase* Protocol);
 					virtual ~TcpClient();
 
 					void Connect(Elysium::Core::String& Host, int Port);
 					void Close();
 				private:
-					Elysium::Core::Net::Sockets::Socket _Socket;
-					Elysium::Communication::Transport::SocketTransport _Transport;
-					Elysium::Communication::Protocol::TextProtocol _Protocol;
+					Elysium::Core::Net::Sockets::Socket* _Socket;
+					Elysium::Communication::Transport::TransportBase* _Transport;
+					Elysium::Communication::Protocol::ProtocolBase* _Protocol;
 				};
 			}
 		}

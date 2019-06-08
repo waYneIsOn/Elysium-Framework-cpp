@@ -1,8 +1,9 @@
 links:
 https://www.pdf-online.com/osa/validate.aspx
 
-https://en.wikipedia.org/wiki/PDF#File_structure
 https://www.eso.org/~ndelmott/ascii.html
+https://en.wikipedia.org/wiki/PDF#File_structure
+http://what-when-how.com/itext-5/understanding-the-carousel-object-system-itext-5/
 
 pdf:
 	- 7-bit ASCII file (certain elements may have binary content)

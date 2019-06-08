@@ -7,8 +7,8 @@ Copyright (C) 2017 waYne (CAM)
 */
 #pragma once
 
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
-#define ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_BINARYPROTOCOL
+#define ELYSIUM_COMMUNICATION_PROTOCOL_BINARYPROTOCOL
 
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_PROTOCOLBASE
 #include "ProtocolBase.hpp"
@@ -24,14 +24,11 @@ namespace Elysium
 	{
 		namespace Protocol
 		{
-			class ELYSIUM_COMMUNICATION_API TextProtocol final : public ProtocolBase
+			class ELYSIUM_COMMUNICATION_API BinaryProtocol final : public ProtocolBase
 			{
 			public:
-				TextProtocol(const Transport::TransportBase* Transport);
-				TextProtocol(const Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
-				~TextProtocol();
-			private:
-				Elysium::Core::Text::Encoding _Encoding;
+				BinaryProtocol(const Transport::TransportBase* Transport);
+				~BinaryProtocol();
 			};
 		}
 	}
