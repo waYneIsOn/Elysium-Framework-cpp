@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_STRING
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace IO

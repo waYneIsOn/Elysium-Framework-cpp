@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{BF8A73B6-EA0E-4512-9408-847821B10435}</ProjectGuid>
+    <ProjectGuid>{77FE4166-9D73-4907-9F3B-6008A8D1908F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>UnitTestIOPDF</RootNamespace>
+    <RootNamespace>UnitTestCommunication</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
   </PropertyGroup>
@@ -178,11 +178,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PDFTest.cpp" />
+    <ClCompile Include="TcpClientTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libraries\02-Windows\Elysium.IO.PDF\Elysium.IO.PDF.vcxproj">
-      <Project>{52049f21-b70d-44d1-9856-e3db7824223a}</Project>
+    <ProjectReference Include="..\..\..\Libraries\02-Windows\Elysium.Communication\Elysium.Communication.vcxproj">
+      <Project>{f24ca643-9fda-485c-b97f-54ab3aa4c82c}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
+#ifndef ELYSIUM_IO_PDF_PDFOBJECT
+#include "PdfObject.hpp"
+#endif
+
 #ifndef ELYSIUM_IO_PDF_PDFVERSION
 #include "PdfVersion.hpp"
 #endif
@@ -38,10 +42,11 @@ namespace Elysium
 			// PDF/UA
 			// PDF/VT
 			// PDF/X
-			class ELYSIUM_IO_PDF_API PdfDocument final
+			class ELYSIUM_IO_PDF_API PdfDocument final : public PdfObject
 			{
 			public:
 				PdfDocument();
+				PdfDocument(const PdfVersion& Version);
 				~PdfDocument();
 
 				// properties - getter
@@ -61,7 +66,7 @@ namespace Elysium
 				void Save(const Elysium::Core::String& Target);
 				void Save(Elysium::Core::IO::Stream& Target);
 			private:
-				PdfVersion _Version = PdfVersion(PdfVersion::PDF_1_7);
+				PdfVersion _Version;
 				//bool _IsPasswordProtected;
 				//unsigned int _PageCount;
 			};

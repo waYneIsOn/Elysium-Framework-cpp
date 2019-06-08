@@ -1,5 +1,7 @@
 #include "PdfVersion.hpp"
 
+using namespace Elysium::Core;
+
 const Elysium::IO::PDF::PdfVersion Elysium::IO::PDF::PdfVersion::PDF_1_0 = Elysium::IO::PDF::PdfVersion(1, 0);
 const Elysium::IO::PDF::PdfVersion Elysium::IO::PDF::PdfVersion::PDF_1_1 = Elysium::IO::PDF::PdfVersion(1, 1);
 const Elysium::IO::PDF::PdfVersion Elysium::IO::PDF::PdfVersion::PDF_1_2 = Elysium::IO::PDF::PdfVersion(1, 2);

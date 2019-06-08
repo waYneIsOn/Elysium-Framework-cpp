@@ -22,5 +22,55 @@
     <Filter Include="Service\REST">
       <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Service\Tcp">
+      <UniqueIdentifier>{6bdd2586-35f4-481f-aba4-3a6aa20f390e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TransportBase.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)SocketTransport.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
+      <Filter>Service\Tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp">
+      <Filter>Service\HTTP</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\TcpClient.hpp">
+      <Filter>Service\Tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\TextProtocol.hpp">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)SocketTransport.hpp">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\HttpClient.hpp">
+      <Filter>Service\HTTP</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

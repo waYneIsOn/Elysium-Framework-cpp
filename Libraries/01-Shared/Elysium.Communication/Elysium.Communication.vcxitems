@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -12,5 +12,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)SocketTransport.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)SocketTransport.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TransportBase.cpp" />
   </ItemGroup>
 </Project>

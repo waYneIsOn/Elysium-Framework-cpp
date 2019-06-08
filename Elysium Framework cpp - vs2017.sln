@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Android", "04 - Androi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.IO.PDF", "UnitTests\02-Windows\UnitTest.IO.PDF\UnitTest.IO.PDF.vcxproj", "{BF8A73B6-EA0E-4512-9408-847821B10435}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.Communication", "UnitTests\02-Windows\UnitTest.Communication\UnitTest.Communication.vcxproj", "{77FE4166-9D73-4907-9F3B-6008A8D1908F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
@@ -102,6 +104,14 @@ Global
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x64.Build.0 = Release|x64
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x86.ActiveCfg = Release|Win32
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x86.Build.0 = Release|Win32
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x64.ActiveCfg = Debug|x64
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x64.Build.0 = Debug|x64
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x86.ActiveCfg = Debug|Win32
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x86.Build.0 = Debug|Win32
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x64.ActiveCfg = Release|x64
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x64.Build.0 = Release|x64
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.ActiveCfg = Release|Win32
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,6 +134,7 @@ Global
 		{E4B52476-2C51-4D2E-9EF1-DFF738987265} = {2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}
 		{B5145A40-3E2D-4C4B-BA72-61D9B16A06FB} = {2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}
 		{BF8A73B6-EA0E-4512-9408-847821B10435} = {4CBA49CC-75C3-4BAA-95B3-86B65C8DDFF8}
+		{77FE4166-9D73-4907-9F3B-6008A8D1908F} = {4CBA49CC-75C3-4BAA-95B3-86B65C8DDFF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1E542AA-7F2D-45E2-BCC0-11DEBB96C091}

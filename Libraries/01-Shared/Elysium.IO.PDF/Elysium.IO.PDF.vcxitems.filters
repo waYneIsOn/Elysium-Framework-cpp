@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfDocument.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfPage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfPageDimensions.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfVersion.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PdfObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfDocument.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfPage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfPageDimensions.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfPageRotation.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfVersion.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)PdfObject.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)01 - Info.txt" />
+  </ItemGroup>
+</Project>

@@ -20,12 +20,18 @@ namespace Elysium
 	{
 		namespace PDF
 		{
+			// represents a node in the tree structure
 			class ELYSIUM_IO_PDF_API PdfObject
 			{
 			public:
 				virtual ~PdfObject() = 0;
 			protected:
 				PdfObject();
+			/*
+			private:
+				unsigned int _ObjectNumber;
+				unsigned int _GenerationNumber;
+			*/
 			};
 		}
 	}
