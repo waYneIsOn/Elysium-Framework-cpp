@@ -1,21 +1,28 @@
 #include "TcpClient.hpp"
 
 using namespace Elysium::Core::Net::Sockets;
-using namespace Elysium::Core::Text;
 
-Elysium::Communication::Service::Tcp::TcpClient::TcpClient(Elysium::Core::Net::Sockets::Socket * Socket, Elysium::Communication::Transport::TransportBase * Transport, Elysium::Communication::Protocol::ProtocolBase * Protocol)
-	: _Socket(Socket), _Transport(Transport), _Protocol(Protocol)
+Elysium::Communication::Transport::TcpClient::TcpClient(Elysium::Core::Net::Sockets::Socket * Socket)
+	: _Socket(Socket), 
+	_InputNetworkStream(NetworkStream(Socket, false)),
+	_OutputNetworkStream(NetworkStream(Socket, false)),
+	StreamTransport(&_InputNetworkStream, &_OutputNetworkStream)
 {
 }
-Elysium::Communication::Service::Tcp::TcpClient::~TcpClient()
+Elysium::Communication::Transport::TcpClient::~TcpClient()
 {
 }
 
-void Elysium::Communication::Service::Tcp::TcpClient::Connect(Elysium::Core::String & Host, int Port)
+const Elysium::Core::Net::Sockets::Socket * Elysium::Communication::Transport::TcpClient::GetSocket() const
+{
+	return _Socket;
+}
+
+void Elysium::Communication::Transport::TcpClient::Connect(const Elysium::Core::String & Host, int Port)
 {
 	_Socket->Connect(Host, Port);
 }
-void Elysium::Communication::Service::Tcp::TcpClient::Close()
+void Elysium::Communication::Transport::TcpClient::Close()
 {
 	_Socket->Disconnect(true);
 }

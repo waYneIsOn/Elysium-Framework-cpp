@@ -4,7 +4,6 @@
 #include "../../../Libraries/01-Shared/Elysium.Communication/BinaryProtocol.hpp"
 
 using namespace Elysium::Communication::Protocol;
-using namespace Elysium::Communication::Service::Tcp;
 using namespace Elysium::Communication::Transport;
 using namespace Elysium::Core;
 using namespace Elysium::Core::Net::Sockets;
@@ -18,10 +17,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(CommuncationTest)
 		{
 			Socket ClientSocket = Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
-			SocketTransport Transport = SocketTransport(&ClientSocket);
-			BinaryProtocol Protocol = BinaryProtocol(&Transport);
+			TcpClient Client = TcpClient(&ClientSocket);
+			BinaryProtocol Protocol = BinaryProtocol(&Client);
 
-			TcpClient Client = TcpClient(&ClientSocket, &Transport, &Protocol);
 			Client.Connect(String(L"172.217.21.3"), 80);
 
 			//Client.g

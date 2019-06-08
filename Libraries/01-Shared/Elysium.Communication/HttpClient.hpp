@@ -14,8 +14,12 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_SERVICE_TCP_TCPCLIENT
+#ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TCPCLIENT
 #include "TcpClient.hpp"
+#endif
+
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
+#include "TextProtocol.hpp"
 #endif
 
 namespace Elysium
@@ -32,7 +36,11 @@ namespace Elysium
 					HttpClient();
 					~HttpClient();
 				private:
-					//Service::Tcp::TcpClient _Client;
+					/*
+					Core::Net::Sockets::Socket _Socket;
+					Transport::TcpClient _Client;
+					Protocol::TextProtocol _Protocol;
+					*/
 				};
 			}
 		}

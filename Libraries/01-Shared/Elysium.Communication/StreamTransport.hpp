@@ -28,7 +28,7 @@ namespace Elysium
 			{
 			public:
 				StreamTransport(Elysium::Core::IO::Stream* InputStream, Elysium::Core::IO::Stream* OutputStream);
-				~StreamTransport();
+				virtual ~StreamTransport();
 
 				virtual bool GetIsOpen() const override;
 				const Elysium::Core::IO::Stream* GetInputStream() const;

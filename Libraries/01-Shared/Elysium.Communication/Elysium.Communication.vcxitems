@@ -18,7 +18,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)SocketTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp" />
@@ -28,7 +27,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)SocketTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp" />

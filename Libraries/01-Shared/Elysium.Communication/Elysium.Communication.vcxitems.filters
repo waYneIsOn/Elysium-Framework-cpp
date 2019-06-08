@@ -22,8 +22,26 @@
     <Filter Include="Service\REST">
       <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Service\Tcp">
-      <UniqueIdentifier>{6bdd2586-35f4-481f-aba4-3a6aa20f390e}</UniqueIdentifier>
+    <Filter Include="Service\HTTP\Authentication">
+      <UniqueIdentifier>{9f7667fd-f5bc-4581-995c-ca6fa0391626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Headers">
+      <UniqueIdentifier>{c9947724-7f9d-43d0-814f-18bc93431805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Authentication\Basic">
+      <UniqueIdentifier>{260620b0-661c-40e4-afe4-d466defc5b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Authentication\DigestSSP">
+      <UniqueIdentifier>{c7c4b186-660f-40ab-8cdf-ad6325297bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Authentication\Kerberos">
+      <UniqueIdentifier>{740082f1-9fc1-4bb2-b76d-7ecd798695c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Authentication\Negotiate">
+      <UniqueIdentifier>{1e640fb8-6c67-472a-8720-9e9a912af5da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\HTTP\Authentication\NTLM">
+      <UniqueIdentifier>{bb1199f2-65aa-4749-84bd-315482448b04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,12 +54,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SocketTransport.cpp">
-      <Filter>Transport</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
-      <Filter>Service\Tcp</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp">
       <Filter>Protocol</Filter>
     </ClCompile>
@@ -51,31 +63,31 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp">
       <Filter>Protocol</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\TcpClient.hpp">
-      <Filter>Service\Tcp</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\TextProtocol.hpp">
-      <Filter>Protocol</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp">
-      <Filter>Transport</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)SocketTransport.hpp">
       <Filter>Transport</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp">
       <Filter>Transport</Filter>
     </ClInclude>
-    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\HttpClient.hpp">
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp">
       <Filter>Service\HTTP</Filter>
     </ClInclude>
-    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\BinaryProtocol.hpp">
+    <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
   </ItemGroup>
