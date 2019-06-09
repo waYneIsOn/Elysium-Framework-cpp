@@ -10,38 +10,11 @@
     <Filter Include="Service">
       <UniqueIdentifier>{24bff1d9-9059-4cdd-8c02-914f46963a72}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Service\IRC">
-      <UniqueIdentifier>{3127fa31-c803-41c0-bf93-3363c52e2510}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP">
-      <UniqueIdentifier>{f7b6c346-c759-4bd3-a2cd-2818cadc7d11}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Service\SOAP">
       <UniqueIdentifier>{1236e5f0-1792-4e94-9afe-5d983a4122db}</UniqueIdentifier>
     </Filter>
     <Filter Include="Service\REST">
       <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication">
-      <UniqueIdentifier>{9f7667fd-f5bc-4581-995c-ca6fa0391626}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Headers">
-      <UniqueIdentifier>{c9947724-7f9d-43d0-814f-18bc93431805}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication\Basic">
-      <UniqueIdentifier>{260620b0-661c-40e4-afe4-d466defc5b54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication\DigestSSP">
-      <UniqueIdentifier>{c7c4b186-660f-40ab-8cdf-ad6325297bd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication\Kerberos">
-      <UniqueIdentifier>{740082f1-9fc1-4bb2-b76d-7ecd798695c6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication\Negotiate">
-      <UniqueIdentifier>{1e640fb8-6c67-472a-8720-9e9a912af5da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\HTTP\Authentication\NTLM">
-      <UniqueIdentifier>{bb1199f2-65aa-4749-84bd-315482448b04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -56,9 +29,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp">
       <Filter>Protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp">
-      <Filter>Service\HTTP</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp">
       <Filter>Protocol</Filter>
@@ -84,11 +54,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp">
-      <Filter>Service\HTTP</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
   </ItemGroup>
 </Project>

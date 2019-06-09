@@ -11,19 +11,16 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTestCommunication
 {		
-	TEST_CLASS(Service_TcpClient)
+	TEST_CLASS(Transport_TcpClient)
 	{
 	public:
-		TEST_METHOD(CommuncationTest)
+		TEST_METHOD(ConnectionTest)
 		{
 			Socket ClientSocket = Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
 			TcpClient Client = TcpClient(&ClientSocket);
 			BinaryProtocol Protocol = BinaryProtocol(&Client);
 
 			Client.Connect(String(L"172.217.21.3"), 80);
-
-			//Client.g
-
 			Client.Close();
 		}
 	};

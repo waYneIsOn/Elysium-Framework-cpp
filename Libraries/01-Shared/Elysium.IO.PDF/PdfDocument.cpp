@@ -50,7 +50,7 @@ void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 	Target.Write(&ConvertedBytes[0], 0, ConvertedBytes.GetCount());
 
 	// catalog????
-	String InitialCatalog = L"1 0 obj\r\n<<\r\n/Type /Catalog\r\n/Outlines 2 0 R\r\n/Pages 3 0 R\r\n>>\r\n\endobj\r\n\r\n";
+	String InitialCatalog = L"1 0 obj\r\n<<\r\n/Type /Catalog\r\n/Outlines 2 0 R\r\n/Pages 3 0 R\r\n>>\r\nendobj\r\n\r\n";
 	ConvertedBytes.Clear();
 	ASCIIEncoding->GetBytes(&InitialCatalog, 0, InitialCatalog.GetLength(), &ConvertedBytes);
 	Target.Write(&ConvertedBytes[0], 0, ConvertedBytes.GetCount());

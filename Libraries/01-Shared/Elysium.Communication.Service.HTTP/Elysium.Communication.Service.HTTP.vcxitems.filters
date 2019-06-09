@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Authentication">
+      <UniqueIdentifier>{33abf3a7-61e1-417c-abf3-9fca6f662f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{920ca319-d7f1-44a9-8ef4-76e37a8ff441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authentication\Basic">
+      <UniqueIdentifier>{b32bead8-c4c1-4c9a-a04a-5a3869784bb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authentication\DigestSSP">
+      <UniqueIdentifier>{59a17a2f-55d5-445a-bb61-f88221eda679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authentication\Kerberos">
+      <UniqueIdentifier>{479045b8-ed38-4887-8cda-60c73a8770c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authentication\Negotiate">
+      <UniqueIdentifier>{b77f7b4e-7eca-4f5a-9d05-45ab0be57477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Authentication\NTLM">
+      <UniqueIdentifier>{ff11d0ae-3630-47eb-bf27-1816f4e45272}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpMessageParser.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpMethod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpHeaders.cpp">
+      <Filter>Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.cpp">
+      <Filter>Headers</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.cpp">
+      <Filter>Headers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpCompletionOption.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpMethod.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpRequestMessage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseMessage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpStatusCode.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpHeaders.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

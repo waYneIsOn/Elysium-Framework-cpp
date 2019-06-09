@@ -24,5 +24,6 @@ void Elysium::Communication::Transport::TcpClient::Connect(const Elysium::Core::
 }
 void Elysium::Communication::Transport::TcpClient::Close()
 {
+	_Socket->Shutdown(SocketShutdown::Both);
 	_Socket->Disconnect(true);
 }
