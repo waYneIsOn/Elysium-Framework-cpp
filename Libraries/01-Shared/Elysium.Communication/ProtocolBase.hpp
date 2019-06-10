@@ -40,7 +40,7 @@ namespace Elysium
 				virtual void WriteBinary(byte* Value, size_t Length);
 				*/
 
-				virtual void ReadString(Elysium::Core::String* Value) = 0;
+				virtual size_t ReadString(Elysium::Core::String* Value) = 0;
 			protected:
 				ProtocolBase(Transport::TransportBase* Transport);
 

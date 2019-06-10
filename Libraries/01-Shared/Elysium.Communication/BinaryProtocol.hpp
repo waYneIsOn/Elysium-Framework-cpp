@@ -32,7 +32,7 @@ namespace Elysium
 
 				virtual void WriteString(const Elysium::Core::String* Value) override;
 
-				virtual void ReadString(Elysium::Core::String* Value) override;
+				virtual size_t ReadString(Elysium::Core::String* Value) override;
 			};
 		}
 	}

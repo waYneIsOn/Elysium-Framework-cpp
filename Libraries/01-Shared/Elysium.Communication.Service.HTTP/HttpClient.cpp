@@ -4,6 +4,10 @@
 #include "HttpMessageParser.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_ARGUMENTNULLEXCEPTION
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ArgumentNullException.hpp"
+#endif
+
 using namespace Elysium::Communication::Protocol;
 using namespace Elysium::Communication::Transport;
 using namespace Elysium::Core;
@@ -30,24 +34,38 @@ void Elysium::Communication::Service::Http::HttpClient::Disconnect()
 	_Socket->Disconnect(true);
 }
 
-void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRequestMessage & Request)
+void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRequestMessage * Request)
 {
 	// prepare the message-string
 	String RequestMessage;
-	HttpMessageParser::ParseRequestMessage(*this, Request, &RequestMessage);
+	HttpMessageParser::ParseRequestMessage(this, Request, &RequestMessage);
 
 	// send the message-string
 	_Protocol->WriteString(&RequestMessage);
 	_Client->Flush();
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpRequestMessage * RequestMessage, HttpResponseMessage * Output)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpResponseMessage * Output)
 {
-	ReceiveResponse(RequestMessage, HttpCompletionOption::ResponseContentRead, Output);
+	ReceiveResponse(HttpCompletionOption::ResponseContentRead, Output);
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpRequestMessage * RequestMessage, const HttpCompletionOption CompletionOption, HttpResponseMessage * Output)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse( const HttpCompletionOption CompletionOption, HttpResponseMessage * Response)
 {
-	String ResponseMessage;
-	_Protocol->ReadString(&ResponseMessage);
+	if (Response == nullptr)
+	{
+		throw ArgumentNullException(L"Response");
+	}
 
+	// read and parse the header
+	String ResponseMessageHeader;
+	_Protocol->ReadString(&ResponseMessageHeader);
+	HttpMessageParser::ParseResponseMessageHeader(this, &ResponseMessageHeader, Response);
+
+	// read and parse the content
+	// options:
+	//  - Content-Length
+	//	- Transfer-Encoding: Chunked -> ToDo
+	//String ResponseMessageContent;
+	//_Protocol->ReadString(&ResponseMessageContent);
+	
 	int x = 34;
 }

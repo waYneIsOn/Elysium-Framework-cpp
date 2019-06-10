@@ -17,7 +17,7 @@ void Elysium::Communication::Protocol::BinaryProtocol::WriteString(const Elysium
 	throw Elysium::Core::NotImplementedException();
 }
 
-void Elysium::Communication::Protocol::BinaryProtocol::ReadString(Elysium::Core::String * Value)
+size_t Elysium::Communication::Protocol::BinaryProtocol::ReadString(Elysium::Core::String * Value)
 {
 	throw Elysium::Core::NotImplementedException();
 }

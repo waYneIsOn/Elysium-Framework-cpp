@@ -17,10 +17,10 @@ namespace UnitTestCommunication
 			Client.Connect(Uri(L"https://93.184.220.42"));
 
 			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri(L"https://93.184.220.42/NonExistent.html"));
-			Client.SendRequest(Request);
+			Client.SendRequest(&Request);
 
-			HttpResponseMessage Response;
-			Client.ReceiveResponse(&Request, &Response);
+			HttpResponseMessage Response(&Request);
+			Client.ReceiveResponse(&Response);
 
 			Client.Disconnect();
 		}

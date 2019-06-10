@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication/API.hpp"
 #endif
 
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPREQUESTMESSAGE
+#include "HttpRequestMessage.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -25,8 +29,12 @@ namespace Elysium
 				class ELYSIUM_COMMUNICATION_API HttpResponseMessage final
 				{
 				public:
-					HttpResponseMessage();
+					HttpResponseMessage(const HttpRequestMessage* Request);
 					~HttpResponseMessage();
+				private:
+					const HttpRequestMessage* _Request;
+
+					//Headers::HttpResponseHeaders _Headers;
 				};
 			}
 		}

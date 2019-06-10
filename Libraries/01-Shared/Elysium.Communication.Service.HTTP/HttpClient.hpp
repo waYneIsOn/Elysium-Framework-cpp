@@ -55,9 +55,9 @@ namespace Elysium
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
 
-					void SendRequest(const HttpRequestMessage& Request);
-					void ReceiveResponse(const HttpRequestMessage* RequestMessage, HttpResponseMessage* Output);
-					void ReceiveResponse(const HttpRequestMessage* RequestMessage, const HttpCompletionOption CompletionOption, HttpResponseMessage* Output);
+					void SendRequest(const HttpRequestMessage* Request);
+					void ReceiveResponse(HttpResponseMessage* Output);
+					void ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage* Response);
 				private:
 					Core::Net::Sockets::Socket _OwnedSocket;
 					Transport::TcpClient _OwnedClient;

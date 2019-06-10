@@ -29,15 +29,15 @@ Elysium::Communication::Service::Http::HttpMessageParser::~HttpMessageParser()
 {
 }
 
-void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(const HttpClient & Client, const HttpRequestMessage & Request, Elysium::Core::String * Output)
+void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(const HttpClient * Client, const HttpRequestMessage * Request, Elysium::Core::String * Output)
 {
 	// prepare required variables
 	Elysium::Core::Text::StringBuilder Builder = Elysium::Core::Text::StringBuilder(1024);
-	const Elysium::Core::Uri& RequestUri = Request.GetRequestUri();
-	const Elysium::Core::Version& Version = Request.GetVersion();
+	const Elysium::Core::Uri& RequestUri = Request->GetRequestUri();
+	const Elysium::Core::Version& Version = Request->GetVersion();
 
 	// prepare the header
-	Builder.Append(Request.GetMethod().GetMethod());
+	Builder.Append(Request->GetMethod().GetMethod());
 	Builder.Append(L" /");
 	Builder.Append(RequestUri.GetPathAndQuery());
 	Builder.Append(L" HTTP/");
@@ -64,6 +64,38 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// ToDo
 
 	Builder.ToString(Output);
+}
+void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMessageHeader(const HttpClient * Client, const Elysium::Core::String * CompleteResponseHeader, HttpResponseMessage * Request)
+{
+	size_t LineNumber = 0;
+	size_t IndexOfLineEnd = 0;
+	size_t TotalIndexOfLineEnd = 0;
+	size_t LineLength = 0;
+
+	// parse the first line
+
+
+	// just for testing
+	/*
+	while(true)
+	{
+		IndexOfLineEnd = CompleteResponseHeader->IndexOf(L"\r\n", TotalIndexOfLineEnd);
+		LineLength = IndexOfLineEnd;
+		if (IndexOfLineEnd == std::wstring::npos)
+		{
+			LineLength = CompleteResponseHeader->GetLength() - TotalIndexOfLineEnd;
+		}
+
+		Elysium::Core::StringView CurrenLineView = Elysium::Core::StringView(CompleteResponseHeader, TotalIndexOfLineEnd, LineLength);
+		//Elysium::Core::String CurrentLine = CurrenLineView;
+
+		if (IndexOfLineEnd == std::wstring::npos)
+		{
+			break;
+		}
+		TotalIndexOfLineEnd += IndexOfLineEnd + 2;
+	}
+	*/
 }
 
 Elysium::Communication::Service::Http::HttpMessageParser::HttpMessageParser()
