@@ -22,6 +22,14 @@ const Elysium::Core::IO::Stream * Elysium::Communication::Transport::StreamTrans
 {
 	return _OutputStream;
 }
+size_t Elysium::Communication::Transport::StreamTransport::Read(Elysium::Core::byte * Buffer, const size_t Length)
+{
+	return _InputStream->Read(Buffer, 0, Length);
+}
+void Elysium::Communication::Transport::StreamTransport::Write(const Elysium::Core::byte * Buffer, const size_t Length)
+{
+	_OutputStream->Write(Buffer, 0, Length);
+}
 /*
 void Elysium::Communication::Transport::StreamTransport::Open()
 {

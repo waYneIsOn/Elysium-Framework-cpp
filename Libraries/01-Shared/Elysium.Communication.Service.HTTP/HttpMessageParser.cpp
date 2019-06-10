@@ -4,6 +4,10 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
+#ifndef _STRING_
+#include <string>
+#endif
+
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::ENDOFMESSAGEHEADER = L"\r\n\r\n";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::ENDOFCHUNKEDCONTENTBEFOREFOOTER = L"\r\n0\r\n";
 
@@ -25,38 +29,41 @@ Elysium::Communication::Service::Http::HttpMessageParser::~HttpMessageParser()
 {
 }
 
-void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(const HttpClient & Client, const HttpRequestMessage & RequestMessage, Elysium::Core::String * Output)
+void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(const HttpClient & Client, const HttpRequestMessage & Request, Elysium::Core::String * Output)
 {
+	// prepare required variables
 	Elysium::Core::Text::StringBuilder Builder = Elysium::Core::Text::StringBuilder(1024);
+	const Elysium::Core::Uri& RequestUri = Request.GetRequestUri();
+	const Elysium::Core::Version& Version = Request.GetVersion();
 
 	// prepare the header
-	Builder.Append(RequestMessage.GetMethod().GetMethod());
-	Builder.Append(L" ");
-	//Builder.Append(RequestMessage.GetRequestUri().GetPathAndQuery());
+	Builder.Append(Request.GetMethod().GetMethod());
+	Builder.Append(L" /");
+	Builder.Append(RequestUri.GetPathAndQuery());
 	Builder.Append(L" HTTP/");
-	//Builder.Append(RequestMessage.GetVersion());
+	Builder.Append(std::to_wstring(Version.GetMajor()).c_str());
+	Builder.Append(L".");
+	Builder.Append(std::to_wstring(Version.GetMinor()).c_str());
+	Builder.Append(L"\r\nUser-Agent: Elysium/0.1\r\nHost: ");
+	Builder.Append(RequestUri.GetHost());
 	Builder.Append(L"\r\n");
 
-	Builder.Append(L"; ; ; ");
-	Builder.SetLength(Builder.GetLength() - 2);
+	// add all default headers using the client
+	// ToDo
 
-	/*
-	Elysium::Core::String Test1 = L"first";
-	Elysium::Core::String Test2 = L"second";
-	Elysium::Core::String Test3 = L"third";
-	*-/
-	Elysium::Core::String Test1 = L"aSDFASDFSD";
-	Elysium::Core::String Test2 = L"dsefgdfsg";
-	Elysium::Core::String Test3 = L"gchj6578788i";
+	// add the authorization header values
+	// ToDo
 
-	Builder.Append(Test1);
-	Builder.Append(Test2);
-	Builder.Append(Test3);
-	*/
-	Elysium::Core::String Blub;
-	Builder.ToString(&Blub);
-	
-	int x = 456;
+	// add all "generic" request messages
+	// ToDo
+
+	// add a finale newline to end the header
+	Builder.Append(L"\r\n");
+
+	// add the content
+	// ToDo
+
+	Builder.ToString(Output);
 }
 
 Elysium::Communication::Service::Http::HttpMessageParser::HttpMessageParser()

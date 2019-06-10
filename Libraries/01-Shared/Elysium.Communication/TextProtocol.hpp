@@ -27,9 +27,13 @@ namespace Elysium
 			class ELYSIUM_COMMUNICATION_API TextProtocol final : public ProtocolBase
 			{
 			public:
-				TextProtocol(const Transport::TransportBase* Transport);
-				TextProtocol(const Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
+				TextProtocol(Transport::TransportBase* Transport);
+				TextProtocol(Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
 				~TextProtocol();
+
+				virtual void WriteString(const Elysium::Core::String* Value) override;
+
+				virtual void ReadString(Elysium::Core::String* Value) override;
 			private:
 				Elysium::Core::Text::Encoding _Encoding;
 			};

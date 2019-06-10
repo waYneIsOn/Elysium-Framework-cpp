@@ -39,6 +39,8 @@ namespace Elysium
 				//int Read(...);
 				//void Write(...);
 				//void Flush();
+				virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
+				virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) override;
 			protected:
 				StreamTransport();
 

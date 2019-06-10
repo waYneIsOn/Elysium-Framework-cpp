@@ -4,7 +4,7 @@ Elysium::Communication::Protocol::ProtocolBase::~ProtocolBase()
 {
 }
 
-Elysium::Communication::Protocol::ProtocolBase::ProtocolBase(const Transport::TransportBase * Transport)
+Elysium::Communication::Protocol::ProtocolBase::ProtocolBase(Transport::TransportBase * Transport)
 	: _Transport(Transport)
 {
 }

@@ -49,17 +49,23 @@ namespace Elysium
 				class ELYSIUM_COMMUNICATION_API HttpClient final
 				{
 				public:
-					HttpClient(const Elysium::Core::Uri& Uri);
+					HttpClient();
 					~HttpClient();
 
+					void Connect(const Elysium::Core::Uri& Uri);
+					void Disconnect();
+
 					void SendRequest(const HttpRequestMessage& Request);
-					//HttpResponseMessage ReceiveResponse(const HttpRequestMessage& RequestMessage, const HttpCompletionOption CompletionOption);
+					void ReceiveResponse(const HttpRequestMessage* RequestMessage, HttpResponseMessage* Output);
+					void ReceiveResponse(const HttpRequestMessage* RequestMessage, const HttpCompletionOption CompletionOption, HttpResponseMessage* Output);
 				private:
-					/*
-					Core::Net::Sockets::Socket _Socket;
-					Transport::TcpClient _Client;
-					Protocol::TextProtocol _Protocol;
-					*/
+					Core::Net::Sockets::Socket _OwnedSocket;
+					Transport::TcpClient _OwnedClient;
+					Protocol::TextProtocol _OwnedProtocol;
+
+					Core::Net::Sockets::Socket* _Socket;
+					Transport::TransportBase* _Client;
+					Protocol::ProtocolBase* _Protocol;
 				};
 			}
 		}

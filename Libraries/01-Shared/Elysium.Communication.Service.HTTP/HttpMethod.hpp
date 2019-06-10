@@ -11,7 +11,7 @@ Copyright (C) 2017 waYne (CAM)
 #define ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPMETHOD
 
 #ifndef ELYSIUM_COMMUNICATION_API
-#include "API.hpp"
+#include "../Elysium.Communication/API.hpp"
 #endif
 
 #ifndef ELYSIUM_CORE_STRING

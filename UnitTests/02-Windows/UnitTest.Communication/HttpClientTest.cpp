@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.HTTP/HttpClient.hpp"
 
+using namespace Elysium::Core;
 using namespace Elysium::Communication::Service::Http;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,10 +13,16 @@ namespace UnitTestCommunication
 	public:
 		TEST_METHOD(ConnectionTest)
 		{
-			HttpClient Client = HttpClient(Elysium::Core::Uri(L""));
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(L"https://93.184.220.42"));
 
-			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Elysium::Core::Uri(L""));
+			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri(L"https://93.184.220.42/NonExistent.html"));
 			Client.SendRequest(Request);
+
+			HttpResponseMessage Response;
+			Client.ReceiveResponse(&Request, &Response);
+
+			Client.Disconnect();
 		}
 	};
 }

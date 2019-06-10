@@ -18,6 +18,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "TransportBase.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_STRING
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -28,16 +32,19 @@ namespace Elysium
 			{
 			public:
 				virtual ~ProtocolBase();
+
+				virtual void WriteString(const Elysium::Core::String* Value) = 0;
 				/*
 				virtual void WriteBool(bool Value) = 0;
 				virtual void WriteByte(byte Value) = 0;
-				virtual void WriteString(String& Value) = 0;
 				virtual void WriteBinary(byte* Value, size_t Length);
 				*/
-			protected:
-				ProtocolBase(const Transport::TransportBase* Transport);
 
-				const Transport::TransportBase* _Transport;
+				virtual void ReadString(Elysium::Core::String* Value) = 0;
+			protected:
+				ProtocolBase(Transport::TransportBase* Transport);
+
+				Transport::TransportBase* _Transport;
 			};
 		}
 	}
