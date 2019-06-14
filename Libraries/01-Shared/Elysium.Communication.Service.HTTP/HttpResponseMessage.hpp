@@ -18,6 +18,14 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpRequestMessage.hpp"
 #endif
 
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HEADERS_HTTPRESPONSEHEADERS
+#include "HttpResponseHeaders.hpp"
+#endif
+
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPSTATUSCODE
+#include "HttpStatusCode.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -28,13 +36,51 @@ namespace Elysium
 			{
 				class ELYSIUM_COMMUNICATION_API HttpResponseMessage final
 				{
+					friend class HttpMessageParser;
 				public:
 					HttpResponseMessage(const HttpRequestMessage* Request);
 					~HttpResponseMessage();
+
+					const HttpRequestMessage* GetRequest() const;
+					const Elysium::Core::Version& GetVersion() const;
+					const HttpStatusCode GetStatusCode() const;
+					const Elysium::Core::String& GetReasonPhase() const;
+					const Headers::HttpResponseHeaders& GetHeaders() const;
+
+					/*
+					const AuthenticationHeaderValue& GetAuthorization() const;
+
+					void SetAuthorization(const AuthenticationHeaderValue& Value);
+					/*
+					AcceptRanges
+					Age
+					CacheControl
+					Connection
+					ConnectionClose
+					Date
+					ETag
+					Location
+					Pargma
+					ProxyAuthenticate
+					RetryAfter
+					Server
+					Trailer
+					TransferEncoding
+					TransferEncodingChunked
+					Upgrade
+					Vary
+					Via
+					Warning
+					WwwAuthenticate
+					*/
 				private:
 					const HttpRequestMessage* _Request;
 
-					//Headers::HttpResponseHeaders _Headers;
+					Elysium::Core::Version _Version;
+					HttpStatusCode _StatusCode;
+					Elysium::Core::String _ReasonPhrase;
+					Headers::HttpResponseHeaders _Headers;
+					//HttpContent _Content;
 				};
 			}
 		}

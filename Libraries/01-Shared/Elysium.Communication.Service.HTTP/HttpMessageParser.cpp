@@ -78,11 +78,11 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMess
 	ResponseHeaderView.Split(L"\r\n", &LineViews);
 
 	// parse the first line
-	Elysium::Core::Version HttpVersion = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
+	Response->_Version = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
 	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(L' ', 9);
-	Elysium::Core::StringView HttpStatusCodeView = Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode);
+	Response->_StatusCode = static_cast<HttpStatusCode>(wcstoul(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], nullptr, 10));
 	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
-	Elysium::Core::StringView HttpStatusMessageView = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
+	Response->_ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
 
 	// parse the subsequent header lines
 	size_t LineCount = LineViews.GetCount();
@@ -104,12 +104,9 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMess
 			ValueView = Elysium::Core::StringView(&LineViews[i][IndexOfKeyValueDelimiter + 2], LengthOfValue);
 		}
 
-		Elysium::Core::String Bla = KeyView;
-		Elysium::Core::String Blub = ValueView;
-		int xy = 45;
+		// add the header
+		Response->_Headers.Add(KeyView, ValueView);
 	}
-
-	int X = 45;
 }
 
 Elysium::Communication::Service::Http::HttpMessageParser::HttpMessageParser()

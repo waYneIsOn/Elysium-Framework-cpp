@@ -21,6 +21,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMethod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMethod.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpRequestMessage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseMessage.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpStatusCode.hpp" />
   </ItemGroup>

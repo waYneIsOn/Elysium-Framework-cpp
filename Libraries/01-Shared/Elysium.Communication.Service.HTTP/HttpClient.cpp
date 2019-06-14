@@ -48,7 +48,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpResp
 {
 	ReceiveResponse(HttpCompletionOption::ResponseContentRead, Output);
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse( const HttpCompletionOption CompletionOption, HttpResponseMessage * Response)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage * Response)
 {
 	if (Response == nullptr)
 	{

@@ -52,12 +52,12 @@ namespace Elysium
 					const Elysium::Core::Uri& GetRequestUri() const;
 					const Elysium::Core::Version& GetVersion() const;
 				private:
-					//HttpContent _Content;
 					Headers::HttpRequestHeaders _Headers;
 					HttpMethod _Method;
 					std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
 					Elysium::Core::Uri _RequestUri;
 					Elysium::Core::Version _Version;
+					//HttpContent _Content;
 				};
 			}
 		}

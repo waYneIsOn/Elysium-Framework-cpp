@@ -38,6 +38,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.cpp">
       <Filter>Headers</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.cpp">
+      <Filter>Headers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
@@ -54,6 +57,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -41,6 +41,39 @@ namespace Elysium
 						void SetAuthorization(const AuthenticationHeaderValue& Value);
 						void SetFrom(const Elysium::Core::String& Value);
 						void SetHost(const Elysium::Core::String& Value);
+						/*
+						Accept
+						AcceptCharset
+						AcceptEncoding
+						AcceptLanguage
+						Authorization
+						CacheControl
+						Connection
+						ConnectionClose
+						Date
+						Expect
+						ExpectContinue
+						From
+						Host
+						IfMatch
+						IfModifiedSince
+						IfNoneMatch
+						IfRagen
+						IfUnmodifiedSince
+						MaxForwards
+						Pargma
+						ProxyAuthorization
+						Range
+						Referrer
+						TE
+						Trailer
+						TransferEcndoing
+						TransferEncodingChunked
+						Upgrade
+						UserAgent
+						Via
+						Warning
+						*/
 					private:
 						AuthenticationHeaderValue _Authorization;
 						Elysium::Core::String _From;
