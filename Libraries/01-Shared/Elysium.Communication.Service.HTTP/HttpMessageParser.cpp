@@ -65,37 +65,51 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 
 	Builder.ToString(Output);
 }
-void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMessageHeader(const HttpClient * Client, const Elysium::Core::String * CompleteResponseHeader, HttpResponseMessage * Request)
+void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMessageHeader(const HttpClient * Client, 
+	const Elysium::Core::String * CompleteResponseHeader, HttpResponseMessage * Response)
 {
 	size_t LineNumber = 0;
 	size_t IndexOfLineEnd = 0;
 	size_t TotalIndexOfLineEnd = 0;
 	size_t LineLength = 0;
 
+	Elysium::Core::StringView ResponseHeaderView = CompleteResponseHeader;
+	Elysium::Core::Collections::Generic::List<Elysium::Core::StringView> LineViews;
+	ResponseHeaderView.Split(L"\r\n", &LineViews);
+
 	// parse the first line
+	Elysium::Core::Version HttpVersion = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
+	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(L' ', 9);
+	Elysium::Core::StringView HttpStatusCodeView = Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode);
+	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
+	Elysium::Core::StringView HttpStatusMessageView = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
 
-
-	// just for testing
-	/*
-	while(true)
+	// parse the subsequent header lines
+	size_t LineCount = LineViews.GetCount();
+	size_t IndexOfKeyValueDelimiter = 0;
+	size_t LengthOfValue = 0;
+	Elysium::Core::StringView KeyView;
+	Elysium::Core::StringView ValueView;
+	for (size_t i = 1; i < LineCount; i++)
 	{
-		IndexOfLineEnd = CompleteResponseHeader->IndexOf(L"\r\n", TotalIndexOfLineEnd);
-		LineLength = IndexOfLineEnd;
-		if (IndexOfLineEnd == std::wstring::npos)
+		IndexOfKeyValueDelimiter = LineViews[i].IndexOf(L':');
+		KeyView = Elysium::Core::StringView(&LineViews[i][0], IndexOfKeyValueDelimiter);
+		LengthOfValue = LineViews[i].IndexOf(L"\r\n", IndexOfKeyValueDelimiter + 2);
+		if (LengthOfValue == std::wstring::npos)
 		{
-			LineLength = CompleteResponseHeader->GetLength() - TotalIndexOfLineEnd;
+			ValueView = Elysium::Core::StringView(&LineViews[i][IndexOfKeyValueDelimiter + 2]);
+		}
+		else
+		{
+			ValueView = Elysium::Core::StringView(&LineViews[i][IndexOfKeyValueDelimiter + 2], LengthOfValue);
 		}
 
-		Elysium::Core::StringView CurrenLineView = Elysium::Core::StringView(CompleteResponseHeader, TotalIndexOfLineEnd, LineLength);
-		//Elysium::Core::String CurrentLine = CurrenLineView;
-
-		if (IndexOfLineEnd == std::wstring::npos)
-		{
-			break;
-		}
-		TotalIndexOfLineEnd += IndexOfLineEnd + 2;
+		Elysium::Core::String Bla = KeyView;
+		Elysium::Core::String Blub = ValueView;
+		int xy = 45;
 	}
-	*/
+
+	int X = 45;
 }
 
 Elysium::Communication::Service::Http::HttpMessageParser::HttpMessageParser()

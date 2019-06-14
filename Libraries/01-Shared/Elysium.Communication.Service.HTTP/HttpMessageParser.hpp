@@ -40,7 +40,7 @@ namespace Elysium
 					~HttpMessageParser();
 
 					static void ParseRequestMessage(const HttpClient* Client, const HttpRequestMessage* Request, Elysium::Core::String* Output);
-					static void ParseResponseMessageHeader(const HttpClient* Client, const Elysium::Core::String* CompleteResponseHeader, HttpResponseMessage* Request);
+					static void ParseResponseMessageHeader(const HttpClient* Client, const Elysium::Core::String* CompleteResponseHeader, HttpResponseMessage* Response);
 				private:
 					HttpMessageParser();
 
