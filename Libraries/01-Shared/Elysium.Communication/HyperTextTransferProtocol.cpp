@@ -25,7 +25,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHe
 		// read the next block of bytes and convert them to a string
 		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
 
-		// copy the converted block into the _MessageBuilder
+		// copy the converted block into the _TotalReadBuffer
 		_TotalReadBuffer.AddRange(_ReadBuffer, 0, BytesReceived);
 
 		// check whether we are at the end
@@ -63,12 +63,15 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
 	}
 
-	if (ContentLength > _TotalReadBuffer.GetCount())
+	// read until we'Ve got the whole content
+	while (_TotalReadBuffer.GetCount() < ContentLength)
 	{
-		throw NotImplementedException();
+		// read the next block of bytes and convert them to a string
+		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
+
+		// copy the converted block into the _TotalReadBuffer
+		_TotalReadBuffer.AddRange(_ReadBuffer, 0, BytesReceived);
 	}
-	else
-	{	// we've already go the whole content
-		size_t BytesConverted = _Encoding.GetString(&_TotalReadBuffer[0], ContentLength, Value);
-	}
+
+	size_t BytesConverted = _Encoding.GetString(&_TotalReadBuffer[0], ContentLength, Value);
 }
