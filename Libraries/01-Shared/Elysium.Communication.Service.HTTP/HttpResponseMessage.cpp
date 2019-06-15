@@ -28,3 +28,9 @@ const Elysium::Communication::Service::Http::Headers::HttpResponseHeaders & Elys
 {
 	return _Headers;
 }
+const bool Elysium::Communication::Service::Http::HttpResponseMessage::GetIsSuccessStatusCode() const
+{
+	return _StatusCode == HttpStatusCode::OK || _StatusCode == HttpStatusCode::Created || _StatusCode == HttpStatusCode::Accepted ||
+		_StatusCode == HttpStatusCode::NonAuthoritativeInformation || _StatusCode == HttpStatusCode::NoContent ||
+		_StatusCode == HttpStatusCode::ResetContent || _StatusCode == HttpStatusCode::PartialContent;
+}

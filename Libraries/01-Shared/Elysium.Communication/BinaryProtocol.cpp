@@ -12,12 +12,12 @@ Elysium::Communication::Protocol::BinaryProtocol::~BinaryProtocol()
 {
 }
 
-void Elysium::Communication::Protocol::BinaryProtocol::WriteString(const Elysium::Core::String * Value)
+void Elysium::Communication::Protocol::BinaryProtocol::WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length)
 {
-	throw Elysium::Core::NotImplementedException();
+	_Transport->Write(Buffer, Length);
 }
 
-size_t Elysium::Communication::Protocol::BinaryProtocol::ReadString(Elysium::Core::String * Value)
+size_t Elysium::Communication::Protocol::BinaryProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
 {
-	throw Elysium::Core::NotImplementedException();
+	return _Transport->Read(Buffer, Length);
 }

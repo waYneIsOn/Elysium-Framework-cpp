@@ -36,6 +36,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp">
+      <Filter>Protocol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
@@ -57,6 +60,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Communication\HyperTextTransferProtocol.hpp">
+      <Filter>Protocol</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

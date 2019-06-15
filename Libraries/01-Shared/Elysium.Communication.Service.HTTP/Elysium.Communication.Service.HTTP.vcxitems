@@ -15,7 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ByteArrayContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMessageParser.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMethod.cpp" />
@@ -23,11 +25,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestMessage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpResponseMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)StringContent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)AuthenticationHeaderValue.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ByteArrayContent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpCompletionOption.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpContent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMethod.hpp" />
@@ -36,5 +41,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpResponseMessage.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpStatusCode.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)StringContent.hpp" />
   </ItemGroup>
 </Project>

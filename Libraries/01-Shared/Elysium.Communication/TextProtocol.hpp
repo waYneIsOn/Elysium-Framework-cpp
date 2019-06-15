@@ -22,32 +22,30 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-#ifndef _STRING_
-#include <string>
-#endif
-
 namespace Elysium
 {
 	namespace Communication
 	{
 		namespace Protocol
 		{
-			class ELYSIUM_COMMUNICATION_API TextProtocol final : public ProtocolBase
+			class ELYSIUM_COMMUNICATION_API TextProtocol : public ProtocolBase
 			{
 			public:
 				TextProtocol(Transport::TransportBase* Transport);
 				TextProtocol(Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
 				~TextProtocol();
 
-				virtual void WriteString(const Elysium::Core::String* Value) override;
+				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
+				virtual void WriteString(const Elysium::Core::String* Value);
 
-				virtual size_t ReadString(Elysium::Core::String* Value) override;
-			private:
+				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
+				virtual size_t ReadString(Elysium::Core::String* Value);
+			protected:
 				Elysium::Core::Text::Encoding _Encoding;
-				Elysium::Core::Text::StringBuilder _MessageBuilder = Elysium::Core::Text::StringBuilder(1024);
+				Elysium::Core::Collections::Generic::List<Elysium::Core::byte> _TotalReadBuffer = Elysium::Core::Collections::Generic::List<Elysium::Core::byte>(1024);
 				Elysium::Core::byte _ReadBuffer[1024];
 				size_t _ReadBufferSize = 1024;
-				size_t _IndexOfMessageEnd = std::wstring::npos;
+				size_t _IndexOfMessageEnd = -1;
 			};
 		}
 	}

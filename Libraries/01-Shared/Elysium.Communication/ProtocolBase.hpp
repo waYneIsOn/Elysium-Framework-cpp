@@ -33,14 +33,9 @@ namespace Elysium
 			public:
 				virtual ~ProtocolBase();
 
-				virtual void WriteString(const Elysium::Core::String* Value) = 0;
-				/*
-				virtual void WriteBool(bool Value) = 0;
-				virtual void WriteByte(byte Value) = 0;
-				virtual void WriteBinary(byte* Value, size_t Length);
-				*/
+				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) = 0;
 
-				virtual size_t ReadString(Elysium::Core::String* Value) = 0;
+				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
 			protected:
 				ProtocolBase(Transport::TransportBase* Transport);
 

@@ -26,6 +26,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpStatusCode.hpp"
 #endif
 
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPCONTENT
+#include "HttpContent.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -46,6 +50,7 @@ namespace Elysium
 					const HttpStatusCode GetStatusCode() const;
 					const Elysium::Core::String& GetReasonPhase() const;
 					const Headers::HttpResponseHeaders& GetHeaders() const;
+					const bool GetIsSuccessStatusCode() const;
 
 					/*
 					const AuthenticationHeaderValue& GetAuthorization() const;

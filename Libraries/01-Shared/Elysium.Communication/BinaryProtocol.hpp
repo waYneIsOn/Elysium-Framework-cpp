@@ -30,9 +30,9 @@ namespace Elysium
 				BinaryProtocol(Transport::TransportBase* Transport);
 				~BinaryProtocol();
 
-				virtual void WriteString(const Elysium::Core::String* Value) override;
+				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
 
-				virtual size_t ReadString(Elysium::Core::String* Value) override;
+				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
 			};
 		}
 	}

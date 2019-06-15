@@ -48,8 +48,10 @@ namespace Elysium
 						void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Generic::List<Elysium::Core::String> & Values);
 						void Add(const Elysium::Core::String& Name, const Elysium::Core::String& Value);
 						void Clear();
-						bool Contains(const Elysium::Core::String& Name);
-						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name);
+						bool Contains(const ElysiumChar* Name) const;
+						bool Contains(const Elysium::Core::String& Name) const;
+						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const ElysiumChar* Name) const;
+						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
 						bool Remove(const Elysium::Core::String& Name);
 					protected:
 						HttpHeaders();

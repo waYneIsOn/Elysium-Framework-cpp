@@ -10,7 +10,6 @@ Elysium::Communication::Service::Http::Headers::HttpHeaders::~HttpHeaders()
 
 void Elysium::Communication::Service::Http::Headers::HttpHeaders::Add(const Elysium::Core::String & Name, const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Values)
 {
-	//_Headers[Name] = Elysium::Core::Collections::Generic::List<Elysium::Core::String>(Values);
 	_Headers[Name] = Values;
 }
 void Elysium::Communication::Service::Http::Headers::HttpHeaders::Add(const Elysium::Core::String & Name, const Elysium::Core::String & Value)
@@ -23,9 +22,9 @@ void Elysium::Communication::Service::Http::Headers::HttpHeaders::Clear()
 {
 	_Headers.clear();
 }
-bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const Elysium::Core::String & Name)
+bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const ElysiumChar * Name) const
 {
-	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::iterator Iterator = _Headers.find(Name);
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{
 		return false;
@@ -35,9 +34,33 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const
 		return true;
 	}
 }
-const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const Elysium::Core::String & Name)
+bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const Elysium::Core::String & Name) const
 {
-	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::iterator Iterator = _Headers.find(Name);
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
+	if (Iterator == _Headers.end())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const ElysiumChar * Name) const
+{
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
+	if (Iterator == _Headers.end())
+	{	// ToDo: throw specific exception
+		throw Elysium::Core::Exception(L"header not found");
+	}
+	else
+	{
+		return Iterator->second;
+	}
+}
+const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const Elysium::Core::String & Name) const
+{
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{	// ToDo: throw specific exception
 		throw Elysium::Core::Exception(L"header not found");

@@ -22,8 +22,8 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication/TcpClient.hpp"
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
-#include "../Elysium.Communication/TextProtocol.hpp"
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_HYPERTEXTTRANSFERPROTOCOL
+#include "../Elysium.Communication/HyperTextTransferProtocol.hpp"
 #endif
 
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPREQUESTMESSAGE
@@ -61,11 +61,15 @@ namespace Elysium
 				private:
 					Core::Net::Sockets::Socket _OwnedSocket;
 					Transport::TcpClient _OwnedClient;
-					Protocol::TextProtocol _OwnedProtocol;
+					Protocol::HyperTextTransferProtocol _OwnedProtocol;
 
 					Core::Net::Sockets::Socket* _Socket;
 					Transport::TransportBase* _Client;
-					Protocol::ProtocolBase* _Protocol;
+
+					HttpResponseMessage * _PreviousResponse;
+					HttpCompletionOption _PreviousCompletionOption;
+
+					void ReceiveResponseContent(HttpResponseMessage* Response);
 				};
 			}
 		}
