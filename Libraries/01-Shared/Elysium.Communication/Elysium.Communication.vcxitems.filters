@@ -16,6 +16,12 @@
     <Filter Include="Service\REST">
       <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Service\FTP">
+      <UniqueIdentifier>{e6f28b5d-f085-4ef9-a2e2-12f654e6c361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\IRC">
+      <UniqueIdentifier>{093759f7-cc45-4477-bef5-6722c4ca9e68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp">

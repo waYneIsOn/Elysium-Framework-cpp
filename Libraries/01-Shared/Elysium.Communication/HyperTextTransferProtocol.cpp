@@ -26,7 +26,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHe
 		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
 
 		// copy the converted block into the _TotalReadBuffer
-		_TotalReadBuffer.AddRange(_ReadBuffer, 0, BytesReceived);
+		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 
 		// check whether we are at the end
 		do
@@ -55,6 +55,27 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHe
 
 	size_t BytesConverted = _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd, Value);
 }
+void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value)
+{
+	// check _MessageBuilder for parts of previously received messages
+	if (_IndexOfMessageEnd != -1)
+	{	// remove the last part of the previous message
+		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
+	}
+
+	// read until we've got the whole content
+	while (_TotalReadBuffer.GetCount() < ContentLength)
+	{
+		// read the next block of bytes and convert them to a string
+		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
+
+		// copy the converted block into the _TotalReadBuffer
+		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
+	}
+
+	// write to output
+	Value->AddRange(&_TotalReadBuffer[0], _TotalReadBuffer.GetCount());
+}
 void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::String * Value)
 {
 	// check _MessageBuilder for parts of previously received messages
@@ -63,15 +84,16 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
 	}
 
-	// read until we'Ve got the whole content
+	// read until we've got the whole content
 	while (_TotalReadBuffer.GetCount() < ContentLength)
 	{
 		// read the next block of bytes and convert them to a string
 		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
 
 		// copy the converted block into the _TotalReadBuffer
-		_TotalReadBuffer.AddRange(_ReadBuffer, 0, BytesReceived);
+		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 	}
 
+	// write to output
 	size_t BytesConverted = _Encoding.GetString(&_TotalReadBuffer[0], ContentLength, Value);
 }

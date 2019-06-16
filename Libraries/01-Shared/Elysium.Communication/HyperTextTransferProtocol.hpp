@@ -40,6 +40,7 @@ namespace Elysium
 				~HyperTextTransferProtocol();
 
 				void ReadResponseHeader(Elysium::Core::String* Value);
+				void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value);
 				void ReadResponseContent(const size_t ContentLength, Elysium::Core::String * Value);
 			};
 		}

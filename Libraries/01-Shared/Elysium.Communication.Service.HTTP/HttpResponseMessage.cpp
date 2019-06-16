@@ -1,11 +1,16 @@
 #include "HttpResponseMessage.hpp"
 
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(const HttpRequestMessage* Request)
-	: _Request(Request)
+	: _Request(Request),
+	_Content(nullptr)
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::~HttpResponseMessage()
 {
+	if (_Content != nullptr)
+	{
+		delete _Content;
+	}
 }
 
 const Elysium::Communication::Service::Http::HttpRequestMessage * Elysium::Communication::Service::Http::HttpResponseMessage::GetRequest() const

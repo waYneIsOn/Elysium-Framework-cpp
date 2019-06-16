@@ -32,8 +32,8 @@ namespace Elysium
 					ByteArrayContent(const Elysium::Core::byte* Content, const size_t Length);
 					virtual ~ByteArrayContent();
 				private:
-					const Elysium::Core::byte* _Content;
-					const size_t _Length;
+					Elysium::Core::byte* _Content;
+					size_t _Length;
 				};
 			}
 		}

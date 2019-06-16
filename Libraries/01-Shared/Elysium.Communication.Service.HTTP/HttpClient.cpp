@@ -91,32 +91,31 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	{
 		throw NotImplementedException(L"ReceiveResponseContent with Transfer-Encoding");
 	}
-	else if (Response->GetHeaders().Contains(L"Content-Length") && Response->GetHeaders().Contains(L"Content-Type"))
+	else if (Response->GetHeaders().Contains(L"Content-Length")) // && Response->GetHeaders().Contains(L"Content-Type")) ToDo: do we alway have the type in this case?
 	{
-		if (Response->GetHeaders().GetValues(L"Content-Type")[0] == L"text/html")
-		{
-			int sdf = 45;
-		}
-
+		// get the content's length
 		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(L"Content-Length");
 		size_t ContentLength = wcstoul(&ContentLengthValues[0][0], nullptr, 10);
 
-		String ResponseMessageContent;
-		_OwnedProtocol.ReadResponseContent(ContentLength, &ResponseMessageContent);
-		StringContent Content = StringContent(ResponseMessageContent);
-
-		int x = 435;
+		// depending on the type aquire the content and add it to the response
+		if (Response->GetHeaders().GetValues(L"Content-Type")[0].StartsWith(L"text/"))
+		{
+			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
+			Response->_Content = new StringContent(&Content[0], Content.GetCount());
+			/*
+			String ResponseMessageContent;
+			_OwnedProtocol.ReadResponseContent(ContentLength, &ResponseMessageContent);
+			Response->_Content = new StringContent(ResponseMessageContent);
+			*/
+		}
+		else
+		{
+			throw NotImplementedException(L"ReceiveResponseContent with unknown Content-Type");
+		}
 	}
 	else
 	{
 		throw NotImplementedException(L"Header includes neither Content-Length nor Transfer-Encoding");
 	}
-
-	//HttpMessageParser::Parse
-
-	// options:
-	//  - Content-Length
-	//	- Transfer-Encoding: Chunked -> ToDo
-	//String ResponseMessageContent;
-	//_Protocol->ReadString(&ResponseMessageContent);
 }

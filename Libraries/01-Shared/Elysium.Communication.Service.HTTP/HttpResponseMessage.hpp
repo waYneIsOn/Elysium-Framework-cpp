@@ -40,6 +40,7 @@ namespace Elysium
 			{
 				class ELYSIUM_COMMUNICATION_API HttpResponseMessage final
 				{
+					friend class HttpClient;
 					friend class HttpMessageParser;
 				public:
 					HttpResponseMessage(const HttpRequestMessage* Request);
@@ -85,7 +86,7 @@ namespace Elysium
 					HttpStatusCode _StatusCode;
 					Elysium::Core::String _ReasonPhrase;
 					Headers::HttpResponseHeaders _Headers;
-					//HttpContent _Content;
+					HttpContent* _Content;
 				};
 			}
 		}
