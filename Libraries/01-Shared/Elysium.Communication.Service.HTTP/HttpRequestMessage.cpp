@@ -10,6 +10,11 @@ Elysium::Communication::Service::Http::HttpRequestMessage::~HttpRequestMessage()
 {
 }
 
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::HttpRequestMessage::GetHeaders()
+{
+	return _Headers;
+}
+
 const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpRequestMessage::GetMethod() const
 {
 	return _Method;

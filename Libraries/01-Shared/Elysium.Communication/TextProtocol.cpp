@@ -5,7 +5,7 @@ using namespace Elysium::Core::Collections::Generic;
 
 Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase * Transport)
 	: ProtocolBase(Transport),
-	_Encoding(Elysium::Core::Text::Encoding(*Elysium::Core::Text::Encoding::Default()))
+	_Encoding(Elysium::Core::Text::Encoding(*Elysium::Core::Text::Encoding::ASCII()))
 {
 	_TotalReadBuffer.Clear();
 }

@@ -48,6 +48,8 @@ namespace Elysium
 					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
 					~HttpRequestMessage();
 
+					Headers::HttpRequestHeaders& GetHeaders();
+
 					const HttpMethod& GetMethod() const;
 					const Elysium::Core::Uri& GetRequestUri() const;
 					const Elysium::Core::Version& GetVersion() const;

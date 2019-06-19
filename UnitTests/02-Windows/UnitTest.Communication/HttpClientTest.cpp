@@ -14,14 +14,18 @@ namespace UnitTestCommunication
 		TEST_METHOD(ConnectionTest)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(L"https://93.184.220.42"));
+			Client.Connect(Uri(L"http://13.32.24.99"));	// neverssl.com
 
-			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri(L"https://93.184.220.42/NonExistent.html"));
-			Client.SendRequest(&Request);
+			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			Request.GetHeaders().SetHost(String(L"dcbfhklnmstrwxvz.neverssl.com"));
+			Client.SendRequest(Request);
 
 			HttpResponseMessage Response(&Request);
-			Client.ReceiveResponse(&Response);
-
+			Client.ReceiveResponse(Response);
+			
+			Client.SendRequest(Request);
+			Client.ReceiveResponse(Response);
+			
 			Client.Disconnect();
 		}
 	};

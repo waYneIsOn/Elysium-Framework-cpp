@@ -43,7 +43,7 @@ void Elysium::Communication::Service::Http::HttpClient::Disconnect()
 	_Socket->Disconnect(true);
 }
 
-void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRequestMessage * Request)
+void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRequestMessage & Request)
 {
 	// prepare the message-string
 	String RequestMessage;
@@ -53,17 +53,12 @@ void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRe
 	_OwnedProtocol.WriteString(&RequestMessage);
 	_Client->Flush();
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpResponseMessage * Output)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpResponseMessage & Output)
 {
 	ReceiveResponse(HttpCompletionOption::ResponseContentRead, Output);
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage * Response)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage & Output)
 {
-	if (Response == nullptr)
-	{
-		throw ArgumentNullException(L"Response");
-	}
-
 	// if we've only read the header before, we need to read the previous response's content
 	if (_PreviousCompletionOption == HttpCompletionOption::ResponseHeadersRead)
 	{
@@ -73,25 +68,52 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const Ht
 	// read and parse the header
 	String ResponseMessageHeader;
 	_OwnedProtocol.ReadResponseHeader(&ResponseMessageHeader);
-	HttpMessageParser::ParseResponseMessageHeader(this, &ResponseMessageHeader, Response);
+	HttpMessageParser::ParseResponseMessageHeader(this, &ResponseMessageHeader, &Output);
 
 	// read and parse the content right away if so desired
 	if (CompletionOption == HttpCompletionOption::ResponseContentRead)
 	{
-		ReceiveResponseContent(Response);
+		ReceiveResponseContent(&Output);
 	}
 	
-	_PreviousResponse = Response;
+	_PreviousResponse = &Output;
 	_PreviousCompletionOption = CompletionOption;
 }
 
 void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(HttpResponseMessage * Response)
 {
+	// Content-Type
+	// application/...
+	// audio/...
+	// image/...
+	// message/...
+	// multipart/...
+	// text/...
+	// video/...
+	// x-token/...	(x-abc/... x-xyz/...) = non standard status
+
+	// ap, au, im, me, mu, te, vi, x-
+
 	if (Response->GetHeaders().Contains(L"Transfer-Encoding"))
 	{
-		throw NotImplementedException(L"ReceiveResponseContent with Transfer-Encoding");
+		if (Response->GetHeaders().GetValues(L"Transfer-Encoding")[0] == L"chunked")
+		{
+			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+			bool BytesReceived = false;
+			
+			do
+			{
+				BytesReceived = _OwnedProtocol.ReadResponseContentChunk(&Content);
+			} while (BytesReceived);
+
+			throw NotImplementedException(L"ReceiveResponseContent with Transfer-Encoding");
+		}
+		else
+		{
+			throw NotImplementedException(L"ReceiveResponseContent with unknown Transfer-Encoding");
+		}
 	}
-	else if (Response->GetHeaders().Contains(L"Content-Length")) // && Response->GetHeaders().Contains(L"Content-Type")) ToDo: do we alway have the type in this case?
+	else if (Response->GetHeaders().Contains(L"Content-Length"))
 	{
 		// get the content's length
 		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(L"Content-Length");
@@ -103,11 +125,6 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
 			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
 			Response->_Content = new StringContent(&Content[0], Content.GetCount());
-			/*
-			String ResponseMessageContent;
-			_OwnedProtocol.ReadResponseContent(ContentLength, &ResponseMessageContent);
-			Response->_Content = new StringContent(ResponseMessageContent);
-			*/
 		}
 		else
 		{
