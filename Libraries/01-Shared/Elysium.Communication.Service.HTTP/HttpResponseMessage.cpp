@@ -39,3 +39,7 @@ const bool Elysium::Communication::Service::Http::HttpResponseMessage::GetIsSucc
 		_StatusCode == HttpStatusCode::NonAuthoritativeInformation || _StatusCode == HttpStatusCode::NoContent ||
 		_StatusCode == HttpStatusCode::ResetContent || _StatusCode == HttpStatusCode::PartialContent;
 }
+const Elysium::Communication::Service::Http::HttpContent * Elysium::Communication::Service::Http::HttpResponseMessage::GetContent() const
+{
+	return _Content;
+}

@@ -31,6 +31,8 @@ namespace Elysium
 				public:
 					ByteArrayContent(const Elysium::Core::byte* Content, const size_t Length);
 					virtual ~ByteArrayContent();
+
+					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
 				private:
 					Elysium::Core::byte* _Content;
 					size_t _Length;

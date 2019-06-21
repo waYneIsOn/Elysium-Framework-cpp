@@ -52,6 +52,7 @@ namespace Elysium
 					const Elysium::Core::String& GetReasonPhase() const;
 					const Headers::HttpResponseHeaders& GetHeaders() const;
 					const bool GetIsSuccessStatusCode() const;
+					const HttpContent* GetContent() const;
 
 					/*
 					const AuthenticationHeaderValue& GetAuthorization() const;

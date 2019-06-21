@@ -22,7 +22,8 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// prepare the header
 	Builder.Append(Request.GetMethod().GetMethod());
 	Builder.Append(L" /");
-	Builder.Append(RequestUri.GetPath());
+	//Builder.Append(RequestUri.GetPath());
+	Builder.Append(L"online");
 	Builder.Append(L" HTTP/");
 	Builder.Append(std::to_wstring(Version.GetMajor()).c_str());
 	Builder.Append(L".");
@@ -38,7 +39,7 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// ToDo: remove these lines - they're just here for testing purposes
 	Builder.Append(L"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n");
 	Builder.Append(L"Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n");
-	//Builder.Append(L"Accept-Encoding: gzip, deflate\r\n");
+	Builder.Append(L"Accept-Encoding: gzip, deflate\r\n");
 
 	// add all default headers using the client
 	// ToDo

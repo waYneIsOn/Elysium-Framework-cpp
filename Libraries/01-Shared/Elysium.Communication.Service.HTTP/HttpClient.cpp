@@ -98,15 +98,28 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	{
 		if (Response->GetHeaders().GetValues(L"Transfer-Encoding")[0] == L"chunked")
 		{
+			bool HasReceivedBytes = false;
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
-			bool BytesReceived = false;
-			
 			do
 			{
-				BytesReceived = _OwnedProtocol.ReadResponseContentChunk(&Content);
-			} while (BytesReceived);
+				HasReceivedBytes = _OwnedProtocol.ReadResponseContentChunk(&Content);
+			} while (HasReceivedBytes);
 
-			throw NotImplementedException(L"ReceiveResponseContent with Transfer-Encoding");
+			// delete previous content if required
+			if (Response->_Content != nullptr)
+			{
+				delete Response->_Content;
+			}
+
+			// add current content
+			if (Response->GetHeaders().Contains(L"Content-Encoding"))
+			{
+				Response->_Content = new ByteArrayContent(&Content[0], Content.GetCount());
+			}
+			else
+			{	// how to handle this case? html -> string, jpg -> bytearray etc.???
+				throw NotImplementedException(L"ReceiveResponseContent without Content-Encoding");
+			}
 		}
 		else
 		{
@@ -124,6 +137,10 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		{
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
 			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
+			if (Response->_Content != nullptr)
+			{
+				delete Response->_Content;
+			}
 			Response->_Content = new StringContent(&Content[0], Content.GetCount());
 		}
 		else
