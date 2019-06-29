@@ -61,6 +61,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)
 	{	// remove the last part of the previous message
+		/*
 		if (_IndexOfMessageEnd + 4 == _TotalReadBuffer.GetCount())
 		{
 			_TotalReadBuffer.Clear();
@@ -69,6 +70,8 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 		{
 			_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
 		}
+		*/
+		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);	// ToDo: shouldn't this be 2 for \r\n?
 	}
 
 	// read until we've got the whole content
@@ -91,6 +94,7 @@ bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)
 	{	// remove the last part of the previous message
+		/*
 		if (_IndexOfMessageEnd + 4 == _TotalReadBuffer.GetCount())
 		{
 			_TotalReadBuffer.Clear();
@@ -99,6 +103,8 @@ bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 		{
 			_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
 		}
+		*/
+		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);	// ToDo: shouldn't this be 2 for \r\n?
 	}
 	
 	// get the size of the chunk and read those bytes
@@ -114,31 +120,24 @@ bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 			{
 				if (_TotalReadBuffer[_IndexOfMessageEnd + 1] == '\n')
 				{
-					ChunkSize = strtoul((const char*)&_TotalReadBuffer[0], (char**)&_TotalReadBuffer[_IndexOfMessageEnd], 16);
-					RequiredLength = ChunkSize == 0 ? 0 : _IndexOfMessageEnd + 4 + ChunkSize;
-
-					// we might have reached the end of the message
-					if (ChunkSize == 0)
-					{
-						_IndexOfMessageEnd = -1;
-						return false;
-					}
+					ChunkSize = strtoul((const char*)&_TotalReadBuffer[0], nullptr, 16);
+					RequiredLength = ChunkSize == 0 ? 5 : _IndexOfMessageEnd + 4 + ChunkSize;
 				}
 			}
 		}
 
 		if (_TotalReadBuffer.GetCount() < RequiredLength)
-		{	// read the next block of bytes and copy the block into the _TotalReadBuffer
+		{	// read more bytes and copy the block into the _TotalReadBuffer
 			size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
 			_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 		}
-	} while (_TotalReadBuffer.GetCount() <= RequiredLength);
+	} while (_TotalReadBuffer.GetCount() < RequiredLength);
 
-	// remove the first line containing the chunk size, add everything else to output and then remove that part from the buffer as well
-	_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
-	Value->AddRange(&_TotalReadBuffer[0], ChunkSize);
-	_TotalReadBuffer.RemoveRange(0, ChunkSize);
+	// copy content to Value and clean up _TotalReadBuffer afterwards
+	Value->AddRange(&_TotalReadBuffer[_IndexOfMessageEnd + sizeof("\r\n") - 1], ChunkSize);
+	//_TotalReadBuffer.RemoveRange(0, ChunkSize);
+	_TotalReadBuffer.RemoveRange(0, RequiredLength);
 	_IndexOfMessageEnd = -1;
 
-	return true;
+	return ChunkSize == 0 ? false : true;
 }

@@ -42,9 +42,9 @@ namespace Elysium
 				virtual size_t ReadString(Elysium::Core::String* Value);
 			protected:
 				Elysium::Core::Text::Encoding _Encoding;
-				Elysium::Core::Collections::Generic::List<Elysium::Core::byte> _TotalReadBuffer = Elysium::Core::Collections::Generic::List<Elysium::Core::byte>(1024);
+				const static size_t _ReadBufferSize = 1024;
 				Elysium::Core::byte _ReadBuffer[1024];
-				size_t _ReadBufferSize = 1024;
+				Elysium::Core::Collections::Generic::List<Elysium::Core::byte> _TotalReadBuffer = Elysium::Core::Collections::Generic::List<Elysium::Core::byte>(_ReadBufferSize);
 				size_t _IndexOfMessageEnd = -1;
 			};
 		}
