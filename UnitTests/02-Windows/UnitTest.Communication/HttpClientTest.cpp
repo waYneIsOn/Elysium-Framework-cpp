@@ -39,18 +39,35 @@ namespace UnitTestCommunication
 			{
 				MemoryStream ContentStream;
 				Response.GetContent()->ReadAsStream(ContentStream);
-				const HttpContent* ResponseContent = Response.GetContent();
 
 				if(Response.GetHeaders().GetValues(L"Content-Encoding").Contains(L"gzip"))
 				{
+					FileStream FS = FileStream(L"test.lz77", FileMode::Create);
+					ContentStream.CopyTo(FS);
+
 					GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
+					byte Buffer[1024];
+					size_t BytesRead = 0;
+					do
+					{
+						//BytesRead = UncompressedContentStream.Read(&Buffer[0], 1024);
+						BytesRead = ContentStream.Read(&Buffer[0], 1024);
+
+						uint32_t Timestamp;
+						memcpy(&Timestamp, &Buffer[0], 4);
+
+						byte Test1 = Buffer[0];
+						if (Buffer[0] == 0x1F)
+						{
+							int sdf = 45;
+						}
+						else
+						{
+							int sdf = 45;
+						}
+					} while (BytesRead > 0);
 				}
 			}
-			/*
-			const ByteArrayContent* ByteContent = static_cast<const ByteArrayContent*>(Response.GetContent());
-			const size_t ByteLength = ByteContent->GetLength();
-			const byte* Bytes = ByteContent->GetContent();
-			*/
 		}
 	};
 }

@@ -34,7 +34,7 @@ Elysium::Communication::Service::Http::HttpClient::~HttpClient()
 }
 
 void Elysium::Communication::Service::Http::HttpClient::Connect(const Elysium::Core::Uri & Uri)
-{
+{	// ToDo: Uri.GetPort();
 	_Socket->Connect(Uri.GetHost(), 80);
 }
 void Elysium::Communication::Service::Http::HttpClient::Disconnect()
@@ -132,21 +132,15 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(L"Content-Length");
 		size_t ContentLength = wcstoul(&ContentLengthValues[0][0], nullptr, 10);
 
-		// depending on the type aquire the content and add it to the response
-		if (Response->GetHeaders().GetValues(L"Content-Type")[0].StartsWith(L"text/"))
+		// get the content
+		// ToDo: depending on Content-Type (text/html, application/json etc.) we might need to handle this differently, for now it's ok
+		Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+		_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
+		if (Response->_Content != nullptr)
 		{
-			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
-			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
-			if (Response->_Content != nullptr)
-			{
-				delete Response->_Content;
-			}
-			Response->_Content = new StringContent(&Content[0], Content.GetCount());
+			delete Response->_Content;
 		}
-		else
-		{
-			throw NotImplementedException(L"ReceiveResponseContent with unknown Content-Type");
-		}
+		Response->_Content = new StringContent(&Content[0], Content.GetCount());
 	}
 	else
 	{

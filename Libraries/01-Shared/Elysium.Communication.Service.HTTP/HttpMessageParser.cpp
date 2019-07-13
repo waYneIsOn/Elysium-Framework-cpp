@@ -22,8 +22,7 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// prepare the header
 	Builder.Append(Request.GetMethod().GetMethod());
 	Builder.Append(L" /");
-	//Builder.Append(RequestUri.GetPath());
-	Builder.Append(L"online");
+	Builder.Append(RequestUri.GetPathAndQuery());	// ToDo: should this be GetPath()?
 	Builder.Append(L" HTTP/");
 	Builder.Append(std::to_wstring(Version.GetMajor()).c_str());
 	Builder.Append(L".");
