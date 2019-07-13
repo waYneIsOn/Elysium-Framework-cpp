@@ -21,10 +21,10 @@ namespace UnitTestCommunication
 		TEST_METHOD(ConnectionTest)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(L"http://13.32.24.99"));	// neverssl.com
+			Client.Connect(Uri(L"http://neverssl.com"));
 
 			HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			Request.GetHeaders().SetHost(String(L"dcbfhklnmstrwxvz.neverssl.com"));
+			Request.GetHeaders().SetHost(String(L"neverssl.com"));
 			Client.SendRequest(Request);
 
 			HttpResponseMessage Response(&Request);
