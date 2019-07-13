@@ -27,6 +27,9 @@ namespace UnitTestCommunication
 			Uri GetFirstEntryUri = Uri(L"http://jsonplaceholder.typicode.com/todos/1");
 			Client.TestGET(GetFirstEntryUri);
 
+			Uri GetAllEntriesUri = Uri(L"http://jsonplaceholder.typicode.com/todos");
+			Client.TestGET(GetAllEntriesUri);
+
 			Client.Disconnect();
 		}
 	private:

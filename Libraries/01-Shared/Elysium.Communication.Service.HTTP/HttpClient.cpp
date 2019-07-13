@@ -117,8 +117,8 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 				Response->_Content = new ByteArrayContent(&Content[0], Content.GetCount());
 			}
 			else
-			{	// how to handle this case? html -> string, jpg -> bytearray etc.???
-				throw NotImplementedException(L"ReceiveResponseContent without Content-Encoding");
+			{	// ToDo: how to handle this case accordingly? html -> string, jpg -> bytearray etc.???
+				Response->_Content = new StringContent(&Content[0], Content.GetCount());
 			}
 		}
 		else
