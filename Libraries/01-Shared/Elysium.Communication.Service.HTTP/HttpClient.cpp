@@ -132,15 +132,18 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(L"Content-Length");
 		size_t ContentLength = wcstoul(&ContentLengthValues[0][0], nullptr, 10);
 
-		// get the content
-		// ToDo: depending on Content-Type (text/html, application/json etc.) we might need to handle this differently, for now it's ok
-		Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
-		_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
-		if (Response->_Content != nullptr)
+		if (ContentLength > 0)
 		{
-			delete Response->_Content;
+			// get the content
+			// ToDo: depending on Content-Type (text/html, application/json etc.) we might need to handle this differently, for now it's ok
+			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
+			if (Response->_Content != nullptr)
+			{
+				delete Response->_Content;
+			}
+			Response->_Content = new StringContent(&Content[0], Content.GetCount());
 		}
-		Response->_Content = new StringContent(&Content[0], Content.GetCount());
 	}
 	else
 	{

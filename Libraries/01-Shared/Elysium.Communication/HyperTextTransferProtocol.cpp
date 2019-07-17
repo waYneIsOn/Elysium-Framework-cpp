@@ -85,7 +85,10 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	}
 
 	// write to output, clear the buffer and reset the index of message end
-	Value->AddRange(&_TotalReadBuffer[0], ContentLength);
+	if (ContentLength > 0)
+	{
+		Value->AddRange(&_TotalReadBuffer[0], ContentLength);
+	}
 	_TotalReadBuffer.Clear();
 	_IndexOfMessageEnd = -1;
 }

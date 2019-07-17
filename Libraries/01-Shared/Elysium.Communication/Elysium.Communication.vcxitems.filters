@@ -13,17 +13,14 @@
     <Filter Include="Service\SOAP">
       <UniqueIdentifier>{1236e5f0-1792-4e94-9afe-5d983a4122db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Service\REST">
-      <UniqueIdentifier>{6f170cde-ba75-4efc-abcc-3f11185f4c3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\FTP">
-      <UniqueIdentifier>{e6f28b5d-f085-4ef9-a2e2-12f654e6c361}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Service\IRC">
-      <UniqueIdentifier>{093759f7-cc45-4477-bef5-6722c4ca9e68}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Service\LDAP">
       <UniqueIdentifier>{0025fb06-1c9e-47ab-a525-d96e01910114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\RPC">
+      <UniqueIdentifier>{ec922707-f5fc-48dd-af8c-41fa2c428ef2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\WebDAV">
+      <UniqueIdentifier>{006e05c3-fa86-42bb-8cbf-973e1abdb2e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

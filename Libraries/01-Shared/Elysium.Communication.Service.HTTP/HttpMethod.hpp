@@ -35,6 +35,7 @@ namespace Elysium
 
 					const Elysium::Core::String& GetMethod() const;
 
+					static const Elysium::Core::String& Connect();
 					static const Elysium::Core::String& Delete();
 					static const Elysium::Core::String& Get();
 					static const Elysium::Core::String& Head();
@@ -46,6 +47,7 @@ namespace Elysium
 				private:
 					const Elysium::Core::String _Method;
 
+					static const Elysium::Core::String _Connect;
 					static const Elysium::Core::String _Delete;
 					static const Elysium::Core::String _Get;
 					static const Elysium::Core::String _Head;

@@ -1,5 +1,6 @@
 #include "HttpMethod.hpp"
 
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Connect = L"CONNECT";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Delete = L"DELETE";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Get = L"GET";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Head = L"HEAD";
@@ -26,6 +27,10 @@ const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod:
 	return _Method;
 }
 
+const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Connect()
+{
+	return _Connect;
+}
 const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Delete()
 {
 	return _Delete;
