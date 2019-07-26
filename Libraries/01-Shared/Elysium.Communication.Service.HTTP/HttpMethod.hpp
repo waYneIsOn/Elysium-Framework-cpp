@@ -30,8 +30,12 @@ namespace Elysium
 				{
 				public:
 					HttpMethod(const Elysium::Core::String& Method);
-					HttpMethod(const HttpMethod& Value);
+					HttpMethod(const HttpMethod& Source);
+					HttpMethod(HttpMethod&& Right);
 					virtual ~HttpMethod();
+
+					HttpMethod& operator=(const HttpMethod& Source);
+					HttpMethod& operator=(HttpMethod&& Right);
 
 					const Elysium::Core::String& GetMethod() const;
 
@@ -45,7 +49,7 @@ namespace Elysium
 					static const Elysium::Core::String& Put();
 					static const Elysium::Core::String& Trace();
 				private:
-					const Elysium::Core::String _Method;
+					Elysium::Core::String _Method;
 
 					static const Elysium::Core::String _Connect;
 					static const Elysium::Core::String _Delete;

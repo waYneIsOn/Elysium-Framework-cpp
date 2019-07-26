@@ -22,11 +22,10 @@ void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::
 {
 	_Transport->Write(Buffer, Length);
 }
-void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String * Value)
+void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
-	Elysium::Core::Collections::Generic::List<Elysium::Core::byte> ByteBuffer;
-	size_t BytesConverted = _Encoding.GetBytes(Value, 0, Value->GetLength(), &ByteBuffer);
-	_Transport->Write(&ByteBuffer[0], BytesConverted);
+	Elysium::Core::Collections::Generic::List<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
+	_Transport->Write(&ByteBuffer[0], ByteBuffer.GetCount());
 }
 
 size_t Elysium::Communication::Protocol::TextProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)

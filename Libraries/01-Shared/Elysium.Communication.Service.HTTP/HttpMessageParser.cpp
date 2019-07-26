@@ -12,7 +12,7 @@ Elysium::Communication::Service::Http::HttpMessageParser::~HttpMessageParser()
 {
 }
 
-void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(const HttpClient * Client, const HttpRequestMessage & Request, Elysium::Core::String * Output)
+Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessage(HttpRequestMessage & Request)
 {
 	// prepare required variables
 	Elysium::Core::Text::StringBuilder Builder = Elysium::Core::Text::StringBuilder(1024);
@@ -22,7 +22,7 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// prepare the header
 	Builder.Append(Request.GetMethod().GetMethod());
 	Builder.Append(L" /");
-	Builder.Append(RequestUri.GetPathAndQuery());	// ToDo: should this be GetPath()?
+	Builder.Append(RequestUri.GetPathAndQuery());
 	Builder.Append(L" HTTP/");
 	Builder.Append(std::to_wstring(Version.GetMajor()).c_str());
 	Builder.Append(L".");
@@ -38,7 +38,7 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// ToDo: remove these lines - they're just here for testing purposes
 	Builder.Append(L"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n");
 	Builder.Append(L"Accept-Language: de,en-US;q=0.7,en;q=0.3\r\n");
-	Builder.Append(L"Accept-Encoding: gzip, deflate\r\n");
+	//Builder.Append(L"Accept-Encoding: gzip, deflate\r\n");
 
 	// add all default headers using the client
 	// ToDo
@@ -55,12 +55,13 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseRequestMessa
 	// add the content
 	// ToDo
 
-	Builder.ToString(Output);
+	return Builder.ToString();
 }
 
-void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMessageHeader(const HttpClient * Client, 
-	const Elysium::Core::String * CompleteResponseHeader, HttpResponseMessage * Response)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMessageHeader(HttpRequestMessage& Request, const Elysium::Core::String & CompleteResponseHeader)
 {
+	HttpResponseMessage ResponseMessage(Request);
+
 	size_t LineNumber = 0;
 	size_t IndexOfLineEnd = 0;
 	size_t TotalIndexOfLineEnd = 0;
@@ -71,11 +72,11 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMess
 	ResponseHeaderView.Split(L"\r\n", &LineViews);
 
 	// parse the first line
-	Response->_Version = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
+	ResponseMessage._Version = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
 	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(L' ', 9);
-	Response->_StatusCode = static_cast<HttpStatusCode>(wcstoul(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], nullptr, 10));
+	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(wcstoul(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], nullptr, 10));
 	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
-	Response->_ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
+	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
 
 	// parse the subsequent header lines
 	size_t LineCount = LineViews.GetCount();
@@ -98,8 +99,10 @@ void Elysium::Communication::Service::Http::HttpMessageParser::ParseResponseMess
 		}
 
 		// add the header
-		Response->_Headers.Add(KeyView, ValueView);
+		ResponseMessage._Headers.Add(KeyView, ValueView);
 	}
+
+	return ResponseMessage;
 }
 
 Elysium::Communication::Service::Http::HttpMessageParser::HttpMessageParser()

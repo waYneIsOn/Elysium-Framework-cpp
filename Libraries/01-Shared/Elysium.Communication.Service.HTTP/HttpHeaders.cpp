@@ -87,3 +87,35 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Remove(const E
 Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders()
 {
 }
+
+Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communication::Service::Http::Headers::HttpHeaders::operator=(const HttpHeaders & Source)
+{
+	if (this != &Source)
+	{
+		for (auto& Header : Source._Headers)
+		{
+			_Headers.insert(std::move(Header));
+		}
+	}
+	return *this;
+}
+Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communication::Service::Http::Headers::HttpHeaders::operator=(HttpHeaders && Right)
+{
+	if (this != &Right)
+	{
+		// grab Right's objects
+		/*
+		for (auto& Header : Right._Headers)
+		{
+			_Headers.insert(std::move(Header));
+		}
+		*/
+		_Headers = std::move(Right._Headers);
+		//_Headers.merge(Right._Headers);
+		//_Headers = std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>(Right._Headers);
+
+		// release Right's objects
+		//Right._Headers.clear();
+	}
+	return *this;
+}

@@ -36,7 +36,7 @@ namespace Elysium
 				~TextProtocol();
 
 				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
-				virtual void WriteString(const Elysium::Core::String* Value);
+				virtual void WriteString(const Elysium::Core::String& Value);
 
 				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
 				virtual size_t ReadString(Elysium::Core::String* Value);

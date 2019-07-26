@@ -15,7 +15,7 @@ Elysium::Communication::Protocol::HyperTextTransferProtocol::~HyperTextTransferP
 {
 }
 
-void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHeader(Elysium::Core::String * Value)
+Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHeader()
 {
 	// read until we reach \r\n\r\n
 	size_t TotalBytesReceived = 0;
@@ -54,8 +54,9 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHe
 		}
 	} while (_IndexOfMessageEnd == -1);
 
-	size_t BytesConverted = _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd, Value);
+	return _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd);
 }
+
 void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value)
 {
 	// check _MessageBuilder for parts of previously received messages

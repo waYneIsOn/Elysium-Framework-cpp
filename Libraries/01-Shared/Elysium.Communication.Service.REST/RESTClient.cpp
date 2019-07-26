@@ -25,8 +25,7 @@ void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::C
 	Request.GetHeaders().SetHost(Uri.GetHost());
 	_HttpClient.SendRequest(Request);
 
-	HttpResponseMessage Response(&Request);
-	_HttpClient.ReceiveResponse(Response);
+	HttpResponseMessage Response = _HttpClient.ReceiveResponse(Request);
 
 	int x = 34;
 }

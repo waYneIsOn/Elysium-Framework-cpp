@@ -38,6 +38,8 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpCompletionOption.hpp"
 #endif
 
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Decimal.hpp"
+
 namespace Elysium
 {
 	namespace Communication
@@ -55,9 +57,11 @@ namespace Elysium
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
 
-					void SendRequest(const HttpRequestMessage& Request);
-					void ReceiveResponse(HttpResponseMessage& Output);
-					void ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage& Output);
+					HttpResponseMessage Get(HttpRequestMessage& Request);
+
+					void SendRequest(HttpRequestMessage& Request);
+					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request);
+					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
 				private:
 					Core::Net::Sockets::Socket _OwnedSocket;
 					Transport::TcpClient _OwnedClient;
@@ -66,7 +70,7 @@ namespace Elysium
 					Core::Net::Sockets::Socket* _Socket;
 					Transport::TransportBase* _Client;
 
-					HttpResponseMessage * _PreviousResponse;
+					HttpResponseMessage* _PreviousResponse;
 					HttpCompletionOption _PreviousCompletionOption;
 
 					void ReceiveResponseContent(HttpResponseMessage* Response);

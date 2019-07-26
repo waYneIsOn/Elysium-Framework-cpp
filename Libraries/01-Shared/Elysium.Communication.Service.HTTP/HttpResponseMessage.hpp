@@ -43,10 +43,15 @@ namespace Elysium
 					friend class HttpClient;
 					friend class HttpMessageParser;
 				public:
-					HttpResponseMessage(const HttpRequestMessage* Request);
+					HttpResponseMessage(HttpRequestMessage& Request);
+					HttpResponseMessage(const HttpResponseMessage& Source);
+					HttpResponseMessage(HttpResponseMessage&& Right);
 					~HttpResponseMessage();
 
-					const HttpRequestMessage* GetRequest() const;
+					HttpResponseMessage& operator=(const HttpResponseMessage& Source);
+					HttpResponseMessage& operator=(HttpResponseMessage&& Right);
+
+					const HttpRequestMessage& GetRequest() const;
 					const Elysium::Core::Version& GetVersion() const;
 					const HttpStatusCode GetStatusCode() const;
 					const Elysium::Core::String& GetReasonPhase() const;
@@ -81,7 +86,7 @@ namespace Elysium
 					WwwAuthenticate
 					*/
 				private:
-					const HttpRequestMessage* _Request;
+					HttpRequestMessage _Request;
 
 					Elysium::Core::Version _Version;
 					HttpStatusCode _StatusCode;

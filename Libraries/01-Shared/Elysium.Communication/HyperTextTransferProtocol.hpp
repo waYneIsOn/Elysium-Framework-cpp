@@ -39,7 +39,7 @@ namespace Elysium
 				HyperTextTransferProtocol(Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
 				~HyperTextTransferProtocol();
 
-				void ReadResponseHeader(Elysium::Core::String* Value);
+				Elysium::Core::String ReadResponseHeader();
 				void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value);
 				bool ReadResponseContentChunk(Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value);
 			};

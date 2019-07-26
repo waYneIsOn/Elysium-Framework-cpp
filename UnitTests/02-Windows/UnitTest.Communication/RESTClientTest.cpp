@@ -23,13 +23,13 @@ namespace UnitTestCommunication
 		{
 			RESTClient Client = RESTClient();
 			Client.Connect(_ServiceUri);
-
+			
 			Uri GetFirstEntryUri = Uri(L"http://jsonplaceholder.typicode.com/todos/1");
 			Client.TestGET(GetFirstEntryUri);
 
 			Uri GetAllEntriesUri = Uri(L"http://jsonplaceholder.typicode.com/todos");
 			Client.TestGET(GetAllEntriesUri);
-
+			
 			Client.Disconnect();
 		}
 	private:

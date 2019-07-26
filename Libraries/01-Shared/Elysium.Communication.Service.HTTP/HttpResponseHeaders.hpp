@@ -32,7 +32,12 @@ namespace Elysium
 					{
 					public:
 						HttpResponseHeaders();
+						HttpResponseHeaders(const HttpResponseHeaders& Source);
+						HttpResponseHeaders(HttpResponseHeaders&& Right);
 						virtual ~HttpResponseHeaders();
+
+						HttpResponseHeaders& operator=(const HttpResponseHeaders& Source);
+						HttpResponseHeaders& operator=(HttpResponseHeaders&& Right);
 					};
 				}
 			}

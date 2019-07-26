@@ -55,6 +55,9 @@ namespace Elysium
 						bool Remove(const Elysium::Core::String& Name);
 					protected:
 						HttpHeaders();
+
+						HttpHeaders& operator=(const HttpHeaders& Source);
+						HttpHeaders& operator=(HttpHeaders&& Right);
 					private:
 						std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> _Headers;
 					};

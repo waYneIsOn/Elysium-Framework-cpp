@@ -4,8 +4,26 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestH
 	: HttpHeaders()
 {
 }
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
+{	// ToDo: copy values
+}
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right)
+{
+	*this = std::move(Right);
+}
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::~HttpRequestHeaders()
 {
+}
+
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::operator=(const HttpRequestHeaders & Source)
+{
+	HttpHeaders::operator=(Source);
+	return *this;
+}
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::operator=(HttpRequestHeaders && Right)
+{
+	HttpHeaders::operator=(std::move(Right));
+	return *this;
 }
 
 const Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::GetAuthorization() const

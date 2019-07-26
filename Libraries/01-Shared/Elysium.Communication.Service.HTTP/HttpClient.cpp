@@ -43,21 +43,22 @@ void Elysium::Communication::Service::Http::HttpClient::Disconnect()
 	_Socket->Disconnect(true);
 }
 
-void Elysium::Communication::Service::Http::HttpClient::SendRequest(const HttpRequestMessage & Request)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Get(HttpRequestMessage & Request)
 {
-	// prepare the message-string
-	String RequestMessage;
-	HttpMessageParser::ParseRequestMessage(this, Request, &RequestMessage);
+	SendRequest(Request);
+	return ReceiveResponse(Request);
+}
 
-	// send the message-string
-	_OwnedProtocol.WriteString(&RequestMessage);
+void Elysium::Communication::Service::Http::HttpClient::SendRequest(HttpRequestMessage & Request)
+{
+	_OwnedProtocol.WriteString(HttpMessageParser::ParseRequestMessage(Request));
 	_Client->Flush();
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpResponseMessage & Output)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpRequestMessage& Request)
 {
-	ReceiveResponse(HttpCompletionOption::ResponseContentRead, Output);
+	return ReceiveResponse(Request, HttpCompletionOption::ResponseContentRead);
 }
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const HttpCompletionOption CompletionOption, HttpResponseMessage & Output)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption)
 {
 	// if we've only read the header before, we need to read the previous response's content
 	if (_PreviousCompletionOption == HttpCompletionOption::ResponseHeadersRead)
@@ -66,18 +67,18 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(const Ht
 	}
 
 	// read and parse the header
-	String ResponseMessageHeader;
-	_OwnedProtocol.ReadResponseHeader(&ResponseMessageHeader);
-	HttpMessageParser::ParseResponseMessageHeader(this, &ResponseMessageHeader, &Output);
+	HttpResponseMessage Response = HttpMessageParser::ParseResponseMessageHeader(Request, _OwnedProtocol.ReadResponseHeader());
 
 	// read and parse the content right away if so desired
 	if (CompletionOption == HttpCompletionOption::ResponseContentRead)
 	{
-		ReceiveResponseContent(&Output);
+		ReceiveResponseContent(&Response);
 	}
-	
-	_PreviousResponse = &Output;
+
+	_PreviousResponse = &Response;
 	_PreviousCompletionOption = CompletionOption;
+
+	return Response;
 }
 
 void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(HttpResponseMessage * Response)

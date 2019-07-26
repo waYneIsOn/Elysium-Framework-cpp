@@ -34,6 +34,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Version.hpp"
 #endif
 
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPCONTENT
+#include "HttpContent.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -46,7 +50,12 @@ namespace Elysium
 				{
 				public:
 					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
+					HttpRequestMessage(const HttpRequestMessage& Source);
+					HttpRequestMessage(HttpRequestMessage&& Right);
 					~HttpRequestMessage();
+					
+					HttpRequestMessage& operator=(const HttpRequestMessage& Source);
+					HttpRequestMessage& operator=(HttpRequestMessage&& Right);
 
 					Headers::HttpRequestHeaders& GetHeaders();
 
@@ -59,7 +68,7 @@ namespace Elysium
 					std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
 					Elysium::Core::Uri _RequestUri;
 					Elysium::Core::Version _Version;
-					//HttpContent _Content;
+					HttpContent* _Content;
 				};
 			}
 		}

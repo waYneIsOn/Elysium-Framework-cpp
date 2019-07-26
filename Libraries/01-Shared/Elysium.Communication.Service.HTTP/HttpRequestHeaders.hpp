@@ -32,7 +32,12 @@ namespace Elysium
 					{
 					public:
 						HttpRequestHeaders();
+						HttpRequestHeaders(const HttpRequestHeaders& Source);
+						HttpRequestHeaders(HttpRequestHeaders&& Right);
 						virtual ~HttpRequestHeaders();
+
+						HttpRequestHeaders& operator=(const HttpRequestHeaders& Source);
+						HttpRequestHeaders& operator=(HttpRequestHeaders&& Right);
 
 						const AuthenticationHeaderValue& GetAuthorization() const;
 						const Elysium::Core::String& GetFrom() const;

@@ -1,5 +1,9 @@
 #include "HttpMethod.hpp"
 
+#ifndef _TYPE_TRAITS_
+#include <type_traits>
+#endif
+
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Connect = L"CONNECT";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Delete = L"DELETE";
 const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Get = L"GET";
@@ -14,12 +18,33 @@ Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const Elysium::Cor
 	: _Method(Elysium::Core::String(Method))
 {
 }
-Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const HttpMethod & Value)
-	: _Method(Value._Method)
+Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const HttpMethod & Source)
+	: _Method(Elysium::Core::String(Source._Method))
 {
+}
+Elysium::Communication::Service::Http::HttpMethod::HttpMethod(HttpMethod && Right)
+{
+	*this = std::move(Right);
 }
 Elysium::Communication::Service::Http::HttpMethod::~HttpMethod()
 {
+}
+
+Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::operator=(const HttpMethod & Source)
+{
+	if (this != &Source)
+	{
+		_Method = Elysium::Core::String(Source._Method);
+	}
+	return *this;
+}
+Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::operator=(HttpMethod && Right)
+{
+	if (this != &Right)
+	{
+		_Method = std::move(Right._Method);
+	}
+	return *this;
 }
 
 const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::GetMethod() const
