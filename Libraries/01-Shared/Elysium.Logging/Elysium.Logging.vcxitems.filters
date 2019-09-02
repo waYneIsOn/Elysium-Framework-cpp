@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Appender">
+      <UniqueIdentifier>{b062f039-a4e9-4c6b-86fd-f70cc454e5f2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ConsoleAppender.cpp">
+      <Filter>Appender</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LogManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Logger.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogLevel.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogManager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ConsoleAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

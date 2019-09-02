@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{b9f9d624-63a9-42f2-97c9-47a368dedc3d}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ConsoleAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Logger.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogLevel.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LogManager.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ConsoleAppender.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Logger.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)LogManager.cpp" />
+  </ItemGroup>
+</Project>

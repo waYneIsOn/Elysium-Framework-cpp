@@ -18,6 +18,10 @@
 /Libraries/02-Windows/Elysium.IO.Xml/Debugbin
 /Libraries/02-Windows/Elysium.IO.Xml/Releasebin
 
+/Libraries/02-Windows/Elysium.Logging/Debug
+/Libraries/02-Windows/Elysium.Logging/Debugbin
+/Libraries/02-Windows/Elysium.Logging/Releasebin
+
 /UnitTests/02-Windows/UnitTest.Communication/Debug
 /UnitTests/02-Windows/UnitTest.Communication/Debugbin
 /UnitTests/02-Windows/UnitTest.Communication/Releasebin

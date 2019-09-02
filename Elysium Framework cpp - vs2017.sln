@@ -55,9 +55,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Servi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.IRC", "Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems", "{5F8AD37D-D28E-4105-91A9-F1D288264D93}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems", "{B9F9D624-63A9-42F2-97C9-47A368DEDC3D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\02-Windows\Elysium.Logging\Elysium.Logging.vcxproj", "{118D9FAE-12E0-4D8B-88E9-135511156C96}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{118d9fae-12e0-4d8b-88e9-135511156c96}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{1c34b4f7-ec66-4324-8241-8218707aeb10}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.IO.Xml\Elysium.IO.Xml.vcxitems*{52db50cb-4b17-4f24-8b40-4c0bd9a60106}*SharedItemsImports = 9
@@ -67,6 +72,7 @@ Global
 		Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems*{8eb3e6e8-8830-42e5-bb0d-d4b3dff51505}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{9b101a00-0bd9-40a4-aaaa-90c4c77f244e}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems*{aa72e916-610b-4bcb-9e60-5ffd9f3ec089}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{b9f9d624-63a9-42f2-97c9-47a368dedc3d}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.REST\Elysium.Communication.Service.REST.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
@@ -126,6 +132,14 @@ Global
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x64.Build.0 = Release|x64
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.ActiveCfg = Release|Win32
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.Build.0 = Release|Win32
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x64.ActiveCfg = Debug|x64
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x64.Build.0 = Debug|x64
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x86.ActiveCfg = Debug|Win32
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x86.Build.0 = Debug|Win32
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x64.ActiveCfg = Release|x64
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x64.Build.0 = Release|x64
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x86.ActiveCfg = Release|Win32
+		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +167,8 @@ Global
 		{76300FB7-9B8A-4F2A-89FE-EA23F547085E} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{AA72E916-610B-4BCB-9E60-5FFD9F3EC089} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{5F8AD37D-D28E-4105-91A9-F1D288264D93} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
+		{B9F9D624-63A9-42F2-97C9-47A368DEDC3D} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
+		{118D9FAE-12E0-4D8B-88E9-135511156C96} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1E542AA-7F2D-45E2-BCC0-11DEBB96C091}
