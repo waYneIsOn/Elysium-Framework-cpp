@@ -24,17 +24,19 @@ namespace Elysium
 	{
 		class ELYSIUM_LOGGING_API Logger final
 		{
+			friend class LogManager;
 		public:
-			Logger(const Elysium::Core::String& Scope);
 			~Logger();
-
-			void Trace(const Elysium::Core::String& Message);
-			void Debug(const Elysium::Core::String& Message);
-			void Information(const Elysium::Core::String& Message);
-			void Warning(const Elysium::Core::String& Message);
-			void Error(const Elysium::Core::String& Message);
-			void Critical(const Elysium::Core::String& Message);
+			
+			void Trace(const Elysium::Core::String& Message) const;
+			void Debug(const Elysium::Core::String& Message) const;
+			void Information(const Elysium::Core::String& Message) const;
+			void Warning(const Elysium::Core::String& Message) const;
+			void Error(const Elysium::Core::String& Message) const;
+			void Critical(const Elysium::Core::String& Message) const;
 		private:
+			Logger(const Elysium::Core::String& Scope);
+
 			Elysium::Core::String _Scope;
 		};
 	}

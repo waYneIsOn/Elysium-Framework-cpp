@@ -4,6 +4,9 @@
     <Filter Include="Appender">
       <UniqueIdentifier>{b062f039-a4e9-4c6b-86fd-f70cc454e5f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Filter">
+      <UniqueIdentifier>{91d513ef-5cda-47a4-993f-70c87845a14d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Logger.cpp" />
@@ -12,20 +15,28 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LogManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FileAppender.cpp">
+      <Filter>Appender</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ColoredConsoleAppender.cpp">
+      <Filter>Appender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Logger.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp">
-      <Filter>Appender</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)LogLevel.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp">
-      <Filter>Appender</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)LogManager.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ConsoleAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp" />
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Logging\FileAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\GitHub\Repos\Elysium-Framework-cpp\Libraries\01-Shared\Elysium.Logging\ColoredConsoleAppender.hpp">
       <Filter>Appender</Filter>
     </ClInclude>
   </ItemGroup>

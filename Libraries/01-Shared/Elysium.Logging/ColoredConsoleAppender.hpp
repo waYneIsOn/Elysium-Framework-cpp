@@ -7,8 +7,8 @@ Copyright (C) 2017 waYne (CAM)
 */
 #pragma once
 
-#ifndef ELYSIUM_LOGGING_APPENDER_CONSOLEAPPENDER
-#define ELYSIUM_LOGGING_APPENDER_CONSOLEAPPENDER
+#ifndef ELYSIUM_LOGGING_APPENDER_COLOREDCONSOLEAPPENDER
+#define ELYSIUM_LOGGING_APPENDER_COLOREDCONSOLEAPPENDER
 
 #ifndef ELYSIUM_LOGGING_IAPPENDER
 #include "IAppender.hpp"
@@ -24,11 +24,12 @@ namespace Elysium
 	{
 		namespace Appender
 		{
-			class ELYSIUM_LOGGING_API ConsoleAppender : public IAppender
+			/*
+			class ELYSIUM_LOGGING_API ColoredConsoleAppender : public IAppender
 			{
 			public:
-				ConsoleAppender();
-				virtual ~ConsoleAppender();
+				ColoredConsoleAppender();
+				virtual ~ColoredConsoleAppender();
 
 				virtual const Elysium::Core::String& GetTraceFormat() const override;
 				virtual const Elysium::Core::String& GetDebugFormat() const override;
@@ -48,6 +49,7 @@ namespace Elysium
 			private:
 				std::map<LogLevel, Elysium::Core::String> _Formats;
 			};
+			*/
 		}
 	}
 }

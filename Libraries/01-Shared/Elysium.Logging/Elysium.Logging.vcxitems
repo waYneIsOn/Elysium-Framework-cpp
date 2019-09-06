@@ -15,7 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ColoredConsoleAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ConsoleAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FileAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp" />
@@ -24,7 +26,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)LogManager.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ColoredConsoleAppender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ConsoleAppender.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FileAppender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LogManager.cpp" />
