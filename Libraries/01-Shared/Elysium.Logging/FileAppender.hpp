@@ -18,17 +18,24 @@ Copyright (C) 2017 waYne (CAM)
 #include <map>
 #endif
 
+#ifndef ELYSIUM_CORE_IO_FILESTREAM
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/FileStream.hpp"
+#endif
+
+#ifndef ELYSIUM_CORE_TEXT_ENCODING
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Logging
 	{
 		namespace Appender
 		{
-			/*
 			class ELYSIUM_LOGGING_API FileAppender : public IAppender
 			{
 			public:
-				FileAppender();
+				FileAppender(const Elysium::Core::String& FullFilePath);
 				virtual ~FileAppender();
 
 				virtual const Elysium::Core::String& GetTraceFormat() const override;
@@ -45,11 +52,13 @@ namespace Elysium
 				virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
 				virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
 
-				virtual void Write(const LogEvent& Event) override;
+				virtual void Write(const Events::LogEvent& Event) override;
 			private:
-				std::map<LogLevel, Elysium::Core::String> _Formats;
+				std::map<Events::LogLevel, Elysium::Core::String> _Formats;
+
+				const Elysium::Core::Text::Encoding* _DefaultEncoding;
+				Elysium::Core::IO::FileStream _FileStream;
 			};
-			*/
 		}
 	}
 }

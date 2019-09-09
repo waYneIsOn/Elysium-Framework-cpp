@@ -18,6 +18,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_EXCEPTION
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Exception.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Logging
@@ -27,13 +31,24 @@ namespace Elysium
 			friend class LogManager;
 		public:
 			~Logger();
-			
+
 			void Trace(const Elysium::Core::String& Message) const;
+			void Trace(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+
 			void Debug(const Elysium::Core::String& Message) const;
+			void Debug(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+
 			void Information(const Elysium::Core::String& Message) const;
+			void Information(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+
 			void Warning(const Elysium::Core::String& Message) const;
+			void Warning(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+
 			void Error(const Elysium::Core::String& Message) const;
+			void Error(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+
 			void Critical(const Elysium::Core::String& Message) const;
+			void Critical(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 		private:
 			Logger(const Elysium::Core::String& Scope);
 

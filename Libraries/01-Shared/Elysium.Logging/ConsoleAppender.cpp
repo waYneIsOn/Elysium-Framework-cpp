@@ -6,14 +6,14 @@
 
 Elysium::Logging::Appender::ConsoleAppender::ConsoleAppender()
 	: Elysium::Logging::IAppender(),
-	_Formats(std::map<LogLevel, Elysium::Core::String>())
+	_Formats(std::map<Events::LogLevel, Elysium::Core::String>())
 {
-	_Formats[LogLevel::Trace] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[LogLevel::Debug] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[LogLevel::Information] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[LogLevel::Warning] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[LogLevel::Error] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[LogLevel::Critical] = L"{Timestamp} [{Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Trace] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Debug] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Information] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Warning] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Error] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Critical] = L"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
 }
 Elysium::Logging::Appender::ConsoleAppender::~ConsoleAppender()
 {
@@ -21,56 +21,57 @@ Elysium::Logging::Appender::ConsoleAppender::~ConsoleAppender()
 
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetTraceFormat() const
 {
-	return _Formats.at(LogLevel::Trace);
+	return _Formats.at(Events::LogLevel::Trace);
 }
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetDebugFormat() const
 {
-	return _Formats.at(LogLevel::Debug);
+	return _Formats.at(Events::LogLevel::Debug);
 }
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetInformationFormat() const
 {
-	return _Formats.at(LogLevel::Information);
+	return _Formats.at(Events::LogLevel::Information);
 }
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetWarningFormat() const
 {
-	return _Formats.at(LogLevel::Warning);
+	return _Formats.at(Events::LogLevel::Warning);
 }
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetErrorFormat() const
 {
-	return _Formats.at(LogLevel::Error);
+	return _Formats.at(Events::LogLevel::Error);
 }
 const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetCriticalFormat() const
 {
-	return _Formats.at(LogLevel::Critical);
+	return _Formats.at(Events::LogLevel::Critical);
 }
 
 void Elysium::Logging::Appender::ConsoleAppender::SetTraceFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Trace] = Format;
+	_Formats[Events::LogLevel::Trace] = Format;
 }
 void Elysium::Logging::Appender::ConsoleAppender::SetDebugFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Debug] = Format;
+	_Formats[Events::LogLevel::Debug] = Format;
 }
 void Elysium::Logging::Appender::ConsoleAppender::SetInformationFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Information] = Format;
+	_Formats[Events::LogLevel::Information] = Format;
 }
 void Elysium::Logging::Appender::ConsoleAppender::SetWarningFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Warning] = Format;
+	_Formats[Events::LogLevel::Warning] = Format;
 }
 void Elysium::Logging::Appender::ConsoleAppender::SetErrorFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Error] = Format;
+	_Formats[Events::LogLevel::Error] = Format;
 }
 void Elysium::Logging::Appender::ConsoleAppender::SetCriticalFormat(const Elysium::Core::String & Format)
 {
-	_Formats[LogLevel::Critical] = Format;
+	_Formats[Events::LogLevel::Critical] = Format;
 }
 
-void Elysium::Logging::Appender::ConsoleAppender::Write(const LogEvent & Event)
+void Elysium::Logging::Appender::ConsoleAppender::Write(const Events::LogEvent & Event)
 {
+	// ToDo: use formatted message
 #ifdef UNICODE
 	std::wcout << Event.GetMessage().GetCharArray();
 #else

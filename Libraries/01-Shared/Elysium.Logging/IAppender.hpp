@@ -14,7 +14,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
-#ifndef ELYSIUM_LOGGING_LOGEVENT
+#ifndef ELYSIUM_LOGGING_EVENTS_LOGEVENT
 #include "LogEvent.hpp"
 #endif
 
@@ -41,7 +41,7 @@ namespace Elysium
 			virtual void SetErrorFormat(const Elysium::Core::String& Format) = 0;
 			virtual void SetCriticalFormat(const Elysium::Core::String& Format) = 0;
 
-			virtual void Write(const LogEvent& Event) = 0;
+			virtual void Write(const Events::LogEvent& Event) = 0;
 		protected:
 			IAppender() { }
 		};

@@ -14,7 +14,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
-#ifndef ELYSIUM_LOGGING_LOGEVENT
+#ifndef ELYSIUM_LOGGING_EVENTS_LOGEVENT
 #include "LogEvent.hpp"
 #endif
 
@@ -46,6 +46,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "IFlushableAppender.hpp"
 #endif
 
+#ifndef _MUTEX_
+#include <mutex>
+#endif
+
 #pragma warning(disable : 4251)	// the map etc. aren't accessible so we can just disable the warning - ToDo: will this affect other files if we don't enable the warning again?
 
 namespace Elysium
@@ -61,41 +65,23 @@ namespace Elysium
 			static const Logger* GetLogger(const Elysium::Core::Reflection::Type& Type);
 			static const Logger* GetLogger(const Elysium::Core::String& Scope);
 
-			template<typename T, typename = typename std::enable_if_t<std::is_base_of_v<IAppender, T>>>
-			static void RegisterAppender(T& Appender);
-			template<typename T, typename = typename std::enable_if_t<std::is_base_of_v<IAppender, T>>>
-			static void UnregisterAppender(T& Appender);
+			static void RegisterAppender(IAppender& Appender);
+			static void UnregisterAppender(IAppender& Appender);
 
 			static void Stop();
 		private:
 			LogManager();
+
+			static std::mutex _AppenderMutex;
+			static std::mutex _FlushableAppenderMutex;
 
 			static std::map<Elysium::Core::String, Logger*> _Logger;
 
 			static Elysium::Core::Collections::Generic::List<IAppender*> _Appender;
 			static Elysium::Core::Collections::Generic::List<IFlushableAppender*> _FlushableAppender;
 
-			static void Forward(const LogEvent& Event);
+			static void Forward(const Events::LogEvent& Event);
 		};
-
-		template<typename T, typename>
-		inline void LogManager::RegisterAppender(T & Appender)
-		{
-			_Appender.Add(&Appender);
-			if (std::is_base_of_v<IFlushableAppender, T>)
-			{
-				_FlushableAppender.Add(dynamic_cast<IFlushableAppender*>(&Appender));
-			}
-		}
-		template<typename T, typename>
-		inline void LogManager::UnregisterAppender(T & Appender)
-		{
-			if (std::is_base_of_v<IFlushableAppender, T>)
-			{
-				_FlushableAppender.Remove(dynamic_cast<IFlushableAppender*>(&Appender));
-			}
-			_Appender.Remove(&Appender);
-		}
 	}
 }
 #endif
