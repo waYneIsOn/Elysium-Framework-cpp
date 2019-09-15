@@ -22,16 +22,8 @@ Copyright (C) 2017 waYne (CAM)
 #include <map>
 #endif
 
-#ifndef ELYSIUM_CORE_STRING
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
-#endif
-
 #ifndef ELYSIUM_CORE_COLLECTIONS_GENERIC_LIST
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
-#endif
-
-#ifndef ELYSIUM_CORE_REFLECTION_TYPE
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Reflection/Type.hpp"
 #endif
 
 #ifndef ELYSIUM_LOGGING_LOGGER
@@ -40,6 +32,10 @@ Copyright (C) 2017 waYne (CAM)
 
 #ifndef ELYSIUM_LOGGING_IAPPENDER
 #include "IAppender.hpp"
+#endif
+
+#ifndef ELYSIUM_LOGGING_FILTER
+#include "Filter.hpp"
 #endif
 
 #ifndef ELYSIUM_LOGGING_IFLUSHABLEAPPENDER
@@ -62,10 +58,7 @@ namespace Elysium
 		public:
 			~LogManager();
 
-			static const Logger* GetLogger(const Elysium::Core::Reflection::Type& Type);
-			static const Logger* GetLogger(const Elysium::Core::String& Scope);
-
-			static void RegisterAppender(IAppender& Appender);
+			static void RegisterAppender(IAppender& Appender, Filter& Filter);
 			static void UnregisterAppender(IAppender& Appender);
 
 			static void Stop();
@@ -73,11 +66,8 @@ namespace Elysium
 			LogManager();
 
 			static std::mutex _AppenderMutex;
-			static std::mutex _FlushableAppenderMutex;
 
-			static std::map<Elysium::Core::String, Logger*> _Logger;
-
-			static Elysium::Core::Collections::Generic::List<IAppender*> _Appender;
+			static std::map<IAppender*, Filter> _AppenderFilterMap;
 			static Elysium::Core::Collections::Generic::List<IFlushableAppender*> _FlushableAppender;
 
 			static void Forward(const Events::LogEvent& Event);

@@ -18,19 +18,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ColoredConsoleAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ConsoleAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FileAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Filter.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)IFlushableAppender.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Logger.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LogLevel.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)LogManager.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)RollingFileAppender.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)RollingMode.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ColoredConsoleAppender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ConsoleAppender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FileAppender.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Filter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Logger.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)LogManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)RollingFileAppender.cpp" />
   </ItemGroup>
 </Project>

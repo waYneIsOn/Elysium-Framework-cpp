@@ -41,7 +41,7 @@ namespace Elysium
 			virtual void SetErrorFormat(const Elysium::Core::String& Format) = 0;
 			virtual void SetCriticalFormat(const Elysium::Core::String& Format) = 0;
 
-			virtual void Write(const Events::LogEvent& Event) = 0;
+			virtual void Process(const Events::LogEvent& Event) = 0;
 		protected:
 			IAppender() { }
 		};

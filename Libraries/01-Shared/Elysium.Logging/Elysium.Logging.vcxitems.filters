@@ -23,6 +23,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)LogEvent.cpp">
       <Filter>Events</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Filter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)RollingFileAppender.cpp">
+      <Filter>Appender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Logger.hpp" />
@@ -44,6 +48,13 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)LogEvent.hpp">
       <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Filter.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)RollingFileAppender.hpp">
+      <Filter>Appender</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)RollingMode.hpp">
+      <Filter>Appender</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

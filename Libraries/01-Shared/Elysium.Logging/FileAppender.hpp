@@ -52,11 +52,11 @@ namespace Elysium
 				virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
 				virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
 
-				virtual void Write(const Events::LogEvent& Event) override;
+				virtual void Process(const Events::LogEvent& Event) override;
 			private:
 				std::map<Events::LogLevel, Elysium::Core::String> _Formats;
 
-				const Elysium::Core::Text::Encoding* _DefaultEncoding;
+				const Elysium::Core::Text::Encoding& _Encoding;
 				Elysium::Core::IO::FileStream _FileStream;
 			};
 		}

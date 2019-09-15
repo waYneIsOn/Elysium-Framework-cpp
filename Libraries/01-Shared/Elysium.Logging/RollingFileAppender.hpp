@@ -7,8 +7,8 @@ Copyright (C) 2017 waYne (CAM)
 */
 #pragma once
 
-#ifndef ELYSIUM_LOGGING_APPENDER_CONSOLEAPPENDER
-#define ELYSIUM_LOGGING_APPENDER_CONSOLEAPPENDER
+#ifndef ELYSIUM_LOGGING_APPENDER_ROLLINGFILEAPPENDER
+#define ELYSIUM_LOGGING_APPENDER_ROLLINGFILEAPPENDER
 
 #ifndef ELYSIUM_LOGGING_IAPPENDER
 #include "IAppender.hpp"
@@ -18,17 +18,25 @@ Copyright (C) 2017 waYne (CAM)
 #include <map>
 #endif
 
+#ifndef ELYSIUM_CORE_IO_FILESTREAM
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/FileStream.hpp"
+#endif
+
+#ifndef ELYSIUM_CORE_TEXT_ENCODING
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Logging
 	{
 		namespace Appender
 		{
-			class ELYSIUM_LOGGING_API ConsoleAppender : public IAppender
+			class ELYSIUM_LOGGING_API RollingFileAppender : public IAppender
 			{
 			public:
-				ConsoleAppender();
-				virtual ~ConsoleAppender();
+				RollingFileAppender(const Elysium::Core::String& FullFilePath);
+				virtual ~RollingFileAppender();
 
 				virtual const Elysium::Core::String& GetTraceFormat() const override;
 				virtual const Elysium::Core::String& GetDebugFormat() const override;
@@ -47,6 +55,9 @@ namespace Elysium
 				virtual void Process(const Events::LogEvent& Event) override;
 			private:
 				std::map<Events::LogLevel, Elysium::Core::String> _Formats;
+
+				const Elysium::Core::Text::Encoding& _Encoding;
+				Elysium::Core::IO::FileStream _FileStream;
 			};
 		}
 	}

@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_REFLECTION_TYPE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Reflection/Type.hpp"
+#endif
+
 #ifndef ELYSIUM_CORE_STRING
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
@@ -28,8 +32,9 @@ namespace Elysium
 	{
 		class ELYSIUM_LOGGING_API Logger final
 		{
-			friend class LogManager;
 		public:
+			Logger(const Elysium::Core::Reflection::Type& Type);
+			Logger(const Elysium::Core::String& Scope);
 			~Logger();
 
 			void Trace(const Elysium::Core::String& Message) const;
@@ -50,8 +55,6 @@ namespace Elysium
 			void Critical(const Elysium::Core::String& Message) const;
 			void Critical(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 		private:
-			Logger(const Elysium::Core::String& Scope);
-
 			Elysium::Core::String _Scope;
 		};
 	}

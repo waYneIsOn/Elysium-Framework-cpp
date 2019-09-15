@@ -69,7 +69,7 @@ void Elysium::Logging::Appender::ConsoleAppender::SetCriticalFormat(const Elysiu
 	_Formats[Events::LogLevel::Critical] = Format;
 }
 
-void Elysium::Logging::Appender::ConsoleAppender::Write(const Events::LogEvent & Event)
+void Elysium::Logging::Appender::ConsoleAppender::Process(const Events::LogEvent & Event)
 {
 	// ToDo: use formatted message
 #ifdef UNICODE

@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
+#ifndef ELYSIUM_LOGGING_LOGGER
+#include "Logger.hpp"
+#endif
+
 #ifndef ELYSIUM_CORE_DATETIME
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/DateTime.hpp"
 #endif
@@ -38,9 +42,8 @@ namespace Elysium
 		{
 			class ELYSIUM_LOGGING_API LogEvent final
 			{
+				friend class Elysium::Logging::Logger;
 			public:
-				LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message);
-				LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception);
 				LogEvent(const LogEvent& Source) = delete;
 				LogEvent(LogEvent&& Right) = delete;
 				~LogEvent();
@@ -51,6 +54,9 @@ namespace Elysium
 				const Elysium::Core::String& GetMessage() const;
 				const Elysium::Core::Exception* GetException() const;
 			private:
+				LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message);
+				LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception);
+
 				const Elysium::Core::DateTime _Timestamp;
 				const LogLevel _Level;
 				const Elysium::Core::String _Scope;

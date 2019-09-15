@@ -8,6 +8,15 @@
 #include "LogManager.hpp"
 #endif
 
+Elysium::Logging::Logger::Logger(const Elysium::Core::Reflection::Type & Type)
+	: _Scope(Type.GetFullName())
+{
+}
+
+Elysium::Logging::Logger::Logger(const Elysium::Core::String & Scope)
+	: _Scope(Scope)
+{
+}
 Elysium::Logging::Logger::~Logger()
 {
 }
@@ -64,9 +73,4 @@ void Elysium::Logging::Logger::Critical(const Elysium::Core::String & Message) c
 void Elysium::Logging::Logger::Critical(const Elysium::Core::String & Message, const Elysium::Core::Exception & Exception) const
 {
 	LogManager::Forward(Events::LogEvent(Elysium::Core::DateTime::Now(), Events::LogLevel::Critical, _Scope, Message, Exception));
-}
-
-Elysium::Logging::Logger::Logger(const Elysium::Core::String & Scope)
-	: _Scope(Scope)
-{
 }

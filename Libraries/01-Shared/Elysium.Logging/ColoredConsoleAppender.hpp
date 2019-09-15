@@ -45,7 +45,7 @@ namespace Elysium
 				virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
 				virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
 
-				virtual void Write(const LogEvent& Event) override;
+				virtual void Process(const LogEvent& Event) override;
 			private:
 				std::map<LogLevel, Elysium::Core::String> _Formats;
 			};
