@@ -18,46 +18,45 @@ namespace UnitTestCommunication
 	TEST_CLASS(Service_HttpClient)
 	{
 	public:
-		TEST_METHOD(GetUncompressedData)
-		{
-			HttpClient Client = HttpClient();
-			Client.Connect(Uri(L"http://neverssl.com"));
-
-			HttpRequestMessage Request(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			HttpResponseMessage Response = Client.Get(Request);
-
-			HttpResponseMessage* x = &Response;
-
-			Client.Disconnect();
-
-			// check response
-			Assert::IsTrue(Response.GetHeaders().Contains(L"Content-Length"));
-		}
 		TEST_METHOD(GetDeflatedData)
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(L"http://neverssl.com"));
 
 			HttpRequestMessage Request(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			Request.GetHeaders().Add(L"Accept", L"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			Request.GetHeaders().Add(L"Accept-Language", L"de,en-US;q=0.7,en;q=0.3");
 			Request.GetHeaders().Add(L"Accept-Encoding", L"gzip, deflate");
 			HttpResponseMessage Response = Client.Get(Request);
 
 			Client.Disconnect();
 
-			MemoryStream ContentStream;
-			Response.GetContent()->ReadAsStream(ContentStream);
-
-			if (Response.GetHeaders().GetValues(L"Content-Encoding").Contains(L"gzip"))
-			{
-				GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
-				//ContentStream.CopyTo(UncompressedContentStream);
-			}
-			else
+			// check response
+			if (!Response.GetHeaders().GetValues(L"Content-Encoding").Contains(L"gzip"))
 			{
 				Assert::Fail();
 			}
 
-			// ToDo: assert with expected result
+			MemoryStream ContentStream;
+			Response.GetContent()->ReadAsStream(ContentStream);
+			GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
+
+			// ToDo: unzip the content
+		}
+		TEST_METHOD(GetUncompressedData)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(L"http://neverssl.com"));
+
+			HttpRequestMessage Request(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			Request.GetHeaders().Add(L"Accept", L"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			Request.GetHeaders().Add(L"Accept-Language", L"de,en-US;q=0.7,en;q=0.3");
+			HttpResponseMessage Response = Client.Get(Request);
+
+			Client.Disconnect();
+
+			// check response
+			Assert::IsTrue(Response.GetHeaders().Contains(L"Content-Length"));
 		}
 	};
 }

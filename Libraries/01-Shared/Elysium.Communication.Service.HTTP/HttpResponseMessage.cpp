@@ -3,21 +3,19 @@
 using namespace Elysium::Core;
 
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpRequestMessage& Request)
-	: _Request(Request), _Content(nullptr), _Version(1, 337)
+	: _Request(Request), _Content(nullptr), _Version(1, 1)
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(const HttpResponseMessage & Source)
 	: _Request(HttpRequestMessage(Source._Request)), 
-	//_Version(Version(Source._Version)),
-	_Version(345, 345),	
+	_Version(Version(Source._Version)),
 	_StatusCode(HttpStatusCode(Source._StatusCode)),
 	_ReasonPhrase(String(Source._ReasonPhrase)), _Headers(Headers::HttpResponseHeaders(Source._Headers)), _Content(nullptr)
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpResponseMessage && Right)
 	: _Request(Right._Request),
-	//_Version(Right._Version),
-	_Version(789, 5678),
+	_Version(Right._Version),
 	_StatusCode(Right._StatusCode),
 	_ReasonPhrase(Right._ReasonPhrase), _Headers(Right._Headers), _Content(nullptr)
 {

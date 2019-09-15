@@ -53,6 +53,9 @@ namespace Elysium
 						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const ElysiumChar* Name) const;
 						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
 						bool Remove(const Elysium::Core::String& Name);
+
+						// ToDo: remove this functions as soon as IEnumerable and IEnumerator have been implemented in some way
+						const std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>& GetInternalHeaders() const;
 					protected:
 						HttpHeaders();
 

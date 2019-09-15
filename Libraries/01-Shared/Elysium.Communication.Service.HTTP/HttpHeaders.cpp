@@ -84,6 +84,11 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Remove(const E
 	}
 }
 
+const std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> & Elysium::Communication::Service::Http::Headers::HttpHeaders::GetInternalHeaders() const
+{
+	return _Headers;
+}
+
 Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders()
 {
 }

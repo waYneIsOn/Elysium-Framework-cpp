@@ -18,7 +18,7 @@ namespace UnitTestCommunication
 		{
 			Socket ClientSocket = Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
 			TcpClient Client = TcpClient(&ClientSocket);
-			BinaryProtocol Protocol = BinaryProtocol(&Client);
+			BinaryProtocol Protocol = BinaryProtocol(Client);
 
 			Client.Connect(String(L"www.google.com"), 80);
 			Client.Close();

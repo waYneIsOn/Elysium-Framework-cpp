@@ -24,7 +24,7 @@ using namespace Elysium::Core::Net::Sockets;
 
 Elysium::Communication::Service::Http::HttpClient::HttpClient()
 	: _OwnedSocket(Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp)),
-	_OwnedClient(TcpClient(&_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(&_OwnedClient)),
+	_OwnedClient(TcpClient(&_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
 	_Socket(&_OwnedSocket), _Client(&_OwnedClient),
 	_PreviousCompletionOption(HttpCompletionOption::ResponseContentRead)
 {
