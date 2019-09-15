@@ -27,7 +27,7 @@ namespace Elysium
 			class ELYSIUM_COMMUNICATION_API BinaryProtocol final : public ProtocolBase
 			{
 			public:
-				BinaryProtocol(Transport::TransportBase* Transport);
+				BinaryProtocol(Transport::TransportBase& Transport);
 				~BinaryProtocol();
 
 				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;

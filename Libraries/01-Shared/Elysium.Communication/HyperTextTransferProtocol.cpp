@@ -3,11 +3,11 @@
 using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Generic;
 
-Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase * Transport)
+Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport)
 	: TextProtocol(Transport)
 {
 }
-Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase * Transport, const Elysium::Core::Text::Encoding * Encoding)
+Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport, const Elysium::Core::Text::Encoding & Encoding)
 	: TextProtocol(Transport, Encoding)
 {
 }
@@ -23,7 +23,7 @@ Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtoco
 	do
 	{
 		// read the next block of bytes and copy the block into the _TotalReadBuffer
-		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
+		size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
 		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 
 		// check whether we are at the end
@@ -79,7 +79,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	while (_TotalReadBuffer.GetCount() < ContentLength)
 	{
 		// read the next block of bytes and convert them to a string
-		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
+		size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
 
 		// copy the converted block into the _TotalReadBuffer
 		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
@@ -132,7 +132,7 @@ bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 
 		if (_TotalReadBuffer.GetCount() < RequiredLength)
 		{	// read more bytes and copy the block into the _TotalReadBuffer
-			size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
+			size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
 			_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 		}
 	} while (_TotalReadBuffer.GetCount() < RequiredLength);

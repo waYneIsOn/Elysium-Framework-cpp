@@ -35,8 +35,8 @@ namespace Elysium
 			class ELYSIUM_COMMUNICATION_API HyperTextTransferProtocol final : public TextProtocol
 			{
 			public:
-				HyperTextTransferProtocol(Transport::TransportBase* Transport);
-				HyperTextTransferProtocol(Transport::TransportBase* Transport, const Elysium::Core::Text::Encoding* Encoding);
+				HyperTextTransferProtocol(Transport::TransportBase& Transport);
+				HyperTextTransferProtocol(Transport::TransportBase& Transport, const Elysium::Core::Text::Encoding& Encoding);
 				~HyperTextTransferProtocol();
 
 				Elysium::Core::String ReadResponseHeader();

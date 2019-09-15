@@ -4,7 +4,7 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/NotImplementedException.hpp"
 #endif
 
-Elysium::Communication::Protocol::BinaryProtocol::BinaryProtocol(Transport::TransportBase * Transport)
+Elysium::Communication::Protocol::BinaryProtocol::BinaryProtocol(Transport::TransportBase & Transport)
 	: ProtocolBase(Transport)
 {
 }
@@ -14,10 +14,10 @@ Elysium::Communication::Protocol::BinaryProtocol::~BinaryProtocol()
 
 void Elysium::Communication::Protocol::BinaryProtocol::WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length)
 {
-	_Transport->Write(Buffer, Length);
+	_Transport.Write(Buffer, Length);
 }
 
 size_t Elysium::Communication::Protocol::BinaryProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
 {
-	return _Transport->Read(Buffer, Length);
+	return _Transport.Read(Buffer, Length);
 }

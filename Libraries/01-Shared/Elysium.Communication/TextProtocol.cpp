@@ -3,15 +3,15 @@
 using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Generic;
 
-Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase * Transport)
+Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport)
 	: ProtocolBase(Transport),
-	_Encoding(Elysium::Core::Text::Encoding(*Elysium::Core::Text::Encoding::ASCII()))
+	_Encoding(Elysium::Core::Text::Encoding(Elysium::Core::Text::Encoding::ASCII()))
 {
 	_TotalReadBuffer.Clear();
 }
-Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase * Transport, const Elysium::Core::Text::Encoding * Encoding)
+Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport, const Elysium::Core::Text::Encoding & Encoding)
 	: ProtocolBase(Transport),
-	_Encoding(Elysium::Core::Text::Encoding(*Encoding))
+	_Encoding(Elysium::Core::Text::Encoding(Encoding))
 {
 }
 Elysium::Communication::Protocol::TextProtocol::~TextProtocol()
@@ -20,17 +20,17 @@ Elysium::Communication::Protocol::TextProtocol::~TextProtocol()
 
 void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length)
 {
-	_Transport->Write(Buffer, Length);
+	_Transport.Write(Buffer, Length);
 }
 void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
 	Elysium::Core::Collections::Generic::List<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
-	_Transport->Write(&ByteBuffer[0], ByteBuffer.GetCount());
+	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetCount());
 }
 
 size_t Elysium::Communication::Protocol::TextProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
 {
-	return _Transport->Read(Buffer, Length);
+	return _Transport.Read(Buffer, Length);
 }
 size_t Elysium::Communication::Protocol::TextProtocol::ReadString(Elysium::Core::String * Value)
 {

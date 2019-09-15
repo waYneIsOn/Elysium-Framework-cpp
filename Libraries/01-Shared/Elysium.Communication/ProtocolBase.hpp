@@ -37,9 +37,9 @@ namespace Elysium
 
 				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
 			protected:
-				ProtocolBase(Transport::TransportBase* Transport);
+				ProtocolBase(Transport::TransportBase& Transport);
 
-				Transport::TransportBase* _Transport;
+				Transport::TransportBase& _Transport;
 			};
 		}
 	}
