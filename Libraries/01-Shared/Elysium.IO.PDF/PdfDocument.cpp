@@ -36,8 +36,8 @@ void Elysium::IO::PDF::PdfDocument::Save(const Elysium::Core::String & Target)
 }
 void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 {
-	const Elysium::Core::Text::Encoding* DefaultEncoding = Elysium::Core::Text::Encoding::Default();
-	const Elysium::Core::Text::Encoding* ASCIIEncoding = Elysium::Core::Text::Encoding::ASCII();
+	const Elysium::Core::Text::Encoding& DefaultEncoding = Elysium::Core::Text::Encoding::Default();
+	const Elysium::Core::Text::Encoding& ASCIIEncoding = Elysium::Core::Text::Encoding::ASCII();
 
 	// magic number
 	static byte MagicNumber[] = { 0x25, 0x50, 0x44, 0x46, 0x2D };	// %PDF-
@@ -45,25 +45,25 @@ void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 
 	// pdf version
 	String VersionString = L"1.7\r\n\r\n";
-	Elysium::Core::Collections::Generic::List<byte> ConvertedBytes = ASCIIEncoding->GetBytes(VersionString, 0, VersionString.GetLength());
+	Elysium::Core::Collections::Generic::List<byte> ConvertedBytes = ASCIIEncoding.GetBytes(VersionString, 0, VersionString.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// catalog????
 	String InitialCatalog = L"1 0 obj\r\n<<\r\n/Type /Catalog\r\n/Outlines 2 0 R\r\n/Pages 3 0 R\r\n>>\r\nendobj\r\n\r\n";
 	ConvertedBytes.Clear();
-	ConvertedBytes = ASCIIEncoding->GetBytes(InitialCatalog, 0, InitialCatalog.GetLength());
+	ConvertedBytes = ASCIIEncoding.GetBytes(InitialCatalog, 0, InitialCatalog.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// Outlines
 	String Outlines = L"2 0 obj\r\n<<\r\n/Type /Outlines\r\n/Count 0\r\n>>\r\nendobj\r\n\r\n";
 	ConvertedBytes.Clear();
-	ConvertedBytes = ASCIIEncoding->GetBytes(Outlines, 0, Outlines.GetLength());
+	ConvertedBytes = ASCIIEncoding.GetBytes(Outlines, 0, Outlines.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// Pages
 	String Pages = L"3 0 obj\r\n<<\r\n/Type /Pages\r\n/Count 1\r\n/Kids [ 4 0 R ]\r\n>>\r\nendobj\r\n\r\n";
 	ConvertedBytes.Clear();
-	ConvertedBytes = ASCIIEncoding->GetBytes(Pages, 0, Pages.GetLength());
+	ConvertedBytes = ASCIIEncoding.GetBytes(Pages, 0, Pages.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// Page 1
@@ -72,13 +72,13 @@ void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 	// trailer
 	String Trailer = L"trailer\r\n<<\r\n/Size 6\r\n/Root 1 0 R\r\n/Info 5 0 R\r\n>>\r\n\r\n";
 	ConvertedBytes.Clear();
-	ConvertedBytes = ASCIIEncoding->GetBytes(Trailer, 0, Trailer.GetLength());
+	ConvertedBytes = ASCIIEncoding.GetBytes(Trailer, 0, Trailer.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// end of file
 	String EndOfFile = L"startxref\r\n1337\r\n%%EOF\r\n";
 	ConvertedBytes.Clear();
-	ConvertedBytes = ASCIIEncoding->GetBytes(EndOfFile, 0, EndOfFile.GetLength());
+	ConvertedBytes = ASCIIEncoding.GetBytes(EndOfFile, 0, EndOfFile.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	int x = 354;
