@@ -75,7 +75,7 @@ namespace Elysium
 					HttpResponseMessage* _PreviousResponse;
 					HttpCompletionOption _PreviousCompletionOption;
 
-					void ReceiveResponseContent(HttpResponseMessage* Response);
+					void ReceiveResponseContent(HttpResponseMessage& Response);
 				};
 			}
 		}

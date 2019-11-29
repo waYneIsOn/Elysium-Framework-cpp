@@ -85,7 +85,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(u' ', 9);
 	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(Elysium::Core::Convert::ToInt32(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], 10));
 	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
-	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(u"\r\n", IndexOfHttpStatusMessage));
+	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].GetLength() - IndexOfHttpStatusMessage);
 
 	// parse the subsequent header lines
 	size_t LineCount = LineViews.GetCount();
@@ -97,8 +97,8 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	{
 		IndexOfKeyValueDelimiter = LineViews[i].IndexOf(u':');
 		KeyView = Elysium::Core::StringView(&LineViews[i][0], IndexOfKeyValueDelimiter);
-		LengthOfValue = LineViews[i].IndexOf(u"\r\n", IndexOfKeyValueDelimiter + 2);
-		if (LengthOfValue == std::wstring::npos)
+		LengthOfValue = LineViews[i].GetLength() - IndexOfKeyValueDelimiter - 2;
+		if (LengthOfValue == static_cast<size_t>(-1))
 		{
 			ValueView = Elysium::Core::StringView(&LineViews[i][IndexOfKeyValueDelimiter + 2]);
 		}

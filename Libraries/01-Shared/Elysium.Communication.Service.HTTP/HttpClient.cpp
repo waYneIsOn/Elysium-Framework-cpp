@@ -67,7 +67,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	// if we've only read the header before, we need to read the previous response's content
 	if (_PreviousCompletionOption == HttpCompletionOption::ResponseHeadersRead)
 	{
-		ReceiveResponseContent(_PreviousResponse);
+		ReceiveResponseContent(*_PreviousResponse);
 	}
 
 	// read and parse the header
@@ -76,7 +76,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	// read and parse the content right away if so desired
 	if (CompletionOption == HttpCompletionOption::ResponseContentRead)
 	{
-		ReceiveResponseContent(&Response);
+		ReceiveResponseContent(Response);
 	}
 
 	_PreviousResponse = &Response;
@@ -85,7 +85,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	return Response;
 }
 
-void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(HttpResponseMessage * Response)
+void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(HttpResponseMessage & Response)
 {
 	// Content-Type
 	// application/...
@@ -99,9 +99,9 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 
 	// ap, au, im, me, mu, te, vi, x-
 
-	if (Response->GetHeaders().Contains(u"Transfer-Encoding"))
+	if (Response.GetHeaders().Contains(u"Transfer-Encoding"))
 	{
-		if (Response->GetHeaders().GetValues(u"Transfer-Encoding")[0] == u"chunked")
+		if (Response.GetHeaders().GetValues(u"Transfer-Encoding")[0] == u"chunked")
 		{
 			bool HasReceivedBytes = false;
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
@@ -111,30 +111,32 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			} while (HasReceivedBytes);
 
 			// delete previous content if required
-			if (Response->_Content != nullptr)
+			if (Response._Content != nullptr)
 			{
-				delete Response->_Content;
+				delete Response._Content;
 			}
 
 			// add current content
-			if (Response->GetHeaders().Contains(u"Content-Encoding"))
+			if (Response.GetHeaders().Contains(u"Content-Encoding"))
 			{
-				Response->_Content = new ByteArrayContent(&Content[0], Content.GetCount());
+				Response._Content = new ByteArrayContent(&Content[0], Content.GetCount());
 			}
 			else
 			{	// ToDo: how to handle this case accordingly? html -> string, jpg -> bytearray etc.???
-				Response->_Content = new StringContent(&Content[0], Content.GetCount());
+				Response._Content = new StringContent(&Content[0], Content.GetCount());
 			}
 		}
 		else
 		{
+			String Test = String(Response.GetHeaders().GetValues(u"Transfer-Encoding")[0]);
+
 			throw NotImplementedException(u"ReceiveResponseContent with unknown Transfer-Encoding");
 		}
 	}
-	else if (Response->GetHeaders().Contains(u"Content-Length"))
+	else if (Response.GetHeaders().Contains(u"Content-Length"))
 	{
 		// get the content's length
-		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(u"Content-Length");
+		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response.GetHeaders().GetValues(u"Content-Length");
 		size_t ContentLength = Elysium::Core::Convert::ToInt32(&ContentLengthValues[0][0], 10);
 
 		if (ContentLength > 0)
@@ -143,11 +145,11 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			// ToDo: depending on Content-Type (text/html, application/json etc.) we might need to handle this differently, for now it's ok
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
 			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
-			if (Response->_Content != nullptr)
+			if (Response._Content != nullptr)
 			{
-				delete Response->_Content;
+				delete Response._Content;
 			}
-			Response->_Content = new StringContent(&Content[0], Content.GetCount());
+			Response._Content = new StringContent(&Content[0], Content.GetCount());
 		}
 	}
 	else
