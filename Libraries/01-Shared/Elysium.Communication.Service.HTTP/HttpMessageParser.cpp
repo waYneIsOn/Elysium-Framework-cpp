@@ -78,7 +78,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 
 	Elysium::Core::StringView ResponseHeaderView = CompleteResponseHeader;
 	Elysium::Core::Collections::Generic::List<Elysium::Core::StringView> LineViews;
-	ResponseHeaderView.Split(u"\r\n", &LineViews);
+	ResponseHeaderView.Split(u"\r\n", LineViews);
 
 	// parse the first line
 	ResponseMessage._Version = Elysium::Core::Version::Parse(Elysium::Core::StringView(&LineViews[0][5], 3));
