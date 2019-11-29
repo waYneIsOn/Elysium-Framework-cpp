@@ -24,15 +24,15 @@ namespace UnitTestCommunication
 			RESTClient Client = RESTClient();
 			Client.Connect(_ServiceUri);
 			
-			Uri GetFirstEntryUri = Uri(L"http://jsonplaceholder.typicode.com/todos/1");
+			Uri GetFirstEntryUri = Uri(u"http://jsonplaceholder.typicode.com/todos/1");
 			Client.TestGET(GetFirstEntryUri);
 
-			Uri GetAllEntriesUri = Uri(L"http://jsonplaceholder.typicode.com/todos");
+			Uri GetAllEntriesUri = Uri(u"http://jsonplaceholder.typicode.com/todos");
 			Client.TestGET(GetAllEntriesUri);
 			
 			Client.Disconnect();
 		}
 	private:
-		Uri _ServiceUri = Uri(L"http://jsonplaceholder.typicode.com");
+		Uri _ServiceUri = Uri(u"http://jsonplaceholder.typicode.com");
 	};
 }

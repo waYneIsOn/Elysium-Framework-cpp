@@ -21,18 +21,18 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetDeflatedData)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(L"http://neverssl.com"));
+			Client.Connect(Uri(u"http://neverssl.com"));
 
-			HttpRequestMessage Request(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			Request.GetHeaders().Add(L"Accept", L"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			Request.GetHeaders().Add(L"Accept-Language", L"de,en-US;q=0.7,en;q=0.3");
-			Request.GetHeaders().Add(L"Accept-Encoding", L"gzip, deflate");
+			HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
+			Request.GetHeaders().Add(u"Accept-Encoding", u"gzip, deflate");
 			HttpResponseMessage Response = Client.Get(Request);
 
 			Client.Disconnect();
 
 			// check response
-			if (!Response.GetHeaders().GetValues(L"Content-Encoding").Contains(L"gzip"))
+			if (!Response.GetHeaders().GetValues(u"Content-Encoding").Contains(u"gzip"))
 			{
 				Assert::Fail();
 			}
@@ -46,17 +46,17 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetUncompressedData)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(L"http://neverssl.com"));
+			Client.Connect(Uri(u"http://neverssl.com"));
 
-			HttpRequestMessage Request(HttpMethod::Get(), Uri(L"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			Request.GetHeaders().Add(L"Accept", L"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			Request.GetHeaders().Add(L"Accept-Language", L"de,en-US;q=0.7,en;q=0.3");
+			HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
 			HttpResponseMessage Response = Client.Get(Request);
 
 			Client.Disconnect();
 
 			// check response
-			Assert::IsTrue(Response.GetHeaders().Contains(L"Content-Length"));
+			Assert::IsTrue(Response.GetHeaders().Contains(u"Content-Length"));
 		}
 	};
 }

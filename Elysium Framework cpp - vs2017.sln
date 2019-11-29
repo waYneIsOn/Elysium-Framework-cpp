@@ -59,11 +59,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Librarie
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\02-Windows\Elysium.Logging\Elysium.Logging.vcxproj", "{118D9FAE-12E0-4D8B-88E9-135511156C96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.SOAP", "Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems", "{4CB11730-B507-4CA6-8896-846A91EADD77}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{118d9fae-12e0-4d8b-88e9-135511156c96}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{1c34b4f7-ec66-4324-8241-8218707aeb10}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems*{4cb11730-b507-4ca6-8896-846a91eadd77}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.IO.Xml\Elysium.IO.Xml.vcxitems*{52db50cb-4b17-4f24-8b40-4c0bd9a60106}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems*{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}*SharedItemsImports = 9
@@ -169,6 +172,7 @@ Global
 		{5F8AD37D-D28E-4105-91A9-F1D288264D93} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{B9F9D624-63A9-42F2-97C9-47A368DEDC3D} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{118D9FAE-12E0-4D8B-88E9-135511156C96} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
+		{4CB11730-B507-4CA6-8896-846A91EADD77} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1E542AA-7F2D-45E2-BCC0-11DEBB96C091}

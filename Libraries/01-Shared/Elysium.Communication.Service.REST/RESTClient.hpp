@@ -18,6 +18,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication.Service.HTTP/HttpClient.hpp"
 #endif
 
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_JSONPROTOCOL
+#include "../Elysium.Communication/JSONProtocol.hpp"
+#endif
+
 namespace Elysium
 {
 	namespace Communication

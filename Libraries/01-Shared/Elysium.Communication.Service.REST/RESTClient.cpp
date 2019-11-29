@@ -1,5 +1,9 @@
 #include "RESTClient.hpp"
 
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_STRINGCONTENT
+#include "../Elysium.Communication.Service.HTTP/StringContent.hpp"
+#endif
+
 using namespace Elysium::Communication::Service::Http;
 using namespace Elysium::Core;
 
@@ -26,6 +30,20 @@ void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::C
 	_HttpClient.SendRequest(Request);
 
 	HttpResponseMessage Response = _HttpClient.ReceiveResponse(Request);
+	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());
+	if (Content != nullptr)
+	{
+		/*
+		using (Stream stream = response.GetResponseStream())
+		{
+			using (StreamReader sr = new StreamReader(stream))
+			{
+				content = sr.ReadToEnd();
+			}
+		}
+		var releases = JArray.Parse(content);
+		*/
+	}
 
 	int x = 34;
 }

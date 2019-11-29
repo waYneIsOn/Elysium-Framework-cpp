@@ -4,15 +4,15 @@
 #include <type_traits>
 #endif
 
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Connect = L"CONNECT";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Delete = L"DELETE";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Get = L"GET";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Head = L"HEAD";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Options = L"OPTIONS";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Patch = L"PATCH";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Post = L"POST";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Put = L"PUT";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Trace = L"TRACE";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Connect = u"CONNECT";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Delete = u"DELETE";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Get = u"GET";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Head = u"HEAD";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Options = u"OPTIONS";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Patch = u"PATCH";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Post = u"POST";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Put = u"PUT";
+const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Trace = u"TRACE";
 
 Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const Elysium::Core::String & Method)
 	: _Method(Elysium::Core::String(Method))

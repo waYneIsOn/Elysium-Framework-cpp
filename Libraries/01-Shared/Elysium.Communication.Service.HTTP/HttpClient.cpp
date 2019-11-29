@@ -1,5 +1,9 @@
 #include "HttpClient.hpp"
 
+#ifndef ELYSIUM_CORE_CONVERT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
+#endif
+
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPMESSAGEPARSER
 #include "HttpMessageParser.hpp"
 #endif
@@ -24,7 +28,7 @@ using namespace Elysium::Core::Net::Sockets;
 
 Elysium::Communication::Service::Http::HttpClient::HttpClient()
 	: _OwnedSocket(Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp)),
-	_OwnedClient(TcpClient(&_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
+	_OwnedClient(TcpClient(_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
 	_Socket(&_OwnedSocket), _Client(&_OwnedClient),
 	_PreviousCompletionOption(HttpCompletionOption::ResponseContentRead)
 {
@@ -95,9 +99,9 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 
 	// ap, au, im, me, mu, te, vi, x-
 
-	if (Response->GetHeaders().Contains(L"Transfer-Encoding"))
+	if (Response->GetHeaders().Contains(u"Transfer-Encoding"))
 	{
-		if (Response->GetHeaders().GetValues(L"Transfer-Encoding")[0] == L"chunked")
+		if (Response->GetHeaders().GetValues(u"Transfer-Encoding")[0] == u"chunked")
 		{
 			bool HasReceivedBytes = false;
 			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
@@ -113,7 +117,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			}
 
 			// add current content
-			if (Response->GetHeaders().Contains(L"Content-Encoding"))
+			if (Response->GetHeaders().Contains(u"Content-Encoding"))
 			{
 				Response->_Content = new ByteArrayContent(&Content[0], Content.GetCount());
 			}
@@ -124,14 +128,14 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		}
 		else
 		{
-			throw NotImplementedException(L"ReceiveResponseContent with unknown Transfer-Encoding");
+			throw NotImplementedException(u"ReceiveResponseContent with unknown Transfer-Encoding");
 		}
 	}
-	else if (Response->GetHeaders().Contains(L"Content-Length"))
+	else if (Response->GetHeaders().Contains(u"Content-Length"))
 	{
 		// get the content's length
-		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(L"Content-Length");
-		size_t ContentLength = wcstoul(&ContentLengthValues[0][0], nullptr, 10);
+		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response->GetHeaders().GetValues(u"Content-Length");
+		size_t ContentLength = Elysium::Core::Convert::ToInt32(&ContentLengthValues[0][0], 10);
 
 		if (ContentLength > 0)
 		{
@@ -148,6 +152,6 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	}
 	else
 	{
-		throw NotImplementedException(L"Header includes neither Content-Length nor Transfer-Encoding");
+		throw NotImplementedException(u"Header includes neither Content-Length nor Transfer-Encoding");
 	}
 }

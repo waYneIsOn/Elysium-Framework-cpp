@@ -17,10 +17,10 @@ namespace UnitTestCommunication
 		TEST_METHOD(ConnectionTest)
 		{
 			Socket ClientSocket = Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
-			TcpClient Client = TcpClient(&ClientSocket);
+			TcpClient Client = TcpClient(ClientSocket);
 			BinaryProtocol Protocol = BinaryProtocol(Client);
 
-			Client.Connect(String(L"www.google.com"), 80);
+			Client.Connect(String(u"www.google.com"), 80);
 			Client.Close();
 		}
 	};

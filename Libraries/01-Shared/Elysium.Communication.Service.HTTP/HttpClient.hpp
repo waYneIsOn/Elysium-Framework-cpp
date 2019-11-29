@@ -38,7 +38,9 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpCompletionOption.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_DECIMAL
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Decimal.hpp"
+#endif
 
 namespace Elysium
 {

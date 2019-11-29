@@ -22,10 +22,6 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-#ifndef _STRING_
-#include <string>
-#endif
-
 namespace Elysium
 {
 	namespace Communication

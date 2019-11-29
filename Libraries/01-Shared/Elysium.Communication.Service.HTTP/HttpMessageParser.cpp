@@ -4,8 +4,8 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-#ifndef _STRING_
-#include <string>
+#ifndef ELYSIUM_CORE_CONVERT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
 #endif
 
 Elysium::Communication::Service::Http::HttpMessageParser::~HttpMessageParser()
@@ -22,18 +22,18 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 
 	// add the "standard-parts" of the http-request-header
 	Builder.Append(Request.GetMethod().GetMethod());
-	Builder.Append(L" /");
+	Builder.Append(u" /");
 	Builder.Append(RequestUri.GetPathAndQuery());
-	Builder.Append(L" HTTP/");
-	Builder.Append(std::to_wstring(Version.GetMajor()).c_str());
-	Builder.Append(L".");
-	Builder.Append(std::to_wstring(Version.GetMinor()).c_str());
-	Builder.Append(L"\r\nHost: ");
+	Builder.Append(u" HTTP/");
+	Builder.Append(Elysium::Core::Convert::ToString(Version.GetMajor(), 10));
+	Builder.Append(u".");
+	Builder.Append(Elysium::Core::Convert::ToString(Version.GetMinor(), 10));
+	Builder.Append(u"\r\nHost: ");
 	Builder.Append(RequestUri.GetHost());
-	Builder.Append(L"\r\nUser-Agent: Elysium/0.1\r\n");
+	Builder.Append(u"\r\nUser-Agent: Elysium/0.1\r\n");
 	if (Version.GetMajor() == 1 && Version.GetMinor() == 1)
 	{
-		Builder.Append(L"Connection: keep-alive\r\n");
+		Builder.Append(u"Connection: keep-alive\r\n");
 	}
 
 	// add all default headers using the client
@@ -48,13 +48,13 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	for (std::pair<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> RequestHeadersValue : RequestHeadersMap)
 	{
 		Builder.Append(RequestHeadersValue.first);
-		Builder.Append(L": ");
+		Builder.Append(u": ");
 		Builder.Append(RequestHeadersValue.second[0]);
-		Builder.Append(L"\r\n");
+		Builder.Append(u"\r\n");
 	}
 	
 	// add a finale newline to end the header
-	Builder.Append(L"\r\n");
+	Builder.Append(u"\r\n");
 
 	// add the content
 	// ToDo
@@ -78,14 +78,14 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 
 	Elysium::Core::StringView ResponseHeaderView = CompleteResponseHeader;
 	Elysium::Core::Collections::Generic::List<Elysium::Core::StringView> LineViews;
-	ResponseHeaderView.Split(L"\r\n", &LineViews);
+	ResponseHeaderView.Split(u"\r\n", &LineViews);
 
 	// parse the first line
-	ResponseMessage._Version = Elysium::Core::Version::Parse(&Elysium::Core::StringView(&LineViews[0][5], 3));
-	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(L' ', 9);
-	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(wcstoul(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], nullptr, 10));
+	ResponseMessage._Version = Elysium::Core::Version::Parse(Elysium::Core::StringView(&LineViews[0][5], 3));
+	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(u' ', 9);
+	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(Elysium::Core::Convert::ToInt32(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], 10));
 	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
-	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(L"\r\n", IndexOfHttpStatusMessage));
+	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].IndexOf(u"\r\n", IndexOfHttpStatusMessage));
 
 	// parse the subsequent header lines
 	size_t LineCount = LineViews.GetCount();
@@ -95,9 +95,9 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	Elysium::Core::StringView ValueView;
 	for (size_t i = 1; i < LineCount; i++)
 	{
-		IndexOfKeyValueDelimiter = LineViews[i].IndexOf(L':');
+		IndexOfKeyValueDelimiter = LineViews[i].IndexOf(u':');
 		KeyView = Elysium::Core::StringView(&LineViews[i][0], IndexOfKeyValueDelimiter);
-		LengthOfValue = LineViews[i].IndexOf(L"\r\n", IndexOfKeyValueDelimiter + 2);
+		LengthOfValue = LineViews[i].IndexOf(u"\r\n", IndexOfKeyValueDelimiter + 2);
 		if (LengthOfValue == std::wstring::npos)
 		{
 			ValueView = Elysium::Core::StringView(&LineViews[i][IndexOfKeyValueDelimiter + 2]);

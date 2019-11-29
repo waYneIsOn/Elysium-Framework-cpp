@@ -31,15 +31,15 @@ namespace Elysium
 			class ELYSIUM_COMMUNICATION_API TcpClient final : public StreamTransport
 			{
 			public:
-				TcpClient(Elysium::Core::Net::Sockets::Socket* Socket);
+				TcpClient(Elysium::Core::Net::Sockets::Socket& Socket);
 				virtual ~TcpClient();
 
-				const Elysium::Core::Net::Sockets::Socket* GetSocket() const;
+				const Elysium::Core::Net::Sockets::Socket& GetSocket() const;
 
 				void Connect(const Elysium::Core::String& Host, int Port);
 				void Close();
 			private:
-				Elysium::Core::Net::Sockets::Socket* _Socket;
+				Elysium::Core::Net::Sockets::Socket& _Socket;
 
 				Elysium::Core::Net::Sockets::NetworkStream _InputNetworkStream;
 				Elysium::Core::Net::Sockets::NetworkStream _OutputNetworkStream;

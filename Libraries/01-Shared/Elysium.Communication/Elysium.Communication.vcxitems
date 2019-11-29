@@ -17,6 +17,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)JSONProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
@@ -26,6 +27,7 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)JSONProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />

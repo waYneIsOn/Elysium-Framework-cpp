@@ -22,7 +22,7 @@ void Elysium::Communication::Service::Http::Headers::HttpHeaders::Clear()
 {
 	_Headers.clear();
 }
-bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const ElysiumChar * Name) const
+bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const char16_t * Name) const
 {
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
@@ -46,12 +46,12 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const
 		return true;
 	}
 }
-const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const ElysiumChar * Name) const
+const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const char16_t * Name) const
 {
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{	// ToDo: throw specific exception
-		throw Elysium::Core::Exception(L"header not found");
+		throw Elysium::Core::Exception(u"header not found");
 	}
 	else
 	{
@@ -63,7 +63,7 @@ const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& Elysium:
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{	// ToDo: throw specific exception
-		throw Elysium::Core::Exception(L"header not found");
+		throw Elysium::Core::Exception(u"header not found");
 	}
 	else
 	{

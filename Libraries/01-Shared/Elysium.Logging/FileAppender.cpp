@@ -6,12 +6,12 @@ Elysium::Logging::Appender::FileAppender::FileAppender(const Elysium::Core::Stri
 	_Encoding(Elysium::Core::Text::Encoding::Default()),
 	_FileStream(Elysium::Core::IO::FileStream(FullFilePath, Elysium::Core::IO::FileMode::Create, Elysium::Core::IO::FileAccess::Write))
 {
-	_Formats[Events::LogLevel::Trace] = L"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
-	_Formats[Events::LogLevel::Debug] = L"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
-	_Formats[Events::LogLevel::Information] = L"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
-	_Formats[Events::LogLevel::Warning] = L"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
-	_Formats[Events::LogLevel::Error] = L"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
-	_Formats[Events::LogLevel::Critical] = L"{{ {\"Timestamp\": \"Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Trace] = u"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Debug] = u"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Information] = u"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Warning] = u"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Error] = u"{{ \"Timestamp\": \"{Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
+	_Formats[Events::LogLevel::Critical] = u"{{ {\"Timestamp\": \"Timestamp}\", \"Level\": {Level}, \"Message\": \"{Message}\", \"Exception\": \"{Exception}\" }}{NewLine}";
 }
 Elysium::Logging::Appender::FileAppender::~FileAppender()
 {

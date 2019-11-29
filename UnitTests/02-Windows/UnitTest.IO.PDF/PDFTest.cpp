@@ -14,7 +14,7 @@ namespace UnitTestIOPDF
 		TEST_METHOD(SaveEmptyPdf)
 		{
 			PdfDocument EmptyDocument;
-			EmptyDocument.Save(L"Empty.pdf");
+			EmptyDocument.Save(u"Empty.pdf");
 		}
 	};
 }

@@ -5,7 +5,7 @@
 #endif
 
 Elysium::Logging::Filter::Filter()
-	: _Scope(L""), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
+	: _Scope(), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
 {
 }
 Elysium::Logging::Filter::Filter(const Elysium::Core::String & Scope, const Events::LogLevel & MinimumLogLevel, const Events::LogLevel & MaximumLogLevel)
@@ -17,7 +17,7 @@ Elysium::Logging::Filter::Filter(const Filter & Source)
 {
 }
 Elysium::Logging::Filter::Filter(Filter && Right)
-	: _Scope(L""), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
+	: _Scope(), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
 {
 	*this = std::move(Right);
 }
