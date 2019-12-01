@@ -104,7 +104,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		if (Response.GetHeaders().GetValues(u"Transfer-Encoding")[0] == u"chunked")
 		{
 			bool HasReceivedBytes = false;
-			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+			Elysium::Core::Collections::Template::List<Elysium::Core::byte> Content;
 			do
 			{
 				HasReceivedBytes = _OwnedProtocol.ReadResponseContentChunk(&Content);
@@ -136,14 +136,14 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	else if (Response.GetHeaders().Contains(u"Content-Length"))
 	{
 		// get the content's length
-		const Elysium::Core::Collections::Generic::List<Elysium::Core::String> ContentLengthValues = Response.GetHeaders().GetValues(u"Content-Length");
+		const Elysium::Core::Collections::Template::List<Elysium::Core::String> ContentLengthValues = Response.GetHeaders().GetValues(u"Content-Length");
 		size_t ContentLength = Elysium::Core::Convert::ToInt32(&ContentLengthValues[0][0], 10);
 
 		if (ContentLength > 0)
 		{
 			// get the content
 			// ToDo: depending on Content-Type (text/html, application/json etc.) we might need to handle this differently, for now it's ok
-			Elysium::Core::Collections::Generic::List<Elysium::Core::byte> Content;
+			Elysium::Core::Collections::Template::List<Elysium::Core::byte> Content;
 			_OwnedProtocol.ReadResponseContent(ContentLength, &Content);
 			if (Response._Content != nullptr)
 			{

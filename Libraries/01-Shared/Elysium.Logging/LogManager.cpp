@@ -3,7 +3,7 @@
 std::mutex Elysium::Logging::LogManager::_AppenderMutex = std::mutex();
 
 std::map<Elysium::Logging::IAppender*, Elysium::Logging::Filter> Elysium::Logging::LogManager::_AppenderFilterMap = std::map<Elysium::Logging::IAppender*, Elysium::Logging::Filter>();
-Elysium::Core::Collections::Generic::List<Elysium::Logging::IFlushableAppender*> Elysium::Logging::LogManager::_FlushableAppender = Elysium::Core::Collections::Generic::List<Elysium::Logging::IFlushableAppender*>();
+Elysium::Core::Collections::Template::List<Elysium::Logging::IFlushableAppender*> Elysium::Logging::LogManager::_FlushableAppender = Elysium::Core::Collections::Template::List<Elysium::Logging::IFlushableAppender*>();
 
 Elysium::Logging::LogManager::~LogManager()
 {

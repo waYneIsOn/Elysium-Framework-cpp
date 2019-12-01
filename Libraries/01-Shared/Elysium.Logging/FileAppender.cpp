@@ -74,7 +74,7 @@ void Elysium::Logging::Appender::FileAppender::Process(const Events::LogEvent & 
 	const size_t MessageSize = Message.GetLength();
 
 #ifdef UNICODE
-	Elysium::Core::Collections::Generic::List<Elysium::Core::byte> OutputBytes = _Encoding.GetBytes(Message, (size_t)0, MessageSize);
+	Elysium::Core::Collections::Template::List<Elysium::Core::byte> OutputBytes = _Encoding.GetBytes(Message, (size_t)0, MessageSize);
 	_FileStream.Write(&OutputBytes[0], OutputBytes.GetCount());
 #else
 	//std::cout << Event.GetMessage().GetCharArray();

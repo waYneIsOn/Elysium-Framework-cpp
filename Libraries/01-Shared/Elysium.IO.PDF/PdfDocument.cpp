@@ -45,7 +45,7 @@ void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 
 	// pdf version
 	String VersionString = u"1.7\r\n\r\n";
-	Elysium::Core::Collections::Generic::List<byte> ConvertedBytes = ASCIIEncoding.GetBytes(VersionString, 0, VersionString.GetLength());
+	Elysium::Core::Collections::Template::List<byte> ConvertedBytes = ASCIIEncoding.GetBytes(VersionString, 0, VersionString.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetCount());
 
 	// catalog????

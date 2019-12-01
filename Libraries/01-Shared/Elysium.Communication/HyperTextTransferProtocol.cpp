@@ -1,7 +1,7 @@
 #include "HyperTextTransferProtocol.hpp"
 
 using namespace Elysium::Core;
-using namespace Elysium::Core::Collections::Generic;
+using namespace Elysium::Core::Collections::Template;
 
 Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport)
 	: TextProtocol(Transport)
@@ -57,7 +57,7 @@ Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtoco
 	return _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd);
 }
 
-void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value)
+void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value)
 {
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)
@@ -93,7 +93,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	_TotalReadBuffer.Clear();
 	_IndexOfMessageEnd = -1;
 }
-bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContentChunk(Elysium::Core::Collections::Generic::List<Elysium::Core::Byte>* Value)
+bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value)
 {
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)

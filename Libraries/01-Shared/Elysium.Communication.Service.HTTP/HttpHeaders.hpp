@@ -26,7 +26,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_COLLECTIONS_GENERIC_LIST
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
 #endif
 
@@ -40,29 +40,29 @@ namespace Elysium
 			{
 				namespace Headers
 				{
-					class ELYSIUM_COMMUNICATION_API HttpHeaders : public Elysium::Core::Collections::IEnumerable<std::pair<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>>
+					class ELYSIUM_COMMUNICATION_API HttpHeaders : public Elysium::Core::Collections::IEnumerable<std::pair<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>>
 					{
 					public:
 						virtual ~HttpHeaders();
 
-						void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Generic::List<Elysium::Core::String> & Values);
+						void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Template::List<Elysium::Core::String> & Values);
 						void Add(const Elysium::Core::String& Name, const Elysium::Core::String& Value);
 						void Clear();
 						bool Contains(const char16_t* Name) const;
 						bool Contains(const Elysium::Core::String& Name) const;
-						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const char16_t* Name) const;
-						const Elysium::Core::Collections::Generic::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
+						const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const char16_t* Name) const;
+						const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
 						bool Remove(const Elysium::Core::String& Name);
 
 						// ToDo: remove this functions as soon as IEnumerable and IEnumerator have been implemented in some way
-						const std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>>& GetInternalHeaders() const;
+						const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>& GetInternalHeaders() const;
 					protected:
 						HttpHeaders();
 
 						HttpHeaders& operator=(const HttpHeaders& Source);
 						HttpHeaders& operator=(HttpHeaders&& Right);
 					private:
-						std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> _Headers;
+						std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> _Headers;
 					};
 				}
 			}

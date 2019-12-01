@@ -27,13 +27,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.DSV", "Libraries
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication", "Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems", "{8EB3E6E8-8830-42E5-BB0D-D4B3DFF51505}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Xml", "Libraries\01-Shared\Elysium.IO.Xml\Elysium.IO.Xml.vcxitems", "{52DB50CB-4B17-4F24-8B40-4C0BD9A60106}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication", "Libraries\02-Windows\Elysium.Communication\Elysium.Communication.vcxproj", "{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.DSV", "Libraries\02-Windows\Elysium.IO.DSV\Elysium.IO.DSV.vcxproj", "{044602DD-0715-4D24-8EEE-95D499F0E332}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Xml", "Libraries\02-Windows\Elysium.IO.Xml\Elysium.IO.Xml.vcxproj", "{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Shared", "01 - Shared", "{C81D8EF9-8BA5-45BB-BDDA-FCDF2E00A583}"
 EndProject
@@ -68,7 +64,6 @@ Global
 		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{1c34b4f7-ec66-4324-8241-8218707aeb10}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems*{4cb11730-b507-4ca6-8896-846a91eadd77}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.IO.Xml\Elysium.IO.Xml.vcxitems*{52db50cb-4b17-4f24-8b40-4c0bd9a60106}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems*{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems*{5f8ad37d-d28e-4105-91a9-f1d288264d93}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.REST\Elysium.Communication.Service.REST.vcxitems*{76300fb7-9b8a-4f2a-89fe-ea23f547085e}*SharedItemsImports = 9
@@ -111,14 +106,6 @@ Global
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x64.Build.0 = Release|x64
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x86.ActiveCfg = Release|Win32
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x86.Build.0 = Release|Win32
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Debug|x64.ActiveCfg = Debug|x64
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Debug|x64.Build.0 = Debug|x64
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Debug|x86.ActiveCfg = Debug|Win32
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Debug|x86.Build.0 = Debug|Win32
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Release|x64.ActiveCfg = Release|x64
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Release|x64.Build.0 = Release|x64
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Release|x86.ActiveCfg = Release|Win32
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2}.Release|x86.Build.0 = Release|Win32
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x64.ActiveCfg = Debug|x64
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x64.Build.0 = Debug|x64
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x86.ActiveCfg = Debug|Win32
@@ -156,10 +143,8 @@ Global
 		{52049F21-B70D-44D1-9856-E3DB7824223A} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
 		{1C34B4F7-EC66-4324-8241-8218707AEB10} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{8EB3E6E8-8830-42E5-BB0D-D4B3DFF51505} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
-		{52DB50CB-4B17-4F24-8B40-4C0BD9A60106} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
 		{044602DD-0715-4D24-8EEE-95D499F0E332} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
-		{71E6B8B7-280E-4B30-B87E-F3DA59D42ED2} = {2325FB35-B3BF-4759-914F-E7327A0CF920}
 		{C81D8EF9-8BA5-45BB-BDDA-FCDF2E00A583} = {2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}
 		{4CBA49CC-75C3-4BAA-95B3-86B65C8DDFF8} = {2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}
 		{E4B52476-2C51-4D2E-9EF1-DFF738987265} = {2DEEDA83-3AA4-4C16-BDAC-41D8719B6722}

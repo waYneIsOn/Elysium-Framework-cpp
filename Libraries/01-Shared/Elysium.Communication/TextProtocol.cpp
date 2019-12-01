@@ -1,7 +1,7 @@
 #include "TextProtocol.hpp"
 
 using namespace Elysium::Core;
-using namespace Elysium::Core::Collections::Generic;
+using namespace Elysium::Core::Collections::Template;
 
 Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport)
 	: ProtocolBase(Transport),
@@ -24,7 +24,7 @@ void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::
 }
 void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
-	Elysium::Core::Collections::Generic::List<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
+	Elysium::Core::Collections::Template::List<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
 	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetCount());
 }
 

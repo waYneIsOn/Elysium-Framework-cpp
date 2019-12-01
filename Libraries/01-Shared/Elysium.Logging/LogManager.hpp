@@ -22,7 +22,7 @@ Copyright (C) 2017 waYne (CAM)
 #include <map>
 #endif
 
-#ifndef ELYSIUM_CORE_COLLECTIONS_GENERIC_LIST
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
 #endif
 
@@ -68,7 +68,7 @@ namespace Elysium
 			static std::mutex _AppenderMutex;
 
 			static std::map<IAppender*, Filter> _AppenderFilterMap;
-			static Elysium::Core::Collections::Generic::List<IFlushableAppender*> _FlushableAppender;
+			static Elysium::Core::Collections::Template::List<IFlushableAppender*> _FlushableAppender;
 
 			static void Forward(const Events::LogEvent& Event);
 		};

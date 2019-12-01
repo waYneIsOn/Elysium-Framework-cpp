@@ -44,8 +44,8 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 
 	// add all "generic" request messages
 	// ToDo: as soon as IEnumerable and IEnumerator have been implemented in some way, this needs to be changed accordingly
-	std::map<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> RequestHeadersMap = RequestHeaders.GetInternalHeaders();
-	for (std::pair<Elysium::Core::String, Elysium::Core::Collections::Generic::List<Elysium::Core::String>> RequestHeadersValue : RequestHeadersMap)
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> RequestHeadersMap = RequestHeaders.GetInternalHeaders();
+	for (std::pair<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> RequestHeadersValue : RequestHeadersMap)
 	{
 		Builder.Append(RequestHeadersValue.first);
 		Builder.Append(u": ");
@@ -77,7 +77,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	size_t LineLength = 0;
 
 	Elysium::Core::StringView ResponseHeaderView = CompleteResponseHeader;
-	Elysium::Core::Collections::Generic::List<Elysium::Core::StringView> LineViews;
+	Elysium::Core::Collections::Template::List<Elysium::Core::StringView> LineViews;
 	ResponseHeaderView.Split(u"\r\n", LineViews);
 
 	// parse the first line
