@@ -12,13 +12,6 @@ namespace UnitTestCommunication
 	TEST_CLASS(Service_RESTClient)
 	{
 	public:
-		TEST_METHOD(ConnectionTest)
-		{
-			RESTClient Client = RESTClient();
-			Client.Connect(_ServiceUri);
-			Client.Disconnect();
-		}
-
 		TEST_METHOD(GetData)
 		{
 			RESTClient Client = RESTClient();
