@@ -52,7 +52,32 @@ void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::C
 		const JsonToken StartToken = JsonReader.GetToken();
 		if (StartToken == JsonToken::StartedArray)
 		{
+			while (Reader.Read())
+			{
+				JsonReader.Read();
 
+				JsonReader.Read();
+				if (JsonReader.GetToken() == JsonToken::None)
+				{
+					break;
+				}
+				JsonReader.Read();
+				const String UserId = JsonReader.GetNodeValue();
+
+				JsonReader.Read();
+				JsonReader.Read();
+				const String Id = JsonReader.GetNodeValue();
+
+				JsonReader.Read();
+				JsonReader.Read();
+				const String Title = JsonReader.GetNodeValue();
+
+				JsonReader.Read();
+				JsonReader.Read();
+				const String Completed = JsonReader.GetNodeValue();
+
+				JsonReader.Read();
+			}
 		}
 		else if (StartToken == JsonToken::StartedObject)
 		{
