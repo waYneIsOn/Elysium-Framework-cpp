@@ -10,9 +10,6 @@
     <Filter Include="Service">
       <UniqueIdentifier>{24bff1d9-9059-4cdd-8c02-914f46963a72}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Service\SOAP">
-      <UniqueIdentifier>{1236e5f0-1792-4e94-9afe-5d983a4122db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Service\LDAP">
       <UniqueIdentifier>{0025fb06-1c9e-47ab-a525-d96e01910114}</UniqueIdentifier>
     </Filter>
@@ -21,6 +18,9 @@
     </Filter>
     <Filter Include="Service\WebDAV">
       <UniqueIdentifier>{006e05c3-fa86-42bb-8cbf-973e1abdb2e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\Thrift">
+      <UniqueIdentifier>{7efa8b46-bc3e-4cc2-b2af-02fb118d9d50}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

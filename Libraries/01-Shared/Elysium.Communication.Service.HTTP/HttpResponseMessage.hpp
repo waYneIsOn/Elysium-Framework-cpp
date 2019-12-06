@@ -45,11 +45,11 @@ namespace Elysium
 				public:
 					HttpResponseMessage(HttpRequestMessage& Request);
 					HttpResponseMessage(const HttpResponseMessage& Source);
-					HttpResponseMessage(HttpResponseMessage&& Right);
+					HttpResponseMessage(HttpResponseMessage&& Right) noexcept;
 					~HttpResponseMessage();
 
 					HttpResponseMessage& operator=(const HttpResponseMessage& Source);
-					HttpResponseMessage& operator=(HttpResponseMessage&& Right);
+					HttpResponseMessage& operator=(HttpResponseMessage&& Right) noexcept;
 
 					const HttpRequestMessage& GetRequest() const;
 					const Elysium::Core::Version& GetVersion() const;

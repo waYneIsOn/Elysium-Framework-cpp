@@ -16,7 +16,7 @@ Elysium::Logging::Filter::Filter(const Filter & Source)
 	: _Scope(Elysium::Core::String(Source._Scope)), _MinimumLogLevel(Source._MinimumLogLevel), _MaximumLogLevel(Source._MaximumLogLevel)
 {
 }
-Elysium::Logging::Filter::Filter(Filter && Right)
+Elysium::Logging::Filter::Filter(Filter && Right) noexcept
 	: _Scope(), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
 {
 	*this = std::move(Right);
@@ -33,7 +33,7 @@ Elysium::Logging::Filter & Elysium::Logging::Filter::operator=(const Filter & So
 	}
 	return *this;
 }
-Elysium::Logging::Filter & Elysium::Logging::Filter::operator=(Filter && Right)
+Elysium::Logging::Filter & Elysium::Logging::Filter::operator=(Filter && Right) noexcept
 {
 	if (this != &Right)
 	{

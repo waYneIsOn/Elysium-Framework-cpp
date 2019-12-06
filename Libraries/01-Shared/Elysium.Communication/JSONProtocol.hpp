@@ -5,6 +5,7 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
+/*
 #pragma once
 
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_JSONPROTOCOL
@@ -42,3 +43,4 @@ namespace Elysium
 	}
 }
 #endif
+*/

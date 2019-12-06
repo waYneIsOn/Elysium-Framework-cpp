@@ -13,7 +13,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(
 	_ReasonPhrase(String(Source._ReasonPhrase)), _Headers(Headers::HttpResponseHeaders(Source._Headers)), _Content(nullptr)
 {
 }
-Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpResponseMessage && Right)
+Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpResponseMessage && Right) noexcept
 	: _Request(Right._Request),
 	_Version(Right._Version),
 	_StatusCode(Right._StatusCode),
@@ -55,7 +55,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage & Elysium::Communicat
 	}
 	return *this;
 }
-Elysium::Communication::Service::Http::HttpResponseMessage & Elysium::Communication::Service::Http::HttpResponseMessage::operator=(HttpResponseMessage && Right)
+Elysium::Communication::Service::Http::HttpResponseMessage & Elysium::Communication::Service::Http::HttpResponseMessage::operator=(HttpResponseMessage && Right) noexcept
 {
 	if (this != &Right)
 	{

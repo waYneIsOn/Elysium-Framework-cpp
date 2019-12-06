@@ -22,7 +22,7 @@ Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const HttpMethod &
 	: _Method(Elysium::Core::String(Source._Method))
 {
 }
-Elysium::Communication::Service::Http::HttpMethod::HttpMethod(HttpMethod && Right)
+Elysium::Communication::Service::Http::HttpMethod::HttpMethod(HttpMethod && Right) noexcept
 {
 	*this = std::move(Right);
 }
@@ -38,7 +38,7 @@ Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Serv
 	}
 	return *this;
 }
-Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::operator=(HttpMethod && Right)
+Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::operator=(HttpMethod && Right) noexcept
 {
 	if (this != &Right)
 	{

@@ -39,10 +39,19 @@ namespace Elysium
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
 
+					template <class T>
+					T Get(const Elysium::Core::Uri& Uri);
+
 					void TestGET(const Elysium::Core::Uri& Uri);
 				private:
 					Elysium::Communication::Service::Http::HttpClient _HttpClient;
 				};
+
+				template<class T>
+				inline T RESTClient::Get(const Elysium::Core::Uri & Uri)
+				{
+					return T();
+				}
 			}
 		}
 	}

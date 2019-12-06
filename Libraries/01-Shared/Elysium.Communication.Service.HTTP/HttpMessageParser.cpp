@@ -31,10 +31,6 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	Builder.Append(u"\r\nHost: ");
 	Builder.Append(RequestUri.GetHost());
 	Builder.Append(u"\r\nUser-Agent: Elysium/0.1\r\n");
-	if (Version.GetMajor() == 1 && Version.GetMinor() == 1)
-	{
-		Builder.Append(u"Connection: keep-alive\r\n");
-	}
 
 	// add all default headers using the client
 	// ToDo
@@ -52,15 +48,20 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 		Builder.Append(RequestHeadersValue.second[0]);
 		Builder.Append(u"\r\n");
 	}
-	
+
+	// make sure the connection is persistent if required
+	static const Elysium::Core::Version Http10 = Elysium::Core::Version(1, 0);
+	if (Version == Http10)
+	{	// ToDo: check headers before adding
+		Builder.Append(u"Connection: keep-alive\r\n");
+	}
+
 	// add a final newline to end the header
 	Builder.Append(u"\r\n");
-
-	// add the content
-	// ToDo
 	/*
+	// add the content
 	if (Request._Content != nullptr)
-	{
+	{	// ToDo
 
 	}
 	*/

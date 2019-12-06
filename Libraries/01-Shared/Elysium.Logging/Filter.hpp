@@ -36,11 +36,11 @@ namespace Elysium
 			Filter();
 			Filter(const Elysium::Core::String& Scope, const Events::LogLevel& MinimumLogLevel, const Events::LogLevel& MaximumLogLevel);
 			Filter(const Filter& Source);
-			Filter(Filter&& Right);
+			Filter(Filter&& Right) noexcept;
 			~Filter();
 
 			Filter& operator=(const Filter& Source);
-			Filter& operator=(Filter&& Right);
+			Filter& operator=(Filter&& Right) noexcept;
 
 			bool IsInterested(const Events::LogEvent& Event);
 		private:

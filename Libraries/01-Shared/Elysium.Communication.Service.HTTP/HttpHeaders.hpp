@@ -60,7 +60,7 @@ namespace Elysium
 						HttpHeaders();
 
 						HttpHeaders& operator=(const HttpHeaders& Source);
-						HttpHeaders& operator=(HttpHeaders&& Right);
+						HttpHeaders& operator=(HttpHeaders&& Right) noexcept;
 					private:
 						std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> _Headers;
 					};

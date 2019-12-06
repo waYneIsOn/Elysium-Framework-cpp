@@ -104,7 +104,7 @@ Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communica
 	}
 	return *this;
 }
-Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communication::Service::Http::Headers::HttpHeaders::operator=(HttpHeaders && Right)
+Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communication::Service::Http::Headers::HttpHeaders::operator=(HttpHeaders && Right) noexcept
 {
 	if (this != &Right)
 	{

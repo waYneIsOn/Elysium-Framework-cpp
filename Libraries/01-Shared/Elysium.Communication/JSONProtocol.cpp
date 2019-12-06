@@ -1,5 +1,5 @@
 #include "JSONProtocol.hpp"
-
+/*
 Elysium::Communication::Protocol::JSONProtocol::JSONProtocol(Transport::TransportBase & Transport)
 	: TextProtocol(Transport)
 {
@@ -17,3 +17,4 @@ size_t Elysium::Communication::Protocol::JSONProtocol::ReadBinary(Elysium::Core:
 {
 	return _Transport.Read(Buffer, Length);
 }
+*/

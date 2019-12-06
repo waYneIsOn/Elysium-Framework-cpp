@@ -7,7 +7,7 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestH
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
 {	// ToDo: copy values
 }
-Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right)
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right) noexcept
 {
 	*this = std::move(Right);
 }
@@ -20,7 +20,7 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Co
 	HttpHeaders::operator=(Source);
 	return *this;
 }
-Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::operator=(HttpRequestHeaders && Right)
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::operator=(HttpRequestHeaders && Right) noexcept
 {
 	HttpHeaders::operator=(std::move(Right));
 	return *this;

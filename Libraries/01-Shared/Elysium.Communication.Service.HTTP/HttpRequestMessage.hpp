@@ -51,11 +51,11 @@ namespace Elysium
 				public:
 					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
 					HttpRequestMessage(const HttpRequestMessage& Source);
-					HttpRequestMessage(HttpRequestMessage&& Right);
+					HttpRequestMessage(HttpRequestMessage&& Right) noexcept;
 					~HttpRequestMessage();
 					
 					HttpRequestMessage& operator=(const HttpRequestMessage& Source);
-					HttpRequestMessage& operator=(HttpRequestMessage&& Right);
+					HttpRequestMessage& operator=(HttpRequestMessage&& Right) noexcept;
 
 					Headers::HttpRequestHeaders& GetHeaders();
 

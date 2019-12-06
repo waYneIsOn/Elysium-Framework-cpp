@@ -31,11 +31,11 @@ namespace Elysium
 				public:
 					HttpMethod(const Elysium::Core::String& Method);
 					HttpMethod(const HttpMethod& Source);
-					HttpMethod(HttpMethod&& Right);
+					HttpMethod(HttpMethod&& Right) noexcept;
 					virtual ~HttpMethod();
 
 					HttpMethod& operator=(const HttpMethod& Source);
-					HttpMethod& operator=(HttpMethod&& Right);
+					HttpMethod& operator=(HttpMethod&& Right) noexcept;
 
 					const Elysium::Core::String& GetMethod() const;
 
