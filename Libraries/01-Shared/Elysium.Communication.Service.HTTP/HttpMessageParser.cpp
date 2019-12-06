@@ -41,7 +41,7 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 
 	// add the authorization header values
 	// ToDo
-
+	
 	// add all "generic" request messages
 	// ToDo: as soon as IEnumerable and IEnumerator have been implemented in some way, this needs to be changed accordingly
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> RequestHeadersMap = RequestHeaders.GetInternalHeaders();
@@ -53,7 +53,7 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 		Builder.Append(u"\r\n");
 	}
 	
-	// add a finale newline to end the header
+	// add a final newline to end the header
 	Builder.Append(u"\r\n");
 
 	// add the content

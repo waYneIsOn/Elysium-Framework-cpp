@@ -25,7 +25,7 @@ void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::
 void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
 	Elysium::Core::Collections::Template::List<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
-	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetCount());
+	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetCount() - 1);	// -1 because we don't want to send \0
 }
 
 size_t Elysium::Communication::Protocol::TextProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
