@@ -33,6 +33,7 @@ namespace Elysium
 					virtual ~ByteArrayContent();
 
 					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
+					virtual Elysium::Core::String ReadAsString() const override;
 				private:
 					Elysium::Core::byte* _Content;
 					size_t _Length;

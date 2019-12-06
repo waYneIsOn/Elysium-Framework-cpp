@@ -41,7 +41,7 @@ namespace Elysium
 
 					//virtual void ReadAsByteArray(Elysium::Core::byte* Bytes, size_t* Length) const = 0;
 					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const = 0;
-					//virtual void ReadAsString(Elysium::Core::String& TargetString) const = 0;
+					virtual Elysium::Core::String ReadAsString() const = 0;
 				protected:
 					HttpContent();
 				};

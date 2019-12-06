@@ -1,5 +1,9 @@
 #include "ByteArrayContent.hpp"
 
+#ifndef ELYSIUM_CORE_TEXT_ENCODING
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
+#endif
+
 #ifndef _INC_STRING
 #include <string>
 #endif
@@ -22,4 +26,8 @@ Elysium::Communication::Service::Http::ByteArrayContent::~ByteArrayContent()
 void Elysium::Communication::Service::Http::ByteArrayContent::ReadAsStream(Elysium::Core::IO::Stream & TargetStream) const
 {
 	TargetStream.Write(_Content, _Length);
+}
+Elysium::Core::String Elysium::Communication::Service::Http::ByteArrayContent::ReadAsString() const
+{
+	return Elysium::Core::Text::Encoding::UTF8().GetString(_Content, _Length);
 }
