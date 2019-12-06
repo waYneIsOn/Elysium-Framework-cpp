@@ -4,8 +4,18 @@
 #include "../Elysium.Communication.Service.HTTP/StringContent.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_JSON_JSONTEXTREADER
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Json/JsonTextReader.hpp"
+#endif
+
+#ifndef ELYSIUM_CORE_IO_STRINGREADER
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/StringReader.hpp"
+#endif
+
 using namespace Elysium::Communication::Service::Http;
 using namespace Elysium::Core;
+using namespace Elysium::Core::IO;
+using namespace Elysium::Core::Json;
 
 Elysium::Communication::Service::REST::RESTClient::RESTClient()
 {
@@ -33,17 +43,34 @@ void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::C
 	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());
 	if (Content != nullptr)
 	{
-		/*
-		using (Stream stream = response.GetResponseStream())
-		{
-			using (StreamReader sr = new StreamReader(stream))
-			{
-				content = sr.ReadToEnd();
-			}
-		}
-		var releases = JArray.Parse(content);
-		*/
-	}
+		String ContentAsString = Content->ReadAsString();
+		StringReader Reader = StringReader(ContentAsString);
+		JsonIOSettings Settings = JsonIOSettings(u" ", u"\t", u"\n");
+		JsonTextReader JsonReader = JsonTextReader(Settings, Reader);
 
-	int x = 34;
+		JsonReader.Read();
+		const JsonToken StartToken = JsonReader.GetToken();
+		if (StartToken == JsonToken::StartedArray)
+		{
+
+		}
+		else if (StartToken == JsonToken::StartedObject)
+		{
+			JsonReader.Read();
+			JsonReader.Read();
+			const String UserId = JsonReader.GetNodeValue();
+
+			JsonReader.Read();
+			JsonReader.Read();
+			const String Id = JsonReader.GetNodeValue();
+
+			JsonReader.Read();
+			JsonReader.Read();
+			const String Title = JsonReader.GetNodeValue();
+
+			JsonReader.Read();
+			JsonReader.Read();
+			const String Completed = JsonReader.GetNodeValue();
+		}
+	}
 }

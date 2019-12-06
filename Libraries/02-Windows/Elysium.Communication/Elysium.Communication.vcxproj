@@ -108,7 +108,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\bin\Debug\x64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Elysium.Core.lib;Elysium.Core.Net.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Elysium.Core.lib;Elysium.Core.Json.lib;Elysium.Core.Net.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -126,7 +126,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\..\..\bin\Debug\Win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Elysium.Core.lib;Elysium.Core.Net.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Elysium.Core.lib;Elysium.Core.Json.lib;Elysium.Core.Net.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
