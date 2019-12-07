@@ -17,6 +17,12 @@ Elysium::Communication::Protocol::HyperTextTransferProtocol::~HyperTextTransferP
 
 Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHeader()
 {
+	if (_IndexOfMessageEnd != static_cast<size_t>(-1))
+	{	// remove the last part of the previous message
+		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 4);
+		_IndexOfMessageEnd = static_cast<size_t>(-1);
+	}
+
 	// read until we reach \r\n\r\n
 	size_t TotalBytesReceived = 0;
 	size_t PossibleIndexOfHeaderEnd = 0;
@@ -53,7 +59,7 @@ Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtoco
 			TotalBytesReceived += _IndexOfMessageEnd;
 		}
 	} while (_IndexOfMessageEnd == -1);
-
+	
 	return _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd);
 }
 

@@ -1,13 +1,16 @@
 #include "HttpRequestHeaders.hpp"
 
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders()
-	: HttpHeaders()
+	: HttpHeaders(),
+	_Authorization(Elysium::Core::String())
 {
 }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
+	: _Authorization(Elysium::Core::String())
 {	// ToDo: copy values
 }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right) noexcept
+	: _Authorization(Elysium::Core::String())
 {
 	*this = std::move(Right);
 }
@@ -41,7 +44,8 @@ const Elysium::Core::String & Elysium::Communication::Service::Http::Headers::Ht
 
 void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetAuthorization(const AuthenticationHeaderValue & Value)
 {
-	_Authorization = Value;
+	_Authorization.SetScheme(Value.GetScheme());
+	_Authorization.SetParameter(Value.GetParameter());
 }
 void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetFrom(const Elysium::Core::String & Value)
 {

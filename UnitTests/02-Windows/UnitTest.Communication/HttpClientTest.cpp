@@ -3,13 +3,16 @@
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.HTTP/HttpClient.hpp"
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.HTTP/StringContent.hpp"
 
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/FileStream.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/MemoryStream.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/GZipStream.hpp"
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
 
 using namespace Elysium::Core;
 using namespace Elysium::Core::IO;
 using namespace Elysium::Core::IO::Compression;
+using namespace Elysium::Core::Text;
 using namespace Elysium::Communication::Service::Http;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -18,22 +21,36 @@ namespace UnitTestCommunication
 	TEST_CLASS(Service_HttpClient)
 	{
 	public:
-		TEST_METHOD(GetDeflatedData)
+		TEST_METHOD(HttpDelete)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(u"http://neverssl.com"));
-			
-			//HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			//Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			//Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
-			//Request.GetHeaders().Add(u"Accept-Encoding", u"gzip, deflate");
-			//HttpResponseMessage Response = Client.Get(Request);
-			
-			HttpResponseMessage Response = Client.Get(u"/online");
-
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Delete(u"/delete");
 			Client.Disconnect();
 
 			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+		}
+		TEST_METHOD(HttpGet)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Get(u"/get");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::IsTrue(Response.GetHeaders().Contains(u"Content-Length"));
+		}
+		TEST_METHOD(HttpGetGzip)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Get(u"/gzip");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
 			if (!Response.GetHeaders().GetValues(u"Content-Encoding").Contains(u"gzip"))
 			{
 				Assert::Fail();
@@ -42,25 +59,70 @@ namespace UnitTestCommunication
 			MemoryStream ContentStream;
 			Response.GetContent()->ReadAsStream(ContentStream);
 			GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
-
-			// ToDo: unzip the content
 		}
-		TEST_METHOD(GetUncompressedData)
+		TEST_METHOD(HttpOptions)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri(u"http://neverssl.com"));
-
-			//HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			//Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			//Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
-			//HttpResponseMessage Response = Client.Get(Request);
-
-			HttpResponseMessage Response = Client.Get(u"/online");
-
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Options(u"/get");
 			Client.Disconnect();
 
 			// check response
-			Assert::IsTrue(Response.GetHeaders().Contains(u"Content-Length"));
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+		}
+		TEST_METHOD(HttpPatch)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Patch(u"/patch");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+		}
+		TEST_METHOD(HttpPost)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Post(u"/post");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+		}
+		TEST_METHOD(HttpPut)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Put(u"/put");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+		}
+
+		TEST_METHOD(HttpBasicAuthentication)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+
+			// send a request without authorization-headers
+			HttpResponseMessage UnauthorizedResponse = Client.Get(u"/basic-auth/SomeUser/SomePassword");
+
+			// add authorization-headers and send the same request again
+			String AuthInfo = u"SomeUser:SomePassword";
+			String Base64AuthInfo = Convert::ToBase64String(Encoding::ASCII().GetBytes(AuthInfo, 0, AuthInfo.GetLength()));
+			StringBuilder AuthBuilder = StringBuilder(6 + Base64AuthInfo.GetLength());
+			AuthBuilder.Append(String(u"Basic "));
+			AuthBuilder.Append(Base64AuthInfo);
+			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Authorization", AuthBuilder.ToString()));
+			HttpResponseMessage AuthorizedResponse = Client.Get(u"/basic-auth/SomeUser/SomePassword");
+
+			Client.Disconnect();
+
+			// check responses
+			Assert::AreEqual((uint32_t)401, (uint32_t)UnauthorizedResponse.GetStatusCode());
+			Assert::AreEqual((uint32_t)200, (uint32_t)AuthorizedResponse.GetStatusCode());
 		}
 	};
 }

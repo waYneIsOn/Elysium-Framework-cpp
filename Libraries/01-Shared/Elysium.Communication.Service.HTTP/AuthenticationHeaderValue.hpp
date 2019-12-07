@@ -31,22 +31,24 @@ namespace Elysium
 					class ELYSIUM_COMMUNICATION_API AuthenticationHeaderValue final
 					{
 					public:
-						AuthenticationHeaderValue();
-						AuthenticationHeaderValue(const AuthenticationHeaderValue& Value);
+						AuthenticationHeaderValue(const Elysium::Core::String& Scheme);
+						AuthenticationHeaderValue(const Elysium::Core::String& Scheme, const Elysium::Core::String& Parameter);
+						AuthenticationHeaderValue(const AuthenticationHeaderValue& Value) = delete;
+						AuthenticationHeaderValue(AuthenticationHeaderValue&& Right) noexcept = delete;
 						~AuthenticationHeaderValue();
+
+						AuthenticationHeaderValue& operator=(const AuthenticationHeaderValue& Source) = delete;
+						AuthenticationHeaderValue& operator=(AuthenticationHeaderValue&& Right) noexcept = delete;
+
+						// relational operators
+						bool operator==(const AuthenticationHeaderValue& Other);
+						bool operator!=(const AuthenticationHeaderValue& Other);
 
 						const Elysium::Core::String& GetScheme() const;
 						const Elysium::Core::String& GetParameter() const;
 
 						void SetScheme(const Elysium::Core::String& Value);
 						void SetParameter(const Elysium::Core::String& Value);
-
-						// assignment operators
-						virtual AuthenticationHeaderValue& operator=(const AuthenticationHeaderValue& Value);
-
-						// relational operators
-						bool operator==(const AuthenticationHeaderValue& Other);
-						bool operator!=(const AuthenticationHeaderValue& Other);
 					private:
 						Elysium::Core::String _Scheme;
 						Elysium::Core::String _Parameter;

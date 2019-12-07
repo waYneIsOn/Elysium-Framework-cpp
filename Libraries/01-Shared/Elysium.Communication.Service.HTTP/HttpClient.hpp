@@ -54,7 +54,14 @@ namespace Elysium
 				{
 				public:
 					HttpClient();
+					HttpClient(const HttpClient& Source) = delete;
+					HttpClient(HttpClient&& Right) noexcept = delete;
 					~HttpClient();
+
+					HttpClient& operator=(const HttpClient& Source) = delete;
+					HttpClient& operator=(HttpClient&& Right) noexcept = delete;
+
+					Headers::HttpRequestHeaders& GetDefaultRequestHeaders();
 
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
@@ -78,7 +85,6 @@ namespace Elysium
 					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
 
 					void SendRequest(HttpRequestMessage& Request);
-					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request);
 					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
 				private:
 					Core::Net::Sockets::Socket _OwnedSocket;
@@ -92,6 +98,8 @@ namespace Elysium
 
 					HttpResponseMessage* _PreviousResponse;
 					HttpCompletionOption _PreviousCompletionOption;
+
+					Headers::HttpRequestHeaders _DefaultRequestHeaders;
 
 					void ReceiveResponseContent(HttpResponseMessage& Response);
 				};

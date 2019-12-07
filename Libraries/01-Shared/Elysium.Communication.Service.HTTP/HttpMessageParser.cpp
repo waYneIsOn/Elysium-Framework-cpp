@@ -36,7 +36,15 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	// ToDo
 
 	// add the authorization header values
-	// ToDo
+	const Headers::AuthenticationHeaderValue& AuthorizationHeader = RequestHeaders.GetAuthorization();
+	const Elysium::Core::String& AuthorizationScheme = AuthorizationHeader.GetScheme();
+	if (AuthorizationScheme.GetLength() > 0)
+	{
+		Builder.Append(AuthorizationScheme);
+		Builder.Append(u": ");
+		Builder.Append(AuthorizationHeader.GetParameter());
+		Builder.Append(u"\r\n");
+	}
 	
 	// add all "generic" request messages
 	// ToDo: as soon as IEnumerable and IEnumerator have been implemented in some way, this needs to be changed accordingly

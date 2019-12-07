@@ -44,7 +44,7 @@ void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::C
 	Request.GetHeaders().SetHost(Uri.GetHost());
 	_HttpClient.SendRequest(Request);
 
-	HttpResponseMessage Response = _HttpClient.ReceiveResponse(Request);
+	HttpResponseMessage Response = _HttpClient.ReceiveResponse(Request, HttpCompletionOption::ResponseContentRead);
 	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());
 	if (Content != nullptr)
 	{

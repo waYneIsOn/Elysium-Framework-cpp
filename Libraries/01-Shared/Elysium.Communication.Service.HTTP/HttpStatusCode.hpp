@@ -10,6 +10,10 @@ Copyright (C) 2017 waYne (CAM)
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPSTATUSCODE
 #define ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPSTATUSCODE
 
+#ifndef _STDINT
+#include <stdint.h>
+#endif
+
 namespace Elysium
 {
 	namespace Communication
@@ -18,7 +22,13 @@ namespace Elysium
 		{
 			namespace Http
 			{
-				enum class HttpStatusCode : long
+#if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
+				enum class HttpStatusCode : uint32_t
+#elif defined(__ANDROID__)
+				enum class HttpStatusCode
+#else
+#error "undefined os"
+#endif
 				{
 					// specific implementation values
 					Unknown = 0,

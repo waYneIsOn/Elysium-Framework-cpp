@@ -19,6 +19,12 @@
     <Filter Include="Service\Thrift">
       <UniqueIdentifier>{7efa8b46-bc3e-4cc2-b2af-02fb118d9d50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Service\SFTP">
+      <UniqueIdentifier>{7435c601-02de-44ef-a164-76c2bfbc3a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service\SMTP">
+      <UniqueIdentifier>{c76e0c24-0a0b-461e-8eb0-82640be0e634}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp">

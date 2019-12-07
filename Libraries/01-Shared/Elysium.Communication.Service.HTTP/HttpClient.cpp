@@ -37,6 +37,11 @@ Elysium::Communication::Service::Http::HttpClient::~HttpClient()
 {
 }
 
+Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::HttpClient::GetDefaultRequestHeaders()
+{
+	return _DefaultRequestHeaders;
+}
+
 void Elysium::Communication::Service::Http::HttpClient::Connect(const Elysium::Core::Uri & Uri)
 {	// ToDo: Uri.GetPort();
 	_Socket->Connect(Uri.GetHost(), 80);
@@ -55,6 +60,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Delete(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Delete(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -66,6 +72,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Get(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -77,6 +84,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Options(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Options(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -88,6 +96,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Patch(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Patch(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -99,6 +108,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Post(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Post(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -110,6 +120,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Put(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
 {
 	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Put(), Elysium::Core::Uri(_BaseAddress, Path));
+	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
@@ -118,10 +129,6 @@ void Elysium::Communication::Service::Http::HttpClient::SendRequest(HttpRequestM
 {
 	_OwnedProtocol.WriteString(HttpMessageParser::ParseRequestMessage(Request));
 	_Client->Flush();
-}
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpRequestMessage& Request)
-{
-	return ReceiveResponse(Request, HttpCompletionOption::ResponseContentRead);
 }
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption)
 {
