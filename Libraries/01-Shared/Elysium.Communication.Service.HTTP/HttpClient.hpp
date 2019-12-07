@@ -91,11 +91,11 @@ namespace Elysium
 					Core::Net::Sockets::Socket* _Socket;
 					Transport::TransportBase* _Client;
 
+					Headers::HttpRequestHeaders _DefaultRequestHeaders;
+
 					Elysium::Core::Uri _BaseAddress;
 
 					HttpCompletionOption _PreviousCompletionOption;
-
-					Headers::HttpRequestHeaders _DefaultRequestHeaders;
 
 					void SendRequest(HttpRequestMessage& Request);
 					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);

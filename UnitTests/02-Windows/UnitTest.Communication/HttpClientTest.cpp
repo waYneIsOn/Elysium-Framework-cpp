@@ -119,10 +119,7 @@ namespace UnitTestCommunication
 			// add authorization-headers and send the same request again
 			String AuthInfo = u"SomeUser:SomePassword";
 			String Base64AuthInfo = Convert::ToBase64String(Encoding::ASCII().GetBytes(AuthInfo, 0, AuthInfo.GetLength()));
-			StringBuilder AuthBuilder = StringBuilder(6 + Base64AuthInfo.GetLength());
-			AuthBuilder.Append(String(u"Basic "));
-			AuthBuilder.Append(Base64AuthInfo);
-			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Authorization", AuthBuilder.ToString()));
+			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Basic", Base64AuthInfo));
 			HttpResponseMessage AuthorizedResponse = Client.Get(u"/basic-auth/SomeUser/SomePassword");
 
 			Client.Disconnect();
@@ -142,10 +139,7 @@ namespace UnitTestCommunication
 			// add authorization-headers and send the same request again
 			String AuthInfo = u"SomeUser:SomePassword";
 			String Base64AuthInfo = Convert::ToBase64String(Encoding::ASCII().GetBytes(AuthInfo, 0, AuthInfo.GetLength()));
-			StringBuilder AuthBuilder = StringBuilder(6 + Base64AuthInfo.GetLength());
-			AuthBuilder.Append(String(u"Basic "));
-			AuthBuilder.Append(Base64AuthInfo);
-			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Authorization", AuthBuilder.ToString()));
+			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Basic", Base64AuthInfo));
 			HttpResponseMessage AuthorizedResponse = Client.Get(u"/hidden-basic-auth/SomeUser/SomePassword");
 
 			Client.Disconnect();

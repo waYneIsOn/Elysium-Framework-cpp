@@ -40,8 +40,9 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	const Elysium::Core::String& AuthorizationScheme = AuthorizationHeader.GetScheme();
 	if (AuthorizationScheme.GetLength() > 0)
 	{
+		Builder.Append(u"Authorization: ");
 		Builder.Append(AuthorizationScheme);
-		Builder.Append(u": ");
+		Builder.Append(u" ");
 		Builder.Append(AuthorizationHeader.GetParameter());
 		Builder.Append(u"\r\n");
 	}
