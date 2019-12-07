@@ -90,7 +90,21 @@ const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List
 }
 
 Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders()
+	: _Headers()
 {
+}
+Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders(const HttpHeaders & Source)
+	: _Headers()
+{
+	for (auto& Header : Source._Headers)
+	{
+		_Headers.insert(std::move(Header));
+	}
+}
+Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders(HttpHeaders && Right) noexcept
+	: _Headers()
+{
+	*this = std::move(Right);
 }
 
 Elysium::Communication::Service::Http::Headers::HttpHeaders & Elysium::Communication::Service::Http::Headers::HttpHeaders::operator=(const HttpHeaders & Source)

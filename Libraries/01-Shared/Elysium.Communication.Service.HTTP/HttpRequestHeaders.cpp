@@ -6,11 +6,13 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestH
 {
 }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
-	: _Authorization(Elysium::Core::String())
-{	// ToDo: copy values
+	: //HttpHeaders(Source),
+	_Authorization(Elysium::Core::String())
+{
 }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right) noexcept
-	: _Authorization(Elysium::Core::String())
+	: //HttpHeaders(Right),
+	_Authorization(Elysium::Core::String())
 {
 	*this = std::move(Right);
 }

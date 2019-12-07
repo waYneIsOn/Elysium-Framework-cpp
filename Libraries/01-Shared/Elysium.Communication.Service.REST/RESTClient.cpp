@@ -38,13 +38,9 @@ using namespace Elysium::Core;
 using namespace Elysium::Core::IO;
 using namespace Elysium::Core::Json;
 
-void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::Core::Uri & Uri)
+void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::Core::String & Path)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Get(), Uri);
-	Request.GetHeaders().SetHost(Uri.GetHost());
-	_HttpClient.SendRequest(Request);
-
-	HttpResponseMessage Response = _HttpClient.ReceiveResponse(Request, HttpCompletionOption::ResponseContentRead);
+	HttpResponseMessage Response = _HttpClient.Get(Path);
 	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());
 	if (Content != nullptr)
 	{

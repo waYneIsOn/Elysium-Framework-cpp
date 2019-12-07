@@ -5,9 +5,11 @@ Elysium::Communication::Service::Http::Headers::HttpResponseHeaders::HttpRespons
 {
 }
 Elysium::Communication::Service::Http::Headers::HttpResponseHeaders::HttpResponseHeaders(const HttpResponseHeaders & Source)
-{	// ToDo: copy values
+	: HttpHeaders(Source)
+{
 }
 Elysium::Communication::Service::Http::Headers::HttpResponseHeaders::HttpResponseHeaders(HttpResponseHeaders && Right) noexcept
+	: HttpHeaders(Right)
 {
 	*this = std::move(Right);
 }

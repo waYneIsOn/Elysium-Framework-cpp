@@ -58,6 +58,8 @@ namespace Elysium
 						const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>& GetInternalHeaders() const;
 					protected:
 						HttpHeaders();
+						HttpHeaders(const HttpHeaders& Source);
+						HttpHeaders(HttpHeaders&& Right) noexcept;
 
 						HttpHeaders& operator=(const HttpHeaders& Source);
 						HttpHeaders& operator=(HttpHeaders&& Right) noexcept;

@@ -17,11 +17,8 @@ namespace UnitTestCommunication
 			RESTClient Client = RESTClient();
 			Client.Connect(_ServiceUri);
 			
-			Uri GetFirstEntryUri = Uri(u"http://jsonplaceholder.typicode.com/todos/1");
-			Client.TestGET(GetFirstEntryUri);
-
-			Uri GetAllEntriesUri = Uri(u"http://jsonplaceholder.typicode.com/todos");
-			Client.TestGET(GetAllEntriesUri);
+			Client.TestGET(u"/todos/1");
+			Client.TestGET(u"/todos");
 			
 			Client.Disconnect();
 		}

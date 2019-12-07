@@ -66,26 +66,23 @@ namespace Elysium
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
 
-					HttpResponseMessage Delete(const Elysium::Core::String& Path);
-					HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Delete(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption);
 
-					HttpResponseMessage Get(const Elysium::Core::String& Path);
-					HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Get(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Options(const Elysium::Core::String& Path);
-					HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Options(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Patch(const Elysium::Core::String& Path);
-					HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Patch(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Post(const Elysium::Core::String& Path);
-					HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Post(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Put(const Elysium::Core::String& Path);
-					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
-
-					void SendRequest(HttpRequestMessage& Request);
-					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+					HttpResponseMessage Put(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 				private:
 					Core::Net::Sockets::Socket _OwnedSocket;
 					Transport::TcpClient _OwnedClient;
@@ -96,11 +93,13 @@ namespace Elysium
 
 					Elysium::Core::Uri _BaseAddress;
 
-					HttpResponseMessage* _PreviousResponse;
 					HttpCompletionOption _PreviousCompletionOption;
 
 					Headers::HttpRequestHeaders _DefaultRequestHeaders;
 
+					void SendRequest(HttpRequestMessage& Request);
+					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
+					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption, HttpResponseMessage& PreviousResponse);
 					void ReceiveResponseContent(HttpResponseMessage& Response);
 				};
 			}

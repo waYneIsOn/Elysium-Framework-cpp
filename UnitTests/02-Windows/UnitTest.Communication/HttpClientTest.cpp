@@ -29,18 +29,24 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 		}
 		TEST_METHOD(HttpGet)
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://httpbin.org"));
-			HttpResponseMessage Response = Client.Get(u"/get");
+			HttpResponseMessage Response1 = Client.Get(u"/get", HttpCompletionOption::ResponseHeadersRead);
+			HttpResponseMessage Response2 = Client.Get(u"/get", Response1);
+			HttpResponseMessage Response3 = Client.Get(u"/get");
+			HttpResponseMessage Response4 = Client.Get(u"/get");
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
-			Assert::IsTrue(Response.GetHeaders().Contains(u"Content-Length"));
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response1.GetStatusCode());
+			Assert::IsTrue(Response1.GetHeaders().Contains(u"Content-Length"));
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response2.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response3.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response4.GetStatusCode());
 		}
 		TEST_METHOD(HttpGetGzip)
 		{
@@ -50,15 +56,16 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 			if (!Response.GetHeaders().GetValues(u"Content-Encoding").Contains(u"gzip"))
 			{
 				Assert::Fail();
 			}
-
+			/*
 			MemoryStream ContentStream;
 			Response.GetContent()->ReadAsStream(ContentStream);
 			GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
+			*/
 		}
 		TEST_METHOD(HttpOptions)
 		{
@@ -68,7 +75,7 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 		}
 		TEST_METHOD(HttpPatch)
 		{
@@ -78,7 +85,7 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 		}
 		TEST_METHOD(HttpPost)
 		{
@@ -88,7 +95,7 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 		}
 		TEST_METHOD(HttpPut)
 		{
@@ -98,7 +105,7 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check response
-			Assert::AreEqual((uint32_t)200, (uint32_t)Response.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
 		}
 
 		TEST_METHOD(HttpBasicAuthentication)
@@ -121,8 +128,31 @@ namespace UnitTestCommunication
 			Client.Disconnect();
 
 			// check responses
-			Assert::AreEqual((uint32_t)401, (uint32_t)UnauthorizedResponse.GetStatusCode());
-			Assert::AreEqual((uint32_t)200, (uint32_t)AuthorizedResponse.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::Unauthorized, (uint32_t)UnauthorizedResponse.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)AuthorizedResponse.GetStatusCode());
+		}
+		TEST_METHOD(HttpBasicAuthenticationHidden)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+
+			// send a request without authorization-headers
+			HttpResponseMessage UnauthorizedResponse = Client.Get(u"/hidden-basic-auth/SomeUser/SomePassword");
+
+			// add authorization-headers and send the same request again
+			String AuthInfo = u"SomeUser:SomePassword";
+			String Base64AuthInfo = Convert::ToBase64String(Encoding::ASCII().GetBytes(AuthInfo, 0, AuthInfo.GetLength()));
+			StringBuilder AuthBuilder = StringBuilder(6 + Base64AuthInfo.GetLength());
+			AuthBuilder.Append(String(u"Basic "));
+			AuthBuilder.Append(Base64AuthInfo);
+			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u"Authorization", AuthBuilder.ToString()));
+			HttpResponseMessage AuthorizedResponse = Client.Get(u"/hidden-basic-auth/SomeUser/SomePassword");
+
+			Client.Disconnect();
+
+			// check responses
+			Assert::AreEqual((uint32_t)HttpStatusCode::NotFound, (uint32_t)UnauthorizedResponse.GetStatusCode());
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)AuthorizedResponse.GetStatusCode());
 		}
 	};
 }

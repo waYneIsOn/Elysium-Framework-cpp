@@ -3,7 +3,7 @@
 using namespace Elysium::Core;
 
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpRequestMessage& Request)
-	: _Request(Request), _Content(nullptr), _Version(1, 1)
+	: _Request(Request), _Content(nullptr), _Version(1, 1), _Headers()
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(const HttpResponseMessage & Source)
@@ -14,10 +14,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpResponseMessage && Right) noexcept
-	: _Request(Right._Request),
-	_Version(Right._Version),
-	_StatusCode(Right._StatusCode),
-	_ReasonPhrase(Right._ReasonPhrase), _Headers(Right._Headers), _Content(nullptr)
+	: _Request(Right._Request), _Content(nullptr), _Version(1, 1), _Headers()
 {
 	*this = std::move(Right);
 }
