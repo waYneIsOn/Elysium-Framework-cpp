@@ -12,10 +12,6 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/StringReader.hpp"
 #endif
 
-using namespace Elysium::Communication::Service::Http;
-using namespace Elysium::Core;
-using namespace Elysium::Core::IO;
-using namespace Elysium::Core::Json;
 
 Elysium::Communication::Service::REST::RESTClient::RESTClient()
 {
@@ -32,6 +28,15 @@ void Elysium::Communication::Service::REST::RESTClient::Disconnect()
 {
 	_HttpClient.Disconnect();
 }
+
+
+
+
+
+using namespace Elysium::Communication::Service::Http;
+using namespace Elysium::Core;
+using namespace Elysium::Core::IO;
+using namespace Elysium::Core::Json;
 
 void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::Core::Uri & Uri)
 {

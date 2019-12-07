@@ -59,7 +59,23 @@ namespace Elysium
 					void Connect(const Elysium::Core::Uri& Uri);
 					void Disconnect();
 
-					HttpResponseMessage Get(HttpRequestMessage& Request);
+					HttpResponseMessage Delete(const Elysium::Core::String& Path);
+					HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+
+					HttpResponseMessage Get(const Elysium::Core::String& Path);
+					HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+
+					HttpResponseMessage Options(const Elysium::Core::String& Path);
+					HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+
+					HttpResponseMessage Patch(const Elysium::Core::String& Path);
+					HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+
+					HttpResponseMessage Post(const Elysium::Core::String& Path);
+					HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
+
+					HttpResponseMessage Put(const Elysium::Core::String& Path);
+					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption);
 
 					void SendRequest(HttpRequestMessage& Request);
 					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request);
@@ -71,6 +87,8 @@ namespace Elysium
 
 					Core::Net::Sockets::Socket* _Socket;
 					Transport::TransportBase* _Client;
+
+					Elysium::Core::Uri _BaseAddress;
 
 					HttpResponseMessage* _PreviousResponse;
 					HttpCompletionOption _PreviousCompletionOption;

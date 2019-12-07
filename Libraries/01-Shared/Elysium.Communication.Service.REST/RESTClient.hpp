@@ -40,7 +40,7 @@ namespace Elysium
 					void Disconnect();
 
 					template <class T>
-					T Get(const Elysium::Core::Uri& Uri);
+					T Get(const Elysium::Core::String& Path);
 
 					void TestGET(const Elysium::Core::Uri& Uri);
 				private:
@@ -48,7 +48,7 @@ namespace Elysium
 				};
 
 				template<class T>
-				inline T RESTClient::Get(const Elysium::Core::Uri & Uri)
+				inline T RESTClient::Get(const Elysium::Core::String & Path)
 				{
 					return T();
 				}

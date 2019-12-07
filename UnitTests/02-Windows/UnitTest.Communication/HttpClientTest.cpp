@@ -22,12 +22,14 @@ namespace UnitTestCommunication
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://neverssl.com"));
-
-			HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
-			Request.GetHeaders().Add(u"Accept-Encoding", u"gzip, deflate");
-			HttpResponseMessage Response = Client.Get(Request);
+			
+			//HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			//Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			//Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
+			//Request.GetHeaders().Add(u"Accept-Encoding", u"gzip, deflate");
+			//HttpResponseMessage Response = Client.Get(Request);
+			
+			HttpResponseMessage Response = Client.Get(u"/online");
 
 			Client.Disconnect();
 
@@ -48,10 +50,12 @@ namespace UnitTestCommunication
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://neverssl.com"));
 
-			HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
-			Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-			Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
-			HttpResponseMessage Response = Client.Get(Request);
+			//HttpRequestMessage Request(HttpMethod::Get(), Uri(u"http://dcbfhklnmstrwxvz.neverssl.com/online"));
+			//Request.GetHeaders().Add(u"Accept", u"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+			//Request.GetHeaders().Add(u"Accept-Language", u"de,en-US;q=0.7,en;q=0.3");
+			//HttpResponseMessage Response = Client.Get(Request);
+
+			HttpResponseMessage Response = Client.Get(u"/online");
 
 			Client.Disconnect();
 
