@@ -4,15 +4,15 @@
 #include <type_traits>
 #endif
 
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Connect = u"CONNECT";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Delete = u"DELETE";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Get = u"GET";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Head = u"HEAD";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Options = u"OPTIONS";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Patch = u"PATCH";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Post = u"POST";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Put = u"PUT";
-const Elysium::Core::String Elysium::Communication::Service::Http::HttpMethod::_Trace = u"TRACE";
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Connect = Elysium::Communication::Service::Http::HttpMethod(u"CONNECT");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Delete = Elysium::Communication::Service::Http::HttpMethod(u"DELETE");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Get = Elysium::Communication::Service::Http::HttpMethod(u"GET");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Head = Elysium::Communication::Service::Http::HttpMethod(u"HEAD");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Options = Elysium::Communication::Service::Http::HttpMethod(u"OPTIONS");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Patch = Elysium::Communication::Service::Http::HttpMethod(u"PATCH");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Post = Elysium::Communication::Service::Http::HttpMethod(u"POST");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Put = Elysium::Communication::Service::Http::HttpMethod(u"PUT");
+const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Trace = Elysium::Communication::Service::Http::HttpMethod(u"TRACE");
 
 Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const Elysium::Core::String & Method)
 	: _Method(Elysium::Core::String(Method))
@@ -52,39 +52,39 @@ const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod:
 	return _Method;
 }
 
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Connect()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Connect()
 {
 	return _Connect;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Delete()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Delete()
 {
 	return _Delete;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Get()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Get()
 {
 	return _Get;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Head()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Head()
 {
 	return _Head;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Options()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Options()
 {
 	return _Options;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Patch()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Patch()
 {
 	return _Patch;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Post()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Post()
 {
 	return _Post;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Put()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Put()
 {
 	return _Put;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::Trace()
+const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpMethod::Trace()
 {
 	return _Trace;
 }
