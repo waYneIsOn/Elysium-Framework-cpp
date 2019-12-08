@@ -18,6 +18,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ByteArrayContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpContent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpContentHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMessageParser.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMethod.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpCompletionOption.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpContent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpContentHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMethod.hpp" />

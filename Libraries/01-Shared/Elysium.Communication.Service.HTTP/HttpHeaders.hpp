@@ -45,6 +45,9 @@ namespace Elysium
 					public:
 						virtual ~HttpHeaders();
 
+						// ToDo: remove this functions as soon as IEnumerable and IEnumerator have been implemented in some way
+						const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>& GetInternalHeaders() const;
+
 						void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Template::List<Elysium::Core::String> & Values);
 						void Add(const Elysium::Core::String& Name, const Elysium::Core::String& Value);
 						void Clear();
@@ -53,9 +56,6 @@ namespace Elysium
 						const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const char16_t* Name) const;
 						const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
 						bool Remove(const Elysium::Core::String& Name);
-
-						// ToDo: remove this functions as soon as IEnumerable and IEnumerator have been implemented in some way
-						const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>& GetInternalHeaders() const;
 					protected:
 						HttpHeaders();
 						HttpHeaders(const HttpHeaders& Source);
@@ -63,7 +63,7 @@ namespace Elysium
 
 						HttpHeaders& operator=(const HttpHeaders& Source);
 						HttpHeaders& operator=(HttpHeaders&& Right) noexcept;
-					private:
+
 						std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> _Headers;
 					};
 				}

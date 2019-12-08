@@ -4,6 +4,10 @@ Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(co
 	: _Method(Method), _RequestUri(RequestUri), _Version(1, 1), _Content(nullptr)
 {
 }
+Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(const HttpMethod & Method, const Elysium::Core::Uri & RequestUri, const HttpContent * Content)
+	: _Method(Method), _RequestUri(RequestUri), _Version(1, 1), _Content(Content)
+{
+}
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(const HttpRequestMessage & Source)
 	: _Method(Source._Method), _RequestUri(Source._RequestUri), _Version(Elysium::Core::Version(Source._Version)), _Content(nullptr)
 {
@@ -49,6 +53,10 @@ Elysium::Communication::Service::Http::HttpRequestMessage & Elysium::Communicati
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::HttpRequestMessage::GetHeaders()
 {
 	return _Headers;
+}
+const Elysium::Communication::Service::Http::HttpContent * Elysium::Communication::Service::Http::HttpRequestMessage::GetContent() const
+{
+	return _Content;
 }
 
 const Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Service::Http::HttpRequestMessage::GetMethod() const

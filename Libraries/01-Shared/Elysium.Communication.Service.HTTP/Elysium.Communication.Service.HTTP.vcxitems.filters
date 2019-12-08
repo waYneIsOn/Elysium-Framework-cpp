@@ -44,6 +44,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ByteArrayContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StringContent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpContentHeaders.cpp">
+      <Filter>Headers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
@@ -68,5 +71,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpContent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ByteArrayContent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StringContent.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpContentHeaders.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

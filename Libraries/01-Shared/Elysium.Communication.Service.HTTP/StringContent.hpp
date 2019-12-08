@@ -33,8 +33,6 @@ namespace Elysium
 				class ELYSIUM_COMMUNICATION_API StringContent final : public ByteArrayContent
 				{
 				public:
-					StringContent(const Elysium::Core::byte* Content, const size_t Length);
-					StringContent(const Elysium::Core::byte* Content, const size_t Length, const Elysium::Core::Text::Encoding& Encoding);
 					StringContent(const Elysium::Core::String& Content);
 					StringContent(const Elysium::Core::String& Content, const Elysium::Core::Text::Encoding& Encoding);
 					virtual ~StringContent();

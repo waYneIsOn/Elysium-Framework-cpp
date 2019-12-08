@@ -12,22 +12,20 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ArgumentNullException.hpp"
 #endif
 
-Elysium::Communication::Service::Http::ByteArrayContent::ByteArrayContent(const Elysium::Core::byte * Content, const size_t Length)
+Elysium::Communication::Service::Http::ByteArrayContent::ByteArrayContent(const Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Content)
 	: HttpContent(),
-	_Content(new Elysium::Core::byte[Length]), _Length(Length)
+	_Content(Elysium::Core::Collections::Template::List<Elysium::Core::byte>(Content))
 {
-	memcpy(_Content, Content, _Length);
 }
 Elysium::Communication::Service::Http::ByteArrayContent::~ByteArrayContent()
 {
-	delete[] _Content;
 }
 
 void Elysium::Communication::Service::Http::ByteArrayContent::ReadAsStream(Elysium::Core::IO::Stream & TargetStream) const
 {
-	TargetStream.Write(_Content, _Length);
+	TargetStream.Write(&_Content[0], _Content.GetCount());
 }
 Elysium::Core::String Elysium::Communication::Service::Http::ByteArrayContent::ReadAsString() const
 {
-	return Elysium::Core::Text::Encoding::UTF8().GetString(_Content, _Length);
+	return Elysium::Core::Text::Encoding::UTF8().GetString(&_Content[0], _Content.GetCount());
 }

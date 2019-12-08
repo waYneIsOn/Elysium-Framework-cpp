@@ -19,6 +19,7 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	const Elysium::Core::Uri& RequestUri = Request.GetRequestUri();
 	const Elysium::Core::Version& Version = Request.GetVersion();
 	const Headers::HttpRequestHeaders& RequestHeaders = Request.GetHeaders();
+	const HttpContent* Content = Request.GetContent();
 
 	// add the "standard-parts" of the http-request-header
 	Builder.Append(Request.GetMethod().GetMethod());
@@ -32,9 +33,6 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 	Builder.Append(RequestUri.GetHost());
 	Builder.Append(u"\r\nUser-Agent: Elysium/0.1\r\n");
 
-	// add all default headers using the client
-	// ToDo
-
 	// add the authorization header values
 	const Headers::AuthenticationHeaderValue& AuthorizationHeader = RequestHeaders.GetAuthorization();
 	const Elysium::Core::String& AuthorizationScheme = AuthorizationHeader.GetScheme();
@@ -47,8 +45,7 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 		Builder.Append(u"\r\n");
 	}
 	
-	// add all "generic" request messages
-	// ToDo: as soon as IEnumerable and IEnumerator have been implemented in some way, this needs to be changed accordingly
+	// add all "generic" request headers
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> RequestHeadersMap = RequestHeaders.GetInternalHeaders();
 	for (std::pair<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> RequestHeadersValue : RequestHeadersMap)
 	{
@@ -65,15 +62,28 @@ Elysium::Core::String Elysium::Communication::Service::Http::HttpMessageParser::
 		Builder.Append(u"Connection: keep-alive\r\n");
 	}
 
+	// write content headers
+	if (Content != nullptr)
+	{
+		std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> ContentHeaderMap = Content->GetHeaders().GetInternalHeaders();
+		for (std::pair<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> ContentHeaderValue : ContentHeaderMap)
+		{
+			Builder.Append(ContentHeaderValue.first);
+			Builder.Append(u": ");
+			Builder.Append(ContentHeaderValue.second[0]);
+			Builder.Append(u"\r\n");
+		}
+	}
+
 	// add a final newline to end the header
 	Builder.Append(u"\r\n");
-	/*
+	
 	// add the content
-	if (Request._Content != nullptr)
-	{	// ToDo
-
+	if (Content != nullptr)
+	{	// ToDo: write content in a correct fashion
+		Builder.Append(Content->ReadAsString());
 	}
-	*/
+	
 	return Builder.ToString();
 }
 

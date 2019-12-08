@@ -8,6 +8,11 @@ Elysium::Communication::Service::Http::Headers::HttpHeaders::~HttpHeaders()
 {
 }
 
+const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> & Elysium::Communication::Service::Http::Headers::HttpHeaders::GetInternalHeaders() const
+{
+	return _Headers;
+}
+
 void Elysium::Communication::Service::Http::Headers::HttpHeaders::Add(const Elysium::Core::String & Name, const Elysium::Core::Collections::Template::List<Elysium::Core::String>& Values)
 {
 	_Headers[Name] = Values;
@@ -82,11 +87,6 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Remove(const E
 		_Headers.erase(Iterator);
 		return true;
 	}
-}
-
-const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> & Elysium::Communication::Service::Http::Headers::HttpHeaders::GetInternalHeaders() const
-{
-	return _Headers;
 }
 
 Elysium::Communication::Service::Http::Headers::HttpHeaders::HttpHeaders()

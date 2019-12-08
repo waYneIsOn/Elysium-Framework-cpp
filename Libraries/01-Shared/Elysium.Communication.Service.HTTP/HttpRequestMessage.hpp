@@ -50,6 +50,7 @@ namespace Elysium
 				{
 				public:
 					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
+					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri, const HttpContent* Content);
 					HttpRequestMessage(const HttpRequestMessage& Source);
 					HttpRequestMessage(HttpRequestMessage&& Right) noexcept;
 					~HttpRequestMessage();
@@ -58,6 +59,7 @@ namespace Elysium
 					HttpRequestMessage& operator=(HttpRequestMessage&& Right) noexcept;
 
 					Headers::HttpRequestHeaders& GetHeaders();
+					const HttpContent* GetContent() const;
 
 					const HttpMethod& GetMethod() const;
 					const Elysium::Core::Uri& GetRequestUri() const;
@@ -68,7 +70,7 @@ namespace Elysium
 					std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
 					Elysium::Core::Uri _RequestUri;
 					Elysium::Core::Version _Version;
-					HttpContent* _Content;
+					const HttpContent* _Content;
 				};
 			}
 		}

@@ -14,6 +14,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpContent.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
+#endif
+
 #ifndef ELYSIUM_CORE_BYTE
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
 #endif
@@ -29,14 +33,13 @@ namespace Elysium
 				class ELYSIUM_COMMUNICATION_API ByteArrayContent : public HttpContent
 				{
 				public:
-					ByteArrayContent(const Elysium::Core::byte* Content, const size_t Length);
+					ByteArrayContent(const Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Content);
 					virtual ~ByteArrayContent();
 
 					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
 					virtual Elysium::Core::String ReadAsString() const override;
-				private:
-					Elysium::Core::byte* _Content;
-					size_t _Length;
+				protected:
+					Elysium::Core::Collections::Template::List<Elysium::Core::byte> _Content;
 				};
 			}
 		}

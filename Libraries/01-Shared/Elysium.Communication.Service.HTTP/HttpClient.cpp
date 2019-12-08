@@ -104,46 +104,46 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	return ReceiveResponse(Request, CompletionOption, PreviousResponse);
 }
 
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Patch(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Patch(const Elysium::Core::String & Path, const HttpContent & Content, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Patch(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Patch(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Patch(const Elysium::Core::String & Path, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Patch(const Elysium::Core::String & Path, const HttpContent & Content, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Patch(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Patch(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption, PreviousResponse);
 }
 
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Post(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Post(const Elysium::Core::String & Path, const HttpContent & Content, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Post(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Post(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Post(const Elysium::Core::String & Path, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Post(const Elysium::Core::String & Path, const HttpContent & Content, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Post(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Post(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption, PreviousResponse);
 }
 
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Put(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Put(const Elysium::Core::String & Path, const HttpContent & Content, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Put(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Put(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption);
 }
-Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Put(const Elysium::Core::String & Path, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
+Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Put(const Elysium::Core::String & Path, const HttpContent & Content, HttpResponseMessage & PreviousResponse, const HttpCompletionOption CompletionOption)
 {
-	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Put(), Elysium::Core::Uri(_BaseAddress, Path));
+	HttpRequestMessage Request = HttpRequestMessage(HttpMethod::Put(), Elysium::Core::Uri(_BaseAddress, Path), &Content);
 	Request.GetHeaders().SetAuthorization(_DefaultRequestHeaders.GetAuthorization());
 	SendRequest(Request);
 	return ReceiveResponse(Request, CompletionOption, PreviousResponse);
@@ -217,11 +217,11 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			// add current content
 			if (ResponseHeaders.Contains(u"Content-Encoding"))
 			{
-				Response._Content = new ByteArrayContent(&Content[0], Content.GetCount());
+				Response._Content = new ByteArrayContent(Content);
 			}
 			else
 			{	// ToDo: how to handle this case accordingly? html -> string, jpg -> bytearray etc.???
-				Response._Content = new StringContent(&Content[0], Content.GetCount());
+				Response._Content = new StringContent(Elysium::Core::Text::Encoding::Default().GetString(&Content[0], Content.GetCount()));
 			}
 		}
 		else
@@ -247,7 +247,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			{
 				delete Response._Content;
 			}
-			Response._Content = new StringContent(&Content[0], Content.GetCount());
+			Response._Content = new StringContent(Elysium::Core::Text::Encoding::Default().GetString(&Content[0], Content.GetCount()));
 		}
 	}
 	else

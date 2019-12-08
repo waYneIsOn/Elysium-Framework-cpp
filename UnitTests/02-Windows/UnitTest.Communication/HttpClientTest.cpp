@@ -48,6 +48,20 @@ namespace UnitTestCommunication
 			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response3.GetStatusCode());
 			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response4.GetStatusCode());
 		}
+		TEST_METHOD(HttpGetBrotli)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Get(u"/brotli");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
+			if (!Response.GetHeaders().GetValues(u"Content-Encoding").Contains(u"br"))
+			{
+				Assert::Fail();
+			}
+		}
 		TEST_METHOD(HttpGetGzip)
 		{
 			HttpClient Client = HttpClient();
@@ -67,6 +81,20 @@ namespace UnitTestCommunication
 			GZipStream UncompressedContentStream = GZipStream(ContentStream, CompressionMode::Decompress);
 			*/
 		}
+		TEST_METHOD(HttpGetDeflate)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"http://httpbin.org"));
+			HttpResponseMessage Response = Client.Get(u"/deflate");
+			Client.Disconnect();
+
+			// check response
+			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)Response.GetStatusCode());
+			if (!Response.GetHeaders().GetValues(u"Content-Encoding").Contains(u"deflate"))
+			{
+				Assert::Fail();
+			}
+		}
 		TEST_METHOD(HttpOptions)
 		{
 			HttpClient Client = HttpClient();
@@ -81,7 +109,10 @@ namespace UnitTestCommunication
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://httpbin.org"));
-			HttpResponseMessage Response = Client.Patch(u"/patch");
+
+			StringContent Content = StringContent(String(u"<html><head></head><body>bla</body></html>"));
+
+			HttpResponseMessage Response = Client.Patch(u"/patch", Content);
 			Client.Disconnect();
 
 			// check response
@@ -91,7 +122,10 @@ namespace UnitTestCommunication
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://httpbin.org"));
-			HttpResponseMessage Response = Client.Post(u"/post");
+
+			StringContent Content = StringContent(String(u"<html><head></head><body>bla</body></html>"));
+
+			HttpResponseMessage Response = Client.Post(u"/post", Content);
 			Client.Disconnect();
 
 			// check response
@@ -101,7 +135,10 @@ namespace UnitTestCommunication
 		{
 			HttpClient Client = HttpClient();
 			Client.Connect(Uri(u"http://httpbin.org"));
-			HttpResponseMessage Response = Client.Put(u"/put");
+
+			StringContent Content = StringContent(String(u"<html><head></head><body>bla</body></html>"));
+
+			HttpResponseMessage Response = Client.Put(u"/put", Content);
 			Client.Disconnect();
 
 			// check response
