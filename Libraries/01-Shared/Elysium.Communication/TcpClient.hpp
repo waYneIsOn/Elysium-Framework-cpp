@@ -22,29 +22,23 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/NetworkStream.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Transport
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API TcpClient final : public StreamTransport
 	{
-		namespace Transport
-		{
-			class ELYSIUM_COMMUNICATION_API TcpClient final : public StreamTransport
-			{
-			public:
-				TcpClient(Elysium::Core::Net::Sockets::Socket& Socket);
-				virtual ~TcpClient();
+	public:
+		TcpClient(Elysium::Core::Net::Sockets::Socket& Socket);
+		virtual ~TcpClient();
 
-				const Elysium::Core::Net::Sockets::Socket& GetSocket() const;
+		const Elysium::Core::Net::Sockets::Socket& GetSocket() const;
 
-				void Connect(const Elysium::Core::String& Host, int Port);
-				void Close();
-			private:
-				Elysium::Core::Net::Sockets::Socket& _Socket;
+		void Connect(const Elysium::Core::String& Host, int Port);
+		void Close();
+	private:
+		Elysium::Core::Net::Sockets::Socket& _Socket;
 
-				Elysium::Core::Net::Sockets::NetworkStream _InputNetworkStream;
-				Elysium::Core::Net::Sockets::NetworkStream _OutputNetworkStream;
-			};
-		}
-	}
+		Elysium::Core::Net::Sockets::NetworkStream _InputNetworkStream;
+		Elysium::Core::Net::Sockets::NetworkStream _OutputNetworkStream;
+	};
 }
 #endif

@@ -4,6 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{aa72e916-610b-4bcb-9e60-5ffd9f3ec089}</ItemsProjectGuid>
+    <ItemsProjectName>Elysium.Communication.Service.Ftp</ItemsProjectName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

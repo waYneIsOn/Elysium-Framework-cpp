@@ -26,40 +26,34 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Logging::Appender
 {
-	namespace Logging
+	class ELYSIUM_LOGGING_API RollingFileAppender : public IAppender
 	{
-		namespace Appender
-		{
-			class ELYSIUM_LOGGING_API RollingFileAppender : public IAppender
-			{
-			public:
-				RollingFileAppender(const Elysium::Core::String& FullFilePath);
-				virtual ~RollingFileAppender();
+	public:
+		RollingFileAppender(const Elysium::Core::String& FullFilePath);
+		virtual ~RollingFileAppender();
 
-				virtual const Elysium::Core::String& GetTraceFormat() const override;
-				virtual const Elysium::Core::String& GetDebugFormat() const override;
-				virtual const Elysium::Core::String& GetInformationFormat() const override;
-				virtual const Elysium::Core::String& GetWarningFormat() const override;
-				virtual const Elysium::Core::String& GetErrorFormat() const override;
-				virtual const Elysium::Core::String& GetCriticalFormat() const override;
+		virtual const Elysium::Core::String& GetTraceFormat() const override;
+		virtual const Elysium::Core::String& GetDebugFormat() const override;
+		virtual const Elysium::Core::String& GetInformationFormat() const override;
+		virtual const Elysium::Core::String& GetWarningFormat() const override;
+		virtual const Elysium::Core::String& GetErrorFormat() const override;
+		virtual const Elysium::Core::String& GetCriticalFormat() const override;
 
-				virtual void SetTraceFormat(const Elysium::Core::String& Format) override;
-				virtual void SetDebugFormat(const Elysium::Core::String& Format) override;
-				virtual void SetInformationFormat(const Elysium::Core::String& Format) override;
-				virtual void SetWarningFormat(const Elysium::Core::String& Format) override;
-				virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
-				virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
+		virtual void SetTraceFormat(const Elysium::Core::String& Format) override;
+		virtual void SetDebugFormat(const Elysium::Core::String& Format) override;
+		virtual void SetInformationFormat(const Elysium::Core::String& Format) override;
+		virtual void SetWarningFormat(const Elysium::Core::String& Format) override;
+		virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
+		virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
 
-				virtual void Process(const Events::LogEvent& Event) override;
-			private:
-				std::map<Events::LogLevel, Elysium::Core::String> _Formats;
+		virtual void Process(const Events::LogEvent& Event) override;
+	private:
+		std::map<Events::LogLevel, Elysium::Core::String> _Formats;
 
-				const Elysium::Core::Text::Encoding& _Encoding;
-				Elysium::Core::IO::FileStream _FileStream;
-			};
-		}
-	}
+		const Elysium::Core::Text::Encoding& _Encoding;
+		Elysium::Core::IO::FileStream _FileStream;
+	};
 }
 #endif

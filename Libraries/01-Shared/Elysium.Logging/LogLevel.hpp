@@ -10,32 +10,26 @@ Copyright (C) 2017 waYne (CAM)
 #ifndef ELYSIUM_LOGGING_EVENTS_LOGLEVEL
 #define ELYSIUM_LOGGING_EVENTS_LOGLEVEL
 
-#ifndef _STDINT
-#include <stdint.h>
+#ifndef ELYSIUM_CORE_INTEGER
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Integer.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Logging::Events
 {
-	namespace Logging
-	{
-		namespace Events
-		{
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-			enum class LogLevel : uint32_t
+	enum class LogLevel : Elysium::Core::uint32_t
 #elif defined(__ANDROID__)
-			enum class LogLevel
+	enum class LogLevel
 #else
 #error "undefined os"
 #endif
-			{
-				Trace = 1,
-				Debug = 2,
-				Information = 3,
-				Warning = 4,
-				Error = 5,
-				Critical = 6,
-			};
-		}
-	}
+	{
+		Trace = 1,
+		Debug = 2,
+		Information = 3,
+		Warning = 4,
+		Error = 5,
+		Critical = 6,
+	};
 }
 #endif

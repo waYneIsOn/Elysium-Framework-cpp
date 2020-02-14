@@ -48,30 +48,27 @@ Copyright (C) 2017 waYne (CAM)
 
 #pragma warning(disable : 4251)	// the map etc. aren't accessible so we can just disable the warning - ToDo: will this affect other files if we don't enable the warning again?
 
-namespace Elysium
+namespace Elysium::Logging
 {
-	namespace Logging
+	class ELYSIUM_LOGGING_API LogManager final
 	{
-		class ELYSIUM_LOGGING_API LogManager final
-		{
-			friend class Logger;
-		public:
-			~LogManager();
+		friend class Logger;
+	public:
+		~LogManager();
 
-			static void RegisterAppender(IAppender& Appender, Filter& Filter);
-			static void UnregisterAppender(IAppender& Appender);
+		static void RegisterAppender(IAppender& Appender, Filter& Filter);
+		static void UnregisterAppender(IAppender& Appender);
 
-			static void Stop();
-		private:
-			LogManager();
+		static void Stop();
+	private:
+		LogManager();
 
-			static std::mutex _AppenderMutex;
+		static std::mutex _AppenderMutex;
 
-			static std::map<IAppender*, Filter> _AppenderFilterMap;
-			static Elysium::Core::Collections::Template::List<IFlushableAppender*> _FlushableAppender;
+		static std::map<IAppender*, Filter> _AppenderFilterMap;
+		static Elysium::Core::Collections::Template::List<IFlushableAppender*> _FlushableAppender;
 
-			static void Forward(const Events::LogEvent& Event);
-		};
-	}
+		static void Forward(const Events::LogEvent& Event);
+	};
 }
 #endif

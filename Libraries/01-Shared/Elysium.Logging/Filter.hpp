@@ -26,28 +26,25 @@ Copyright (C) 2017 waYne (CAM)
 #include "LogLevel.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Logging
 {
-	namespace Logging
+	class ELYSIUM_LOGGING_API Filter final
 	{
-		class ELYSIUM_LOGGING_API Filter final
-		{
-		public:
-			Filter();
-			Filter(const Elysium::Core::String& Scope, const Events::LogLevel& MinimumLogLevel, const Events::LogLevel& MaximumLogLevel);
-			Filter(const Filter& Source);
-			Filter(Filter&& Right) noexcept;
-			~Filter();
+	public:
+		Filter();
+		Filter(const Elysium::Core::String& Scope, const Events::LogLevel& MinimumLogLevel, const Events::LogLevel& MaximumLogLevel);
+		Filter(const Filter& Source);
+		Filter(Filter&& Right) noexcept;
+		~Filter();
 
-			Filter& operator=(const Filter& Source);
-			Filter& operator=(Filter&& Right) noexcept;
+		Filter& operator=(const Filter& Source);
+		Filter& operator=(Filter&& Right) noexcept;
 
-			bool IsInterested(const Events::LogEvent& Event);
-		private:
-			Elysium::Core::String _Scope;
-			Events::LogLevel _MinimumLogLevel;
-			Events::LogLevel _MaximumLogLevel;
-		};
-	}
+		bool IsInterested(const Events::LogEvent& Event);
+	private:
+		Elysium::Core::String _Scope;
+		Events::LogLevel _MinimumLogLevel;
+		Events::LogLevel _MaximumLogLevel;
+	};
 }
 #endif

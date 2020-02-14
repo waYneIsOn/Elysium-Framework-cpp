@@ -18,47 +18,35 @@ Copyright (C) 2017 waYne (CAM)
 #include <stdint.h>
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http::Headers
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HttpContentHeaders final : public HttpHeaders
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				namespace Headers
-				{
-					class ELYSIUM_COMMUNICATION_API HttpContentHeaders final : public HttpHeaders
-					{
-					public:
-						HttpContentHeaders();
-						HttpContentHeaders(const HttpContentHeaders& Source) = delete;
-						HttpContentHeaders(HttpContentHeaders&& Right) noexcept = delete;
-						virtual ~HttpContentHeaders();
+	public:
+		HttpContentHeaders();
+		HttpContentHeaders(const HttpContentHeaders& Source) = delete;
+		HttpContentHeaders(HttpContentHeaders&& Right) noexcept = delete;
+		virtual ~HttpContentHeaders();
 
-						HttpContentHeaders& operator=(const HttpContentHeaders& Source) = delete;
-						HttpContentHeaders& operator=(HttpContentHeaders&& Right) noexcept = delete;
+		HttpContentHeaders& operator=(const HttpContentHeaders& Source) = delete;
+		HttpContentHeaders& operator=(HttpContentHeaders&& Right) noexcept = delete;
 
-						const int64_t GetContentLength() const;
+		const int64_t GetContentLength() const;
 
-						void SetContentLength(const int64_t Value);
+		void SetContentLength(const int64_t Value);
 
 
-						// Allow
-						// ContentDisposition
-						// ContentEncoding
-						// ContentLanguage
-						// ContentLength
-						// ContentLocation
-						// ContentMD5
-						// ContentRange
-						// ContentType
-						// Expires
-						// LastModified
-					};
-				}
-			}
-		}
-	}
+		// Allow
+		// ContentDisposition
+		// ContentEncoding
+		// ContentLanguage
+		// ContentLength
+		// ContentLocation
+		// ContentMD5
+		// ContentRange
+		// ContentType
+		// Expires
+		// LastModified
+	};
 }
 #endif

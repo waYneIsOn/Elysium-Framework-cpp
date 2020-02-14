@@ -38,42 +38,33 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpContent.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HttpRequestMessage final
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class ELYSIUM_COMMUNICATION_API HttpRequestMessage final
-				{
-				public:
-					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
-					HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri, const HttpContent* Content);
-					HttpRequestMessage(const HttpRequestMessage& Source);
-					HttpRequestMessage(HttpRequestMessage&& Right) noexcept;
-					~HttpRequestMessage();
+	public:
+		HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri);
+		HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri& RequestUri, const HttpContent* Content);
+		HttpRequestMessage(const HttpRequestMessage& Source);
+		HttpRequestMessage(HttpRequestMessage&& Right) noexcept;
+		~HttpRequestMessage();
 					
-					HttpRequestMessage& operator=(const HttpRequestMessage& Source);
-					HttpRequestMessage& operator=(HttpRequestMessage&& Right) noexcept;
+		HttpRequestMessage& operator=(const HttpRequestMessage& Source);
+		HttpRequestMessage& operator=(HttpRequestMessage&& Right) noexcept;
 
-					Headers::HttpRequestHeaders& GetHeaders();
-					const HttpContent* GetContent() const;
+		Headers::HttpRequestHeaders& GetHeaders();
+		const HttpContent* GetContent() const;
 
-					const HttpMethod& GetMethod() const;
-					const Elysium::Core::Uri& GetRequestUri() const;
-					const Elysium::Core::Version& GetVersion() const;
-				private:
-					Headers::HttpRequestHeaders _Headers;
-					HttpMethod _Method;
-					std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
-					Elysium::Core::Uri _RequestUri;
-					Elysium::Core::Version _Version;
-					const HttpContent* _Content;
-				};
-			}
-		}
-	}
+		const HttpMethod& GetMethod() const;
+		const Elysium::Core::Uri& GetRequestUri() const;
+		const Elysium::Core::Version& GetVersion() const;
+	private:
+		Headers::HttpRequestHeaders _Headers;
+		HttpMethod _Method;
+		std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
+		Elysium::Core::Uri _RequestUri;
+		Elysium::Core::Version _Version;
+		const HttpContent* _Content;
+	};
 }
 #endif

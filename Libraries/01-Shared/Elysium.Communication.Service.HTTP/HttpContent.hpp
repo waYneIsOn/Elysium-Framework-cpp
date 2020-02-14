@@ -30,31 +30,22 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HttpContent
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class ELYSIUM_COMMUNICATION_API HttpContent
-				{
-				public:
-					virtual ~HttpContent() = 0;
+	public:
+		virtual ~HttpContent() = 0;
 
-					const Headers::HttpContentHeaders& GetHeaders() const;
+		const Headers::HttpContentHeaders& GetHeaders() const;
 
-					//virtual void ReadAsByteArray(Elysium::Core::byte* Bytes, size_t* Length) const = 0;
-					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const = 0;
-					virtual Elysium::Core::String ReadAsString() const = 0;
-				protected:
-					HttpContent();
+		//virtual void ReadAsByteArray(Elysium::Core::byte* Bytes, size_t* Length) const = 0;
+		virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const = 0;
+		virtual Elysium::Core::String ReadAsString() const = 0;
+	protected:
+		HttpContent();
 
-					Headers::HttpContentHeaders _Headers;
-				};
-			}
-		}
-	}
+		Headers::HttpContentHeaders _Headers;
+	};
 }
 #endif

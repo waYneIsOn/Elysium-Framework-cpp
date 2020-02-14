@@ -26,37 +26,34 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Exception.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Logging
 {
-	namespace Logging
+	class ELYSIUM_LOGGING_API Logger final
 	{
-		class ELYSIUM_LOGGING_API Logger final
-		{
-		public:
-			Logger(const Elysium::Core::Reflection::Type& Type);
-			Logger(const Elysium::Core::String& Scope);
-			~Logger();
+	public:
+		Logger(const Elysium::Core::Reflection::Type& Type);
+		Logger(const Elysium::Core::String& Scope);
+		~Logger();
 
-			void Trace(const Elysium::Core::String& Message) const;
-			void Trace(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Trace(const Elysium::Core::String& Message) const;
+		void Trace(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 
-			void Debug(const Elysium::Core::String& Message) const;
-			void Debug(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Debug(const Elysium::Core::String& Message) const;
+		void Debug(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 
-			void Information(const Elysium::Core::String& Message) const;
-			void Information(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Information(const Elysium::Core::String& Message) const;
+		void Information(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 
-			void Warning(const Elysium::Core::String& Message) const;
-			void Warning(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Warning(const Elysium::Core::String& Message) const;
+		void Warning(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 
-			void Error(const Elysium::Core::String& Message) const;
-			void Error(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Error(const Elysium::Core::String& Message) const;
+		void Error(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
 
-			void Critical(const Elysium::Core::String& Message) const;
-			void Critical(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
-		private:
-			Elysium::Core::String _Scope;
-		};
-	}
+		void Critical(const Elysium::Core::String& Message) const;
+		void Critical(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+	private:
+		Elysium::Core::String _Scope;
+	};
 }
 #endif

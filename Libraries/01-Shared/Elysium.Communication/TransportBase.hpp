@@ -18,34 +18,28 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Transport
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API TransportBase
 	{
-		namespace Transport
-		{
-			class ELYSIUM_COMMUNICATION_API TransportBase
-			{
-			public:
-				virtual ~TransportBase();
+	public:
+		virtual ~TransportBase();
 				
-				virtual bool GetIsOpen() const = 0;
+		virtual bool GetIsOpen() const = 0;
 				
-				//bool Peek();
-				//virtual void Open() = 0;
-				//virtual void Close() = 0;
-				/*
-				virtual int Read(...) = 0;
-				virtual void Write(...) = 0;
-				virtual void Flush();
-				*/
-				virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) = 0;
-				virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) = 0;
-				virtual void Flush();
-			protected:
-				TransportBase();
-			};
-		}
-	}
+		//bool Peek();
+		//virtual void Open() = 0;
+		//virtual void Close() = 0;
+		/*
+		virtual int Read(...) = 0;
+		virtual void Write(...) = 0;
+		virtual void Flush();
+		*/
+		virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) = 0;
+		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) = 0;
+		virtual void Flush();
+	protected:
+		TransportBase();
+	};
 }
 #endif

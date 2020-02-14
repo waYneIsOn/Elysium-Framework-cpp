@@ -18,36 +18,30 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/Stream.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Transport
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API StreamTransport : public TransportBase
 	{
-		namespace Transport
-		{
-			class ELYSIUM_COMMUNICATION_API StreamTransport : public TransportBase
-			{
-			public:
-				StreamTransport(Elysium::Core::IO::Stream* InputStream, Elysium::Core::IO::Stream* OutputStream);
-				virtual ~StreamTransport();
+	public:
+		StreamTransport(Elysium::Core::IO::Stream* InputStream, Elysium::Core::IO::Stream* OutputStream);
+		virtual ~StreamTransport();
 
-				virtual bool GetIsOpen() const override;
-				const Elysium::Core::IO::Stream* GetInputStream() const;
-				const Elysium::Core::IO::Stream* GetOutputStream() const;
+		virtual bool GetIsOpen() const override;
+		const Elysium::Core::IO::Stream* GetInputStream() const;
+		const Elysium::Core::IO::Stream* GetOutputStream() const;
 
-				//virtual void Open() override;
-				//virtual void Close() override;
-				//int Read(...);
-				//void Write(...);
-				//void Flush();
-				virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
-				virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) override;
-			protected:
-				StreamTransport();
+		//virtual void Open() override;
+		//virtual void Close() override;
+		//int Read(...);
+		//void Write(...);
+		//void Flush();
+		virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
+		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) override;
+	protected:
+		StreamTransport();
 
-				Elysium::Core::IO::Stream* _InputStream;
-				Elysium::Core::IO::Stream* _OutputStream;
-			};
-		}
-	}
+		Elysium::Core::IO::Stream* _InputStream;
+		Elysium::Core::IO::Stream* _OutputStream;
+	};
 }
 #endif

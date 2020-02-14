@@ -18,30 +18,18 @@ Copyright (C) 2017 waYne (CAM)
 #include "AuthenticationHeaderValue.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http::Headers
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HttpResponseHeaders final : public HttpHeaders
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				namespace Headers
-				{
-					class ELYSIUM_COMMUNICATION_API HttpResponseHeaders final : public HttpHeaders
-					{
-					public:
-						HttpResponseHeaders();
-						HttpResponseHeaders(const HttpResponseHeaders& Source);
-						HttpResponseHeaders(HttpResponseHeaders&& Right) noexcept;
-						virtual ~HttpResponseHeaders();
+	public:
+		HttpResponseHeaders();
+		HttpResponseHeaders(const HttpResponseHeaders& Source);
+		HttpResponseHeaders(HttpResponseHeaders&& Right) noexcept;
+		virtual ~HttpResponseHeaders();
 
-						HttpResponseHeaders& operator=(const HttpResponseHeaders& Source);
-						HttpResponseHeaders& operator=(HttpResponseHeaders&& Right) noexcept;
-					};
-				}
-			}
-		}
-	}
+		HttpResponseHeaders& operator=(const HttpResponseHeaders& Source);
+		HttpResponseHeaders& operator=(HttpResponseHeaders&& Right) noexcept;
+	};
 }
 #endif

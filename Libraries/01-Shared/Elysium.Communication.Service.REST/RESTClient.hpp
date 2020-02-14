@@ -22,38 +22,29 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication/JSONProtocol.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Rest
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API RESTClient final
 	{
-		namespace Service
-		{
-			namespace REST
-			{
-				class ELYSIUM_COMMUNICATION_API RESTClient final
-				{
-				public:
-					RESTClient();
-					~RESTClient();
+	public:
+		RESTClient();
+		~RESTClient();
 
-					void Connect(const Elysium::Core::Uri& Uri);
-					void Disconnect();
+		void Connect(const Elysium::Core::Uri& Uri);
+		void Disconnect();
 
-					template <class T>
-					T Get(const Elysium::Core::String& Path);
+		template <class T>
+		T Get(const Elysium::Core::String& Path);
 
-					void TestGET(const Elysium::Core::String& Path);
-				private:
-					Elysium::Communication::Service::Http::HttpClient _HttpClient;
-				};
+		void TestGET(const Elysium::Core::String& Path);
+	private:
+		Elysium::Communication::Service::Http::HttpClient _HttpClient;
+	};
 
-				template<class T>
-				inline T RESTClient::Get(const Elysium::Core::String & Path)
-				{
-					return T();
-				}
-			}
-		}
+	template<class T>
+	inline T RESTClient::Get(const Elysium::Core::String & Path)
+	{
+		return T();
 	}
 }
 #endif

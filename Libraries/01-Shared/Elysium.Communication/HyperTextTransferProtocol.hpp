@@ -22,24 +22,18 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Protocol
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HyperTextTransferProtocol final : public TextProtocol
 	{
-		namespace Protocol
-		{
-			class ELYSIUM_COMMUNICATION_API HyperTextTransferProtocol final : public TextProtocol
-			{
-			public:
-				HyperTextTransferProtocol(Transport::TransportBase& Transport);
-				HyperTextTransferProtocol(Transport::TransportBase& Transport, const Elysium::Core::Text::Encoding& Encoding);
-				~HyperTextTransferProtocol();
+	public:
+		HyperTextTransferProtocol(Transport::TransportBase& Transport);
+		HyperTextTransferProtocol(Transport::TransportBase& Transport, const Elysium::Core::Text::Encoding& Encoding);
+		~HyperTextTransferProtocol();
 
-				Elysium::Core::String ReadResponseHeader();
-				void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
-				bool ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
-			};
-		}
-	}
+		Elysium::Core::String ReadResponseHeader();
+		void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
+		bool ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
+	};
 }
 #endif

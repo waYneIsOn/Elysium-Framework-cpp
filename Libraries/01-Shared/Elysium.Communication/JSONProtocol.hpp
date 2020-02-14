@@ -23,24 +23,18 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Protocol
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API JSONProtocol final : public TextProtocol
 	{
-		namespace Protocol
-		{
-			class ELYSIUM_COMMUNICATION_API JSONProtocol final : public TextProtocol
-			{
-			public:
-				JSONProtocol(Transport::TransportBase& Transport);
-				~JSONProtocol();
+	public:
+		JSONProtocol(Transport::TransportBase& Transport);
+		~JSONProtocol();
 
-				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
+		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
 
-				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
-			};
-		}
-	}
+		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
+	};
 }
 #endif
 */

@@ -18,23 +18,17 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Protocol
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API BinaryProtocol final : public ProtocolBase
 	{
-		namespace Protocol
-		{
-			class ELYSIUM_COMMUNICATION_API BinaryProtocol final : public ProtocolBase
-			{
-			public:
-				BinaryProtocol(Transport::TransportBase& Transport);
-				~BinaryProtocol();
+	public:
+		BinaryProtocol(Transport::TransportBase& Transport);
+		~BinaryProtocol();
 
-				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
+		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
 
-				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
-			};
-		}
-	}
+		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
+	};
 }
 #endif

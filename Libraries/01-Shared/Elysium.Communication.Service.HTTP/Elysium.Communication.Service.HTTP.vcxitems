@@ -4,6 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}</ItemsProjectGuid>
+    <ItemsProjectName>Elysium.Communication.Service.Http</ItemsProjectName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

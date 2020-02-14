@@ -22,25 +22,16 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API StringContent final : public ByteArrayContent
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class ELYSIUM_COMMUNICATION_API StringContent final : public ByteArrayContent
-				{
-				public:
-					StringContent(const Elysium::Core::String& Content);
-					StringContent(const Elysium::Core::String& Content, const Elysium::Core::Text::Encoding& Encoding);
-					virtual ~StringContent();
-				private:
-					//const Elysium::Core::Text::Encoding _Encoding;
-				};
-			}
-		}
-	}
+	public:
+		StringContent(const Elysium::Core::String& Content);
+		StringContent(const Elysium::Core::String& Content, const Elysium::Core::Text::Encoding& Encoding);
+		virtual ~StringContent();
+	private:
+		//const Elysium::Core::Text::Encoding _Encoding;
+	};
 }
 #endif

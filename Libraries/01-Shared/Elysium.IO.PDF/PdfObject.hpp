@@ -14,26 +14,20 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::IO::PDF
 {
-	namespace IO
+	// represents a node in the tree structure
+	class ELYSIUM_IO_PDF_API PdfObject
 	{
-		namespace PDF
-		{
-			// represents a node in the tree structure
-			class ELYSIUM_IO_PDF_API PdfObject
-			{
-			public:
-				virtual ~PdfObject() = 0;
-			protected:
-				PdfObject();
-			/*
-			private:
-				unsigned int _ObjectNumber;
-				unsigned int _GenerationNumber;
-			*/
-			};
-		}
-	}
+	public:
+		virtual ~PdfObject() = 0;
+	protected:
+		PdfObject();
+	/*
+	private:
+		unsigned int _ObjectNumber;
+		unsigned int _GenerationNumber;
+	*/
+	};
 }
 #endif

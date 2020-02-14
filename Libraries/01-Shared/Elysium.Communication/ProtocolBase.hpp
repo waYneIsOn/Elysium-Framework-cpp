@@ -22,26 +22,20 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Protocol
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API ProtocolBase
 	{
-		namespace Protocol
-		{
-			class ELYSIUM_COMMUNICATION_API ProtocolBase
-			{
-			public:
-				virtual ~ProtocolBase();
+	public:
+		virtual ~ProtocolBase();
 
-				virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) = 0;
+		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) = 0;
 
-				virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
-			protected:
-				ProtocolBase(Transport::TransportBase& Transport);
+		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
+	protected:
+		ProtocolBase(Transport::TransportBase& Transport);
 
-				Transport::TransportBase& _Transport;
-			};
-		}
-	}
+		Transport::TransportBase& _Transport;
+	};
 }
 #endif

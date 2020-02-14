@@ -13,18 +13,18 @@
 #endif
 
 
-Elysium::Communication::Service::REST::RESTClient::RESTClient()
+Elysium::Communication::Service::Rest::RESTClient::RESTClient()
 {
 }
-Elysium::Communication::Service::REST::RESTClient::~RESTClient()
+Elysium::Communication::Service::Rest::RESTClient::~RESTClient()
 {
 }
 
-void Elysium::Communication::Service::REST::RESTClient::Connect(const Elysium::Core::Uri & Uri)
+void Elysium::Communication::Service::Rest::RESTClient::Connect(const Elysium::Core::Uri & Uri)
 {
 	_HttpClient.Connect(Uri);
 }
-void Elysium::Communication::Service::REST::RESTClient::Disconnect()
+void Elysium::Communication::Service::Rest::RESTClient::Disconnect()
 {
 	_HttpClient.Disconnect();
 }
@@ -38,7 +38,7 @@ using namespace Elysium::Core;
 using namespace Elysium::Core::IO;
 using namespace Elysium::Core::Json;
 
-void Elysium::Communication::Service::REST::RESTClient::TestGET(const Elysium::Core::String & Path)
+void Elysium::Communication::Service::Rest::RESTClient::TestGET(const Elysium::Core::String & Path)
 {
 	HttpResponseMessage Response = _HttpClient.Get(Path);
 	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());

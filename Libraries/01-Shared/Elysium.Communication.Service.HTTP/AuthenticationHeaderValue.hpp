@@ -18,44 +18,32 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http::Headers
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API AuthenticationHeaderValue final
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				namespace Headers
-				{
-					class ELYSIUM_COMMUNICATION_API AuthenticationHeaderValue final
-					{
-					public:
-						AuthenticationHeaderValue(const Elysium::Core::String& Scheme);
-						AuthenticationHeaderValue(const Elysium::Core::String& Scheme, const Elysium::Core::String& Parameter);
-						AuthenticationHeaderValue(const AuthenticationHeaderValue& Value) = delete;
-						AuthenticationHeaderValue(AuthenticationHeaderValue&& Right) noexcept = delete;
-						~AuthenticationHeaderValue();
+	public:
+		AuthenticationHeaderValue(const Elysium::Core::String& Scheme);
+		AuthenticationHeaderValue(const Elysium::Core::String& Scheme, const Elysium::Core::String& Parameter);
+		AuthenticationHeaderValue(const AuthenticationHeaderValue& Value) = delete;
+		AuthenticationHeaderValue(AuthenticationHeaderValue&& Right) noexcept = delete;
+		~AuthenticationHeaderValue();
 
-						AuthenticationHeaderValue& operator=(const AuthenticationHeaderValue& Source) = delete;
-						AuthenticationHeaderValue& operator=(AuthenticationHeaderValue&& Right) noexcept = delete;
+		AuthenticationHeaderValue& operator=(const AuthenticationHeaderValue& Source) = delete;
+		AuthenticationHeaderValue& operator=(AuthenticationHeaderValue&& Right) noexcept = delete;
 
-						// relational operators
-						bool operator==(const AuthenticationHeaderValue& Other);
-						bool operator!=(const AuthenticationHeaderValue& Other);
+		// relational operators
+		bool operator==(const AuthenticationHeaderValue& Other);
+		bool operator!=(const AuthenticationHeaderValue& Other);
 
-						const Elysium::Core::String& GetScheme() const;
-						const Elysium::Core::String& GetParameter() const;
+		const Elysium::Core::String& GetScheme() const;
+		const Elysium::Core::String& GetParameter() const;
 
-						void SetScheme(const Elysium::Core::String& Value);
-						void SetParameter(const Elysium::Core::String& Value);
-					private:
-						Elysium::Core::String _Scheme;
-						Elysium::Core::String _Parameter;
-					};
-				}
-			}
-		}
-	}
+		void SetScheme(const Elysium::Core::String& Value);
+		void SetParameter(const Elysium::Core::String& Value);
+	private:
+		Elysium::Core::String _Scheme;
+		Elysium::Core::String _Parameter;
+	};
 }
 #endif

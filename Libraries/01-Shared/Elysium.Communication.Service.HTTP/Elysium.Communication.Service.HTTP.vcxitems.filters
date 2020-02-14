@@ -22,6 +22,9 @@
     <Filter Include="Authentication\NTLM">
       <UniqueIdentifier>{ff11d0ae-3630-47eb-bf27-1816f4e45272}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Authentication\Bearer">
+      <UniqueIdentifier>{51f4a0b4-0229-4c07-9232-f5f0127ab65a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpClient.cpp" />

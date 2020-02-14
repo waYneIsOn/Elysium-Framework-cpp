@@ -3,7 +3,7 @@
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.REST/RESTClient.hpp"
 
 using namespace Elysium::Communication::Service::Http;
-using namespace Elysium::Communication::Service::REST;
+using namespace Elysium::Communication::Service::Rest;
 using namespace Elysium::Core;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

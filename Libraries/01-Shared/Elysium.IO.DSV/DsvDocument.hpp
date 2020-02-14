@@ -14,19 +14,13 @@ Copyright (C) 2017 waYne (CAM)
 #include "API.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::IO::DSV
 {
-	namespace IO
+	class ELYSIUM_IO_DSV_API DsvDocument final
 	{
-		namespace DSV
-		{
-			class ELYSIUM_IO_DSV_API DsvDocument final
-			{
-			public:
-				DsvDocument();
-				~DsvDocument();
-			};
-		}
-	}
+	public:
+		DsvDocument();
+		~DsvDocument();
+	};
 }
 #endif

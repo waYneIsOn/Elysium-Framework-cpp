@@ -26,27 +26,18 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpResponseMessage.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class HttpMessageParser final
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class HttpMessageParser final
-				{
-				public:
-					~HttpMessageParser();
+	public:
+		~HttpMessageParser();
 
-					static Elysium::Core::String ParseRequestMessage(HttpRequestMessage& Request);
+		static Elysium::Core::String ParseRequestMessage(HttpRequestMessage& Request);
 
-					static HttpResponseMessage ParseResponseMessageHeader(HttpRequestMessage& Request, const Elysium::Core::String& CompleteResponseHeader);
-				private:
-					HttpMessageParser();
-				};
-			}
-		}
-	}
+		static HttpResponseMessage ParseResponseMessageHeader(HttpRequestMessage& Request, const Elysium::Core::String& CompleteResponseHeader);
+	private:
+		HttpMessageParser();
+	};
 }
 #endif

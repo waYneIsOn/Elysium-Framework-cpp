@@ -22,27 +22,18 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API ByteArrayContent : public HttpContent
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class ELYSIUM_COMMUNICATION_API ByteArrayContent : public HttpContent
-				{
-				public:
-					ByteArrayContent(const Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Content);
-					virtual ~ByteArrayContent();
+	public:
+		ByteArrayContent(const Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Content);
+		virtual ~ByteArrayContent();
 
-					virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
-					virtual Elysium::Core::String ReadAsString() const override;
-				protected:
-					Elysium::Core::Collections::Template::List<Elysium::Core::byte> _Content;
-				};
-			}
-		}
-	}
+		virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
+		virtual Elysium::Core::String ReadAsString() const override;
+	protected:
+		Elysium::Core::Collections::Template::List<Elysium::Core::byte> _Content;
+	};
 }
 #endif

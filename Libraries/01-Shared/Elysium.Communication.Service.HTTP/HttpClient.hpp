@@ -42,68 +42,59 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Decimal.hpp"
 #endif
 
-namespace Elysium
+namespace Elysium::Communication::Service::Http
 {
-	namespace Communication
+	class ELYSIUM_COMMUNICATION_API HttpClient final
 	{
-		namespace Service
-		{
-			namespace Http
-			{
-				class ELYSIUM_COMMUNICATION_API HttpClient final
-				{
-				public:
-					HttpClient();
-					HttpClient(const HttpClient& Source) = delete;
-					HttpClient(HttpClient&& Right) noexcept = delete;
-					~HttpClient();
+	public:
+		HttpClient();
+		HttpClient(const HttpClient& Source) = delete;
+		HttpClient(HttpClient&& Right) noexcept = delete;
+		~HttpClient();
 
-					HttpClient& operator=(const HttpClient& Source) = delete;
-					HttpClient& operator=(HttpClient&& Right) noexcept = delete;
+		HttpClient& operator=(const HttpClient& Source) = delete;
+		HttpClient& operator=(HttpClient&& Right) noexcept = delete;
 
-					Headers::HttpRequestHeaders& GetDefaultRequestHeaders();
+		Headers::HttpRequestHeaders& GetDefaultRequestHeaders();
 
-					void Connect(const Elysium::Core::Uri& Uri);
-					void Disconnect();
+		void Connect(const Elysium::Core::Uri& Uri);
+		void Disconnect();
 
-					HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Delete(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption);
+		HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Delete(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption);
 
-					HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Get(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Get(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Options(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Options(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-					HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-				private:
-					Core::Net::Sockets::Socket _OwnedSocket;
-					Transport::TcpClient _OwnedClient;
-					Protocol::HyperTextTransferProtocol _OwnedProtocol;
+		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+	private:
+		Core::Net::Sockets::Socket _OwnedSocket;
+		Transport::TcpClient _OwnedClient;
+		Protocol::HyperTextTransferProtocol _OwnedProtocol;
 
-					Core::Net::Sockets::Socket* _Socket;
-					Transport::TransportBase* _Client;
+		Core::Net::Sockets::Socket* _Socket;
+		Transport::TransportBase* _Client;
 
-					Headers::HttpRequestHeaders _DefaultRequestHeaders;
+		Headers::HttpRequestHeaders _DefaultRequestHeaders;
 
-					Elysium::Core::Uri _BaseAddress;
+		Elysium::Core::Uri _BaseAddress;
 
-					HttpCompletionOption _PreviousCompletionOption;
+		HttpCompletionOption _PreviousCompletionOption;
 
-					void SendRequest(HttpRequestMessage& Request);
-					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
-					HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption, HttpResponseMessage& PreviousResponse);
-					void ReceiveResponseContent(HttpResponseMessage& Response);
-				};
-			}
-		}
-	}
+		void SendRequest(HttpRequestMessage& Request);
+		HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption);
+		HttpResponseMessage ReceiveResponse(HttpRequestMessage& Request, const HttpCompletionOption CompletionOption, HttpResponseMessage& PreviousResponse);
+		void ReceiveResponseContent(HttpResponseMessage& Response);
+	};
 }
 #endif
