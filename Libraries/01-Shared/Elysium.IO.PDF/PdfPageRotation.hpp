@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_IO_PDF_PDFPAGEROTATION
 #define ELYSIUM_IO_PDF_PDFPAGEROTATION
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_CORE_INTEGER
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Integer.hpp"

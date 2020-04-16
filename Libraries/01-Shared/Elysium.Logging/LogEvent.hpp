@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_LOGGING_EVENTS_LOGEVENT
 #define ELYSIUM_LOGGING_EVENTS_LOGEVENT
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_LOGGER_API
 #include "API.hpp"

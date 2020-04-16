@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TRANSPORTBASE
 #define ELYSIUM_COMMUNICATION_TRANSPORT_TRANSPORTBASE
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_COMMUNICATION_API
 #include "API.hpp"

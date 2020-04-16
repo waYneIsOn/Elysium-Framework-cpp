@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_LDAP_LDAPMESSAGETYPE
 #define ELYSIUM_COMMUNICATION_SERVICE_LDAP_LDAPMESSAGETYPE
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_CORE_INTEGER
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Integer.hpp"

@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_LOGGING_EVENTS_LOGLEVEL
 #define ELYSIUM_LOGGING_EVENTS_LOGLEVEL
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_CORE_INTEGER
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Integer.hpp"

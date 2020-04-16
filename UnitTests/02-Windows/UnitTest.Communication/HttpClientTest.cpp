@@ -228,5 +228,15 @@ namespace UnitTestCommunication
 			Assert::AreEqual((uint32_t)HttpStatusCode::Unauthorized, (uint32_t)UnauthorizedResponse.GetStatusCode());
 			Assert::AreEqual((uint32_t)HttpStatusCode::OK, (uint32_t)AuthorizedResponse.GetStatusCode());
 		}
+
+		TEST_METHOD(TLSGet)
+		{
+			HttpClient Client = HttpClient();
+			Client.Connect(Uri(u"https://httpbin.org"));
+			//HttpResponseMessage Response = Client.Get(u"");
+			Client.Disconnect();
+
+			int x = 234;
+		}
 	};
 }

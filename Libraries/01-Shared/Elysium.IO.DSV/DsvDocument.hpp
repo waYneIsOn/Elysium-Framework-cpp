@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_IO_DSV_DSVDOCUMENT
 #define ELYSIUM_IO_DSV_DSVDOCUMENT
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_IO_DSV_API
 #include "API.hpp"

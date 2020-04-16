@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPMESSAGEPARSER
 #define ELYSIUM_COMMUNICATION_SERVICE_HTTP_HTTPMESSAGEPARSER
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_CORE_STRING
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"

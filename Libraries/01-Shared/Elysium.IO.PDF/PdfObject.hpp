@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_IO_PDF_PDFOBJECT
 #define ELYSIUM_IO_PDF_PDFOBJECT
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_IO_PDF_API
 #include "API.hpp"

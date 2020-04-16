@@ -37,11 +37,9 @@ Elysium::Communication::Service::Http::HttpClient::HttpClient()
 	_DefaultRequestHeaders(Headers::HttpRequestHeaders()),
 	_BaseAddress(Elysium::Core::Uri(String())),
 	_PreviousCompletionOption(HttpCompletionOption::ResponseContentRead)
-{
-}
+{ }
 Elysium::Communication::Service::Http::HttpClient::~HttpClient()
-{
-}
+{ }
 
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::HttpClient::GetDefaultRequestHeaders()
 {

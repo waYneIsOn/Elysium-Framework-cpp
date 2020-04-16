@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_LOGGING_APPENDER_FILEAPPENDER
 #define ELYSIUM_LOGGING_APPENDER_FILEAPPENDER
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_LOGGING_IAPPENDER
 #include "IAppender.hpp"

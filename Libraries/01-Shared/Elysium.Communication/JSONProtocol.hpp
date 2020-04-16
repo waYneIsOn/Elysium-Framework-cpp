@@ -6,10 +6,12 @@ Copyright (C) 2017 waYne (CAM)
 ===========================================================================
 */
 /*
-#pragma once
-
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_JSONPROTOCOL
 #define ELYSIUM_COMMUNICATION_PROTOCOL_JSONPROTOCOL
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
 #include "TextProtocol.hpp"

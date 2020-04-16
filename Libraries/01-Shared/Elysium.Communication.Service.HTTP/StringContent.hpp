@@ -5,10 +5,12 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#pragma once
-
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_STRINGCONTENT
 #define ELYSIUM_COMMUNICATION_SERVICE_HTTP_STRINGCONTENT
+
+#ifdef _MSC_VER
+#pragma once
+#endif
 
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_HTTP_BYTEARRAYCONTENT
 #include "ByteArrayContent.hpp"
