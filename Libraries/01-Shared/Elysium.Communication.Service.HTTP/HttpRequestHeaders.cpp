@@ -3,13 +3,11 @@
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders()
 	: HttpHeaders(),
 	_Authorization(Elysium::Core::String())
-{
-}
+{ }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
 	: //HttpHeaders(Source),
 	_Authorization(Elysium::Core::String())
-{
-}
+{ }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right) noexcept
 	: //HttpHeaders(Right),
 	_Authorization(Elysium::Core::String())
@@ -17,8 +15,7 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestH
 	*this = std::move(Right);
 }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::~HttpRequestHeaders()
-{
-}
+{ }
 
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::operator=(const HttpRequestHeaders & Source)
 {

@@ -45,9 +45,9 @@ namespace Elysium::Communication::Service::Http::Headers
 		void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Template::List<Elysium::Core::String> & Values);
 		void Add(const Elysium::Core::String& Name, const Elysium::Core::String& Value);
 		void Clear();
-		bool Contains(const char16_t* Name) const;
+		bool Contains(const char* Name) const;
 		bool Contains(const Elysium::Core::String& Name) const;
-		const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const char16_t* Name) const;
+		const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const char* Name) const;
 		const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
 		bool Remove(const Elysium::Core::String& Name);
 	protected:

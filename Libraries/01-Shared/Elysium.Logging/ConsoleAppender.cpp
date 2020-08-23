@@ -8,12 +8,12 @@ Elysium::Logging::Appender::ConsoleAppender::ConsoleAppender()
 	: Elysium::Logging::IAppender(),
 	_Formats(std::map<Events::LogLevel, Elysium::Core::String>())
 {
-	_Formats[Events::LogLevel::Trace] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Debug] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Information] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Warning] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Error] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Critical] = u"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Trace] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Debug] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Information] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Warning] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Error] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Critical] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
 }
 Elysium::Logging::Appender::ConsoleAppender::~ConsoleAppender()
 {

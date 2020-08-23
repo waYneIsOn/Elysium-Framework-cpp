@@ -20,7 +20,7 @@ namespace UnitTestCommunication
 			TcpClient Client = TcpClient(ClientSocket);
 			BinaryProtocol Protocol = BinaryProtocol(Client);
 
-			Client.Connect(String(u"www.google.com"), 80);
+			Client.Connect(String("www.google.com"), 80);
 			Client.Close();
 		}
 	};

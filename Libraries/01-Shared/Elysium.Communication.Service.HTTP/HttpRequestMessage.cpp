@@ -2,24 +2,20 @@
 
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(const HttpMethod& Method, const Elysium::Core::Uri & RequestUri)
 	: _Method(Method), _RequestUri(RequestUri), _Version(1, 1), _Content(nullptr)
-{
-}
+{ }
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(const HttpMethod & Method, const Elysium::Core::Uri & RequestUri, const HttpContent * Content)
 	: _Method(Method), _RequestUri(RequestUri), _Version(1, 1), _Content(Content)
-{
-}
+{ }
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(const HttpRequestMessage & Source)
 	: _Method(Source._Method), _RequestUri(Source._RequestUri), _Version(Elysium::Core::Version(Source._Version)), _Content(nullptr)
-{
-}
+{ }
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(HttpRequestMessage && Right) noexcept
 	: _Method(Elysium::Core::String()), _RequestUri(Right._RequestUri), _Content(nullptr)
 {
 	*this = std::move(Right);
 }
 Elysium::Communication::Service::Http::HttpRequestMessage::~HttpRequestMessage()
-{
-}
+{ }
 
 Elysium::Communication::Service::Http::HttpRequestMessage & Elysium::Communication::Service::Http::HttpRequestMessage::operator=(const HttpRequestMessage & Source)
 {

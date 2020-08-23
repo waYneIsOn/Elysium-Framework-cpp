@@ -30,12 +30,13 @@ namespace Elysium::Communication::Service::Http
 	{
 	public:
 		ByteArrayContent(const Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Content);
+		ByteArrayContent(const Elysium::Core::Collections::Template::Array<Elysium::Core::byte>& Content);
 		virtual ~ByteArrayContent();
 
 		virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
 		virtual Elysium::Core::String ReadAsString() const override;
 	protected:
-		Elysium::Core::Collections::Template::List<Elysium::Core::byte> _Content;
+		const Elysium::Core::Collections::Template::Array<Elysium::Core::byte> _Content;
 	};
 }
 #endif

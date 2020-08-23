@@ -34,8 +34,8 @@ namespace Elysium::Communication::Protocol
 		~HyperTextTransferProtocol();
 
 		Elysium::Core::String ReadResponseHeader();
-		void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
-		bool ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::Byte>* Value);
+		void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::byte>* Value);
+		bool ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Value);
 	};
 }
 #endif

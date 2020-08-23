@@ -2,15 +2,12 @@
 
 Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::String& Scheme)
 	: _Scheme(Scheme), _Parameter()
-{
-}
+{ }
 Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::String & Scheme, const Elysium::Core::String & Parameter)
 	: _Scheme(Scheme), _Parameter(Parameter)
-{
-}
+{ }
 Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::~AuthenticationHeaderValue()
-{
-}
+{ }
 
 bool Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::operator==(const AuthenticationHeaderValue & Other)
 {

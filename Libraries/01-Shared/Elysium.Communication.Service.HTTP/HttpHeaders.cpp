@@ -5,8 +5,7 @@
 #endif
 
 Elysium::Communication::Service::Http::Headers::HttpHeaders::~HttpHeaders()
-{
-}
+{ }
 
 const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> & Elysium::Communication::Service::Http::Headers::HttpHeaders::GetInternalHeaders() const
 {
@@ -27,7 +26,7 @@ void Elysium::Communication::Service::Http::Headers::HttpHeaders::Clear()
 {
 	_Headers.clear();
 }
-bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const char16_t * Name) const
+bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const char * Name) const
 {
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
@@ -51,12 +50,12 @@ bool Elysium::Communication::Service::Http::Headers::HttpHeaders::Contains(const
 		return true;
 	}
 }
-const Elysium::Core::Collections::Template::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const char16_t * Name) const
+const Elysium::Core::Collections::Template::List<Elysium::Core::String>& Elysium::Communication::Service::Http::Headers::HttpHeaders::GetValues(const char * Name) const
 {
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{	// ToDo: throw specific exception
-		throw Elysium::Core::Exception(u"header not found");
+		throw Elysium::Core::Exception("header not found");
 	}
 	else
 	{
@@ -68,7 +67,7 @@ const Elysium::Core::Collections::Template::List<Elysium::Core::String>& Elysium
 	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(Name);
 	if (Iterator == _Headers.end())
 	{	// ToDo: throw specific exception
-		throw Elysium::Core::Exception(u"header not found");
+		throw Elysium::Core::Exception("header not found");
 	}
 	else
 	{

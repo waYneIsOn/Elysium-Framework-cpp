@@ -39,7 +39,7 @@ namespace Elysium::Communication::Protocol
 		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
 		virtual size_t ReadString(Elysium::Core::String* Value);
 	protected:
-		Elysium::Core::Text::Encoding _Encoding;
+		const Elysium::Core::Text::Encoding& _Encoding;
 		const static size_t _ReadBufferSize = 1024;
 		Elysium::Core::byte _ReadBuffer[1024];
 		Elysium::Core::Collections::Template::List<Elysium::Core::byte> _TotalReadBuffer = Elysium::Core::Collections::Template::List<Elysium::Core::byte>(_ReadBufferSize);

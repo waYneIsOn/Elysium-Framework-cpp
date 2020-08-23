@@ -17,12 +17,12 @@ namespace UnitTestCommunication
 			RESTClient Client = RESTClient();
 			Client.Connect(_ServiceUri);
 			
-			Client.TestGET(u"/todos/1");
-			Client.TestGET(u"/todos");
+			Client.TestGET("/todos/1");
+			Client.TestGET("/todos");
 			
 			Client.Disconnect();
 		}
 	private:
-		Uri _ServiceUri = Uri(u"http://jsonplaceholder.typicode.com");
+		Uri _ServiceUri = Uri("http://jsonplaceholder.typicode.com");
 	};
 }

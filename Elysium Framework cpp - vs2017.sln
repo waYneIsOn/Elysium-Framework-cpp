@@ -43,11 +43,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.IO.PDF", "UnitTest
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.Communication", "UnitTests\02-Windows\UnitTest.Communication\UnitTest.Communication.vcxproj", "{77FE4166-9D73-4907-9F3B-6008A8D1908F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.HTTP", "Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems", "{52DC62F9-3E48-4FFE-9408-93EECCBC9B64}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Http", "Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems", "{52DC62F9-3E48-4FFE-9408-93EECCBC9B64}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Rest", "Libraries\01-Shared\Elysium.Communication.Service.Rest\Elysium.Communication.Service.Rest.vcxitems", "{76300FB7-9B8A-4F2A-89FE-EA23F547085E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Rest", "Libraries\01-Shared\Elysium.Communication.Service.REST\Elysium.Communication.Service.REST.vcxitems", "{76300FB7-9B8A-4F2A-89FE-EA23F547085E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.FTP", "Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems", "{AA72E916-610B-4BCB-9E60-5FFD9F3EC089}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Ftp", "Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems", "{AA72E916-610B-4BCB-9E60-5FFD9F3EC089}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.IRC", "Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems", "{5F8AD37D-D28E-4105-91A9-F1D288264D93}"
 EndProject
@@ -55,7 +55,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Librarie
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\02-Windows\Elysium.Logging\Elysium.Logging.vcxproj", "{118D9FAE-12E0-4D8B-88E9-135511156C96}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.SOAP", "Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems", "{4CB11730-B507-4CA6-8896-846A91EADD77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Soap", "Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems", "{4CB11730-B507-4CA6-8896-846A91EADD77}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.LDAP", "Libraries\01-Shared\Elysium.Communication.Service.LDAP\Elysium.Communication.Service.LDAP.vcxitems", "{7F512114-542C-4A39-A8CF-01B0A47709DC}"
 EndProject
@@ -83,59 +83,33 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x64.ActiveCfg = Debug|x64
 		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x64.Build.0 = Debug|x64
-		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x86.ActiveCfg = Debug|Win32
-		{52049F21-B70D-44D1-9856-E3DB7824223A}.Debug|x86.Build.0 = Debug|Win32
 		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x64.ActiveCfg = Release|x64
 		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x64.Build.0 = Release|x64
-		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x86.ActiveCfg = Release|Win32
-		{52049F21-B70D-44D1-9856-E3DB7824223A}.Release|x86.Build.0 = Release|Win32
 		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Debug|x64.ActiveCfg = Debug|x64
 		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Debug|x64.Build.0 = Debug|x64
-		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Debug|x86.ActiveCfg = Debug|Win32
-		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Debug|x86.Build.0 = Debug|Win32
 		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Release|x64.ActiveCfg = Release|x64
 		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Release|x64.Build.0 = Release|x64
-		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Release|x86.ActiveCfg = Release|Win32
-		{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}.Release|x86.Build.0 = Release|Win32
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Debug|x64.ActiveCfg = Debug|x64
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Debug|x64.Build.0 = Debug|x64
-		{044602DD-0715-4D24-8EEE-95D499F0E332}.Debug|x86.ActiveCfg = Debug|Win32
-		{044602DD-0715-4D24-8EEE-95D499F0E332}.Debug|x86.Build.0 = Debug|Win32
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x64.ActiveCfg = Release|x64
 		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x64.Build.0 = Release|x64
-		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x86.ActiveCfg = Release|Win32
-		{044602DD-0715-4D24-8EEE-95D499F0E332}.Release|x86.Build.0 = Release|Win32
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x64.ActiveCfg = Debug|x64
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x64.Build.0 = Debug|x64
-		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x86.ActiveCfg = Debug|Win32
-		{BF8A73B6-EA0E-4512-9408-847821B10435}.Debug|x86.Build.0 = Debug|Win32
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x64.ActiveCfg = Release|x64
 		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x64.Build.0 = Release|x64
-		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x86.ActiveCfg = Release|Win32
-		{BF8A73B6-EA0E-4512-9408-847821B10435}.Release|x86.Build.0 = Release|Win32
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x64.ActiveCfg = Debug|x64
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x64.Build.0 = Debug|x64
-		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x86.ActiveCfg = Debug|Win32
-		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Debug|x86.Build.0 = Debug|Win32
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x64.ActiveCfg = Release|x64
 		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x64.Build.0 = Release|x64
-		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.ActiveCfg = Release|Win32
-		{77FE4166-9D73-4907-9F3B-6008A8D1908F}.Release|x86.Build.0 = Release|Win32
 		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x64.ActiveCfg = Debug|x64
 		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x64.Build.0 = Debug|x64
-		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x86.ActiveCfg = Debug|Win32
-		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Debug|x86.Build.0 = Debug|Win32
 		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x64.ActiveCfg = Release|x64
 		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x64.Build.0 = Release|x64
-		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x86.ActiveCfg = Release|Win32
-		{118D9FAE-12E0-4D8B-88E9-135511156C96}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

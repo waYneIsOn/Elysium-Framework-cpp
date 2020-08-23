@@ -195,15 +195,15 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	// ap, au, im, me, mu, te, vi, x-
 
 	const Elysium::Communication::Service::Http::Headers::HttpResponseHeaders& ResponseHeaders = Response.GetHeaders();
-	if (ResponseHeaders.Contains(u"Transfer-Encoding"))
+	if (ResponseHeaders.Contains("Transfer-Encoding"))
 	{
-		if (ResponseHeaders.GetValues(u"Transfer-Encoding")[0] == u"chunked")
+		if (ResponseHeaders.GetValues("Transfer-Encoding")[0] == u8"chunked")
 		{
 			bool HasReceivedBytes = false;
 			Elysium::Core::Collections::Template::List<Elysium::Core::byte> Content;
 			do
 			{
-				HasReceivedBytes = _OwnedProtocol.ReadResponseContentChunk(&Content);
+				HasReceivedBytes = _OwnedProtocol.ReadResponseContentChunk(Content);
 			} while (HasReceivedBytes);
 
 			// delete previous content if required
@@ -213,7 +213,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			}
 
 			// add current content
-			if (ResponseHeaders.Contains(u"Content-Encoding"))
+			if (ResponseHeaders.Contains("Content-Encoding"))
 			{
 				Response._Content = new ByteArrayContent(Content);
 			}
@@ -224,15 +224,15 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		}
 		else
 		{
-			String Test = String(ResponseHeaders.GetValues(u"Transfer-Encoding")[0]);
+			String Test = String(ResponseHeaders.GetValues("Transfer-Encoding")[0]);
 
-			throw NotImplementedException(u"ReceiveResponseContent with unknown Transfer-Encoding");
+			throw NotImplementedException("ReceiveResponseContent with unknown Transfer-Encoding");
 		}
 	}
-	else if (ResponseHeaders.Contains(u"Content-Length"))
+	else if (ResponseHeaders.Contains("Content-Length"))
 	{
 		// get the content's length
-		const Elysium::Core::Collections::Template::List<Elysium::Core::String> ContentLengthValues = ResponseHeaders.GetValues(u"Content-Length");
+		const Elysium::Core::Collections::Template::List<Elysium::Core::String> ContentLengthValues = ResponseHeaders.GetValues(u8"Content-Length");
 		size_t ContentLength = Elysium::Core::Convert::ToInt32(&ContentLengthValues[0][0], 10);
 
 		if (ContentLength > 0)
@@ -250,6 +250,6 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	}
 	else
 	{
-		throw NotImplementedException(u"Header includes neither Content-Length, Content-Type nor Transfer-Encoding");
+		throw NotImplementedException("Header includes neither Content-Length, Content-Type nor Transfer-Encoding");
 	}
 }

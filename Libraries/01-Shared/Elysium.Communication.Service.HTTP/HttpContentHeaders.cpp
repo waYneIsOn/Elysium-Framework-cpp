@@ -13,7 +13,7 @@ Elysium::Communication::Service::Http::Headers::HttpContentHeaders::~HttpContent
 
 const int64_t Elysium::Communication::Service::Http::Headers::HttpContentHeaders::GetContentLength() const
 {
-	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find(u"Content-Length");
+	std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>::const_iterator Iterator = _Headers.find("Content-Length");
 	if (Iterator == _Headers.end())
 	{	
 		return -1;
@@ -29,5 +29,5 @@ void Elysium::Communication::Service::Http::Headers::HttpContentHeaders::SetCont
 {
 	Elysium::Core::Collections::Template::List<Elysium::Core::String> Values(1);
 	Values[0] = Elysium::Core::Convert::ToString(Value, 10);
-	_Headers[u"Content-Length"] = Values;
+	_Headers["Content-Length"] = Values;
 }
