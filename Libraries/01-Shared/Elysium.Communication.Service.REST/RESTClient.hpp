@@ -20,19 +20,17 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication.Service.HTTP/HttpClient.hpp"
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_JSONPROTOCOL
-#include "../Elysium.Communication/JSONProtocol.hpp"
-#endif
-
 namespace Elysium::Communication::Service::Rest
 {
-	class ELYSIUM_COMMUNICATION_API RESTClient final
+	class ELYSIUM_COMMUNICATION_API RestClient final
 	{
 	public:
-		RESTClient();
-		~RESTClient();
+		RestClient();
+		~RestClient();
 
-		void Connect(const Elysium::Core::Uri& Uri);
+		void SetBaseAddress(const Elysium::Core::Uri& BaseAddress);
+
+		void Connect();
 		void Disconnect();
 
 		template <class T>
@@ -44,7 +42,7 @@ namespace Elysium::Communication::Service::Rest
 	};
 
 	template<class T>
-	inline T RESTClient::Get(const Elysium::Core::String & Path)
+	inline T RestClient::Get(const Elysium::Core::String & Path)
 	{
 		return T();
 	}

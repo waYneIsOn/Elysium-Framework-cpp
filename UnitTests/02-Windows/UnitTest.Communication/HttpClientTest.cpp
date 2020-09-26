@@ -7,12 +7,15 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/FileStream.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/MemoryStream.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/GZipStream.hpp"
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/DnsEndPoint.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Security.Cryptography.Algorithms/MD5.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
 
 using namespace Elysium::Core;
 using namespace Elysium::Core::IO;
 using namespace Elysium::Core::IO::Compression;
+using namespace Elysium::Core::Net;
+using namespace Elysium::Core::Net::Sockets;
 using namespace Elysium::Core::Security::Cryptography;
 using namespace Elysium::Core::Text;
 using namespace Elysium::Communication::Service::Http;
@@ -26,7 +29,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(Delete)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
+
 			HttpResponseMessage Response = Client.Delete("/delete");
 			Client.Disconnect();
 
@@ -36,7 +41,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(Get)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
+
 			HttpResponseMessage Response1 = Client.Get("/get", HttpCompletionOption::ResponseHeadersRead);
 			HttpResponseMessage Response2 = Client.Get("/get", Response1);
 			HttpResponseMessage Response3 = Client.Get("/get");
@@ -53,7 +60,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetBrotli)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
+
 			HttpResponseMessage Response = Client.Get("/brotli");
 			Client.Disconnect();
 
@@ -67,7 +76,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetGzip)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
+
 			HttpResponseMessage Response = Client.Get("/gzip");
 			Client.Disconnect();
 
@@ -86,7 +97,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetDeflate)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 			HttpResponseMessage Response = Client.Get("/deflate");
 			Client.Disconnect();
 
@@ -100,7 +112,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(Options)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 			HttpResponseMessage Response = Client.Options("/get");
 			Client.Disconnect();
 
@@ -110,7 +123,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(Patch)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			StringContent Content = StringContent(String("<html><head></head><body>bla</body></html>"));
 
@@ -123,7 +137,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(Post)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			StringContent Content = StringContent(String("<html><head></head><body>bla</body></html>"));
 
@@ -136,7 +151,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(Put)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			StringContent Content = StringContent(String("<html><head></head><body>bla</body></html>"));
 
@@ -150,7 +166,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBasic)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get("/basic-auth/SomeUser/SomePassword");
@@ -171,7 +188,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBasicHidden)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get("/hidden-basic-auth/SomeUser/SomePassword");
@@ -193,7 +211,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBearer)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get("/bearer");
@@ -212,7 +231,8 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationDigest)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("http://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get("/digest-auth/auth/SomeUser/SomePassword");
@@ -234,7 +254,9 @@ namespace UnitTestCommunication
 		TEST_METHOD(TLSGet)
 		{
 			HttpClient Client = HttpClient();
-			Client.Connect(Uri("https://httpbin.org"));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
+			Client.Connect();
+
 			//HttpResponseMessage Response = Client.Get(u"");
 			Client.Disconnect();
 

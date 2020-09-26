@@ -3,77 +3,63 @@
 using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Template;
 
-Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport)
-	: ProtocolBase(Transport),
-	_Encoding(Elysium::Core::Text::Encoding::UTF8())
+Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport, const Elysium::Core::Text::Encoding & Encoding)
+	: ProtocolBase(Transport), _Encoding(Encoding)
 {
 	_TotalReadBuffer.Clear();
 }
-Elysium::Communication::Protocol::TextProtocol::TextProtocol(Transport::TransportBase & Transport, const Elysium::Core::Text::Encoding & Encoding)
-	: ProtocolBase(Transport),
-	_Encoding(Encoding)
-{ }
 Elysium::Communication::Protocol::TextProtocol::~TextProtocol()
 { }
 
-void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length)
-{
-	_Transport.Write(Buffer, Length);
-}
 void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
 	Elysium::Core::Collections::Template::Array<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
 	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetLength());
 }
 
-size_t Elysium::Communication::Protocol::TextProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
+const Elysium::Core::String Elysium::Communication::Protocol::TextProtocol::ReadLine()
 {
-	return _Transport.Read(Buffer, Length);
-}
-size_t Elysium::Communication::Protocol::TextProtocol::ReadString(Elysium::Core::String * Value)
-{
-	return size_t();
-	/*
-	// check _MessageBuilder for parts of previously received messages
-	if (_IndexOfMessageEnd != std::wstring::npos)
+	if (_IndexOfMessageEnd != static_cast<size_t>(-1))
 	{	// remove the last part of the previous message
-		_MessageBuilder.Remove(0, _IndexOfMessageEnd + 4);
-
-		// check whether we've already got the next message in _MessageBuilder
-		_IndexOfMessageEnd = _MessageBuilder.IndexOf(L"\r\n\r\n");
-		/*
-		if (_IndexOfMessageEnd != std::wstring::npos)
-		{
-			int x = 45;
-		}
-		*-/
+		_TotalReadBuffer.RemoveRange(0, _IndexOfMessageEnd + 2);
+		_IndexOfMessageEnd = static_cast<size_t>(-1);
 	}
 
-	// read until we reach \r\n\r\n
-	String PartialMessage;
-	size_t TotalBytesConverted = 0;
-	do
+	size_t TotalBytesReceived = 0;
+	size_t PossibleIndexOfHeaderEnd = 0;
+	while (true)
 	{
-		// read the next block of bytes and convert them to a string
-		size_t BytesReceived = _Transport->Read(&_ReadBuffer[0], _ReadBufferSize);
-		size_t BytesConverted = _Encoding.GetString(&_ReadBuffer[0], BytesReceived, &PartialMessage);
-
-		// copy the converted block into the _MessageBuilder
-		_MessageBuilder.Append(&PartialMessage[0], BytesConverted);
-
-		// check whether we are at the end
-		_IndexOfMessageEnd = _MessageBuilder.IndexOf(L"\r\n\r\n");
-		if (_IndexOfMessageEnd == std::wstring::npos)
+		PossibleIndexOfHeaderEnd = _TotalReadBuffer.IndexOf('\r', PossibleIndexOfHeaderEnd + 1);
+		if (PossibleIndexOfHeaderEnd != -1)
 		{
-			TotalBytesConverted += BytesConverted;
+			if (PossibleIndexOfHeaderEnd + 1 <= _TotalReadBuffer.GetCount())
+			{
+				if (_TotalReadBuffer[PossibleIndexOfHeaderEnd + 1] == '\n')
+				{
+					_IndexOfMessageEnd = PossibleIndexOfHeaderEnd;
+					return _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd);
+				}
+			}
 		}
-		else
-		{
-			TotalBytesConverted += _IndexOfMessageEnd;
-		}
-	} while (_IndexOfMessageEnd == std::wstring::npos);
 
-	_MessageBuilder.ToString(Value, TotalBytesConverted);
-	return _MessageBuilder.GetLength();
-	*/
+		size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
+		/*
+		if (BytesReceived == 0)
+		{	// ToDo: if we get here, something is wrong!
+			break;
+		}
+		*/
+		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
+		TotalBytesReceived += BytesReceived;
+	}
+}
+
+void Elysium::Communication::Protocol::TextProtocol::WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length)
+{
+	_Transport.Write(Buffer, Length);
+}
+
+const size_t Elysium::Communication::Protocol::TextProtocol::ReadBinary(Elysium::Core::byte * Buffer, const size_t Length)
+{
+	return _Transport.Read(Buffer, Length);
 }

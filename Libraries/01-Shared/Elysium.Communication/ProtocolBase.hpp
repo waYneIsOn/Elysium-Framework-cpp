@@ -29,15 +29,20 @@ namespace Elysium::Communication::Protocol
 	class ELYSIUM_COMMUNICATION_API ProtocolBase
 	{
 	public:
+		ProtocolBase(const ProtocolBase& Source) = delete;
+		ProtocolBase(ProtocolBase&& Right) noexcept = delete;
 		virtual ~ProtocolBase();
 
-		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) = 0;
-
-		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
+		ProtocolBase& operator=(const ProtocolBase& Source) = delete;
+		ProtocolBase& operator=(ProtocolBase&& Right) noexcept = delete;
 	protected:
 		ProtocolBase(Transport::TransportBase& Transport);
 
 		Transport::TransportBase& _Transport;
+
+		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) = 0;
+
+		virtual const size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) = 0;
 	};
 }
 #endif

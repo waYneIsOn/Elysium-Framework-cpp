@@ -40,10 +40,6 @@ Copyright (C) 2017 waYne (CAM)
 #include "HttpCompletionOption.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_DECIMAL
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Decimal.hpp"
-#endif
-
 namespace Elysium::Communication::Service::Http
 {
 	class ELYSIUM_COMMUNICATION_API HttpClient final
@@ -59,7 +55,9 @@ namespace Elysium::Communication::Service::Http
 
 		Headers::HttpRequestHeaders& GetDefaultRequestHeaders();
 
-		void Connect(const Elysium::Core::Uri& Uri);
+		void SetBaseAddress(const Elysium::Core::Uri& BaseAddress);
+
+		void Connect();
 		void Disconnect();
 
 		HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
@@ -83,9 +81,6 @@ namespace Elysium::Communication::Service::Http
 		Core::Net::Sockets::Socket _OwnedSocket;
 		Transport::TcpClient _OwnedClient;
 		Protocol::HyperTextTransferProtocol _OwnedProtocol;
-
-		Core::Net::Sockets::Socket* _Socket;
-		Transport::TransportBase* _Client;
 
 		Headers::HttpRequestHeaders _DefaultRequestHeaders;
 

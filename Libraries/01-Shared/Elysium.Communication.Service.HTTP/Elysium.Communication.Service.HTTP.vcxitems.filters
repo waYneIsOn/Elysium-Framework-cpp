@@ -50,6 +50,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpContentHeaders.cpp">
       <Filter>Headers</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpClient.hpp" />
@@ -77,5 +78,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpContentHeaders.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpListener.hpp" />
   </ItemGroup>
 </Project>

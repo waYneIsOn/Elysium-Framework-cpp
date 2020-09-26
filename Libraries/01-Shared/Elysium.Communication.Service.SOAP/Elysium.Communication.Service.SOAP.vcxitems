@@ -5,8 +5,7 @@
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{4cb11730-b507-4ca6-8896-846a91eadd77}</ItemsProjectGuid>
     <ItemsProjectName>Elysium.Communication.Service.Soap</ItemsProjectName>
-    <ItemsRootNamespace>
-    </ItemsRootNamespace>
+    <ItemsRootNamespace>Elysium::Communication::Service::Soap</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

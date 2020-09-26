@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "11 - test applications", "1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 - Samples", "20 - Samples", "{69837A8E-BCDD-4A1C-8EAD-B64AF59D604C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.PDF", "Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems", "{9B101A00-0BD9-40A4-AAAA-90C4C77F244E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Pdf", "Libraries\01-Shared\Elysium.IO.Pdf\Elysium.IO.Pdf.vcxitems", "{9B101A00-0BD9-40A4-AAAA-90C4C77F244E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.PDF", "Libraries\02-Windows\Elysium.IO.PDF\Elysium.IO.PDF.vcxproj", "{52049F21-B70D-44D1-9856-E3DB7824223A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Pdf", "Libraries\02-Windows\Elysium.IO.Pdf\Elysium.IO.Pdf.vcxproj", "{52049F21-B70D-44D1-9856-E3DB7824223A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.DSV", "Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems", "{1C34B4F7-EC66-4324-8241-8218707AEB10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Dsv", "Libraries\01-Shared\Elysium.IO.Dsv\Elysium.IO.Dsv.vcxitems", "{1C34B4F7-EC66-4324-8241-8218707AEB10}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication", "Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems", "{8EB3E6E8-8830-42E5-BB0D-D4B3DFF51505}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication", "Libraries\02-Windows\Elysium.Communication\Elysium.Communication.vcxproj", "{F24CA643-9FDA-485C-B97F-54AB3AA4C82C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.DSV", "Libraries\02-Windows\Elysium.IO.DSV\Elysium.IO.DSV.vcxproj", "{044602DD-0715-4D24-8EEE-95D499F0E332}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.IO.Dsv", "Libraries\02-Windows\Elysium.IO.Dsv\Elysium.IO.Dsv.vcxproj", "{044602DD-0715-4D24-8EEE-95D499F0E332}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Shared", "01 - Shared", "{C81D8EF9-8BA5-45BB-BDDA-FCDF2E00A583}"
 EndProject
@@ -39,45 +39,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Linux", "03 - Linux", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Android", "04 - Android", "{B5145A40-3E2D-4C4B-BA72-61D9B16A06FB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.IO.PDF", "UnitTests\02-Windows\UnitTest.IO.PDF\UnitTest.IO.PDF.vcxproj", "{BF8A73B6-EA0E-4512-9408-847821B10435}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.IO.Pdf", "UnitTests\02-Windows\UnitTest.IO.Pdf\UnitTest.IO.Pdf.vcxproj", "{BF8A73B6-EA0E-4512-9408-847821B10435}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest.Communication", "UnitTests\02-Windows\UnitTest.Communication\UnitTest.Communication.vcxproj", "{77FE4166-9D73-4907-9F3B-6008A8D1908F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Http", "Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems", "{52DC62F9-3E48-4FFE-9408-93EECCBC9B64}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Http", "Libraries\01-Shared\Elysium.Communication.Service.Http\Elysium.Communication.Service.Http.vcxitems", "{52DC62F9-3E48-4FFE-9408-93EECCBC9B64}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Rest", "Libraries\01-Shared\Elysium.Communication.Service.REST\Elysium.Communication.Service.REST.vcxitems", "{76300FB7-9B8A-4F2A-89FE-EA23F547085E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Rest", "Libraries\01-Shared\Elysium.Communication.Service.Rest\Elysium.Communication.Service.Rest.vcxitems", "{76300FB7-9B8A-4F2A-89FE-EA23F547085E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Ftp", "Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems", "{AA72E916-610B-4BCB-9E60-5FFD9F3EC089}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Ftp", "Libraries\01-Shared\Elysium.Communication.Service.Ftp\Elysium.Communication.Service.Ftp.vcxitems", "{AA72E916-610B-4BCB-9E60-5FFD9F3EC089}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.IRC", "Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems", "{5F8AD37D-D28E-4105-91A9-F1D288264D93}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Irc", "Libraries\01-Shared\Elysium.Communication.Service.Irc\Elysium.Communication.Service.Irc.vcxitems", "{5F8AD37D-D28E-4105-91A9-F1D288264D93}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems", "{B9F9D624-63A9-42F2-97C9-47A368DEDC3D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Logging", "Libraries\02-Windows\Elysium.Logging\Elysium.Logging.vcxproj", "{118D9FAE-12E0-4D8B-88E9-135511156C96}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Soap", "Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems", "{4CB11730-B507-4CA6-8896-846A91EADD77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Soap", "Libraries\01-Shared\Elysium.Communication.Service.Soap\Elysium.Communication.Service.Soap.vcxitems", "{4CB11730-B507-4CA6-8896-846A91EADD77}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.LDAP", "Libraries\01-Shared\Elysium.Communication.Service.LDAP\Elysium.Communication.Service.LDAP.vcxitems", "{7F512114-542C-4A39-A8CF-01B0A47709DC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Ldap", "Libraries\01-Shared\Elysium.Communication.Service.Ldap\Elysium.Communication.Service.Ldap.vcxitems", "{7F512114-542C-4A39-A8CF-01B0A47709DC}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.IO.Dsv\Elysium.IO.Dsv.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{118d9fae-12e0-4d8b-88e9-135511156c96}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.IO.DSV\Elysium.IO.DSV.vcxitems*{1c34b4f7-ec66-4324-8241-8218707aeb10}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.Communication.Service.SOAP\Elysium.Communication.Service.SOAP.vcxitems*{4cb11730-b507-4ca6-8896-846a91eadd77}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems*{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems*{5f8ad37d-d28e-4105-91a9-f1d288264d93}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.IO.Dsv\Elysium.IO.Dsv.vcxitems*{1c34b4f7-ec66-4324-8241-8218707aeb10}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.Soap\Elysium.Communication.Service.Soap.vcxitems*{4cb11730-b507-4ca6-8896-846a91eadd77}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.IO.Pdf\Elysium.IO.Pdf.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Http\Elysium.Communication.Service.Http.vcxitems*{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.Irc\Elysium.Communication.Service.Irc.vcxitems*{5f8ad37d-d28e-4105-91a9-f1d288264d93}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.Rest\Elysium.Communication.Service.Rest.vcxitems*{76300fb7-9b8a-4f2a-89fe-ea23f547085e}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.Communication.Service.LDAP\Elysium.Communication.Service.LDAP.vcxitems*{7f512114-542c-4a39-a8cf-01b0a47709dc}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.Ldap\Elysium.Communication.Service.Ldap.vcxitems*{7f512114-542c-4a39-a8cf-01b0a47709dc}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems*{8eb3e6e8-8830-42e5-bb0d-d4b3dff51505}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.IO.PDF\Elysium.IO.PDF.vcxitems*{9b101a00-0bd9-40a4-aaaa-90c4c77f244e}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems*{aa72e916-610b-4bcb-9e60-5ffd9f3ec089}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.IO.Pdf\Elysium.IO.Pdf.vcxitems*{9b101a00-0bd9-40a4-aaaa-90c4c77f244e}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.Ftp\Elysium.Communication.Service.Ftp.vcxitems*{aa72e916-610b-4bcb-9e60-5ffd9f3ec089}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{b9f9d624-63a9-42f2-97c9-47a368dedc3d}*SharedItemsImports = 9
-		Libraries\01-Shared\Elysium.Communication.Service.FTP\Elysium.Communication.Service.FTP.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.Communication.Service.HTTP\Elysium.Communication.Service.HTTP.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.Communication.Service.IRC\Elysium.Communication.Service.IRC.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
-		Libraries\01-Shared\Elysium.Communication.Service.LDAP\Elysium.Communication.Service.LDAP.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Ftp\Elysium.Communication.Service.Ftp.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Http\Elysium.Communication.Service.Http.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Irc\Elysium.Communication.Service.Irc.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Ldap\Elysium.Communication.Service.Ldap.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Rest\Elysium.Communication.Service.Rest.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication\Elysium.Communication.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 	EndGlobalSection

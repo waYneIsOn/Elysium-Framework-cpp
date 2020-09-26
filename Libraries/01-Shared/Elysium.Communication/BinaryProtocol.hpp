@@ -26,11 +26,16 @@ namespace Elysium::Communication::Protocol
 	{
 	public:
 		BinaryProtocol(Transport::TransportBase& Transport);
-		~BinaryProtocol();
+		BinaryProtocol(const BinaryProtocol& Source) = delete;
+		BinaryProtocol(BinaryProtocol&& Right) noexcept = delete;
+		virtual ~BinaryProtocol();
 
+		BinaryProtocol& operator=(const BinaryProtocol& Source) = delete;
+		BinaryProtocol& operator=(BinaryProtocol&& Right) noexcept = delete;
+	protected:
 		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
 
-		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
+		virtual const size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
 	};
 }
 #endif

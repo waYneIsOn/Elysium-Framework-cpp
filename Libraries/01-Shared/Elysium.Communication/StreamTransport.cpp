@@ -3,12 +3,9 @@
 Elysium::Communication::Transport::StreamTransport::StreamTransport(Elysium::Core::IO::Stream * InputStream, Elysium::Core::IO::Stream * OutputStream)
 	: TransportBase(),
 	_InputStream(InputStream), _OutputStream(OutputStream)
-{
-}
-
+{ }
 Elysium::Communication::Transport::StreamTransport::~StreamTransport()
-{
-}
+{ }
 
 bool Elysium::Communication::Transport::StreamTransport::GetIsOpen() const
 {
@@ -51,5 +48,4 @@ void Elysium::Communication::Transport::StreamTransport::Close()
 Elysium::Communication::Transport::StreamTransport::StreamTransport()
 	: TransportBase(),
 	_InputStream(nullptr), _OutputStream(nullptr)
-{
-}
+{ }

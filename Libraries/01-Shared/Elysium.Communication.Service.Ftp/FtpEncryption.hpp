@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPFEATURE
-#define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPFEATURE
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPENCRYPTION
+#define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPENCRYPTION
 
 #ifdef _MSC_VER
 #pragma once
@@ -19,31 +19,24 @@ Copyright (C) 2017 waYne (CAM)
 namespace Elysium::Communication::Service::Ftp
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class FtpFeature : Elysium::Core::uint32_t
+	enum class FtpEncryption : Elysium::Core::uint8_t
 #elif defined(__ANDROID__)
-	enum class FtpFeature
+	enum class FtpEncryption
 #else
 #error "undefined os"
 #endif
 	{
+		// Use unencrypted ftp - UNSAFE
 		None = 0,
-		MLSD = 1,
-		SIZE = 2,
-		MDTM = 4,
-		REST = 8,
-		UTF8 = 16,
-		PRET = 32,
-		MFMT = 64,
-		MFCT = 128,
-		MFF = 256,
-		STAT = 512,
-		HASH = 1024,
-		MD5 = 2048,
-		XMD5 = 4096,
-		XCRC = 8192,
-		XSHA1 = 16384,
-		XSHA256 = 32768,
-		XSHA512 = 65536,
+
+		// Run ssl/tls encrypted ftp immediately
+		ImplicitTls = 1,
+
+		// Use unencrypted ftp and then update to ssl/tls
+		ExplicitTls = 2,
+
+		// Use unencrypted ftp and then update to ssl/tls if possible. Might therefore fallback to unencrypted ftp - UNSAFE
+		ExplicitTlsIfAvailable = 3
 	};
 }
 #endif

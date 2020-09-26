@@ -48,7 +48,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp">
       <Filter>Protocol</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)JSONProtocol.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp">
       <Filter>Protocol</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,8 +75,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)JSONProtocol.hpp">
+    <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
   </ItemGroup>
 </Project>

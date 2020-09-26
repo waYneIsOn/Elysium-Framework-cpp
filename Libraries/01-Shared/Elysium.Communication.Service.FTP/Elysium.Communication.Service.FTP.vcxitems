@@ -5,6 +5,7 @@
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{aa72e916-610b-4bcb-9e60-5ffd9f3ec089}</ItemsProjectGuid>
     <ItemsProjectName>Elysium.Communication.Service.Ftp</ItemsProjectName>
+    <ItemsRootNamespace>Elysium::Communication::Service::Ftp</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -15,11 +16,17 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpEncryption.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpException.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpFeature.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)FtpMethod.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpResponseMessage.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpStatusCode.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpTransferMode.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)FtpMethod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpException.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpResponseMessage.cpp" />
   </ItemGroup>
 </Project>

@@ -4,16 +4,10 @@ using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Template;
 
 Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport)
-	: TextProtocol(Transport)
-{
-}
-Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport, const Elysium::Core::Text::Encoding & Encoding)
-	: TextProtocol(Transport, Encoding)
-{
-}
+	: TextProtocol(Transport, Elysium::Core::Text::Encoding::UTF8())
+{ }
 Elysium::Communication::Protocol::HyperTextTransferProtocol::~HyperTextTransferProtocol()
-{
-}
+{ }
 
 Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHeader()
 {

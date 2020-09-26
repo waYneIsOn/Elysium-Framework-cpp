@@ -30,8 +30,12 @@ namespace Elysium::Communication::Protocol
 	{
 	public:
 		HyperTextTransferProtocol(Transport::TransportBase& Transport);
-		HyperTextTransferProtocol(Transport::TransportBase& Transport, const Elysium::Core::Text::Encoding& Encoding);
-		~HyperTextTransferProtocol();
+		HyperTextTransferProtocol(const HyperTextTransferProtocol& Source) = delete;
+		HyperTextTransferProtocol(HyperTextTransferProtocol&& Right) noexcept = delete;
+		virtual ~HyperTextTransferProtocol();
+
+		HyperTextTransferProtocol& operator=(const HyperTextTransferProtocol& Source) = delete;
+		HyperTextTransferProtocol& operator=(HyperTextTransferProtocol&& Right) noexcept = delete;
 
 		Elysium::Core::String ReadResponseHeader();
 		void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::byte>* Value);

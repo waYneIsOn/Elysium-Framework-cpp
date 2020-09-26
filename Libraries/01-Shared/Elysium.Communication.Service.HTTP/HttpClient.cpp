@@ -12,6 +12,10 @@
 #include "StringContent.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_NET_DNSENDPOINT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/DnsEndPoint.hpp"
+#endif
+
 #ifndef ELYSIUM_CORE_ARGUMENTNULLEXCEPTION
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ArgumentNullException.hpp"
 #endif
@@ -33,7 +37,6 @@ using namespace Elysium::Core::Net::Sockets;
 Elysium::Communication::Service::Http::HttpClient::HttpClient()
 	: _OwnedSocket(Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp)),
 	_OwnedClient(TcpClient(_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
-	_Socket(&_OwnedSocket), _Client(&_OwnedClient),
 	_DefaultRequestHeaders(Headers::HttpRequestHeaders()),
 	_BaseAddress(Elysium::Core::Uri(String())),
 	_PreviousCompletionOption(HttpCompletionOption::ResponseContentRead)
@@ -46,15 +49,23 @@ Elysium::Communication::Service::Http::Headers::HttpRequestHeaders & Elysium::Co
 	return _DefaultRequestHeaders;
 }
 
-void Elysium::Communication::Service::Http::HttpClient::Connect(const Elysium::Core::Uri & Uri)
-{	// ToDo: Uri.GetPort();
-	_Socket->Connect(Uri.GetHost(), 80);
-	_BaseAddress = Uri;
+void Elysium::Communication::Service::Http::HttpClient::SetBaseAddress(const Elysium::Core::Uri & BaseAddress)
+{
+	_BaseAddress = BaseAddress;
+}
+
+void Elysium::Communication::Service::Http::HttpClient::Connect()
+{
+	// ToDo: _BaseAddress.GetPort()
+	const Elysium::Core::String Host = _BaseAddress.GetHost();
+	const Elysium::Core::Net::DnsEndPoint RemoteEndPoint = Elysium::Core::Net::DnsEndPoint(_BaseAddress.GetHost(), 80,
+		Net::Sockets::AddressFamily::InterNetwork);
+	_OwnedSocket.Connect(RemoteEndPoint);
 }
 void Elysium::Communication::Service::Http::HttpClient::Disconnect()
 {
-	_Socket->Shutdown(SocketShutdown::Both);
-	_Socket->Disconnect(true);
+	_OwnedSocket.Shutdown(SocketShutdown::Both);
+	_OwnedSocket.Disconnect(true);
 }
 
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Delete(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)
@@ -150,7 +161,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 void Elysium::Communication::Service::Http::HttpClient::SendRequest(HttpRequestMessage & Request)
 {
 	_OwnedProtocol.WriteString(HttpMessageParser::ParseRequestMessage(Request));
-	_Client->Flush();
+	_OwnedClient.Flush();
 }
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::ReceiveResponse(HttpRequestMessage & Request, const HttpCompletionOption CompletionOption)
 {

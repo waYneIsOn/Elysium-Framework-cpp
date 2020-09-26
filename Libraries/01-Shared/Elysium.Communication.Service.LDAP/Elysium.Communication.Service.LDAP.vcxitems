@@ -4,6 +4,8 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{7f512114-542c-4a39-a8cf-01b0a47709dc}</ItemsProjectGuid>
+    <ItemsProjectName>Elysium.Communication.Service.Ldap</ItemsProjectName>
+    <ItemsRootNamespace>Elysium::Communication::Service::Ldap</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -14,7 +16,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)LDAPMessageType.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)LDAPStatusCode.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LdapMessageType.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)LdapStatusCode.hpp" />
   </ItemGroup>
 </Project>

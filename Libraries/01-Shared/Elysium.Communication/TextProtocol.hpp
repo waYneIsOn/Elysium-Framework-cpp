@@ -29,21 +29,27 @@ namespace Elysium::Communication::Protocol
 	class ELYSIUM_COMMUNICATION_API TextProtocol : public ProtocolBase
 	{
 	public:
-		TextProtocol(Transport::TransportBase& Transport);
 		TextProtocol(Transport::TransportBase& Transport, const Elysium::Core::Text::Encoding& Encoding);
-		~TextProtocol();
+		TextProtocol(const TextProtocol& Source) = delete;
+		TextProtocol(TextProtocol&& Right) noexcept = delete;
+		virtual ~TextProtocol();
 
-		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
+		TextProtocol& operator=(const TextProtocol& Source) = delete;
+		TextProtocol& operator=(TextProtocol&& Right) noexcept = delete;
+
 		virtual void WriteString(const Elysium::Core::String& Value);
 
-		virtual size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
-		virtual size_t ReadString(Elysium::Core::String* Value);
+		const Elysium::Core::String ReadLine();
 	protected:
 		const Elysium::Core::Text::Encoding& _Encoding;
 		const static size_t _ReadBufferSize = 1024;
 		Elysium::Core::byte _ReadBuffer[1024];
 		Elysium::Core::Collections::Template::List<Elysium::Core::byte> _TotalReadBuffer = Elysium::Core::Collections::Template::List<Elysium::Core::byte>(_ReadBufferSize);
 		size_t _IndexOfMessageEnd = -1;
+
+		virtual void WriteBinary(const Elysium::Core::byte * Buffer, const size_t Length) override;
+
+		virtual const size_t ReadBinary(Elysium::Core::byte * Buffer, const size_t Length) override;
 	};
 }
 #endif

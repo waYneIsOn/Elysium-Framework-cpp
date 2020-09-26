@@ -5,6 +5,7 @@
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{76300fb7-9b8a-4f2a-89fe-ea23f547085e}</ItemsProjectGuid>
     <ItemsProjectName>Elysium.Communication.Service.Rest</ItemsProjectName>
+    <ItemsRootNamespace>Elysium::Communication::Service::Rest</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

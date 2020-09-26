@@ -19,9 +19,9 @@ Copyright (C) 2017 waYne (CAM)
 namespace Elysium::Communication::Service::LDAP
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class LDAPStatusCode : Elysium::Core::uint32_t
+	enum class LdapStatusCode : Elysium::Core::uint32_t
 #elif defined(__ANDROID__)
-	enum class LDAPStatusCode
+	enum class LdapStatusCode
 #else
 #error "undefined os"
 #endif

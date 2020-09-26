@@ -19,9 +19,9 @@ Copyright (C) 2017 waYne (CAM)
 namespace Elysium::Communication::Service::LDAP
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class LDAPMessageType : Elysium::Core::uint32_t
+	enum class LdapMessageType : Elysium::Core::uint32_t
 #elif defined(__ANDROID__)
-	enum class LDAPMessageType
+	enum class LdapMessageType
 #else
 #error "undefined os"
 #endif

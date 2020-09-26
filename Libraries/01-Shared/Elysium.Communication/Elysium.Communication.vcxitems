@@ -4,6 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{8eb3e6e8-8830-42e5-bb0d-d4b3dff51505}</ItemsProjectGuid>
+    <ItemsRootNamespace>Elysium::Communication</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -16,8 +17,9 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)JSONProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
@@ -26,8 +28,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)JSONProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />

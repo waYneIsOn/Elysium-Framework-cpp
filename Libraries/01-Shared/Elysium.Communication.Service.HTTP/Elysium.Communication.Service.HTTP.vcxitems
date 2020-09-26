@@ -5,6 +5,7 @@
     <HasSharedItems>true</HasSharedItems>
     <ItemsProjectGuid>{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}</ItemsProjectGuid>
     <ItemsProjectName>Elysium.Communication.Service.Http</ItemsProjectName>
+    <ItemsRootNamespace>Elysium::Communication::Service::Http</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -21,6 +22,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpContent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpContentHeaders.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpHeaders.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HttpListener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMessageParser.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpMethod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.cpp" />
@@ -37,6 +39,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpContent.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpContentHeaders.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpHeaders.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)HttpListener.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMessageParser.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpMethod.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HttpRequestHeaders.hpp" />

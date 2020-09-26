@@ -16,6 +16,10 @@ Copyright (C) 2017 waYne (CAM)
 #include "StreamTransport.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_NET_ENDPOINT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/EndPoint.hpp"
+#endif
+
 #ifndef ELYSIUM_CORE_NET_SOCKETS_SOCKET
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/Socket.hpp"
 #endif
@@ -35,6 +39,7 @@ namespace Elysium::Communication::Transport
 		const Elysium::Core::Net::Sockets::Socket& GetSocket() const;
 
 		void Connect(const Elysium::Core::String& Host, int Port);
+		void Connect(const Elysium::Core::Net::EndPoint& RemoteEndPoint);
 		void Close();
 	private:
 		Elysium::Core::Net::Sockets::Socket& _Socket;
