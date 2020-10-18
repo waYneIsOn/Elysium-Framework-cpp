@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />

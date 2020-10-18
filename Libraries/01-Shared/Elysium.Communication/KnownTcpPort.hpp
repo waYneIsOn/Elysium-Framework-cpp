@@ -61,6 +61,14 @@ namespace Elysium::Communication
 		TrivialFtp = 69,
 		Gopher = 70,
 
+		Http = 80,
+
+		Kerberos = 88,
+
+		Irc = 194,
+
+		Https = 443,
+
 		Ldap = 389,
 
 		Ldaps = 636,
@@ -68,7 +76,15 @@ namespace Elysium::Communication
 		FtpsData = 990,
 		FtpsControl = 990,
 
+		Ircs = 994,
+		Pop3s = 995,
+		
 		// registered ports
+
+		MssqlServer = 1433,
+		MssqlMonitor = 1434,
+
+
 	};
 }
 #endif

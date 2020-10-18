@@ -37,7 +37,7 @@ namespace Elysium::Communication::Protocol
 		FileTransferProtocol& operator=(const FileTransferProtocol& Source) = delete;
 		FileTransferProtocol& operator=(FileTransferProtocol&& Right) noexcept = delete;
 
-		// ...
+		// Read the message sent by the server once connected
 		const Elysium::Core::String ReadWelcomeMessage();
 
 		// Upgrade to SSL/TLS
@@ -49,11 +49,23 @@ namespace Elysium::Communication::Protocol
 		// Authentication password
 		const Elysium::Core::String WritePass(const Elysium::Core::String& Value);
 
-		// Get information about the server's system.
+		// Returns usage documentation on a command if specified, else a general help document is returned.
+		const Elysium::Core::String WriteHelp(const Elysium::Core::String& Value);
+
+		// Identify desired virtual host on server, by name.
+		const Elysium::Core::String WriteHost();
+
+		// Return system type.
 		const Elysium::Core::String WriteSyst();
 
 		// Get information about the server's features.
 		const Elysium::Core::String WriteFeat();
+
+		// Get account information.
+		const Elysium::Core::String WriteAcct();
+
+		// Get the available space.
+		const Elysium::Core::String WriteAvbl();
 
 		// Inform the server about the client being used
 		const Elysium::Core::String WriteClnt(const Elysium::Core::String& Value);
@@ -62,24 +74,55 @@ namespace Elysium::Communication::Protocol
 		const Elysium::Core::String WriteType(const Elysium::Core::String& Value);
 
 		// Enter passive mode
-		const Elysium::Core::String WritePASV();
+		const Elysium::Core::String WritePasv();
 
-		// Print working directory
-		const Elysium::Core::String WritePWD();
+		// Enter extended passive mode.
+		const Elysium::Core::String WriteEpsv();
 
-		// ...
-		const Elysium::Core::String WriteCWD(const Elysium::Core::String& Value);
+		// Enter long passive mode.
+		const Elysium::Core::String WriteLpsv();
 
-		// ...
-		const Elysium::Core::String WriteCDUP();
+		// Print working directory. Returns the current directory of the host.
+		const Elysium::Core::String WritePwd();
 
-		// ...
-		const Elysium::Core::String WriteMLSD(const Elysium::Core::String& Value);
+		// Change working directory
+		const Elysium::Core::String WriteCwd(const Elysium::Core::String& Value);
 
-		// Disconnect
+		// Change to upper directory
+		const Elysium::Core::String WriteCdup();
+
+		// Returns information of a file or directory if specified, else information of the current working directory is returned. 
+		const Elysium::Core::String WriteList(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+
+		// List the contents of a directory (if a directory is named)
+		const Elysium::Core::String WriteMlsd(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+
+		// Provides data about exactly the object named on its command line, and no others.
+		const Elysium::Core::String WriteMlst(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+
+		// Returns a list of file names in a specified directory.
+		const Elysium::Core::String WriteNlst(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+
+		// Make directory. 
+		const Elysium::Core::String WriteMkd(const Elysium::Core::String& Value);
+
+		// Remove a directory. 
+		const Elysium::Core::String WriteRmd(const Elysium::Core::String& Value);
+
+		// Retrieve a copy of the file.
+		const Elysium::Core::String WriteRetr(const Elysium::Core::String& Value);
+
+		// Accept the data and to store the data as a file at the server site 
+		const Elysium::Core::String WriteStor(const Elysium::Core::String& Value);
+
+		// Tell the server that we're about to disconnect
 		const Elysium::Core::String WriteQuit();
 	private:
 		static const Elysium::Core::String NEWLINE;
+
+		const bool ReadFirstLine(Elysium::Core::Text::StringBuilder& ResponseBuilder);
+		void ReadSubsequentLines(Elysium::Core::Text::StringBuilder& ResponseBuilder);
+		void ReadSubsequentDataLines(Elysium::Core::Text::StringBuilder& ResponseBuilder, Protocol::FileTransferProtocol& DataProtocol);
 	};
 }
 #endif

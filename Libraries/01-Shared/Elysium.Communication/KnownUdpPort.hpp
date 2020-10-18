@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPTRANSFERMODE
-#define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPTRANSFERMODE
+#ifndef ELYSIUM_COMMUNICATION_KNOWNUDPPORT
+#define ELYSIUM_COMMUNICATION_KNOWNUDPPORT
 
 #ifdef _MSC_VER
 #pragma once
@@ -16,18 +16,16 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Integer.hpp"
 #endif
 
-namespace Elysium::Communication::Service::Ftp
+namespace Elysium::Communication
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class FtpTransferMode : Elysium::Core::uint32_t
+	enum class KnownUdpPort : Elysium::Core::uint16_t
 #elif defined(__ANDROID__)
-	enum class FtpTransferMode
+	enum class KnownUdpPort
 #else
 #error "undefined os"
 #endif
 	{
-		ASCII = 0,
-		ImageBinary = 1
 	};
 }
 #endif

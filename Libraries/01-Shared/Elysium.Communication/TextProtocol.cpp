@@ -43,12 +43,11 @@ const Elysium::Core::String Elysium::Communication::Protocol::TextProtocol::Read
 		}
 
 		size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
-		/*
 		if (BytesReceived == 0)
-		{	// ToDo: if we get here, something is wrong!
-			break;
+		{	
+			return Elysium::Core::String::Empty();
 		}
-		*/
+		
 		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);
 		TotalBytesReceived += BytesReceived;
 	}

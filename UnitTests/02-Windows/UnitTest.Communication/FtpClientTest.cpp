@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.Ftp/FtpClient.hpp"
+#include "../../../Libraries/01-Shared/Elysium.Communication.Service.Ftp/FtpException.hpp"
 
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.IO/FileStream.hpp"
@@ -25,31 +26,173 @@ namespace UnitTestCommunication
 	TEST_CLASS(Service_FtpClient)
 	{
 	public:
-		TEST_METHOD(Connect)
+		Service_FtpClient()
+			: _Client(FtpClient())
+		{ }
+
+		TEST_METHOD_INITIALIZE(BeforeEachMethod)
 		{
-			FtpClient Client = FtpClient();
-			Client.Connect(FtpEncryption::None, DnsEndPoint(String("demo.wftpserver.com"), 21, AddressFamily::InterNetwork));
-			Client.Login("demo", "demo");
+			_Client.Connect(FtpEncryption::None, DnsEndPoint(String("demo.wftpserver.com"), 21, AddressFamily::InterNetwork));
+			_Client.Login("demo", "demo");
 
-			const FtpResponseMessage SystemFeaturesResponse = Client.GetSystemFeatures();
-			const FtpResponseMessage SystemInformationResponse = Client.GetSystemInformation();
+			const FtpResponseMessage HostInformationResponse = _Client.GetHostInformation();
+			const FtpResponseMessage AccountInformationResponse = _Client.GetAccountInformation();
+			const FtpResponseMessage AvailableSpaceResponse = _Client.GetAvailableSpace();
 
-			Client.EnterPassiveMode();
-			const FtpResponseMessage ResourceInformationResponse = Client.ListResourceInformation("/");
+			const FtpResponseMessage SystemTypeResponse = _Client.GetSystemType();
+			const FtpResponseMessage SystemFeaturesResponse = _Client.GetSystemFeatures();
 
-
-
-
-
-
-			const FtpResponseMessage PrintRootDirectoryResponse = Client.PrintWorkingDirectory();
-
-
-
-			const FtpResponseMessage ChangeDirectoryResponse = Client.ChangeWorkingDirectory("download");
-			const FtpResponseMessage ChangeToParentDirectoryResponse = Client.ChangeToParentDirectory();
-
-			Client.Disconnect();
+			const FtpResponseMessage GenericHelpResponse = _Client.GetHelp("");
+			const FtpResponseMessage AuthHelpResponse = _Client.GetHelp("AUTH");
 		}
+		TEST_METHOD_CLEANUP(AfterEachMethod)
+		{
+			_Client.Disconnect();
+		}
+
+		TEST_METHOD(ChangeDirectories)
+		{
+			const FtpResponseMessage ChangeDirectoryToDownloadResponse = _Client.ChangeWorkingDirectory("/download");
+			if (!ChangeDirectoryToDownloadResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+			const FtpResponseMessage ChangeDirectoryToRootResponse = _Client.ChangeWorkingDirectory("");
+			if (ChangeDirectoryToRootResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			const FtpResponseMessage ChangeToParentDirectoryResponse = _Client.ChangeToParentDirectory();
+			if (!ChangeToParentDirectoryResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+		}
+
+		TEST_METHOD(ListResourceInformation)
+		{
+			_Client.EnterPassiveMode();
+			const FtpResponseMessage ResourceInformationResponse = _Client.ListResourceInformation("/download");
+			if (!ResourceInformationResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			_Client.EnterPassiveMode();
+			const FtpResponseMessage NamedDirectoryInformationResponse = _Client.ListNamedDirectoryInformation("/download");
+			if (!NamedDirectoryInformationResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			//_Client.EnterPassiveMode();
+			const FtpResponseMessage NamedFileInformationResponse = _Client.ListNamedFileInformation("/download/Spring.jpg");
+			if (!NamedFileInformationResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			//_Client.EnterPassiveMode();
+			const FtpResponseMessage NamedFileInformationResponse2 = _Client.ListNamedFileInformation("/download");
+			if (!NamedFileInformationResponse2.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			//_Client.EnterPassiveMode();
+			const FtpResponseMessage NamedFileInformationResponse3 = _Client.ListNamedFileInformation("/download/NonExistantFile.jpg");
+			if (NamedFileInformationResponse3.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+			
+			_Client.EnterPassiveMode();
+			const FtpResponseMessage ResourceNamesRootResponse = _Client.ListResourceNames("");
+			if (!ResourceNamesRootResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			_Client.EnterPassiveMode();
+			const FtpResponseMessage ResourceNamesDownloadResponse = _Client.ListResourceNames("/download");
+			if (!ResourceNamesDownloadResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			_Client.EnterPassiveMode();
+			const FtpResponseMessage ResourceNamesFileResponse = _Client.ListResourceNames("/download/Spring.jpg");
+			if (!ResourceNamesFileResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+		}
+
+		TEST_METHOD(DirectoryCRUD)
+		{
+			const FtpResponseMessage ChangeDirectoryToUploadResponse = _Client.ChangeWorkingDirectory("/upload");
+			if (!ChangeDirectoryToUploadResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			const FtpResponseMessage MakeDirectoryResponse = _Client.MakeDirectory("/tmp");
+			if (MakeDirectoryResponse.GetIsSuccesful())
+			{
+				// ToDo: rename (RNFR and RNTO)
+				const FtpResponseMessage RemoveDirectoryResponse = _Client.DeleteDirectory("/tmp");
+				if (!RemoveDirectoryResponse.GetIsSuccesful())
+				{
+					Assert::Fail();
+				}
+			}
+			else
+			{
+				Assert::Fail();
+			}
+		}
+
+		TEST_METHOD(DownloadFile)
+		{
+			const FtpResponseMessage ChangeDirectoryToDownloadResponse = _Client.ChangeWorkingDirectory("/download");
+			if (!ChangeDirectoryToDownloadResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			const FtpResponseMessage NamedFileInformationResponse = _Client.ListNamedFileInformation("Spring.jpg");
+			if (!NamedFileInformationResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			FileStream TargetStream = FileStream(String("Target.jpg"), FileMode::Create, FileAccess::Write);
+			try
+			{
+				_Client.EnterPassiveMode();
+				_Client.DownloadFile("NonExistantFile.jpg", TargetStream);
+			}
+			catch(FtpException&)
+			{ }
+
+			_Client.EnterPassiveMode();
+			_Client.DownloadFile("Spring.jpg", TargetStream);
+		}
+		/*
+		TEST_METHOD(UploadFile)
+		{
+			const FtpResponseMessage ChangeDirectoryToDownloadResponse = _Client.ChangeWorkingDirectory("/upload");
+			if (!ChangeDirectoryToDownloadResponse.GetIsSuccesful())
+			{
+				Assert::Fail();
+			}
+
+			FileStream SourceStream = FileStream(String("Source.jpg"), FileMode::Open, FileAccess::Read);
+			_Client.EnterPassiveMode();
+			_Client.UploadFile("Spring.jpg", SourceStream);
+		}
+		*/
+		FtpClient _Client;
 	};
 }

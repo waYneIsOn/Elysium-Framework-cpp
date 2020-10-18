@@ -6,7 +6,7 @@ Elysium::Communication::Transport::TcpClient::TcpClient(Elysium::Core::Net::Sock
 	: _Socket(Socket), 
 	_InputNetworkStream(NetworkStream(Socket, false)),
 	_OutputNetworkStream(NetworkStream(Socket, false)),
-	StreamTransport(&_InputNetworkStream, &_OutputNetworkStream)
+	StreamTransport(_InputNetworkStream, _OutputNetworkStream)
 { }
 Elysium::Communication::Transport::TcpClient::~TcpClient()
 { }
@@ -26,6 +26,5 @@ void Elysium::Communication::Transport::TcpClient::Connect(const Elysium::Core::
 }
 void Elysium::Communication::Transport::TcpClient::Close()
 {
-	_Socket.Shutdown(SocketShutdown::Both);
 	_Socket.Disconnect(true);
 }

@@ -64,8 +64,12 @@ namespace Elysium::Communication::Service::Ftp
 
 		void Login(const Elysium::Core::String& Username, const Elysium::Core::String& Password);
 
-		const FtpResponseMessage GetSystemInformation();
+		const FtpResponseMessage GetHostInformation();
+		const FtpResponseMessage GetAccountInformation();
+		const FtpResponseMessage GetAvailableSpace();
+		const FtpResponseMessage GetSystemType();
 		const FtpResponseMessage GetSystemFeatures();
+		const FtpResponseMessage GetHelp(const Elysium::Core::String& Command);
 
 		const FtpResponseMessage SetTransferMode(const FtpTransferMode TransferMode);
 
@@ -74,10 +78,16 @@ namespace Elysium::Communication::Service::Ftp
 		const FtpResponseMessage PrintWorkingDirectory();
 		const FtpResponseMessage ChangeWorkingDirectory(const Elysium::Core::String& Value);
 		const FtpResponseMessage ChangeToParentDirectory();
-		//const FtpResponseMessage MakeDirectory(const Elysium::Core::String& Value);
-		//const FtpResponseMessage DeleteDirectory(const Elysium::Core::String& Value);
+		const FtpResponseMessage MakeDirectory(const Elysium::Core::String& Value);
+		const FtpResponseMessage DeleteDirectory(const Elysium::Core::String& Value);
 
 		const FtpResponseMessage ListResourceInformation(const Elysium::Core::String& Value);
+		const FtpResponseMessage ListNamedDirectoryInformation(const Elysium::Core::String& Value);
+		const FtpResponseMessage ListNamedFileInformation(const Elysium::Core::String& Value);
+		const FtpResponseMessage ListResourceNames(const Elysium::Core::String& Value);
+
+		void DownloadFile(const Elysium::Core::String& Value, Elysium::Core::IO::Stream& TargetStream);
+		void UploadFile(const Elysium::Core::String& Value, Elysium::Core::IO::Stream& SourceStream);
 	private:
 		Core::Net::Sockets::Socket _ControlSocket;
 		Transport::TcpClient _ControlTransport;

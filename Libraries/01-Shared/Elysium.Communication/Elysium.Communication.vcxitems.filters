@@ -79,5 +79,6 @@
       <Filter>Protocol</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
   </ItemGroup>
 </Project>
