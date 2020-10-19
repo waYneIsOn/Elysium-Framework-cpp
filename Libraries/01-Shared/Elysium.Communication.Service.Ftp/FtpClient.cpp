@@ -232,6 +232,12 @@ void Elysium::Communication::Service::Ftp::FtpClient::DownloadFile(const Elysium
 	}
 
 	_DataTransport.GetInputStream().CopyTo(TargetStream);
+
+	Elysium::Communication::Service::Ftp::FtpResponseMessage ResponseMessage2 = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.ReadLine());
+	if (!ResponseMessage2.GetIsSuccesful())
+	{
+		throw FtpException(ResponseMessage);
+	}
 }
 
 void Elysium::Communication::Service::Ftp::FtpClient::UploadFile(const Elysium::Core::String & Value, Elysium::Core::IO::Stream & SourceStream)
@@ -275,10 +281,12 @@ void Elysium::Communication::Service::Ftp::FtpClient::OpenDataConnection(const F
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);
 	const Elysium::Core::uint8_t PortPart1 = Elysium::Core::Convert::ToUInt8(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t PortPartTEST1 = Elysium::Core::Convert::ToUInt16(&IpAddresView[StartIndexIpPart], 10);
 
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);
 	const Elysium::Core::uint8_t PortPart2 = Elysium::Core::Convert::ToUInt8(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t PortPartTEST2 = Elysium::Core::Convert::ToUInt16(&IpAddresView[StartIndexIpPart], 10);
 
 	const Elysium::Core::uint32_t IpAddress = (IpPart1 << 24) + (IpPart2 << 16) + (IpPart3 << 8) + IpPart4;
 	const Elysium::Core::uint16_t Port = (PortPart1 << 8) + PortPart2;

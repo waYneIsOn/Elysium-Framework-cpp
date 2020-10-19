@@ -32,7 +32,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD_INITIALIZE(BeforeEachMethod)
 		{
-			_Client.Connect(FtpEncryption::None, DnsEndPoint(String("demo.wftpserver.com"), 21, AddressFamily::InterNetwork));
+			_Client.Connect(FtpEncryption::None, DnsEndPoint(String("demo.wftpserver.com"), FtpClient::DefaultFtpControlPort, AddressFamily::InterNetwork));
 			_Client.Login("demo", "demo");
 
 			const FtpResponseMessage HostInformationResponse = _Client.GetHostInformation();
@@ -179,20 +179,23 @@ namespace UnitTestCommunication
 			_Client.EnterPassiveMode();
 			_Client.DownloadFile("Spring.jpg", TargetStream);
 		}
-		/*
+		
 		TEST_METHOD(UploadFile)
 		{
+			// execute DownloadFile() so we are sure to have a file we can upload
+			DownloadFile();
+
 			const FtpResponseMessage ChangeDirectoryToDownloadResponse = _Client.ChangeWorkingDirectory("/upload");
 			if (!ChangeDirectoryToDownloadResponse.GetIsSuccesful())
 			{
 				Assert::Fail();
 			}
 
-			FileStream SourceStream = FileStream(String("Source.jpg"), FileMode::Open, FileAccess::Read);
+			FileStream SourceStream = FileStream(String("Target.jpg"), FileMode::Open, FileAccess::Read);
 			_Client.EnterPassiveMode();
 			_Client.UploadFile("Spring.jpg", SourceStream);
 		}
-		*/
+	private:
 		FtpClient _Client;
 	};
 }

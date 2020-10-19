@@ -20,10 +20,6 @@ Copyright (C) 2017 waYne (CAM)
 #include "FtpEncryption.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_URI
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Uri.hpp"
-#endif
-
 #ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TCPCLIENT
 #include "../Elysium.Communication/TcpClient.hpp"
 #endif
