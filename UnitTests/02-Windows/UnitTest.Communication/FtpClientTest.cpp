@@ -193,7 +193,7 @@ namespace UnitTestCommunication
 
 			FileStream SourceStream = FileStream(String("Target.jpg"), FileMode::Open, FileAccess::Read);
 			_Client.EnterPassiveMode();
-			_Client.UploadFile("Spring.jpg", SourceStream);
+			_Client.UploadFile("SomeTarget.jpg", SourceStream);
 		}
 	private:
 		FtpClient _Client;
