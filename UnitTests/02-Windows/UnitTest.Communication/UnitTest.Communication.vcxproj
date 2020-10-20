@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClCompile Include="FtpClientTest.cpp" />
     <ClCompile Include="HttpClientTest.cpp" />
+    <ClCompile Include="IrcClientTest.cpp" />
     <ClCompile Include="RestClientTest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

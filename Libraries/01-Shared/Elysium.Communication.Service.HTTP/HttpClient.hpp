@@ -24,7 +24,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication/TcpClient.hpp"
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_HYPERTEXTTRANSFERPROTOCOL
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_HYPERTEXTTRANSFERPROTOCOL
 #include "../Elysium.Communication/HyperTextTransferProtocol.hpp"
 #endif
 
@@ -80,7 +80,7 @@ namespace Elysium::Communication::Service::Http
 	private:
 		Core::Net::Sockets::Socket _OwnedSocket;
 		Transport::TcpClient _OwnedClient;
-		Protocol::HyperTextTransferProtocol _OwnedProtocol;
+		Protocol::ApplicationLayer::HyperTextTransferProtocol _OwnedProtocol;
 
 		Headers::HttpRequestHeaders _DefaultRequestHeaders;
 

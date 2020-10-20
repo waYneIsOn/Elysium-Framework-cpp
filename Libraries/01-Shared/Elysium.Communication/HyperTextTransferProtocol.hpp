@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_HYPERTEXTTRANSFERPROTOCOL
-#define ELYSIUM_COMMUNICATION_PROTOCOL_HYPERTEXTTRANSFERPROTOCOL
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_HYPERTEXTTRANSFERPROTOCOL
+#define ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_HYPERTEXTTRANSFERPROTOCOL
 
 #ifdef _MSC_VER
 #pragma once
@@ -24,7 +24,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-namespace Elysium::Communication::Protocol
+namespace Elysium::Communication::Protocol::ApplicationLayer
 {
 	class ELYSIUM_COMMUNICATION_API HyperTextTransferProtocol final : public TextProtocol
 	{

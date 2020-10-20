@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_FILETRANSFERPROTOCOL
-#define ELYSIUM_COMMUNICATION_PROTOCOL_FILETRANSFERPROTOCOL
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_FILETRANSFERPROTOCOL
+#define ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_FILETRANSFERPROTOCOL
 
 #ifdef _MSC_VER
 #pragma once
@@ -24,7 +24,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-namespace Elysium::Communication::Protocol
+namespace Elysium::Communication::Protocol::ApplicationLayer
 {
 	class ELYSIUM_COMMUNICATION_API FileTransferProtocol final : public TextProtocol
 	{
@@ -92,16 +92,16 @@ namespace Elysium::Communication::Protocol
 		const Elysium::Core::String WriteCdup();
 
 		// Returns information of a file or directory if specified, else information of the current working directory is returned. 
-		const Elysium::Core::String WriteList(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::String WriteList(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// List the contents of a directory (if a directory is named)
-		const Elysium::Core::String WriteMlsd(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::String WriteMlsd(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Provides data about exactly the object named on its command line, and no others.
-		const Elysium::Core::String WriteMlst(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::String WriteMlst(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Returns a list of file names in a specified directory.
-		const Elysium::Core::String WriteNlst(const Elysium::Core::String& Value, Protocol::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::String WriteNlst(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Make directory. 
 		const Elysium::Core::String WriteMkd(const Elysium::Core::String& Value);
@@ -122,7 +122,7 @@ namespace Elysium::Communication::Protocol
 
 		const bool ReadFirstLine(Elysium::Core::Text::StringBuilder& ResponseBuilder);
 		void ReadSubsequentLines(Elysium::Core::Text::StringBuilder& ResponseBuilder);
-		void ReadSubsequentDataLines(Elysium::Core::Text::StringBuilder& ResponseBuilder, Protocol::FileTransferProtocol& DataProtocol);
+		void ReadSubsequentDataLines(Elysium::Core::Text::StringBuilder& ResponseBuilder, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 	};
 }
 #endif

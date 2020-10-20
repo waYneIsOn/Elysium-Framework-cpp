@@ -25,6 +25,15 @@
     <Filter Include="Service\SMTP">
       <UniqueIdentifier>{c76e0c24-0a0b-461e-8eb0-82640be0e634}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Protocol\TransportLayer">
+      <UniqueIdentifier>{ad3dff21-ddd3-4599-977c-c4588c57d1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol\InternetLayer">
+      <UniqueIdentifier>{5aaa2b7f-8d32-48bd-9f95-eb010fcb53dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol\ApplicationLayer">
+      <UniqueIdentifier>{bb908a87-aa40-4400-922c-ac257a68b8a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp">
@@ -45,11 +54,23 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp">
-      <Filter>Protocol</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.cpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.cpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)InternetProtocolV4.cpp">
+      <Filter>Protocol\InternetLayer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp">
-      <Filter>Protocol</Filter>
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,13 +93,25 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp">
       <Filter>Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp">
-      <Filter>Protocol</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp">
-      <Filter>Protocol</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.hpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.hpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolV4.hpp">
+      <Filter>Protocol\InternetLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetRelayChat.hpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

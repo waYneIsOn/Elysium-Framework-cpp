@@ -3,13 +3,13 @@
 using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Template;
 
-Elysium::Communication::Protocol::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport)
+Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::HyperTextTransferProtocol(Transport::TransportBase & Transport)
 	: TextProtocol(Transport, Elysium::Core::Text::Encoding::UTF8())
 { }
-Elysium::Communication::Protocol::HyperTextTransferProtocol::~HyperTextTransferProtocol()
+Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::~HyperTextTransferProtocol()
 { }
 
-Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseHeader()
+Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::ReadResponseHeader()
 {
 	if (_IndexOfMessageEnd != static_cast<size_t>(-1))
 	{	// remove the last part of the previous message
@@ -57,7 +57,7 @@ Elysium::Core::String Elysium::Communication::Protocol::HyperTextTransferProtoco
 	return _Encoding.GetString(&_TotalReadBuffer[0], _IndexOfMessageEnd);
 }
 
-void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::byte>* Value)
+void Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::byte>* Value)
 {
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)
@@ -83,7 +83,7 @@ void Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseCo
 	_TotalReadBuffer.Clear();
 	_IndexOfMessageEnd = -1;
 }
-bool Elysium::Communication::Protocol::HyperTextTransferProtocol::ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Value)
+bool Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Value)
 {
 	// check _MessageBuilder for parts of previously received messages
 	if (_IndexOfMessageEnd != -1)

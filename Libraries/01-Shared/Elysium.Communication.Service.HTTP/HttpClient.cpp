@@ -28,7 +28,7 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/NotImplementedException.hpp"
 #endif
 
-using namespace Elysium::Communication::Protocol;
+using namespace Elysium::Communication::Protocol::ApplicationLayer;
 using namespace Elysium::Communication::Transport;
 using namespace Elysium::Core;
 using namespace Elysium::Core::Net;

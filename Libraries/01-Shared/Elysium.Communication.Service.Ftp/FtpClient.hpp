@@ -24,7 +24,7 @@ Copyright (C) 2017 waYne (CAM)
 #include "../Elysium.Communication/TcpClient.hpp"
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_FILETRANSFERPROTOCOL
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_FILETRANSFERPROTOCOL
 #include "../Elysium.Communication/FileTransferProtocol.hpp"
 #endif
 
@@ -87,11 +87,11 @@ namespace Elysium::Communication::Service::Ftp
 	private:
 		Core::Net::Sockets::Socket _ControlSocket;
 		Transport::TcpClient _ControlTransport;
-		Protocol::FileTransferProtocol _ControlProtocol;
+		Protocol::ApplicationLayer::FileTransferProtocol _ControlProtocol;
 
 		Core::Net::Sockets::Socket _DataSocket;
 		Transport::TcpClient _DataTransport;
-		Protocol::FileTransferProtocol _DataProtocol;
+		Protocol::ApplicationLayer::FileTransferProtocol _DataProtocol;
 
 		void OpenDataConnection(const FtpResponseMessage& ResponseMessage);
 	};

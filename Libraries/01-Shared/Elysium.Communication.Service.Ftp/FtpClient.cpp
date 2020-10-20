@@ -32,9 +32,9 @@ const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::D
 
 Elysium::Communication::Service::Ftp::FtpClient::FtpClient()
 	: _ControlSocket(Elysium::Core::Net::Sockets::Socket(Elysium::Core::Net::Sockets::AddressFamily::InterNetwork, Elysium::Core::Net::Sockets::SocketType::Stream, Elysium::Core::Net::Sockets::ProtocolType::Tcp)),
-	_ControlTransport(Transport::TcpClient(_ControlSocket)), _ControlProtocol(Protocol::FileTransferProtocol(_ControlTransport)),
+	_ControlTransport(Transport::TcpClient(_ControlSocket)), _ControlProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_ControlTransport)),
 	_DataSocket(Elysium::Core::Net::Sockets::Socket(Elysium::Core::Net::Sockets::AddressFamily::InterNetwork, Elysium::Core::Net::Sockets::SocketType::Stream, Elysium::Core::Net::Sockets::ProtocolType::Tcp)),
-	_DataTransport(Transport::TcpClient(_DataSocket)), _DataProtocol(Protocol::FileTransferProtocol(_DataTransport))
+	_DataTransport(Transport::TcpClient(_DataSocket)), _DataProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_DataTransport))
 { }
 Elysium::Communication::Service::Ftp::FtpClient::~FtpClient()
 { }
