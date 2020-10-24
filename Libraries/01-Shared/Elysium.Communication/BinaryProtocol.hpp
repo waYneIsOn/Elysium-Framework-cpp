@@ -22,7 +22,7 @@ Copyright (C) 2017 waYne (CAM)
 
 namespace Elysium::Communication::Protocol
 {
-	class ELYSIUM_COMMUNICATION_API BinaryProtocol final : public ProtocolBase
+	class ELYSIUM_COMMUNICATION_API BinaryProtocol : public ProtocolBase
 	{
 	public:
 		BinaryProtocol(Transport::TransportBase& Transport);

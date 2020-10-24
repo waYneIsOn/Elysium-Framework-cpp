@@ -17,10 +17,12 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Ethernet.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolV4.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetRelayChat.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IPProtocolNumber.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
@@ -33,9 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Ethernet.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)InternetProtocolV4.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)InternetProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
