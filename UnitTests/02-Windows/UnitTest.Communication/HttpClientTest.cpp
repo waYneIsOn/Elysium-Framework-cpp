@@ -28,7 +28,7 @@ namespace UnitTestCommunication
 	public:
 		TEST_METHOD(Delete)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -40,7 +40,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(Get)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -59,7 +59,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(GetBrotli)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -75,7 +75,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(GetGzip)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -96,7 +96,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(GetDeflate)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 			HttpResponseMessage Response = Client.Get("/deflate");
@@ -111,7 +111,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(Options)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 			HttpResponseMessage Response = Client.Options("/get");
@@ -122,7 +122,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(Patch)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -136,7 +136,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(Post)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -150,7 +150,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(Put)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -165,7 +165,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD(AuthenticationBasic)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -187,7 +187,7 @@ namespace UnitTestCommunication
 		}
 		TEST_METHOD(AuthenticationBasicHidden)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -210,7 +210,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD(AuthenticationBearer)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -230,7 +230,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD(AuthenticationDigest)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 
@@ -253,7 +253,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD(TLSGet)
 		{
-			HttpClient Client = HttpClient();
+			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String("www.httpbin.org")));
 			Client.Connect();
 

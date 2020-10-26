@@ -27,7 +27,7 @@ namespace UnitTestCommunication
 	{
 	public:
 		Service_FtpClient()
-			: _Client(FtpClient())
+			: _Client(FtpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4))
 		{ }
 
 		TEST_METHOD_INITIALIZE(BeforeEachMethod)

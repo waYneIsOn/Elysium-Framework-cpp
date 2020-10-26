@@ -69,6 +69,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Linux", "03 - Linux", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Android", "04 - Android", "{32023B59-A865-423C-A850-A9C8E2F5ACE0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Elysium.Communication.Service.Icmp", "Libraries\01-Shared\Elysium.Communication.Service.Icmp\Elysium.Communication.Service.Icmp.vcxitems", "{5D3F61C7-064A-4A28-881F-9B561260503E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\01-Shared\Elysium.IO.Dsv\Elysium.IO.Dsv.vcxitems*{044602dd-0715-4d24-8eee-95d499f0e332}*SharedItemsImports = 4
@@ -77,6 +79,7 @@ Global
 		Libraries\01-Shared\Elysium.Communication.Service.Soap\Elysium.Communication.Service.Soap.vcxitems*{4cb11730-b507-4ca6-8896-846a91eadd77}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.IO.Pdf\Elysium.IO.Pdf.vcxitems*{52049f21-b70d-44d1-9856-e3db7824223a}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Http\Elysium.Communication.Service.Http.vcxitems*{52dc62f9-3e48-4ffe-9408-93eeccbc9b64}*SharedItemsImports = 9
+		Libraries\01-Shared\Elysium.Communication.Service.Icmp\Elysium.Communication.Service.Icmp.vcxitems*{5d3f61c7-064a-4a28-881f-9b561260503e}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.Irc\Elysium.Communication.Service.Irc.vcxitems*{5f8ad37d-d28e-4105-91a9-f1d288264d93}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.Rest\Elysium.Communication.Service.Rest.vcxitems*{76300fb7-9b8a-4f2a-89fe-ea23f547085e}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.Ldap\Elysium.Communication.Service.Ldap.vcxitems*{7f512114-542c-4a39-a8cf-01b0a47709dc}*SharedItemsImports = 9
@@ -87,6 +90,7 @@ Global
 		Libraries\01-Shared\Elysium.Logging\Elysium.Logging.vcxitems*{b9f9d624-63a9-42f2-97c9-47a368dedc3d}*SharedItemsImports = 9
 		Libraries\01-Shared\Elysium.Communication.Service.Ftp\Elysium.Communication.Service.Ftp.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Http\Elysium.Communication.Service.Http.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
+		Libraries\01-Shared\Elysium.Communication.Service.Icmp\Elysium.Communication.Service.Icmp.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Irc\Elysium.Communication.Service.Irc.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Ldap\Elysium.Communication.Service.Ldap.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
 		Libraries\01-Shared\Elysium.Communication.Service.Raw\Elysium.Communication.Service.Raw.vcxitems*{f24ca643-9fda-485c-b97f-54ab3aa4c82c}*SharedItemsImports = 4
@@ -156,6 +160,7 @@ Global
 		{7C21FEFE-D8E7-41A7-97F5-AB6D9DBBAF50} = {93938132-3DCD-485D-BA7C-F1EC52680F3F}
 		{4AEEE87C-3BC5-462F-B936-00106AFC1494} = {93938132-3DCD-485D-BA7C-F1EC52680F3F}
 		{32023B59-A865-423C-A850-A9C8E2F5ACE0} = {93938132-3DCD-485D-BA7C-F1EC52680F3F}
+		{5D3F61C7-064A-4A28-881F-9B561260503E} = {9B37F00A-CBC9-4A11-9E35-3F742FF22BE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1E542AA-7F2D-45E2-BCC0-11DEBB96C091}

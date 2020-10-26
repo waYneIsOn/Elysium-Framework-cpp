@@ -34,7 +34,7 @@
     <Filter Include="Protocol\ApplicationLayer">
       <UniqueIdentifier>{bb908a87-aa40-4400-922c-ac257a68b8a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Protocol\DataLinkLayer">
+    <Filter Include="Protocol\LinkLayer">
       <UniqueIdentifier>{a3693c04-dd3e-43a5-aecf-bdc474d59abc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -57,12 +57,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.cpp">
-      <Filter>Protocol\TransportLayer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.cpp">
-      <Filter>Protocol\TransportLayer</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp">
       <Filter>Protocol\ApplicationLayer</Filter>
     </ClCompile>
@@ -72,11 +66,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp">
       <Filter>Protocol\ApplicationLayer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)InternetProtocol.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)UdpClient.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)IPv4Header.cpp">
       <Filter>Protocol\InternetLayer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Ethernet.cpp">
-      <Filter>Protocol\DataLinkLayer</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpHeader.cpp">
+      <Filter>Protocol\TransportLayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,12 +98,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.hpp">
-      <Filter>Protocol\TransportLayer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.hpp">
-      <Filter>Protocol\TransportLayer</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp">
       <Filter>Protocol\ApplicationLayer</Filter>
     </ClInclude>
@@ -116,14 +107,20 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetRelayChat.hpp">
       <Filter>Protocol\ApplicationLayer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocol.hpp">
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolNumber.hpp">
       <Filter>Protocol\InternetLayer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Ethernet.hpp">
-      <Filter>Protocol\DataLinkLayer</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UdpClient.hpp">
+      <Filter>Transport</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)IPProtocolNumber.hpp">
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolVersion.hpp">
       <Filter>Protocol\InternetLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IPv4Header.hpp">
+      <Filter>Protocol\InternetLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpHeader.hpp">
+      <Filter>Protocol\TransportLayer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

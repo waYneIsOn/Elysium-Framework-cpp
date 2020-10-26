@@ -30,18 +30,16 @@ const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::D
 const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultImplicitFtpsControlPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsControl);
 const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultImplicitFtpsDataPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsData);
 
-Elysium::Communication::Service::Ftp::FtpClient::FtpClient()
-	: _ControlSocket(Elysium::Core::Net::Sockets::Socket(Elysium::Core::Net::Sockets::AddressFamily::InterNetwork, Elysium::Core::Net::Sockets::SocketType::Stream, Elysium::Core::Net::Sockets::ProtocolType::Tcp)),
-	_ControlTransport(Transport::TcpClient(_ControlSocket)), _ControlProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_ControlTransport)),
-	_DataSocket(Elysium::Core::Net::Sockets::Socket(Elysium::Core::Net::Sockets::AddressFamily::InterNetwork, Elysium::Core::Net::Sockets::SocketType::Stream, Elysium::Core::Net::Sockets::ProtocolType::Tcp)),
-	_DataTransport(Transport::TcpClient(_DataSocket)), _DataProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_DataTransport))
+Elysium::Communication::Service::Ftp::FtpClient::FtpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion)
+	: _ControlTransport(Transport::TcpClient(IPVersion)), _ControlProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_ControlTransport)),
+	_DataTransport(Transport::TcpClient(IPVersion)), _DataProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_DataTransport))
 { }
 Elysium::Communication::Service::Ftp::FtpClient::~FtpClient()
 { }
 
 void Elysium::Communication::Service::Ftp::FtpClient::Connect(const FtpEncryption DesiredEncryption, const Elysium::Core::Net::EndPoint & RemoteEndPoint)
 {
-	_ControlSocket.Connect(RemoteEndPoint);
+	_ControlTransport.Connect(RemoteEndPoint);
 
 	if (DesiredEncryption == FtpEncryption::ImplicitTls)
 	{	// ToDo
@@ -81,8 +79,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::Connect(const FtpEncryptio
 void Elysium::Communication::Service::Ftp::FtpClient::Disconnect()
 {
 	_ControlProtocol.WriteQuit();
-	_ControlSocket.Shutdown(Elysium::Core::Net::Sockets::SocketShutdown::Both);
-	_ControlSocket.Disconnect(true);
+	_ControlTransport.Close();
 }
 
 void Elysium::Communication::Service::Ftp::FtpClient::Login(const Elysium::Core::String & Username, const Elysium::Core::String & Password)
@@ -296,6 +293,9 @@ void Elysium::Communication::Service::Ftp::FtpClient::OpenDataConnection(const F
 	const Elysium::Core::Net::IPAddress RemoteIpAddress = Elysium::Core::Net::IPAddress(IpAddress);
 	const Elysium::Core::Net::IPEndPoint RemoteEndPoint = Elysium::Core::Net::IPEndPoint(RemoteIpAddress, Port);
 
-	_DataTransport.Close();
+	if (_DataTransport.GetIsOpen())
+	{
+		_DataTransport.Close();
+	}
 	_DataTransport.Connect(RemoteEndPoint);
 }

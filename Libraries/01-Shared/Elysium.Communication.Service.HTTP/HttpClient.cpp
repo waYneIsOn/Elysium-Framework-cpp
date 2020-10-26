@@ -34,9 +34,8 @@ using namespace Elysium::Core;
 using namespace Elysium::Core::Net;
 using namespace Elysium::Core::Net::Sockets;
 
-Elysium::Communication::Service::Http::HttpClient::HttpClient()
-	: _OwnedSocket(Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp)),
-	_OwnedClient(TcpClient(_OwnedSocket)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
+Elysium::Communication::Service::Http::HttpClient::HttpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion)
+	: _OwnedClient(TcpClient(IPVersion)), _OwnedProtocol(HyperTextTransferProtocol(_OwnedClient)),
 	_DefaultRequestHeaders(Headers::HttpRequestHeaders()),
 	_BaseAddress(Elysium::Core::Uri(String())),
 	_PreviousCompletionOption(HttpCompletionOption::ResponseContentRead)
@@ -60,12 +59,11 @@ void Elysium::Communication::Service::Http::HttpClient::Connect()
 	const Elysium::Core::String Host = _BaseAddress.GetHost();
 	const Elysium::Core::Net::DnsEndPoint RemoteEndPoint = Elysium::Core::Net::DnsEndPoint(_BaseAddress.GetHost(), 80,
 		Net::Sockets::AddressFamily::InterNetwork);
-	_OwnedSocket.Connect(RemoteEndPoint);
+	_OwnedClient.Connect(RemoteEndPoint);
 }
 void Elysium::Communication::Service::Http::HttpClient::Disconnect()
 {
-	_OwnedSocket.Shutdown(SocketShutdown::Both);
-	_OwnedSocket.Disconnect(true);
+	_OwnedClient.Close();
 }
 
 Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communication::Service::Http::HttpClient::Delete(const Elysium::Core::String & Path, const HttpCompletionOption CompletionOption)

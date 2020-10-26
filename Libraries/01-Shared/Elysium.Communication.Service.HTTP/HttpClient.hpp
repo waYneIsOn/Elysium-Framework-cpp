@@ -45,7 +45,7 @@ namespace Elysium::Communication::Service::Http
 	class ELYSIUM_COMMUNICATION_API HttpClient final
 	{
 	public:
-		HttpClient();
+		HttpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
 		HttpClient(const HttpClient& Source) = delete;
 		HttpClient(HttpClient&& Right) noexcept = delete;
 		~HttpClient();
@@ -78,7 +78,6 @@ namespace Elysium::Communication::Service::Http
 		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 	private:
-		Core::Net::Sockets::Socket _OwnedSocket;
 		Transport::TcpClient _OwnedClient;
 		Protocol::ApplicationLayer::HyperTextTransferProtocol _OwnedProtocol;
 

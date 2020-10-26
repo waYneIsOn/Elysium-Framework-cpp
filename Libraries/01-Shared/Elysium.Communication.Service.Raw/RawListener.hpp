@@ -39,7 +39,7 @@ namespace Elysium::Communication::Service::Raw
 
 		void Bind(const Elysium::Core::Net::EndPoint & LocalEndPoint);
 
-		const size_t Read(Elysium::Core::byte* Buffer, const size_t Count);
+		const size_t Read(Elysium::Core::byte* Buffer, const size_t Length);
 	private:
 		Elysium::Core::Net::Sockets::Socket _Socket;
 	};

@@ -26,20 +26,15 @@ namespace Elysium::Communication::Transport
 	{
 	public:
 		virtual ~TransportBase();
-				
-		virtual bool GetIsOpen() const = 0;
-				
+		
+		virtual const bool GetIsOpen() const = 0;
+		
 		//bool Peek();
-		//virtual void Open() = 0;
-		//virtual void Close() = 0;
-		/*
-		virtual int Read(...) = 0;
-		virtual void Write(...) = 0;
-		virtual void Flush();
-		*/
-		virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) = 0;
 		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) = 0;
-		virtual void Flush();
+
+		virtual void Flush() = 0;
+
+		virtual const size_t Read(Elysium::Core::byte* Buffer, const size_t Length) = 0;
 	protected:
 		TransportBase();
 	};

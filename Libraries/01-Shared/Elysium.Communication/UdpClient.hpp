@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TCPCLIENT
-#define ELYSIUM_COMMUNICATION_TRANSPORT_TCPCLIENT
+#ifndef ELYSIUM_COMMUNICATION_TRANSPORT_UDPCLIENT
+#define ELYSIUM_COMMUNICATION_TRANSPORT_UDPCLIENT
 
 #ifdef _MSC_VER
 #pragma once
@@ -28,33 +28,36 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/Socket.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_NET_SOCKETS_NETWORKSTREAM
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/NetworkStream.hpp"
+#ifndef ELYSIUM_CORE_NET_ENDPOINT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/EndPoint.hpp"
 #endif
 
 namespace Elysium::Communication::Transport
 {
-	class ELYSIUM_COMMUNICATION_API TcpClient final : public StreamTransport
+	class ELYSIUM_COMMUNICATION_API UdpClient : public TransportBase
 	{
 	public:
-		TcpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
-		TcpClient(const TcpClient& Source) = delete;
-		TcpClient(TcpClient&& Right) noexcept = delete;
-		virtual ~TcpClient();
+		UdpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
+		UdpClient(const UdpClient& Source) = delete;
+		UdpClient(UdpClient&& Right) noexcept = delete;
+		virtual ~UdpClient();
 
-		TcpClient& operator=(const TcpClient& Source) = delete;
-		TcpClient& operator=(TcpClient&& Right) noexcept = delete;
+		UdpClient& operator=(const UdpClient& Source) = delete;
+		UdpClient& operator=(UdpClient&& Right) noexcept = delete;
 
 		virtual const bool GetIsOpen() const override;
 
-		void Connect(const Elysium::Core::String& Host, int Port);
 		void Connect(const Elysium::Core::Net::EndPoint& RemoteEndPoint);
+
 		void Close();
+
+		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) override;
+
+		virtual void Flush() override;
+
+		virtual const size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
 	private:
 		Elysium::Core::Net::Sockets::Socket _Socket;
-
-		Elysium::Core::Net::Sockets::NetworkStream _InputNetworkStream;
-		Elysium::Core::Net::Sockets::NetworkStream _OutputNetworkStream;
 	};
 }
 #endif

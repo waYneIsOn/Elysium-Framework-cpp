@@ -26,19 +26,25 @@ namespace Elysium::Communication::Transport
 	{
 	public:
 		StreamTransport(Elysium::Core::IO::Stream& InputStream, Elysium::Core::IO::Stream& OutputStream);
+		StreamTransport(const StreamTransport& Source) = delete;
+		StreamTransport(StreamTransport&& Right) noexcept = delete;
 		virtual ~StreamTransport();
 
-		virtual bool GetIsOpen() const override;
+		StreamTransport& operator=(const StreamTransport& Source) = delete;
+		StreamTransport& operator=(StreamTransport&& Right) noexcept = delete;
+
 		Elysium::Core::IO::Stream& GetInputStream() const;
+
 		Elysium::Core::IO::Stream& GetOutputStream() const;
 
 		//virtual void Open() override;
 		//virtual void Close() override;
-		//int Read(...);
-		//void Write(...);
-		//void Flush();
-		virtual size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
+
 		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) override;
+
+		virtual void Flush() override;
+
+		virtual const size_t Read(Elysium::Core::byte* Buffer, const size_t Length) override;
 	protected:
 		Elysium::Core::IO::Stream& _InputStream;
 		Elysium::Core::IO::Stream& _OutputStream;

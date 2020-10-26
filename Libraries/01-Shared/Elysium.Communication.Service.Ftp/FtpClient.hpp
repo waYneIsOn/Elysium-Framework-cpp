@@ -41,7 +41,7 @@ namespace Elysium::Communication::Service::Ftp
 	class ELYSIUM_COMMUNICATION_API FtpClient final
 	{
 	public:
-		FtpClient();
+		FtpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
 		FtpClient(const FtpClient& Source) = delete;
 		FtpClient(FtpClient&& Right) noexcept = delete;
 		~FtpClient();
@@ -85,11 +85,9 @@ namespace Elysium::Communication::Service::Ftp
 		void DownloadFile(const Elysium::Core::String& Value, Elysium::Core::IO::Stream& TargetStream);
 		void UploadFile(const Elysium::Core::String& Value, Elysium::Core::IO::Stream& SourceStream);
 	private:
-		Core::Net::Sockets::Socket _ControlSocket;
 		Transport::TcpClient _ControlTransport;
 		Protocol::ApplicationLayer::FileTransferProtocol _ControlProtocol;
 
-		Core::Net::Sockets::Socket _DataSocket;
 		Transport::TcpClient _DataTransport;
 		Protocol::ApplicationLayer::FileTransferProtocol _DataProtocol;
 

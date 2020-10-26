@@ -14,14 +14,18 @@ namespace UnitTestCommunication
 	TEST_CLASS(Transport_TcpClient)
 	{
 	public:
-		TEST_METHOD(ConnectionTest)
+		TEST_METHOD(ConnectionTestIPv4)
 		{
-			Socket ClientSocket = Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
-			TcpClient Client = TcpClient(ClientSocket);
+			TcpClient Client = TcpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			BinaryProtocol Protocol = BinaryProtocol(Client);
 
 			Client.Connect(String("www.google.com"), 80);
 			Client.Close();
+		}
+
+		TEST_METHOD(ConnectionTestIPv6)
+		{
+			Assert::Fail();
 		}
 	};
 }

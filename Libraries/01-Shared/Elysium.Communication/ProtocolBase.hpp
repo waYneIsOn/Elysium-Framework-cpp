@@ -37,6 +37,7 @@ namespace Elysium::Communication::Protocol
 		ProtocolBase& operator=(ProtocolBase&& Right) noexcept = delete;
 	protected:
 		ProtocolBase(Transport::TransportBase& Transport);
+		//ProtocolBase(ProtocolBase& UnderlyingProtocol);
 
 		Transport::TransportBase& _Transport;
 

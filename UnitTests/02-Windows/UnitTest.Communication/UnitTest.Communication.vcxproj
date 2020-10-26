@@ -183,6 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TcpClientTest.cpp" />
+    <ClCompile Include="UdpClientTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\02-Windows\Elysium.Communication\Elysium.Communication.vcxproj">

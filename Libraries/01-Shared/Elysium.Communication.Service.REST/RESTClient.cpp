@@ -14,6 +14,7 @@
 
 
 Elysium::Communication::Service::Rest::RestClient::RestClient()
+	: _HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4)
 { }
 Elysium::Communication::Service::Rest::RestClient::~RestClient()
 { }

@@ -16,10 +16,6 @@ Copyright (C) 2017 waYne (CAM)
 #include "ProtocolBase.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_TEXT_ENCODING
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/Encoding.hpp"
-#endif
-
 namespace Elysium::Communication::Protocol
 {
 	class ELYSIUM_COMMUNICATION_API BinaryProtocol : public ProtocolBase

@@ -29,7 +29,7 @@ namespace Elysium::Communication::Service::Irc
 	class ELYSIUM_COMMUNICATION_API IrcClient final
 	{
 	public:
-		IrcClient();
+		IrcClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
 		IrcClient(const IrcClient& Source) = delete;
 		IrcClient(IrcClient&& Right) noexcept = delete;
 		~IrcClient();
@@ -44,7 +44,6 @@ namespace Elysium::Communication::Service::Irc
 
 		void Test();
 	private:
-		Core::Net::Sockets::Socket _Socket;
 		Transport::TcpClient _Transport;
 		Protocol::ApplicationLayer::InternetRelayChat _Protocol;
 	};

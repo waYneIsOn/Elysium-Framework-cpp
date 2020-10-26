@@ -5,8 +5,8 @@ Copyright (C) 2017 waYne (CAM)
 
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_INTERNETLAYER_IPPROTOCOLNUMBER
-#define ELYSIUM_COMMUNICATION_PROTOCOL_INTERNETLAYER_IPPROTOCOLNUMBER
+#ifndef ELYSIUM_COMMUNICATION_PROTOCOL_INTERNETLAYER_INTERNETPROTOCOLNUMBER
+#define ELYSIUM_COMMUNICATION_PROTOCOL_INTERNETLAYER_INTERNETPROTOCOLNUMBER
 
 #ifdef _MSC_VER
 #pragma once
@@ -19,9 +19,9 @@ Copyright (C) 2017 waYne (CAM)
 namespace Elysium::Communication::Protocol::InternetLayer
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class IPProtocolNumber : Elysium::Core::uint8_t
+	enum class InternetProtocolNumber : Elysium::Core::uint8_t
 #elif defined(__ANDROID__)
-	enum class IPProtocolNumber
+	enum class InternetProtocolNumber
 #else
 #error "undefined os"
 #endif
@@ -121,7 +121,7 @@ namespace Elysium::Communication::Protocol::InternetLayer
 
 		// MFE Network Services Protocol
 		MfeNsp = 31,
-
+		
 		// MERIT Internodal Protocol
 		MeritInp = 32,
 
@@ -460,13 +460,13 @@ namespace Elysium::Communication::Protocol::InternetLayer
 
 		// Any 0-hop protocol
 		Unnamed114 = 114,
-
+		/*
 		// Unassigned
 		Unassigned = 144 - 252,
 
 		// Use for experimentation and testing 
 		Experimental = 253 - 254,
-
+		*/
 		// Reserved
 		Reserved = 255
 	};

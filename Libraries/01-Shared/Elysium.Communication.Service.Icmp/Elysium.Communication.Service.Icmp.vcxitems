@@ -3,8 +3,8 @@
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <ItemsProjectGuid>{a6c7318f-e09d-4c67-9a78-0887fb52b8de}</ItemsProjectGuid>
-    <ItemsRootNamespace>Elysium::Communication::Service::Raw</ItemsRootNamespace>
+    <ItemsProjectGuid>{5d3f61c7-064a-4a28-881f-9b561260503e}</ItemsProjectGuid>
+    <ItemsRootNamespace>Elysium::Communication::Service::Icmp</ItemsRootNamespace>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -15,13 +15,9 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)PortScanner.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)RawListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)IcmpClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)PortScanner.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)RawListener.hpp">
-      <FileType>Document</FileType>
-    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IcmpClient.hpp" />
   </ItemGroup>
 </Project>

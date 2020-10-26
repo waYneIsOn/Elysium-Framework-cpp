@@ -15,7 +15,7 @@ namespace UnitTestCommunication
 	{
 	public:
 		Service_IrcClient()
-			: _Client(IrcClient())
+			: _Client(IrcClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4))
 		{ }
 
 		TEST_METHOD_INITIALIZE(BeforeEachMethod)

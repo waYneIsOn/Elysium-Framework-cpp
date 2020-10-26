@@ -17,35 +17,34 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Ethernet.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolVersion.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetRelayChat.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)IPProtocolNumber.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolNumber.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IPv4Header.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpHeader.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UdpClient.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Ethernet.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)InternetProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)IPv4Header.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpHeader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TransmissionControlProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TransportBase.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)UserDatagramProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UdpClient.cpp" />
   </ItemGroup>
 </Project>

@@ -21,7 +21,7 @@ void Elysium::Communication::Service::Raw::RawListener::Bind(const Elysium::Core
 	const Elysium::Core::int32_t OptionOutValueLength = _Socket.IOControl(Elysium::Core::Net::Sockets::IOControlCode::ReceiveAll, 1, &OptionOutValue[0], OptionOutValue.GetLength());
 }
 
-const size_t Elysium::Communication::Service::Raw::RawListener::Read(Elysium::Core::byte * Buffer, const size_t Count)
+const size_t Elysium::Communication::Service::Raw::RawListener::Read(Elysium::Core::byte * Buffer, const size_t Length)
 {
-	return _Socket.Receive(Buffer, Count);
+	return _Socket.Receive(Buffer, Length);
 }
