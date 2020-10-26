@@ -100,8 +100,8 @@ namespace UnitTestCommunication
 				throw 1;
 			}
 
-			const Elysium::Core::uint8_t IpHeaderLength = Header->GetHeaderLength();
-			if (IpHeaderLength > 5)
+			const Elysium::Core::uint8_t IpHeaderLength = Header->GetHeaderLength() * 4;
+			if (IpHeaderLength > IPv4Header::MINIMUMHEADERSIZE)
 			{
 				// ToDo: read optional values if there are any
 			}
@@ -137,8 +137,8 @@ namespace UnitTestCommunication
 		{
 			const TcpHeader* Header = (const TcpHeader*)Data;
 
-			const Elysium::Core::int32_t TcpHeaderLength = Header->GetHeaderLength();
-			if (TcpHeaderLength > 5)
+			const Elysium::Core::int32_t TcpHeaderLength = Header->GetHeaderLength() * 4;
+			if (TcpHeaderLength > TcpHeader::MINIMUMHEADERSIZE)
 			{
 				// ToDo: read optional values if there are any
 			}
