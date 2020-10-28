@@ -37,9 +37,13 @@ namespace Elysium::Communication::Service::Icmp
 		IcmpClient& operator=(const IcmpClient& Source) = delete;
 		IcmpClient& operator=(IcmpClient&& Right) noexcept = delete;
 
+		void Initialize();
+		void Close();
 
+		void Ping(const Elysium::Core::Net::EndPoint& RemoteEndPoint);
 
 	private:
+		Elysium::Core::Net::Sockets::Socket _Socket;
 		//Transport::TcpClient _Transport;
 		//Protocol::ApplicationLayer::InternetRelayChat _Protocol;
 	};

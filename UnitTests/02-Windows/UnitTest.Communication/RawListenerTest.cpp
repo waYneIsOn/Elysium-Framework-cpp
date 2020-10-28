@@ -1,15 +1,20 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
+
 #include "../../../Libraries/01-Shared/Elysium.Communication/BinaryProtocol.hpp"
 #include "../../../Libraries/01-Shared/Elysium.Communication/InternetProtocolNumber.hpp"
-#include "../../../Libraries/01-Shared/Elysium.Communication/KnownTcpPort.hpp"
-#include "../../../Libraries/01-Shared/Elysium.Communication/UdpClient.hpp"
+#include "../../../Libraries/01-Shared/Elysium.Communication/IcmpV4Header.hpp"
 #include "../../../Libraries/01-Shared/Elysium.Communication/IPv4Header.hpp"
+#include "../../../Libraries/01-Shared/Elysium.Communication/KnownTcpPort.hpp"
 #include "../../../Libraries/01-Shared/Elysium.Communication/TcpHeader.hpp"
+#include "../../../Libraries/01-Shared/Elysium.Communication/UdpHeader.hpp"
 #include "../../../Libraries/01-Shared/Elysium.Communication.Service.Raw/RawListener.hpp"
 
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
+#include "../../../Libraries/01-Shared/Elysium.Communication/UdpClient.hpp"
+
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/BitConverter.hpp"
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/DnsEndPoint.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/IPEndPoint.hpp"
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/UTF8Encoding.hpp"
 
@@ -27,56 +32,17 @@ namespace UnitTestCommunication
 	TEST_CLASS(Service_RawListener)
 	{
 	public:
-		TEST_METHOD(GetIcmpError)
-		{
-			Assert::Fail();
-			/*
-			IPEndPoint RemoteEndpoint = IPEndPoint(IPAddress::Parse(String("192.168.1.1")), 1337);
-
-			Elysium::Core::byte Data[1024];
-			Data[0] = 0x37;
-			Data[1] = 0x37;
-			Data[2] = 0x37;
-			Data[3] = 0x37;
-
-			RawListener Listener = RawListener(AddressFamily::InterNetwork);
-			Listener.Bind(IPEndPoint(IPAddress::Parse(String("192.168.1.100")), 0));
-
-			UdpClient Client = UdpClient(InternetProtocolVersion::V4);
-			Client.Connect(RemoteEndpoint);
-			Client.Write(Data, 4);
-			Client.Close();
-
-			byte Buffer[65536];
-			int Iter = 0;
-			do
-			{
-				const size_t BytesRead = Listener.Read(&Buffer[0], 65536);
-				ParseIPv4(&Buffer[0], BytesRead);
-
-				Iter++;
-			} while (Iter < 2500);
-			*/
-			/*
-			InternetProtocolv4 Ip = InternetProtocolv4(Listener);
-			UserDatagramProtocol Udp = UserDatagramProtocol(Client, Ip, 65500, RemoteEndpoint.GetPort());
-			Udp.WriteApplicationData(nullptr, 0);
-			*/
-			//TransmissionControlProtocol Tcp = TransmissionControlProtocol(Client, Ip, 27015, 80);
-			//Tcp.WriteSynchronize();
-		}
-
 		TEST_METHOD(RunUntilFtpDataCapture)
 		{
 			RawListener Listener = RawListener(AddressFamily::InterNetwork);
 			Listener.Bind(IPEndPoint(IPAddress::Parse(String("192.168.1.100")), 0));
 
-			byte Buffer[65536];
+			byte Buffer[65535];
 			bool HasCapturedFtpDataPackage = false;
 			int Iter = 0;
 			do
 			{
-				const size_t BytesRead = Listener.Read(&Buffer[0], 65536);
+				const size_t BytesRead = Listener.Read(&Buffer[0], sizeof(Buffer));
 				HasCapturedFtpDataPackage = ParseIPv4(&Buffer[0], BytesRead);
 				if (HasCapturedFtpDataPackage)
 				{
@@ -156,20 +122,24 @@ namespace UnitTestCommunication
 
 		bool ParseUdp(const Elysium::Core::byte* Data, const size_t Count)
 		{
-			const Elysium::Core::uint16_t UdpSourcePort = BitConverter::ToUInt16(&Data[0]);
-			const Elysium::Core::uint16_t UdpDestinationPort = BitConverter::ToUInt16(&Data[2]);
-			const Elysium::Core::uint16_t UdpTotalLength = BitConverter::ToUInt16(&Data[4]);
-			const Elysium::Core::uint16_t UdpCrcChecksum = BitConverter::ToUInt16(&Data[6]);
+			const UdpHeader* Header = (const UdpHeader*)Data;
+
+			const Elysium::Core::uint16_t UdpSourcePort = Header->GetSourcePort();
+			const Elysium::Core::uint16_t UdpDestinationPort = Header->GetDestinationPort();
+			const Elysium::Core::uint16_t UdpTotalLength = Header->GetTotalLength();
+			const Elysium::Core::uint16_t UdpCrcChecksum = Header->GetChecksum();
 
 			return false;
 		}
 
 		bool ParseIcmp(const Elysium::Core::byte* Data, const size_t Count)
 		{
-			const Elysium::Core::uint8_t* IcmpType = &Data[0];
-			const Elysium::Core::uint8_t* IcmpCode = &Data[1];
-			const Elysium::Core::uint16_t* IcmpChecksum = (const Elysium::Core::uint16_t*)&Data[2];
-			const Elysium::Core::uint32_t* IcmpRestOfHeader = (const Elysium::Core::uint32_t*)&Data[4];
+			const IcmpV4Header* Header = (const IcmpV4Header*)Data;
+
+			const IcmpType Type = Header->GetType();
+			const Elysium::Core::uint8_t IcmpCode = Header->GetCode();
+			const Elysium::Core::uint16_t IcmpChecksum = Header->GetChecksum();
+			const Elysium::Core::uint32_t IcmpRestOfHeader = Header->GetRestOfHeader();
 
 			return false;
 		}

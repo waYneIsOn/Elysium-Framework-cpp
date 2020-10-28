@@ -75,6 +75,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpHeader.cpp">
       <Filter>Protocol\TransportLayer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)UdpHeader.cpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)IcmpV4Header.cpp">
+      <Filter>Protocol\InternetLayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
@@ -121,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpHeader.hpp">
       <Filter>Protocol\TransportLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)UdpHeader.hpp">
+      <Filter>Protocol\TransportLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IcmpType.hpp">
+      <Filter>Protocol\InternetLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)IcmpV4Header.hpp">
+      <Filter>Protocol\InternetLayer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

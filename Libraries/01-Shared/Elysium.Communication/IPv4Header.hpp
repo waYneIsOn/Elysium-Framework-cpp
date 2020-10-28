@@ -71,9 +71,42 @@ namespace Elysium::Communication::Protocol::InternetLayer
 
 		const Elysium::Core::uint16_t GetChecksum() const;
 
-		const Elysium::Core::uint16_t GetSourceIPAddress() const;
+		const Elysium::Core::uint32_t GetSourceIPAddress() const;
 
-		const Elysium::Core::uint16_t GetDestrinationIPAddress() const;
+		const Elysium::Core::uint32_t GetDestinationIPAddress() const;
+
+
+
+
+		void SetVersion(const Elysium::Core::uint8_t Value);
+
+		void SetHeaderLength(const Elysium::Core::uint8_t Value);
+
+		void SetDifferentiatedServicesCodePoint(const Elysium::Core::uint8_t Value);
+
+		void SetExplicitCongestionNotification(const Elysium::Core::uint8_t Value);
+
+		void SetTotalLength(const Elysium::Core::uint16_t Value);
+
+		void SetIdentification(const Elysium::Core::uint16_t Value);
+
+		void SetReservedFlag(const bool Value);
+
+		void SetDontFragmentFlag(const bool Value);
+
+		void SetMoreFragmentsFlag(const bool Value);
+
+		void SetFragmentOffset(const Elysium::Core::uint16_t Value);
+
+		void SetTimeToLive(const Elysium::Core::uint8_t Value);
+
+		void SetProtocol(const InternetProtocolNumber Value);
+
+		void SetSourceIPAddress(const Elysium::Core::uint32_t Value);
+
+		void SetDestinationIPAddress(const Elysium::Core::uint32_t Value);
+
+		void ComputeAndSetChecksum(const Elysium::Core::uint8_t NumberOfBytes);
 	private:
 		Elysium::Core::byte _Data[MINIMUMHEADERSIZE];
 

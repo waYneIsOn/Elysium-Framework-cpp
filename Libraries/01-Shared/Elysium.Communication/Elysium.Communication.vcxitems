@@ -19,6 +19,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)BinaryProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FileTransferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IcmpV4Header.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)IcmpType.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolVersion.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetRelayChat.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)InternetProtocolNumber.hpp" />
@@ -32,11 +34,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UdpClient.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)UdpHeader.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)BinaryProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FileTransferProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)HyperTextTransferProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)IcmpV4Header.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)IPv4Header.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
@@ -46,5 +50,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TransportBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)UdpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)UdpHeader.cpp" />
   </ItemGroup>
 </Project>
