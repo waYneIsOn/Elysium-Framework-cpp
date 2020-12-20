@@ -9,29 +9,24 @@
 #endif
 
 Elysium::Communication::Service::Ftp::FtpResponseMessage::FtpResponseMessage(const Elysium::Core::String & Content)
-	: _Content(Content)
+	: Elysium::Communication::Service::Ftp::FtpMessage(Content)
 { }
 Elysium::Communication::Service::Ftp::FtpResponseMessage::FtpResponseMessage(Elysium::Core::String && Content)
-	: _Content(Content)
+	: Elysium::Communication::Service::Ftp::FtpMessage(Content)
 { }
 Elysium::Communication::Service::Ftp::FtpResponseMessage::~FtpResponseMessage()
 { }
 
-const Elysium::Core::String & Elysium::Communication::Service::Ftp::FtpResponseMessage::GetContent() const
-{
-	return _Content;
-}
-
-const Elysium::Communication::Service::Ftp::FtpStatusCode Elysium::Communication::Service::Ftp::FtpResponseMessage::GetCode() const
+const Elysium::Communication::Service::Ftp::FtpResponseStatusCode Elysium::Communication::Service::Ftp::FtpResponseMessage::GetCode() const
 {
 	const Elysium::Core::StringView LastLine = GetLastLine();
 
-	return static_cast<FtpStatusCode>(Elysium::Core::Convert::ToInt32(LastLine.Substringview(0, 3), 10));
+	return static_cast<FtpResponseStatusCode>(Elysium::Core::Convert::ToInt32(LastLine.Substringview(0, 3), 10));
 }
 
 const bool Elysium::Communication::Service::Ftp::FtpResponseMessage::GetIsSuccesful() const
 {
-	return GetCode() < Elysium::Communication::Service::Ftp::FtpStatusCode::TemporaryError;
+	return GetCode() < Elysium::Communication::Service::Ftp::FtpResponseStatusCode::TemporaryError;
 }
 
 const Elysium::Core::StringView Elysium::Communication::Service::Ftp::FtpResponseMessage::GetFirstLine() const

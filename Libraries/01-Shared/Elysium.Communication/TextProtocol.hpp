@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_TEXTPROTOCOL
@@ -22,6 +20,14 @@ Copyright (C) 2017 waYne (CAM)
 
 #ifndef ELYSIUM_CORE_TEXT_STRINGBUILDER
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
+#endif
+
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
+#endif
+
+#ifndef ELYSIUM_CORE_BYTE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
 #endif
 
 namespace Elysium::Communication::Protocol

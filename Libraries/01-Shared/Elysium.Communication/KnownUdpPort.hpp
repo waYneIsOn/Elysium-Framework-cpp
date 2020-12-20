@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_KNOWNUDPPORT
@@ -26,6 +24,10 @@ namespace Elysium::Communication
 #error "undefined os"
 #endif
 	{
+
+
+		DynamicPortFirst = 49152,
+		DynamicPortLast = 65535,
 	};
 }
 #endif

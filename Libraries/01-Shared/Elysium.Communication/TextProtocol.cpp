@@ -13,7 +13,7 @@ Elysium::Communication::Protocol::TextProtocol::~TextProtocol()
 
 void Elysium::Communication::Protocol::TextProtocol::WriteString(const Elysium::Core::String & Value)
 {
-	Elysium::Core::Collections::Template::Array<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(Value, 0, Value.GetLength());
+	Elysium::Core::Collections::Template::Array<Elysium::Core::byte> ByteBuffer = _Encoding.GetBytes(&Value[0], Value.GetLength());
 	_Transport.Write(&ByteBuffer[0], ByteBuffer.GetLength());
 }
 
@@ -45,7 +45,7 @@ const Elysium::Core::String Elysium::Communication::Protocol::TextProtocol::Read
 		size_t BytesReceived = _Transport.Read(&_ReadBuffer[0], _ReadBufferSize);
 		if (BytesReceived == 0)
 		{	
-			return Elysium::Core::String::Empty();
+			return Elysium::Core::String::Empty;
 		}
 		
 		_TotalReadBuffer.AddRange(_ReadBuffer, BytesReceived);

@@ -31,6 +31,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpHeader.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpListener.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TextProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TransportBase.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)UdpClient.hpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpHeader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpListener.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TextProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TransportBase.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)UdpClient.cpp" />

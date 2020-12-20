@@ -46,5 +46,5 @@ Elysium::Logging::Filter & Elysium::Logging::Filter::operator=(Filter && Right) 
 
 bool Elysium::Logging::Filter::IsInterested(const Events::LogEvent & Event)
 {
-	return Event.GetScope().StartsWith(_Scope.GetCharArray()) && Event.GetLevel() >= _MinimumLogLevel && Event.GetLevel() <= _MaximumLogLevel;
+	return Event.GetScope().StartsWith(&_Scope[0]) && Event.GetLevel() >= _MinimumLogLevel && Event.GetLevel() <= _MaximumLogLevel;
 }

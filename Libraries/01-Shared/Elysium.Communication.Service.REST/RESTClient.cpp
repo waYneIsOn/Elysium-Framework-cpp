@@ -50,7 +50,7 @@ void Elysium::Communication::Service::Rest::RestClient::TestGET(const Elysium::C
 	{
 		String ContentAsString = Content->ReadAsString();
 		StringReader Reader = StringReader(ContentAsString);
-		JsonIOSettings Settings = JsonIOSettings(" ", "\t", "\n");
+		JsonIOSettings Settings = JsonIOSettings(u8" ", u8"\t", u8"\n");
 		JsonTextReader JsonReader = JsonTextReader(Settings, Reader);
 
 		JsonReader.Read();

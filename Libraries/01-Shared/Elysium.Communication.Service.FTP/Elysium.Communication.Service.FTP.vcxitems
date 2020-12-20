@@ -20,13 +20,20 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpEncryption.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpException.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpFeature.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpMessage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpRequestMessage.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpRequestType.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpResponseMessage.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)FtpStatusCode.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpServer.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)FtpResponseStatusCode.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)FtpTransferMode.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)FtpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FtpException.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpRequestMessage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)FtpResponseMessage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)FtpServer.cpp" />
   </ItemGroup>
 </Project>

@@ -204,9 +204,9 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	// ap, au, im, me, mu, te, vi, x-
 
 	const Elysium::Communication::Service::Http::Headers::HttpResponseHeaders& ResponseHeaders = Response.GetHeaders();
-	if (ResponseHeaders.Contains("Transfer-Encoding"))
+	if (ResponseHeaders.Contains(u8"Transfer-Encoding"))
 	{
-		if (ResponseHeaders.GetValues("Transfer-Encoding")[0] == u8"chunked")
+		if (ResponseHeaders.GetValues(u8"Transfer-Encoding")[0] == u8"chunked")
 		{
 			bool HasReceivedBytes = false;
 			Elysium::Core::Collections::Template::List<Elysium::Core::byte> Content;
@@ -222,7 +222,7 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 			}
 
 			// add current content
-			if (ResponseHeaders.Contains("Content-Encoding"))
+			if (ResponseHeaders.Contains(u8"Content-Encoding"))
 			{
 				Response._Content = new ByteArrayContent(Content);
 			}
@@ -233,12 +233,12 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 		}
 		else
 		{
-			String Test = String(ResponseHeaders.GetValues("Transfer-Encoding")[0]);
+			String Test = String(ResponseHeaders.GetValues(u8"Transfer-Encoding")[0]);
 
-			throw NotImplementedException("ReceiveResponseContent with unknown Transfer-Encoding");
+			throw NotImplementedException(u8"ReceiveResponseContent with unknown Transfer-Encoding");
 		}
 	}
-	else if (ResponseHeaders.Contains("Content-Length"))
+	else if (ResponseHeaders.Contains(u8"Content-Length"))
 	{
 		// get the content's length
 		const Elysium::Core::Collections::Template::List<Elysium::Core::String> ContentLengthValues = ResponseHeaders.GetValues(u8"Content-Length");
@@ -259,6 +259,6 @@ void Elysium::Communication::Service::Http::HttpClient::ReceiveResponseContent(H
 	}
 	else
 	{
-		throw NotImplementedException("Header includes neither Content-Length, Content-Type nor Transfer-Encoding");
+		throw NotImplementedException(u8"Header includes neither Content-Length, Content-Type nor Transfer-Encoding");
 	}
 }

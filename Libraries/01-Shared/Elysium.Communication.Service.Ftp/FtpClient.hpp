@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPCLIENT
@@ -14,6 +12,10 @@ Copyright (C) 2017 waYne (CAM)
 
 #ifndef ELYSIUM_COMMUNICATION_API
 #include "../Elysium.Communication/API.hpp"
+#endif
+
+#ifndef ELYSIUM_COMMUNICATION_KNOWNTCPPORT
+#include "../Elysium.Communication/KnownTcpPort.hpp"
 #endif
 
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPENCRYPTION
@@ -49,11 +51,11 @@ namespace Elysium::Communication::Service::Ftp
 		FtpClient& operator=(const FtpClient& Source) = delete;
 		FtpClient& operator=(FtpClient&& Right) noexcept = delete;
 
-		static const Elysium::Core::uint16_t DefaultFtpControlPort;
-		static const Elysium::Core::uint16_t DefaultFtpDataPort;
+		static constexpr Elysium::Core::uint16_t DefaultFtpControlPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpControl);
+		static constexpr Elysium::Core::uint16_t DefaultFtpDataPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpData);
 
-		static const Elysium::Core::uint16_t DefaultImplicitFtpsControlPort;
-		static const Elysium::Core::uint16_t DefaultImplicitFtpsDataPort;
+		static constexpr Elysium::Core::uint16_t DefaultImplicitFtpsControlPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsControl);
+		static constexpr Elysium::Core::uint16_t DefaultImplicitFtpsDataPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsData);
 
 		void Connect(const FtpEncryption DesiredEncryption, const Elysium::Core::Net::EndPoint& RemoteEndPoint);
 		void Disconnect();

@@ -1,12 +1,10 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
-#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPSTATUSCODE
-#define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPSTATUSCODE
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPRESPONSESTATUSCODE
+#define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPRESPONSESTATUSCODE
 
 #ifdef _MSC_VER
 #pragma once
@@ -19,9 +17,9 @@ Copyright (C) 2017 waYne (CAM)
 namespace Elysium::Communication::Service::Ftp
 {
 #if defined(_WIN32) || defined(_WIN64) || defined(_WINDOWS)
-	enum class FtpStatusCode : Elysium::Core::uint32_t
+	enum class FtpResponseStatusCode : Elysium::Core::uint32_t
 #elif defined(__ANDROID__)
-	enum class FtpStatusCode
+	enum class FtpResponseStatusCode
 #else
 #error "undefined os"
 #endif

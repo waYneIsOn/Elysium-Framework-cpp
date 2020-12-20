@@ -25,6 +25,14 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
+void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::String & Value)
+{
+	WriteString(Elysium::Core::Convert::ToString(StatusCode, 10));
+	WriteString(Value);
+	WriteString(NEWLINE);
+	_Transport.Flush();
+}
+
 const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAuth(const Elysium::Core::String & Value)
 {
 	static const Elysium::Core::String Command = Elysium::Core::String(u8"AUTH ");

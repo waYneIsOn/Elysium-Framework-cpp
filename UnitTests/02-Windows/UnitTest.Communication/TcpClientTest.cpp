@@ -19,7 +19,7 @@ namespace UnitTestCommunication
 			TcpClient Client = TcpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
 			BinaryProtocol Protocol = BinaryProtocol(Client);
 
-			Client.Connect(String("www.google.com"), 80);
+			Client.Connect(String(u8"www.google.com"), 80);
 			Client.Close();
 		}
 

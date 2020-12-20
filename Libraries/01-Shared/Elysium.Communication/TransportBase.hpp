@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TRANSPORTBASE
@@ -29,7 +27,7 @@ namespace Elysium::Communication::Transport
 		
 		virtual const bool GetIsOpen() const = 0;
 		
-		//bool Peek();
+		//const bool Peek();
 		virtual void Write(const Elysium::Core::byte* Buffer, const size_t Length) = 0;
 
 		virtual void Flush() = 0;

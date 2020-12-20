@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_TRANSPORT_TCPCLIENT
@@ -20,10 +18,6 @@ Copyright (C) 2017 waYne (CAM)
 #include "InternetProtocolVersion.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_NET_ENDPOINT
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/EndPoint.hpp"
-#endif
-
 #ifndef ELYSIUM_CORE_NET_SOCKETS_SOCKET
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/Socket.hpp"
 #endif
@@ -32,12 +26,17 @@ Copyright (C) 2017 waYne (CAM)
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/NetworkStream.hpp"
 #endif
 
+#ifndef ELYSIUM_CORE_NET_ENDPOINT
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Net/EndPoint.hpp"
+#endif
+
 namespace Elysium::Communication::Transport
 {
 	class ELYSIUM_COMMUNICATION_API TcpClient final : public StreamTransport
 	{
 	public:
 		TcpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion);
+		TcpClient(Elysium::Core::Net::Sockets::Socket&& ClientSocket);
 		TcpClient(const TcpClient& Source) = delete;
 		TcpClient(TcpClient&& Right) noexcept = delete;
 		virtual ~TcpClient();

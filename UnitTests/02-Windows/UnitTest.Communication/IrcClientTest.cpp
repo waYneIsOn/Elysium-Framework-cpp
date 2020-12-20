@@ -20,7 +20,7 @@ namespace UnitTestCommunication
 
 		TEST_METHOD_INITIALIZE(BeforeEachMethod)
 		{
-			_Client.Connect(DnsEndPoint(String("dreamhack.se.quakenet.org"), 6667, AddressFamily::InterNetwork));
+			_Client.Connect(DnsEndPoint(String(u8"dreamhack.se.quakenet.org"), 6667, AddressFamily::InterNetwork));
 		}
 		TEST_METHOD_CLEANUP(AfterEachMethod)
 		{

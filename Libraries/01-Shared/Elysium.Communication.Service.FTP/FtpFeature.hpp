@@ -1,10 +1,9 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
+/*
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPFEATURE
 #define ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPFEATURE
 
@@ -47,3 +46,4 @@ namespace Elysium::Communication::Service::Ftp
 	};
 }
 #endif
+*/

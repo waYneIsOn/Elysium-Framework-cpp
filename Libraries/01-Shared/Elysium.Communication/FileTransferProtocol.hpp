@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_PROTOCOL_APPLICATIONLAYER_FILETRANSFERPROTOCOL
@@ -39,6 +37,9 @@ namespace Elysium::Communication::Protocol::ApplicationLayer
 
 		// Read the message sent by the server once connected
 		const Elysium::Core::String ReadWelcomeMessage();
+
+		// ...
+		void WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::String& Message);
 
 		// Upgrade to SSL/TLS
 		const Elysium::Core::String WriteAuth(const Elysium::Core::String& Value);

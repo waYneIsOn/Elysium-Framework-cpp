@@ -8,12 +8,12 @@ Elysium::Logging::Appender::ConsoleAppender::ConsoleAppender()
 	: Elysium::Logging::IAppender(),
 	_Formats(std::map<Events::LogLevel, Elysium::Core::String>())
 {
-	_Formats[Events::LogLevel::Trace] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Debug] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Information] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Warning] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Error] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
-	_Formats[Events::LogLevel::Critical] = "[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Trace] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Debug] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Information] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Warning] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Error] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
+	_Formats[Events::LogLevel::Critical] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
 }
 Elysium::Logging::Appender::ConsoleAppender::~ConsoleAppender()
 {
@@ -72,9 +72,12 @@ void Elysium::Logging::Appender::ConsoleAppender::SetCriticalFormat(const Elysiu
 void Elysium::Logging::Appender::ConsoleAppender::Process(const Events::LogEvent & Event)
 {
 	// ToDo: use formatted message
+	throw 1;
+	/*
 #ifdef UNICODE
 	std::wcout << Event.GetMessage().GetCharArray();
 #else
 	std::cout << Event.GetMessage().GetCharArray();
 #endif
+	*/
 }

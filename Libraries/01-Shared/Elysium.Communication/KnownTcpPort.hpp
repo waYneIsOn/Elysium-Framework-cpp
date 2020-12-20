@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_KNOWNTCPPORT
@@ -84,7 +82,10 @@ namespace Elysium::Communication
 		MssqlServer = 1433,
 		MssqlMonitor = 1434,
 
+		// dynamic ports
 
+		DynamicPortFirst = 49152,
+		DynamicPortLast = 65535,
 	};
 }
 #endif

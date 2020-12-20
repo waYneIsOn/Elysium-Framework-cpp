@@ -17,7 +17,7 @@ namespace UnitTestCommunication
 	public:
 		TEST_METHOD(ConnectionTest)
 		{
-			IPEndPoint RemoteEndpoint = IPEndPoint(IPAddress::Parse(String("192.168.1.1")), 1337);
+			IPEndPoint RemoteEndpoint = IPEndPoint(IPAddress::Parse(String(u8"192.168.1.1")), 1337);
 
 			UdpClient Client = UdpClient(InternetProtocolVersion::V4);
 			Client.Connect(RemoteEndpoint);

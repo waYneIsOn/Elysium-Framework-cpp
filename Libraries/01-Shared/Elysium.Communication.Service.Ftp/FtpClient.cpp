@@ -1,9 +1,5 @@
 #include "FtpClient.hpp"
 
-#ifndef ELYSIUM_COMMUNICATION_KNOWNTCPPORT
-#include "KnownTcpPort.hpp"
-#endif
-
 #ifndef ELYSIUM_CORE_CONVERT
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Convert.hpp"
 #endif
@@ -23,12 +19,6 @@
 #ifndef ELYSIUM_CORE_NOTIMPLEMENTEDEXCEPTION
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/NotImplementedException.hpp"
 #endif
-
-const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultFtpControlPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpControl);
-const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultFtpDataPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpData);
-
-const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultImplicitFtpsControlPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsControl);
-const Elysium::Core::uint16_t Elysium::Communication::Service::Ftp::FtpClient::DefaultImplicitFtpsDataPort = static_cast<const Elysium::Core::uint16_t>(KnownTcpPort::FtpsData);
 
 Elysium::Communication::Service::Ftp::FtpClient::FtpClient(const Protocol::InternetLayer::InternetProtocolVersion IPVersion)
 	: _ControlTransport(Transport::TcpClient(IPVersion)), _ControlProtocol(Protocol::ApplicationLayer::FileTransferProtocol(_ControlTransport)),
@@ -229,7 +219,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::DownloadFile(const Elysium
 	}
 
 	_DataTransport.GetInputStream().CopyTo(TargetStream);
-	_DataTransport.Close();
+	//_DataTransport.Close();
 
 	Elysium::Communication::Service::Ftp::FtpResponseMessage ResponseMessage2 = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.ReadLine());
 	if (!ResponseMessage2.GetIsSuccesful())
@@ -293,9 +283,6 @@ void Elysium::Communication::Service::Ftp::FtpClient::OpenDataConnection(const F
 	const Elysium::Core::Net::IPAddress RemoteIpAddress = Elysium::Core::Net::IPAddress(IpAddress);
 	const Elysium::Core::Net::IPEndPoint RemoteEndPoint = Elysium::Core::Net::IPEndPoint(RemoteIpAddress, Port);
 
-	if (_DataTransport.GetIsOpen())
-	{
-		_DataTransport.Close();
-	}
+	// no need to disconnect (TcpClient will handle this!)
 	_DataTransport.Connect(RemoteEndPoint);
 }

@@ -81,6 +81,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)IcmpV4Header.cpp">
       <Filter>Protocol\InternetLayer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TcpListener.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)IcmpV4Header.hpp">
       <Filter>Protocol\InternetLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TcpListener.hpp">
+      <Filter>Transport</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

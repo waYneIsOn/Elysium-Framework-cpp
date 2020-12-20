@@ -44,41 +44,41 @@ void Elysium::IO::PDF::PdfDocument::Save(Elysium::Core::IO::Stream & Target)
 	Target.Write(&MagicNumber[0], 5);
 
 	// pdf version
-	String VersionString = "1.7\r\n\r\n";
-	Elysium::Core::Collections::Template::Array<byte> ConvertedBytes = UTF8Encoding.GetBytes(VersionString, 0, VersionString.GetLength());
+	String VersionString = u8"1.7\r\n\r\n";
+	Elysium::Core::Collections::Template::Array<byte> ConvertedBytes = UTF8Encoding.GetBytes(&VersionString[0], VersionString.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	// catalog????
-	String InitialCatalog = "1 0 obj\r\n<<\r\n/Type /Catalog\r\n/Outlines 2 0 R\r\n/Pages 3 0 R\r\n>>\r\nendobj\r\n\r\n";
+	String InitialCatalog = u8"1 0 obj\r\n<<\r\n/Type /Catalog\r\n/Outlines 2 0 R\r\n/Pages 3 0 R\r\n>>\r\nendobj\r\n\r\n";
 	//ConvertedBytes.Clear();
-	ConvertedBytes = UTF8Encoding.GetBytes(InitialCatalog, 0, InitialCatalog.GetLength());
+	ConvertedBytes = UTF8Encoding.GetBytes(&InitialCatalog[0], InitialCatalog.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	// Outlines
-	String Outlines = "2 0 obj\r\n<<\r\n/Type /Outlines\r\n/Count 0\r\n>>\r\nendobj\r\n\r\n";
+	String Outlines = u8"2 0 obj\r\n<<\r\n/Type /Outlines\r\n/Count 0\r\n>>\r\nendobj\r\n\r\n";
 	//ConvertedBytes.Clear();
-	ConvertedBytes = UTF8Encoding.GetBytes(Outlines, 0, Outlines.GetLength());
+	ConvertedBytes = UTF8Encoding.GetBytes(&Outlines[0], Outlines.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	// Pages
-	String Pages = "3 0 obj\r\n<<\r\n/Type /Pages\r\n/Count 1\r\n/Kids [ 4 0 R ]\r\n>>\r\nendobj\r\n\r\n";
+	String Pages = u8"3 0 obj\r\n<<\r\n/Type /Pages\r\n/Count 1\r\n/Kids [ 4 0 R ]\r\n>>\r\nendobj\r\n\r\n";
 	//ConvertedBytes.Clear();
-	ConvertedBytes = UTF8Encoding.GetBytes(Pages, 0, Pages.GetLength());
+	ConvertedBytes = UTF8Encoding.GetBytes(&Pages[0], Pages.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	// Page 1
-	String Page1 = "4 0 obj\r\n<<\r\n/Type /Page\r\n";
+	String Page1 = u8"4 0 obj\r\n<<\r\n/Type /Page\r\n";
 
 	// trailer
-	String Trailer = "trailer\r\n<<\r\n/Size 6\r\n/Root 1 0 R\r\n/Info 5 0 R\r\n>>\r\n\r\n";
+	String Trailer = u8"trailer\r\n<<\r\n/Size 6\r\n/Root 1 0 R\r\n/Info 5 0 R\r\n>>\r\n\r\n";
 	//ConvertedBytes.Clear();
-	ConvertedBytes = UTF8Encoding.GetBytes(Trailer, 0, Trailer.GetLength());
+	ConvertedBytes = UTF8Encoding.GetBytes(&Trailer[0], Trailer.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	// end of file
-	String EndOfFile = "startxref\r\n1337\r\n%%EOF\r\n";
+	String EndOfFile = u8"startxref\r\n1337\r\n%%EOF\r\n";
 	//ConvertedBytes.Clear();
-	ConvertedBytes = UTF8Encoding.GetBytes(EndOfFile, 0, EndOfFile.GetLength());
+	ConvertedBytes = UTF8Encoding.GetBytes(&EndOfFile[0], EndOfFile.GetLength());
 	Target.Write(&ConvertedBytes[0], ConvertedBytes.GetLength());
 
 	int x = 354;

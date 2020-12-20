@@ -1,8 +1,6 @@
 /*
 ===========================================================================
-
-Copyright (C) 2017 waYne (CAM)
-
+Copyright (c) waYne (CAM). All rights reserved.
 ===========================================================================
 */
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPRESPONSEMESSAGE
@@ -12,16 +10,12 @@ Copyright (C) 2017 waYne (CAM)
 #pragma once
 #endif
 
-#ifndef ELYSIUM_COMMUNICATION_API
-#include "../Elysium.Communication/API.hpp"
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPMESSAGE
+#include "FtpMessage.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_STRING
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/String.hpp"
-#endif
-
-#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPSTATUSCODE
-#include "FtpStatusCode.hpp"
+#ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPRESPONSESTATUSCODE
+#include "FtpResponseStatusCode.hpp"
 #endif
 
 #ifndef ELYSIUM_CORE_STRINGVIEW
@@ -30,26 +24,23 @@ Copyright (C) 2017 waYne (CAM)
 
 namespace Elysium::Communication::Service::Ftp
 {
-	class ELYSIUM_COMMUNICATION_API FtpResponseMessage final
+	class ELYSIUM_COMMUNICATION_API FtpResponseMessage final : public FtpMessage
 	{
 	public:
 		FtpResponseMessage(const Elysium::Core::String& Content);
 		FtpResponseMessage(Elysium::Core::String&& Content);
 		FtpResponseMessage(const FtpResponseMessage& Source) = delete;
 		FtpResponseMessage(FtpResponseMessage&& Right) noexcept = delete;
-		~FtpResponseMessage();
+		virtual ~FtpResponseMessage();
 
 		FtpResponseMessage& operator=(const FtpResponseMessage& Source) = delete;
 		FtpResponseMessage& operator=(FtpResponseMessage&& Right) noexcept = delete;
 
-		const Elysium::Core::String& GetContent() const;
-		const FtpStatusCode GetCode() const;
+		const FtpResponseStatusCode GetCode() const;
 		const bool GetIsSuccesful() const;
 
 		const Elysium::Core::StringView GetFirstLine() const;
 		const Elysium::Core::StringView GetLastLine() const;
-	private:
-		const Elysium::Core::String _Content;
 	};
 }
 #endif

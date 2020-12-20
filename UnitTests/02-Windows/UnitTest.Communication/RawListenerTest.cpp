@@ -35,7 +35,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(RunUntilFtpDataCapture)
 		{
 			RawListener Listener = RawListener(AddressFamily::InterNetwork);
-			Listener.Bind(IPEndPoint(IPAddress::Parse(String("192.168.1.100")), 0));
+			Listener.Bind(IPEndPoint(IPAddress::Parse(String(u8"192.168.1.100")), 0));
 
 			byte Buffer[65535];
 			bool HasCapturedFtpDataPackage = false;
@@ -146,7 +146,7 @@ namespace UnitTestCommunication
 
 		bool ParseFtpControl(const Elysium::Core::byte* Data, const size_t Count)
 		{
-			Logger::WriteMessage(&Elysium::Core::Text::Encoding::UTF8().GetString(Data, Count)[0]);
+			//Logger::WriteMessage(&Elysium::Core::Text::Encoding::UTF8().GetString(Data, Count)[0]);
 
 			return true;
 		}
