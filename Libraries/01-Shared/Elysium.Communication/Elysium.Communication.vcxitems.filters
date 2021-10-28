@@ -84,6 +84,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpListener.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)RemoteFrameBufferProtocol.cpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)API.hpp" />
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpListener.hpp">
       <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)RemoteFrameBufferProtocol.hpp">
+      <Filter>Protocol\ApplicationLayer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

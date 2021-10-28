@@ -103,7 +103,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage Elysium::Communicatio
 	// parse the first line
 	ResponseMessage._Version = Elysium::Core::Version::Parse(Elysium::Core::StringView(&LineViews[0][5], 3));
 	size_t LengthOfHttpStatusCode = LineViews[0].IndexOf(' ', 9);
-	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(Elysium::Core::Convert::ToInt32(&Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode)[0], 10));
+	ResponseMessage._StatusCode = static_cast<HttpStatusCode>(Elysium::Core::Convert::ToInt32(Elysium::Core::StringView(&LineViews[0][9], LengthOfHttpStatusCode), 10));
 	size_t IndexOfHttpStatusMessage = 10 + LengthOfHttpStatusCode;
 	ResponseMessage._ReasonPhrase = Elysium::Core::StringView(&LineViews[0][IndexOfHttpStatusMessage], LineViews[0].GetLength() - IndexOfHttpStatusMessage);
 

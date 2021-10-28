@@ -15,7 +15,7 @@ Copyright (c) waYne (CAM). All rights reserved.
 #endif
 
 #ifndef ELYSIUM_CORE_MATH_GEOMETRY_RECTANGLESINGLE
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Math/RectangleSingle.hpp"
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Math/Rectangle.hpp"
 #endif
 
 namespace Elysium::IO::PDF
@@ -26,17 +26,17 @@ namespace Elysium::IO::PDF
 		PdfPageDimensions();
 		~PdfPageDimensions();
 
-		Elysium::Core::Math::Geometry::RectangleSingle GetArtBox() const;
-		Elysium::Core::Math::Geometry::RectangleSingle GetBleedBox() const;
-		Elysium::Core::Math::Geometry::RectangleSingle GetCropBox() const;
-		Elysium::Core::Math::Geometry::RectangleSingle GetMediaBox() const;
-		Elysium::Core::Math::Geometry::RectangleSingle GetTrimBox() const;
+		Elysium::Core::Math::Geometry::Rectangle GetArtBox() const;
+		Elysium::Core::Math::Geometry::Rectangle GetBleedBox() const;
+		Elysium::Core::Math::Geometry::Rectangle GetCropBox() const;
+		Elysium::Core::Math::Geometry::Rectangle GetMediaBox() const;
+		Elysium::Core::Math::Geometry::Rectangle GetTrimBox() const;
 	private:
-		Elysium::Core::Math::Geometry::RectangleSingle _ArtBox;
-		Elysium::Core::Math::Geometry::RectangleSingle _BleedBox;
-		Elysium::Core::Math::Geometry::RectangleSingle _CropBox;
-		Elysium::Core::Math::Geometry::RectangleSingle _MediaBox;
-		Elysium::Core::Math::Geometry::RectangleSingle _TrimBox;
+		Elysium::Core::Math::Geometry::Rectangle _ArtBox;
+		Elysium::Core::Math::Geometry::Rectangle _BleedBox;
+		Elysium::Core::Math::Geometry::Rectangle _CropBox;
+		Elysium::Core::Math::Geometry::Rectangle _MediaBox;
+		Elysium::Core::Math::Geometry::Rectangle _TrimBox;
 	};
 }
 #endif

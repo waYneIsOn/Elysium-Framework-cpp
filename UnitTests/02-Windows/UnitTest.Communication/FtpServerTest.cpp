@@ -53,6 +53,6 @@ namespace UnitTestCommunication
 			_Server.Start(_LocalEndPoint, 100);
 		}
 
-		inline static Thread _ServerThread = Thread(Delegate<void>::CreateDelegate<&Service_FtpServer::ServerMain>());
+		inline static Thread _ServerThread = Thread(Delegate<void>::Bind<&Service_FtpServer::ServerMain>());
 	};
 }

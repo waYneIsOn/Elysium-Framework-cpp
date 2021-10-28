@@ -14,12 +14,12 @@ Copyright (c) waYne (CAM). All rights reserved.
 #include "HttpContent.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_ARRAYOFBYTE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ArrayOfByte.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_BYTE
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LISTOFBYTE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ListOfByte.hpp"
 #endif
 
 namespace Elysium::Communication::Service::Http
@@ -34,7 +34,7 @@ namespace Elysium::Communication::Service::Http
 		virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
 		virtual Elysium::Core::String ReadAsString() const override;
 	protected:
-		const Elysium::Core::Collections::Template::Array<Elysium::Core::byte> _Content;
+		Elysium::Core::Collections::Template::Array<Elysium::Core::byte> _Content;
 	};
 }
 #endif

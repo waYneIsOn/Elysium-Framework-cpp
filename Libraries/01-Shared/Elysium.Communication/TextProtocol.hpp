@@ -22,12 +22,8 @@ Copyright (c) waYne (CAM). All rights reserved.
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LIST
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/List.hpp"
-#endif
-
-#ifndef ELYSIUM_CORE_BYTE
-#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/Byte.hpp"
+#ifndef ELYSIUM_CORE_COLLECTIONS_TEMPLATE_LISTOFBYTE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core/ListOfByte.hpp"
 #endif
 
 namespace Elysium::Communication::Protocol

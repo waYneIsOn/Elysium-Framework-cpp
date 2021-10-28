@@ -17,7 +17,7 @@ void Elysium::Communication::Service::Raw::RawListener::Bind(const Elysium::Core
 		Elysium::Core::Net::Sockets::SocketOptionLevel::IPv6, Elysium::Core::Net::Sockets::SocketOptionName::HeaderIncluded, true);
 	
 	// enter promiscuous mode -> https://en.wikipedia.org/wiki/Promiscuous_mode
-	const Elysium::Core::Collections::Template::Array<Elysium::Core::byte> OptionOutValue = Elysium::Core::BitConverter::GetBytes(0);
+	Elysium::Core::Collections::Template::Array<Elysium::Core::byte> OptionOutValue = Elysium::Core::BitConverter::GetBytes(0);
 	const Elysium::Core::int32_t OptionOutValueLength = _Socket.IOControl(Elysium::Core::Net::Sockets::IOControlCode::ReceiveAll, 1, &OptionOutValue[0], OptionOutValue.GetLength());
 }
 

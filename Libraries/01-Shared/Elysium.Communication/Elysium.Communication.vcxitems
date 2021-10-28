@@ -28,6 +28,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownTcpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)KnownUdpPort.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ProtocolBase.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)RemoteFrameBufferProtocol.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)StreamTransport.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpClient.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TcpHeader.hpp" />
@@ -45,6 +46,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)InternetRelayChat.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)IPv4Header.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ProtocolBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)RemoteFrameBufferProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)StreamTransport.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpClient.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TcpHeader.cpp" />

@@ -256,19 +256,19 @@ void Elysium::Communication::Service::Ftp::FtpClient::OpenDataConnection(const F
 
 	size_t StartIndexIpPart = 0;
 	size_t EndIndexIpPart = IpAddresView.IndexOf(',', StartIndexIpPart);
-	const Elysium::Core::uint8_t IpPart1 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t IpPart1 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], EndIndexIpPart - StartIndexIpPart, 10);
 
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);
-	const Elysium::Core::uint8_t IpPart2 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t IpPart2 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], EndIndexIpPart - StartIndexIpPart, 10);
 
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);
-	const Elysium::Core::uint8_t IpPart3 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t IpPart3 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], EndIndexIpPart - StartIndexIpPart, 10);
 
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);
-	const Elysium::Core::uint8_t IpPart4 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], 10);
+	const Elysium::Core::uint8_t IpPart4 = Elysium::Core::Convert::ToInt32(&IpAddresView[StartIndexIpPart], EndIndexIpPart - StartIndexIpPart, 10);
 
 	StartIndexIpPart = EndIndexIpPart + 1;
 	EndIndexIpPart = StartIndexIpPart + IpAddresView.IndexOf(',', StartIndexIpPart);

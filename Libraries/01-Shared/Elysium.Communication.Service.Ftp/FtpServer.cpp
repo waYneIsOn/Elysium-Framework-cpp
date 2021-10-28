@@ -23,7 +23,7 @@ void Elysium::Communication::Service::Ftp::FtpServer::Start(const Elysium::Core:
 	{
 		_AcceptResetEvent.Reset();
 		const Elysium::Core::IAsyncResult* AcceptResult = _ControlTransport.BeginAcceptTcpClient(
-			Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>::CreateDelegate<FtpServer, &FtpServer::TcpClientAcceptCallback>(*this), nullptr);
+			Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>::Bind<FtpServer, &FtpServer::TcpClientAcceptCallback>(*this), nullptr);
 		_AcceptResetEvent.WaitOne();
 		delete AcceptResult;
 	}

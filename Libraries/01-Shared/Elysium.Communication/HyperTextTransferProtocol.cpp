@@ -1,5 +1,9 @@
 #include "HyperTextTransferProtocol.hpp"
 
+#ifndef _INC_STDLIB
+#include <stdlib.h>
+#endif
+
 using namespace Elysium::Core;
 using namespace Elysium::Core::Collections::Template;
 
