@@ -6,7 +6,7 @@
 
 Elysium::Logging::Appender::ConsoleAppender::ConsoleAppender()
 	: Elysium::Logging::IAppender(),
-	_Formats(std::map<Events::LogLevel, Elysium::Core::String>())
+	_Formats(std::map<Events::LogLevel, Elysium::Core::Utf8String>())
 {
 	_Formats[Events::LogLevel::Trace] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
 	_Formats[Events::LogLevel::Debug] = u8"[{Timestamp} {Level}] {Message} [{Exception}]{NewLine}";
@@ -19,52 +19,52 @@ Elysium::Logging::Appender::ConsoleAppender::~ConsoleAppender()
 {
 }
 
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetTraceFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetTraceFormat() const
 {
 	return _Formats.at(Events::LogLevel::Trace);
 }
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetDebugFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetDebugFormat() const
 {
 	return _Formats.at(Events::LogLevel::Debug);
 }
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetInformationFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetInformationFormat() const
 {
 	return _Formats.at(Events::LogLevel::Information);
 }
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetWarningFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetWarningFormat() const
 {
 	return _Formats.at(Events::LogLevel::Warning);
 }
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetErrorFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetErrorFormat() const
 {
 	return _Formats.at(Events::LogLevel::Error);
 }
-const Elysium::Core::String & Elysium::Logging::Appender::ConsoleAppender::GetCriticalFormat() const
+const Elysium::Core::Utf8String & Elysium::Logging::Appender::ConsoleAppender::GetCriticalFormat() const
 {
 	return _Formats.at(Events::LogLevel::Critical);
 }
 
-void Elysium::Logging::Appender::ConsoleAppender::SetTraceFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetTraceFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Trace] = Format;
 }
-void Elysium::Logging::Appender::ConsoleAppender::SetDebugFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetDebugFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Debug] = Format;
 }
-void Elysium::Logging::Appender::ConsoleAppender::SetInformationFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetInformationFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Information] = Format;
 }
-void Elysium::Logging::Appender::ConsoleAppender::SetWarningFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetWarningFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Warning] = Format;
 }
-void Elysium::Logging::Appender::ConsoleAppender::SetErrorFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetErrorFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Error] = Format;
 }
-void Elysium::Logging::Appender::ConsoleAppender::SetCriticalFormat(const Elysium::Core::String & Format)
+void Elysium::Logging::Appender::ConsoleAppender::SetCriticalFormat(const Elysium::Core::Utf8String & Format)
 {
 	_Formats[Events::LogLevel::Critical] = Format;
 }

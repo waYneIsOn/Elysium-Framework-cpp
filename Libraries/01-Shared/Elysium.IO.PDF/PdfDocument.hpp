@@ -59,7 +59,7 @@ namespace Elysium::IO::PDF
 		//GetPage(const unsigned int Index);
 		//Load(const Stream& Stream);
 		//Load(const String& Uri/FileName);
-		void Save(const Elysium::Core::String& Target);
+		void Save(const Elysium::Core::Utf8String& Target);
 		void Save(Elysium::Core::IO::Stream& Target);
 	private:
 		PdfVersion _Version;

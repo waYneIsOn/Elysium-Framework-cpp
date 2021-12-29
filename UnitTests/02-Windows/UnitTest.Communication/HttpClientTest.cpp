@@ -29,7 +29,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(Delete)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			HttpResponseMessage Response = Client.Delete(u8"/delete");
@@ -41,7 +41,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(Get)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			HttpResponseMessage Response1 = Client.Get(u8"/get", HttpCompletionOption::ResponseHeadersRead);
@@ -60,7 +60,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetBrotli)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			HttpResponseMessage Response = Client.Get(u8"/brotli");
@@ -76,7 +76,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetGzip)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			HttpResponseMessage Response = Client.Get(u8"/gzip");
@@ -97,7 +97,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetDeflate)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 			HttpResponseMessage Response = Client.Get(u8"/deflate");
 			Client.Disconnect();
@@ -112,7 +112,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(Options)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 			HttpResponseMessage Response = Client.Options(u8"/get");
 			Client.Disconnect();
@@ -123,10 +123,10 @@ namespace UnitTestCommunication
 		TEST_METHOD(Patch)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
-			StringContent Content = StringContent(String(u8"<html><head></head><body>bla</body></html>"));
+			StringContent Content = StringContent(u8"<html><head></head><body>bla</body></html>");
 
 			HttpResponseMessage Response = Client.Patch(u8"/patch", Content);
 			Client.Disconnect();
@@ -137,10 +137,10 @@ namespace UnitTestCommunication
 		TEST_METHOD(Post)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
-			StringContent Content = StringContent(String(u8"<html><head></head><body>bla</body></html>"));
+			StringContent Content = StringContent(u8"<html><head></head><body>bla</body></html>");
 
 			HttpResponseMessage Response = Client.Post(u8"/post", Content);
 			Client.Disconnect();
@@ -151,10 +151,10 @@ namespace UnitTestCommunication
 		TEST_METHOD(Put)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
-			StringContent Content = StringContent(String(u8"<html><head></head><body>bla</body></html>"));
+			StringContent Content = StringContent(u8"<html><head></head><body>bla</body></html>");
 
 			HttpResponseMessage Response = Client.Put(u8"/put", Content);
 			Client.Disconnect();
@@ -166,16 +166,16 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBasic)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get(u8"/basic-auth/SomeUser/SomePassword");
 
 			// add authorization-headers and send the same request again
-			String AuthInfo = u8"SomeUser:SomePassword";
+			Elysium::Core::Utf8String AuthInfo = u8"SomeUser:SomePassword";
 			Elysium::Core::Collections::Template::Array<Elysium::Core::byte> Bytes = Encoding::UTF8().GetBytes(&AuthInfo[0], 0, AuthInfo.GetLength());
-			String Base64AuthInfo = Convert::ToBase64String(&Bytes[0], Bytes.GetLength());
+			Elysium::Core::Utf8String Base64AuthInfo = Convert::ToBase64String(&Bytes[0], Bytes.GetLength());
 			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u8"Basic", Base64AuthInfo));
 			HttpResponseMessage AuthorizedResponse = Client.Get(u8"/basic-auth/SomeUser/SomePassword");
 
@@ -188,16 +188,16 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBasicHidden)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			// send a request without authorization-headers
 			HttpResponseMessage UnauthorizedResponse = Client.Get(u8"/hidden-basic-auth/SomeUser/SomePassword");
 
 			// add authorization-headers and send the same request again
-			String AuthInfo = u8"SomeUser:SomePassword";
+			Elysium::Core::Utf8String AuthInfo = u8"SomeUser:SomePassword";
 			Elysium::Core::Collections::Template::Array<Elysium::Core::byte> Bytes = Encoding::UTF8().GetBytes(&AuthInfo[0], AuthInfo.GetLength());
-			String Base64AuthInfo = Convert::ToBase64String(&Bytes[0], Bytes.GetLength());
+			Elysium::Core::Utf8String Base64AuthInfo = Convert::ToBase64String(&Bytes[0], Bytes.GetLength());
 			Client.GetDefaultRequestHeaders().SetAuthorization(Headers::AuthenticationHeaderValue(u8"Basic", Base64AuthInfo));
 			HttpResponseMessage AuthorizedResponse = Client.Get(u8"/hidden-basic-auth/SomeUser/SomePassword");
 
@@ -211,7 +211,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationBearer)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			// send a request without authorization-headers
@@ -231,7 +231,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(AuthenticationDigest)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			// send a request without authorization-headers
@@ -254,7 +254,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(TLSGet)
 		{
 			HttpClient Client = HttpClient(Elysium::Communication::Protocol::InternetLayer::InternetProtocolVersion::V4);
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"www.httpbin.org")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"www.httpbin.org")));
 			Client.Connect();
 
 			//HttpResponseMessage Response = Client.Get(u"");

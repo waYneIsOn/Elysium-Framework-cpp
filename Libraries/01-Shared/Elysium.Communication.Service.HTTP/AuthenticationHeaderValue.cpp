@@ -1,9 +1,9 @@
 #include "AuthenticationHeaderValue.hpp"
 
-Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::String& Scheme)
+Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::Utf8String& Scheme)
 	: _Scheme(Scheme), _Parameter()
 { }
-Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::String & Scheme, const Elysium::Core::String & Parameter)
+Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::AuthenticationHeaderValue(const Elysium::Core::Utf8String & Scheme, const Elysium::Core::Utf8String & Parameter)
 	: _Scheme(Scheme), _Parameter(Parameter)
 { }
 Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::~AuthenticationHeaderValue()
@@ -26,20 +26,20 @@ bool Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::
 	return true;
 }
 
-const Elysium::Core::String & Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::GetScheme() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::GetScheme() const
 {
 	return _Scheme;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::GetParameter() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::GetParameter() const
 {
 	return _Parameter;
 }
 
-void Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::SetScheme(const Elysium::Core::String & Value)
+void Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::SetScheme(const Elysium::Core::Utf8String & Value)
 {
 	_Scheme = Value;
 }
-void Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::SetParameter(const Elysium::Core::String & Value)
+void Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue::SetParameter(const Elysium::Core::Utf8String & Value)
 {
 	_Parameter = Value;
 }

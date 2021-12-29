@@ -23,7 +23,7 @@ namespace Elysium::Communication::Service::Http
 	class ELYSIUM_COMMUNICATION_API HttpMethod final
 	{
 	public:
-		HttpMethod(const Elysium::Core::String& Method);
+		HttpMethod(const Elysium::Core::Utf8String& Method);
 		HttpMethod(const HttpMethod& Source);
 		HttpMethod(HttpMethod&& Right) noexcept;
 		~HttpMethod();
@@ -31,7 +31,7 @@ namespace Elysium::Communication::Service::Http
 		HttpMethod& operator=(const HttpMethod& Source);
 		HttpMethod& operator=(HttpMethod&& Right) noexcept;
 
-		const Elysium::Core::String& GetMethod() const;
+		const Elysium::Core::Utf8String& GetMethod() const;
 
 		static const HttpMethod& Connect();
 		static const HttpMethod& Delete();
@@ -43,7 +43,7 @@ namespace Elysium::Communication::Service::Http
 		static const HttpMethod& Put();
 		static const HttpMethod& Trace();
 	private:
-		Elysium::Core::String _Method;
+		Elysium::Core::Utf8String _Method;
 
 		static const HttpMethod _Connect;
 		static const HttpMethod _Delete;

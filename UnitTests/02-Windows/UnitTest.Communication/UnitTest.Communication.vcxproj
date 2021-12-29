@@ -177,6 +177,7 @@
     <ClCompile Include="IrcClientTest.cpp" />
     <ClCompile Include="RawListenerTest.cpp" />
     <ClCompile Include="RestClientTest.cpp" />
+    <ClCompile Include="RfbClientTest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

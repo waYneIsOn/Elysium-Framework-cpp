@@ -13,7 +13,7 @@ Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::H
 Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::~HyperTextTransferProtocol()
 { }
 
-Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::ReadResponseHeader()
+Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::HyperTextTransferProtocol::ReadResponseHeader()
 {
 	if (_IndexOfMessageEnd != static_cast<size_t>(-1))
 	{	// remove the last part of the previous message

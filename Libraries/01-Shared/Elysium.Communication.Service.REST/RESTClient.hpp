@@ -32,15 +32,15 @@ namespace Elysium::Communication::Service::Rest
 		void Disconnect();
 
 		template <class T>
-		T Get(const Elysium::Core::String& Path);
+		T Get(const Elysium::Core::Utf8String& Path);
 
-		void TestGET(const Elysium::Core::String& Path);
+		void TestGET(const Elysium::Core::Utf8String& Path);
 	private:
 		Elysium::Communication::Service::Http::HttpClient _HttpClient;
 	};
 
 	template<class T>
-	inline T RestClient::Get(const Elysium::Core::String & Path)
+	inline T RestClient::Get(const Elysium::Core::Utf8String & Path)
 	{
 		return T();
 	}

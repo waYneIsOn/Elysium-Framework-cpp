@@ -23,8 +23,8 @@ namespace Elysium::Communication::Service::Http::Headers
 	class ELYSIUM_COMMUNICATION_API AuthenticationHeaderValue final
 	{
 	public:
-		AuthenticationHeaderValue(const Elysium::Core::String& Scheme);
-		AuthenticationHeaderValue(const Elysium::Core::String& Scheme, const Elysium::Core::String& Parameter);
+		AuthenticationHeaderValue(const Elysium::Core::Utf8String& Scheme);
+		AuthenticationHeaderValue(const Elysium::Core::Utf8String& Scheme, const Elysium::Core::Utf8String& Parameter);
 		AuthenticationHeaderValue(const AuthenticationHeaderValue& Value) = delete;
 		AuthenticationHeaderValue(AuthenticationHeaderValue&& Right) noexcept = delete;
 		~AuthenticationHeaderValue();
@@ -36,14 +36,14 @@ namespace Elysium::Communication::Service::Http::Headers
 		bool operator==(const AuthenticationHeaderValue& Other);
 		bool operator!=(const AuthenticationHeaderValue& Other);
 
-		const Elysium::Core::String& GetScheme() const;
-		const Elysium::Core::String& GetParameter() const;
+		const Elysium::Core::Utf8String& GetScheme() const;
+		const Elysium::Core::Utf8String& GetParameter() const;
 
-		void SetScheme(const Elysium::Core::String& Value);
-		void SetParameter(const Elysium::Core::String& Value);
+		void SetScheme(const Elysium::Core::Utf8String& Value);
+		void SetParameter(const Elysium::Core::Utf8String& Value);
 	private:
-		Elysium::Core::String _Scheme;
-		Elysium::Core::String _Parameter;
+		Elysium::Core::Utf8String _Scheme;
+		Elysium::Core::Utf8String _Parameter;
 	};
 }
 #endif

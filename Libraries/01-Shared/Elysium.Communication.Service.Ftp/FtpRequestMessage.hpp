@@ -27,16 +27,21 @@ namespace Elysium::Communication::Service::Ftp
 	class ELYSIUM_COMMUNICATION_API FtpRequestMessage final : public FtpMessage
 	{
 	public:
-		FtpRequestMessage(const Elysium::Core::String& Content);
-		FtpRequestMessage(Elysium::Core::String&& Content);
-		FtpRequestMessage(const FtpRequestMessage& Source) = delete;
-		FtpRequestMessage(FtpRequestMessage&& Right) noexcept = delete;
-		virtual ~FtpRequestMessage();
+		FtpRequestMessage(const Elysium::Core::Utf8String& Content);
+		FtpRequestMessage(Elysium::Core::Utf8String&& Content);
 
+		FtpRequestMessage(const FtpRequestMessage& Source) = delete;
+
+		FtpRequestMessage(FtpRequestMessage&& Right) noexcept = delete;
+
+		virtual ~FtpRequestMessage();
+	public:
 		FtpRequestMessage& operator=(const FtpRequestMessage& Source) = delete;
+
 		FtpRequestMessage& operator=(FtpRequestMessage&& Right) noexcept = delete;
-		
-		const Elysium::Core::StringView GetCommandText() const;
+	public:
+		const Elysium::Core::Utf8StringView GetCommandText() const;
+
 		const FtpRequestType GetCommandType() const;
 	};
 }

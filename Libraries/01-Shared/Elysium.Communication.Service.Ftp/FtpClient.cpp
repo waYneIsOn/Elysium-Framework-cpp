@@ -61,7 +61,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::Connect(const FtpEncryptio
 			}
 			else if(DesiredEncryption == FtpEncryption::ExplicitTls)
 			{
-				throw FtpException(Elysium::Core::String(u8"Server does not support SSL/TLS."));
+				throw FtpException(Elysium::Core::Utf8String(u8"Server does not support SSL/TLS."));
 			}
 		}
 	}
@@ -72,7 +72,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::Disconnect()
 	_ControlTransport.Close();
 }
 
-void Elysium::Communication::Service::Ftp::FtpClient::Login(const Elysium::Core::String & Username, const Elysium::Core::String & Password)
+void Elysium::Communication::Service::Ftp::FtpClient::Login(const Elysium::Core::Utf8String & Username, const Elysium::Core::Utf8String & Password)
 {
 	Elysium::Communication::Service::Ftp::FtpResponseMessage UserResponse = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteUser(Username));
 	if (!UserResponse.GetIsSuccesful())
@@ -87,7 +87,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::Login(const Elysium::Core:
 	}
 	
 	// inform the server about the client being used
-	Elysium::Communication::Service::Ftp::FtpResponseMessage ClientInfoResponse = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteClnt(Elysium::Core::String(u8"Elysium Ftp Client")));
+	Elysium::Communication::Service::Ftp::FtpResponseMessage ClientInfoResponse = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteClnt(Elysium::Core::Utf8String(u8"Elysium Ftp Client")));
 	if (!ClientInfoResponse.GetIsSuccesful())
 	{
 		throw FtpException(ClientInfoResponse);
@@ -133,15 +133,15 @@ const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communic
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteFeat());
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::GetHelp(const Elysium::Core::String & Command)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::GetHelp(const Elysium::Core::Utf8String & Command)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteHelp(Command));
 }
 
 const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::SetTransferMode(const FtpTransferMode TransferMode)
 {
-	static const Elysium::Core::String ASCII = Elysium::Core::String(u8"A");
-	static const Elysium::Core::String ImageBinary = Elysium::Core::String(u8"I");
+	static const Elysium::Core::Utf8String ASCII = Elysium::Core::Utf8String(u8"A");
+	static const Elysium::Core::Utf8String ImageBinary = Elysium::Core::Utf8String(u8"I");
 
 	switch (TransferMode)
 	{
@@ -150,7 +150,7 @@ const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communic
 	case FtpTransferMode::ImageBinary:
 		return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteType(ImageBinary));
 	default:
-		throw Elysium::Core::NotImplementedException(Elysium::Core::String(u8"Unhandled FtpTransferMode."));
+		throw Elysium::Core::NotImplementedException(Elysium::Core::Utf8String(u8"Unhandled FtpTransferMode."));
 	}
 }
 
@@ -170,7 +170,7 @@ const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communic
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WritePwd());
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ChangeWorkingDirectory(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ChangeWorkingDirectory(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteCwd(Value));
 }
@@ -180,37 +180,37 @@ const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communic
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteCdup());
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::MakeDirectory(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::MakeDirectory(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteMkd(Value));
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::DeleteDirectory(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::DeleteDirectory(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteRmd(Value));
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListResourceInformation(const Elysium::Core::String& Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListResourceInformation(const Elysium::Core::Utf8String& Value)
 {
 	return _ControlProtocol.WriteList(Value, _DataProtocol);
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListNamedDirectoryInformation(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListNamedDirectoryInformation(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteMlsd(Value, _DataProtocol));
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListNamedFileInformation(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListNamedFileInformation(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteMlst(Value, _DataProtocol));
 }
 
-const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListResourceNames(const Elysium::Core::String & Value)
+const Elysium::Communication::Service::Ftp::FtpResponseMessage Elysium::Communication::Service::Ftp::FtpClient::ListResourceNames(const Elysium::Core::Utf8String & Value)
 {
 	return Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteNlst(Value, _DataProtocol));
 }
 
-void Elysium::Communication::Service::Ftp::FtpClient::DownloadFile(const Elysium::Core::String & Value, Elysium::Core::IO::Stream & TargetStream)
+void Elysium::Communication::Service::Ftp::FtpClient::DownloadFile(const Elysium::Core::Utf8String & Value, Elysium::Core::IO::Stream & TargetStream)
 {
 	Elysium::Communication::Service::Ftp::FtpResponseMessage ResponseMessage = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteRetr(Value));
 	if (!ResponseMessage.GetIsSuccesful())
@@ -228,7 +228,7 @@ void Elysium::Communication::Service::Ftp::FtpClient::DownloadFile(const Elysium
 	}
 }
 
-void Elysium::Communication::Service::Ftp::FtpClient::UploadFile(const Elysium::Core::String & Value, Elysium::Core::IO::Stream & SourceStream)
+void Elysium::Communication::Service::Ftp::FtpClient::UploadFile(const Elysium::Core::Utf8String & Value, Elysium::Core::IO::Stream & SourceStream)
 {
 	Elysium::Communication::Service::Ftp::FtpResponseMessage ResponseMessage = Elysium::Communication::Service::Ftp::FtpResponseMessage(_ControlProtocol.WriteStor(Value));
 	if (!ResponseMessage.GetIsSuccesful())
@@ -248,11 +248,11 @@ void Elysium::Communication::Service::Ftp::FtpClient::UploadFile(const Elysium::
 
 void Elysium::Communication::Service::Ftp::FtpClient::OpenDataConnection(const FtpResponseMessage & ResponseMessage)
 {
-	const Elysium::Core::String& Message = ResponseMessage.GetContent();
+	const Elysium::Core::Utf8String& Message = ResponseMessage.GetContent();
 
 	const size_t StartIndex = Message.IndexOf('(') + 1;
 	const size_t EndIndex = Message.IndexOf(')');
-	const Elysium::Core::StringView IpAddresView = Elysium::Core::StringView(&Message[StartIndex], EndIndex - StartIndex - 1);
+	const Elysium::Core::Utf8StringView IpAddresView = Elysium::Core::Utf8StringView(&Message[StartIndex], EndIndex - StartIndex - 1);
 
 	size_t StartIndexIpPart = 0;
 	size_t EndIndexIpPart = IpAddresView.IndexOf(',', StartIndexIpPart);

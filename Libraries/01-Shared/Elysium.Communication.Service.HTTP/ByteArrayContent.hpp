@@ -32,7 +32,7 @@ namespace Elysium::Communication::Service::Http
 		virtual ~ByteArrayContent();
 
 		virtual void ReadAsStream(Elysium::Core::IO::Stream& TargetStream) const override;
-		virtual Elysium::Core::String ReadAsString() const override;
+		virtual Elysium::Core::Utf8String ReadAsString() const override;
 	protected:
 		Elysium::Core::Collections::Template::Array<Elysium::Core::byte> _Content;
 	};

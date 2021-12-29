@@ -37,7 +37,7 @@ const Elysium::Communication::Transport::TcpClient Elysium::Communication::Trans
 	return TcpClient(AcceptSocket());
 }
 
-const Elysium::Core::IAsyncResult * Elysium::Communication::Transport::TcpListener::BeginAcceptSocket(const Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void * State)
+const Elysium::Core::IAsyncResult * Elysium::Communication::Transport::TcpListener::BeginAcceptSocket(const Elysium::Core::Template::Container::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void * State)
 {
 	return _Socket.BeginAccept(Callback, State);
 }
@@ -47,7 +47,7 @@ Elysium::Core::Net::Sockets::Socket Elysium::Communication::Transport::TcpListen
 	return _Socket.EndAccept(Result);
 }
 
-const Elysium::Core::IAsyncResult * Elysium::Communication::Transport::TcpListener::BeginAcceptTcpClient(const Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void * State)
+const Elysium::Core::IAsyncResult * Elysium::Communication::Transport::TcpListener::BeginAcceptTcpClient(const Elysium::Core::Template::Container::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void * State)
 {
 	return _Socket.BeginAccept(Callback, State);
 }

@@ -2,15 +2,15 @@
 
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders()
 	: HttpHeaders(),
-	_Authorization(Elysium::Core::String())
+	_Authorization(Elysium::Core::Utf8String())
 { }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(const HttpRequestHeaders & Source)
 	: //HttpHeaders(Source),
-	_Authorization(Elysium::Core::String())
+	_Authorization(Elysium::Core::Utf8String())
 { }
 Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::HttpRequestHeaders(HttpRequestHeaders && Right) noexcept
 	: //HttpHeaders(Right),
-	_Authorization(Elysium::Core::String())
+	_Authorization(Elysium::Core::Utf8String())
 {
 	*this = std::move(Right);
 }
@@ -32,11 +32,11 @@ const Elysium::Communication::Service::Http::Headers::AuthenticationHeaderValue 
 {
 	return _Authorization;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::GetFrom() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::GetFrom() const
 {
 	return _From;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::GetHost() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::GetHost() const
 {
 	return _Host;
 }
@@ -46,11 +46,11 @@ void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetAuth
 	_Authorization.SetScheme(Value.GetScheme());
 	_Authorization.SetParameter(Value.GetParameter());
 }
-void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetFrom(const Elysium::Core::String & Value)
+void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetFrom(const Elysium::Core::Utf8String & Value)
 {
 	_From = Value;
 }
-void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetHost(const Elysium::Core::String & Value)
+void Elysium::Communication::Service::Http::Headers::HttpRequestHeaders::SetHost(const Elysium::Core::Utf8String & Value)
 {
 	_Host = Value;
 }

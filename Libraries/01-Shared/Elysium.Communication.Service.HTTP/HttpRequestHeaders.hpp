@@ -32,12 +32,12 @@ namespace Elysium::Communication::Service::Http::Headers
 		HttpRequestHeaders& operator=(HttpRequestHeaders&& Right) noexcept;
 
 		const AuthenticationHeaderValue& GetAuthorization() const;
-		const Elysium::Core::String& GetFrom() const;
-		const Elysium::Core::String& GetHost() const;
+		const Elysium::Core::Utf8String& GetFrom() const;
+		const Elysium::Core::Utf8String& GetHost() const;
 
 		void SetAuthorization(const AuthenticationHeaderValue& Value);
-		void SetFrom(const Elysium::Core::String& Value);
-		void SetHost(const Elysium::Core::String& Value);
+		void SetFrom(const Elysium::Core::Utf8String& Value);
+		void SetHost(const Elysium::Core::Utf8String& Value);
 		/*
 		Accept
 		AcceptCharset
@@ -73,8 +73,8 @@ namespace Elysium::Communication::Service::Http::Headers
 		*/
 	private:
 		AuthenticationHeaderValue _Authorization;
-		Elysium::Core::String _From;
-		Elysium::Core::String _Host;
+		Elysium::Core::Utf8String _From;
+		Elysium::Core::Utf8String _Host;
 	};
 }
 #endif

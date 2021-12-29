@@ -35,7 +35,7 @@ namespace Elysium::Communication::Protocol::ApplicationLayer
 		HyperTextTransferProtocol& operator=(const HyperTextTransferProtocol& Source) = delete;
 		HyperTextTransferProtocol& operator=(HyperTextTransferProtocol&& Right) noexcept = delete;
 
-		Elysium::Core::String ReadResponseHeader();
+		Elysium::Core::Utf8String ReadResponseHeader();
 		void ReadResponseContent(const size_t ContentLength, Elysium::Core::Collections::Template::List<Elysium::Core::byte>* Value);
 		bool ReadResponseContentChunk(Elysium::Core::Collections::Template::List<Elysium::Core::byte>& Value);
 	};

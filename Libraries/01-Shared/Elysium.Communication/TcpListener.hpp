@@ -10,6 +10,10 @@ Copyright (c) waYne (CAM). All rights reserved.
 #pragma once
 #endif
 
+#ifndef ELYSIUM_CORE_TEMPLATE_CONTAINER_DELEGATE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Template/Delegate.hpp"
+#endif
+
 #ifndef ELYSIUM_COMMUNICATION_TRANSPORT_STREAMTRANSPORT
 #include "StreamTransport.hpp"
 #endif
@@ -59,10 +63,10 @@ namespace Elysium::Communication::Transport
 		Elysium::Core::Net::Sockets::Socket AcceptSocket();
 		const TcpClient AcceptTcpClient();
 
-		const Elysium::Core::IAsyncResult* BeginAcceptSocket(const Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void* State);
+		const Elysium::Core::IAsyncResult* BeginAcceptSocket(const Elysium::Core::Template::Container::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void* State);
 		Elysium::Core::Net::Sockets::Socket EndAcceptSocket(const Elysium::Core::IAsyncResult* Result);
 
-		const Elysium::Core::IAsyncResult* BeginAcceptTcpClient(const Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void* State);
+		const Elysium::Core::IAsyncResult* BeginAcceptTcpClient(const Elysium::Core::Template::Container::Delegate<void, const Elysium::Core::IAsyncResult*>& Callback, void* State);
 		const TcpClient EndAcceptTcpClient(const Elysium::Core::IAsyncResult* Result);
 	private:
 		Elysium::Core::Net::Sockets::Socket _Socket;

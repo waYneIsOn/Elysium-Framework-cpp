@@ -58,23 +58,23 @@ namespace Elysium::Communication::Service::Http
 		void Connect();
 		void Disconnect();
 
-		HttpResponseMessage Delete(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Delete(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption);
+		HttpResponseMessage Delete(const Elysium::Core::Utf8String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Delete(const Elysium::Core::Utf8String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption);
 
-		HttpResponseMessage Get(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Get(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Get(const Elysium::Core::Utf8String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Get(const Elysium::Core::Utf8String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-		HttpResponseMessage Options(const Elysium::Core::String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Options(const Elysium::Core::String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Options(const Elysium::Core::Utf8String& Path, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Options(const Elysium::Core::Utf8String& Path, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-		HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Patch(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Patch(const Elysium::Core::Utf8String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Patch(const Elysium::Core::Utf8String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-		HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Post(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Post(const Elysium::Core::Utf8String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Post(const Elysium::Core::Utf8String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 
-		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
-		HttpResponseMessage Put(const Elysium::Core::String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Put(const Elysium::Core::Utf8String& Path, const HttpContent& Content, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
+		HttpResponseMessage Put(const Elysium::Core::Utf8String& Path, const HttpContent& Content, HttpResponseMessage& PreviousResponse, const HttpCompletionOption CompletionOption = HttpCompletionOption::ResponseContentRead);
 	private:
 		Transport::TcpClient _OwnedClient;
 		Protocol::ApplicationLayer::HyperTextTransferProtocol _OwnedProtocol;

@@ -27,8 +27,8 @@ namespace Elysium::Communication::Service::Ftp
 	class ELYSIUM_COMMUNICATION_API FtpResponseMessage final : public FtpMessage
 	{
 	public:
-		FtpResponseMessage(const Elysium::Core::String& Content);
-		FtpResponseMessage(Elysium::Core::String&& Content);
+		FtpResponseMessage(const Elysium::Core::Utf8String& Content);
+		FtpResponseMessage(Elysium::Core::Utf8String&& Content);
 		FtpResponseMessage(const FtpResponseMessage& Source) = delete;
 		FtpResponseMessage(FtpResponseMessage&& Right) noexcept = delete;
 		virtual ~FtpResponseMessage();
@@ -39,8 +39,8 @@ namespace Elysium::Communication::Service::Ftp
 		const FtpResponseStatusCode GetCode() const;
 		const bool GetIsSuccesful() const;
 
-		const Elysium::Core::StringView GetFirstLine() const;
-		const Elysium::Core::StringView GetLastLine() const;
+		const Elysium::Core::Utf8StringView GetFirstLine() const;
+		const Elysium::Core::Utf8StringView GetLastLine() const;
 	};
 }
 #endif

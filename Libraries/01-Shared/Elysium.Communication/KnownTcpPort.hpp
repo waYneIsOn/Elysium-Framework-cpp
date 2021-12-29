@@ -82,6 +82,9 @@ namespace Elysium::Communication
 		MssqlServer = 1433,
 		MssqlMonitor = 1434,
 
+		RfbBrowser = 5800,
+		Rfb = 5900,
+
 		// dynamic ports
 
 		DynamicPortFirst = 49152,

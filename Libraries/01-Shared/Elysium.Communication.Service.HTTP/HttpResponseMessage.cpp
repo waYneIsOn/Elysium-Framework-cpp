@@ -10,7 +10,7 @@ Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(
 	: _Request(HttpRequestMessage(Source._Request)), 
 	_Version(Version(Source._Version)),
 	_StatusCode(HttpStatusCode(Source._StatusCode)),
-	_ReasonPhrase(String(Source._ReasonPhrase)), _Headers(Headers::HttpResponseHeaders(Source._Headers)), _Content(nullptr)
+	_ReasonPhrase(Source._ReasonPhrase), _Headers(Headers::HttpResponseHeaders(Source._Headers)), _Content(nullptr)
 {
 }
 Elysium::Communication::Service::Http::HttpResponseMessage::HttpResponseMessage(HttpResponseMessage && Right) noexcept
@@ -88,7 +88,7 @@ const Elysium::Communication::Service::Http::HttpStatusCode Elysium::Communicati
 {
 	return _StatusCode;
 }
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpResponseMessage::GetReasonPhase() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::HttpResponseMessage::GetReasonPhase() const
 {
 	return _ReasonPhrase;
 }

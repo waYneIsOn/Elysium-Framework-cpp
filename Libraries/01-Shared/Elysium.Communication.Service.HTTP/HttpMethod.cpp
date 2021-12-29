@@ -14,11 +14,11 @@ const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::
 const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Put = Elysium::Communication::Service::Http::HttpMethod(u8"PUT");
 const Elysium::Communication::Service::Http::HttpMethod Elysium::Communication::Service::Http::HttpMethod::_Trace = Elysium::Communication::Service::Http::HttpMethod(u8"TRACE");
 
-Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const Elysium::Core::String & Method)
-	: _Method(Elysium::Core::String(Method))
+Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const Elysium::Core::Utf8String & Method)
+	: _Method(Elysium::Core::Utf8String(Method))
 { }
 Elysium::Communication::Service::Http::HttpMethod::HttpMethod(const HttpMethod & Source)
-	: _Method(Elysium::Core::String(Source._Method))
+	: _Method(Elysium::Core::Utf8String(Source._Method))
 { }
 Elysium::Communication::Service::Http::HttpMethod::HttpMethod(HttpMethod && Right) noexcept
 {
@@ -31,7 +31,7 @@ Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Serv
 {
 	if (this != &Source)
 	{
-		_Method = Elysium::Core::String(Source._Method);
+		_Method = Elysium::Core::Utf8String(Source._Method);
 	}
 	return *this;
 }
@@ -44,7 +44,7 @@ Elysium::Communication::Service::Http::HttpMethod & Elysium::Communication::Serv
 	return *this;
 }
 
-const Elysium::Core::String & Elysium::Communication::Service::Http::HttpMethod::GetMethod() const
+const Elysium::Core::Utf8String & Elysium::Communication::Service::Http::HttpMethod::GetMethod() const
 {
 	return _Method;
 }

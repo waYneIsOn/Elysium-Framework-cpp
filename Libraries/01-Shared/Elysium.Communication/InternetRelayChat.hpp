@@ -32,12 +32,12 @@ namespace Elysium::Communication::Protocol::ApplicationLayer
 		InternetRelayChat& operator=(InternetRelayChat&& Right) noexcept = delete;
 
 		// Requests the server to display the help file. This command is not formally defined in an RFC, but is in use by most major IRC daemons.
-		const Elysium::Core::String WriteHelp();
+		const Elysium::Core::Utf8String WriteHelp();
 
 		// Tell the server that we're about to disconnect
-		void WriteQuit(const Elysium::Core::String& Message);
+		void WriteQuit(const Elysium::Core::Utf8String& Message);
 	private:
-		static const Elysium::Core::String NEWLINE;
+		static const Elysium::Core::Utf8String NEWLINE;
 	};
 }
 #endif

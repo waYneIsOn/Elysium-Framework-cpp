@@ -12,7 +12,7 @@
 #include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Text/StringBuilder.hpp"
 #endif
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::NEWLINE = Elysium::Core::Environment::NewLine();
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::NEWLINE = Elysium::Core::Environment::NewLine();
 
 Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::FileTransferProtocol(Transport::TransportBase & Transport)
 	: TextProtocol(Transport, Elysium::Core::Text::Encoding::ASCII())
@@ -20,12 +20,12 @@ Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::FileTr
 Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::~FileTransferProtocol()
 { }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::ReadWelcomeMessage()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::ReadWelcomeMessage()
 {
 	return ReadLine();
 }
 
-void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::String & Value)
+void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::Utf8String & Value)
 {
 	WriteString(Elysium::Core::Convert::ToString(StatusCode, 10));
 	WriteString(Value);
@@ -33,9 +33,9 @@ void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::W
 	_Transport.Flush();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAuth(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAuth(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"AUTH ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"AUTH ");
 
 	WriteString(Command);
 	WriteString(Value);
@@ -45,9 +45,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteUser(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteUser(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"USER ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"USER ");
 
 	WriteString(Command);
 	WriteString(Value);
@@ -57,9 +57,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePass(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePass(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"PASS ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"PASS ");
 
 	WriteString(Command);
 	WriteString(Value);
@@ -69,9 +69,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteHelp(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteHelp(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"HELP ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"HELP ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -91,9 +91,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteHost()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteHost()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"HOST");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"HOST");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -102,9 +102,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteSyst()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteSyst()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"SYST");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"SYST");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -113,9 +113,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteFeat()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteFeat()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"FEAT");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"FEAT");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -131,9 +131,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAcct()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAcct()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"ACCT");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"ACCT");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -142,9 +142,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAvbl()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteAvbl()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"AVBL");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"AVBL");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -153,21 +153,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteClnt(const Elysium::Core::String& Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteClnt(const Elysium::Core::Utf8String& Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"CLNT ");
-
-	WriteString(Command);
-	WriteString(Value);
-	WriteString(NEWLINE);
-	_Transport.Flush();
-
-	return ReadLine();
-}
-
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteType(const Elysium::Core::String & Value)
-{
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"TYPE ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"CLNT ");
 
 	WriteString(Command);
 	WriteString(Value);
@@ -177,9 +165,21 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePasv()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteType(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"PASV");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"TYPE ");
+
+	WriteString(Command);
+	WriteString(Value);
+	WriteString(NEWLINE);
+	_Transport.Flush();
+
+	return ReadLine();
+}
+
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePasv()
+{
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"PASV");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -188,9 +188,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteEpsv()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteEpsv()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"EPSV");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"EPSV");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -199,9 +199,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteLpsv()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteLpsv()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"LPSV");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"LPSV");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -210,9 +210,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePwd()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WritePwd()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"PWD");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"PWD");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -221,9 +221,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteCwd(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteCwd(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"CWD ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"CWD ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -236,9 +236,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteCdup()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteCdup()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"CDUP");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"CDUP");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -247,9 +247,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteList(const Elysium::Core::String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteList(const Elysium::Core::Utf8String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"LIST ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"LIST ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -270,9 +270,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMlsd(const Elysium::Core::String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMlsd(const Elysium::Core::Utf8String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"MLSD ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"MLSD ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -293,9 +293,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMlst(const Elysium::Core::String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMlst(const Elysium::Core::Utf8String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"MLST ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"MLST ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -315,9 +315,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteNlst(const Elysium::Core::String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteNlst(const Elysium::Core::Utf8String & Value, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"NLST ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"NLST ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -338,9 +338,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ResponseBuilder.ToString();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMkd(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteMkd(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"MKD ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"MKD ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -353,9 +353,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteRmd(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteRmd(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"RMD ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"RMD ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -368,9 +368,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteRetr(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteRetr(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"RETR ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"RETR ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -383,9 +383,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteStor(const Elysium::Core::String & Value)
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteStor(const Elysium::Core::Utf8String & Value)
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"STOR ");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"STOR ");
 
 	WriteString(Command);
 	if (Value.GetLength() > 0)
@@ -398,9 +398,9 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 	return ReadLine();
 }
 
-const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteQuit()
+const Elysium::Core::Utf8String Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::WriteQuit()
 {
-	static const Elysium::Core::String Command = Elysium::Core::String(u8"QUIT");
+	static const Elysium::Core::Utf8String Command = Elysium::Core::Utf8String(u8"QUIT");
 
 	WriteString(Command);
 	WriteString(NEWLINE);
@@ -411,7 +411,7 @@ const Elysium::Core::String Elysium::Communication::Protocol::ApplicationLayer::
 
 const bool Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::ReadFirstLine(Elysium::Core::Text::StringBuilder& ResponseBuilder)
 {
-	const Elysium::Core::String Line = ReadLine();
+	const Elysium::Core::Utf8String Line = ReadLine();
 	ResponseBuilder.Append(Line);
 	ResponseBuilder.Append(NEWLINE);
 
@@ -420,7 +420,7 @@ const bool Elysium::Communication::Protocol::ApplicationLayer::FileTransferProto
 
 void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::ReadSubsequentLines(Elysium::Core::Text::StringBuilder & ResponseBuilder)
 {
-	Elysium::Core::String Line;
+	Elysium::Core::Utf8String Line;
 
 	do
 	{
@@ -440,7 +440,7 @@ void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::R
 
 void Elysium::Communication::Protocol::ApplicationLayer::FileTransferProtocol::ReadSubsequentDataLines(Elysium::Core::Text::StringBuilder & ResponseBuilder, Protocol::ApplicationLayer::FileTransferProtocol & DataProtocol)
 {
-	Elysium::Core::String Line;
+	Elysium::Core::Utf8String Line;
 	do
 	{
 		Line = DataProtocol.ReadLine();

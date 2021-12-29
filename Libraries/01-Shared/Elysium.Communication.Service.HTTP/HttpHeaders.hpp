@@ -32,22 +32,22 @@ Copyright (c) waYne (CAM). All rights reserved.
 
 namespace Elysium::Communication::Service::Http::Headers
 {
-	class ELYSIUM_COMMUNICATION_API HttpHeaders : public Elysium::Core::Collections::IEnumerable<std::pair<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>>
+	class ELYSIUM_COMMUNICATION_API HttpHeaders : public Elysium::Core::Collections::IEnumerable<std::pair<Elysium::Core::Utf8String, Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String>>>
 	{
 	public:
 		virtual ~HttpHeaders();
 
 		// ToDo: remove this functions as soon as IEnumerable and IEnumerator have been implemented in some way
-		const std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>>& GetInternalHeaders() const;
+		const std::map<Elysium::Core::Utf8String, Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String>>& GetInternalHeaders() const;
 
-		void Add(const Elysium::Core::String& Name, const Elysium::Core::Collections::Template::List<Elysium::Core::String> & Values);
-		void Add(const Elysium::Core::String& Name, const Elysium::Core::String& Value);
+		void Add(const Elysium::Core::Utf8String& Name, const Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String> & Values);
+		void Add(const Elysium::Core::Utf8String& Name, const Elysium::Core::Utf8String& Value);
 		void Clear();
 		bool Contains(const char8_t* Name) const;
-		bool Contains(const Elysium::Core::String& Name) const;
-		const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const char8_t* Name) const;
-		const Elysium::Core::Collections::Template::List<Elysium::Core::String>& GetValues(const Elysium::Core::String& Name) const;
-		bool Remove(const Elysium::Core::String& Name);
+		bool Contains(const Elysium::Core::Utf8String& Name) const;
+		const Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String>& GetValues(const char8_t* Name) const;
+		const Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String>& GetValues(const Elysium::Core::Utf8String& Name) const;
+		bool Remove(const Elysium::Core::Utf8String& Name);
 	protected:
 		HttpHeaders();
 		HttpHeaders(const HttpHeaders& Source);
@@ -56,7 +56,7 @@ namespace Elysium::Communication::Service::Http::Headers
 		HttpHeaders& operator=(const HttpHeaders& Source);
 		HttpHeaders& operator=(HttpHeaders&& Right) noexcept;
 
-		std::map<Elysium::Core::String, Elysium::Core::Collections::Template::List<Elysium::Core::String>> _Headers;
+		std::map<Elysium::Core::Utf8String, Elysium::Core::Collections::Template::List<Elysium::Core::Utf8String>> _Headers;
 	};
 }
 #endif

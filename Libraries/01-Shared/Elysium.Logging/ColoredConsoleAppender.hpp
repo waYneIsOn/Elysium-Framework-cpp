@@ -27,23 +27,23 @@ namespace Elysium::Logging::Appender
 		ColoredConsoleAppender();
 		virtual ~ColoredConsoleAppender();
 
-		virtual const Elysium::Core::String& GetTraceFormat() const override;
-		virtual const Elysium::Core::String& GetDebugFormat() const override;
-		virtual const Elysium::Core::String& GetInformationFormat() const override;
-		virtual const Elysium::Core::String& GetWarningFormat() const override;
-		virtual const Elysium::Core::String& GetErrorFormat() const override;
-		virtual const Elysium::Core::String& GetCriticalFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetTraceFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetDebugFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetInformationFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetWarningFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetErrorFormat() const override;
+		virtual const Elysium::Core::Utf8String& GetCriticalFormat() const override;
 
-		virtual void SetTraceFormat(const Elysium::Core::String& Format) override;
-		virtual void SetDebugFormat(const Elysium::Core::String& Format) override;
-		virtual void SetInformationFormat(const Elysium::Core::String& Format) override;
-		virtual void SetWarningFormat(const Elysium::Core::String& Format) override;
-		virtual void SetErrorFormat(const Elysium::Core::String& Format) override;
-		virtual void SetCriticalFormat(const Elysium::Core::String& Format) override;
+		virtual void SetTraceFormat(const Elysium::Core::Utf8String& Format) override;
+		virtual void SetDebugFormat(const Elysium::Core::Utf8String& Format) override;
+		virtual void SetInformationFormat(const Elysium::Core::Utf8String& Format) override;
+		virtual void SetWarningFormat(const Elysium::Core::Utf8String& Format) override;
+		virtual void SetErrorFormat(const Elysium::Core::Utf8String& Format) override;
+		virtual void SetCriticalFormat(const Elysium::Core::Utf8String& Format) override;
 
 		virtual void Process(const LogEvent& Event) override;
 	private:
-		std::map<LogLevel, Elysium::Core::String> _Formats;
+		std::map<LogLevel, Elysium::Core::Utf8String> _Formats;
 	};
 	*/
 }

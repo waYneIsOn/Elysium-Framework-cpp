@@ -32,7 +32,7 @@ namespace Elysium::Logging
 	{
 	public:
 		Filter();
-		Filter(const Elysium::Core::String& Scope, const Events::LogLevel& MinimumLogLevel, const Events::LogLevel& MaximumLogLevel);
+		Filter(const Elysium::Core::Utf8String& Scope, const Events::LogLevel& MinimumLogLevel, const Events::LogLevel& MaximumLogLevel);
 		Filter(const Filter& Source);
 		Filter(Filter&& Right) noexcept;
 		~Filter();
@@ -42,7 +42,7 @@ namespace Elysium::Logging
 
 		bool IsInterested(const Events::LogEvent& Event);
 	private:
-		Elysium::Core::String _Scope;
+		Elysium::Core::Utf8String _Scope;
 		Events::LogLevel _MinimumLogLevel;
 		Events::LogLevel _MaximumLogLevel;
 	};

@@ -61,7 +61,7 @@ namespace Elysium::Communication::Service::Http
 	private:
 		Headers::HttpRequestHeaders _Headers;
 		HttpMethod _Method;
-		std::map<Elysium::Core::String, Elysium::Core::String> _Properties;
+		std::map<Elysium::Core::Utf8String, Elysium::Core::Utf8String> _Properties;
 		Elysium::Core::Uri _RequestUri;
 		Elysium::Core::Version _Version;
 		const HttpContent* _Content;

@@ -27,8 +27,8 @@ namespace Elysium::Communication::Service::Http
 	class ELYSIUM_COMMUNICATION_API StringContent final : public ByteArrayContent
 	{
 	public:
-		StringContent(const Elysium::Core::String& Content);
-		StringContent(const Elysium::Core::String& Content, const Elysium::Core::Text::Encoding& Encoding);
+		StringContent(const Elysium::Core::Utf8String& Content);
+		StringContent(const Elysium::Core::Utf8String& Content, const Elysium::Core::Text::Encoding& Encoding);
 		virtual ~StringContent();
 	private:
 		//const Elysium::Core::Text::Encoding _Encoding;

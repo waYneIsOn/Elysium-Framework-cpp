@@ -33,9 +33,9 @@ namespace Elysium::Communication::Service::Http
 	public:
 		~HttpMessageParser();
 
-		static Elysium::Core::String ParseRequestMessage(HttpRequestMessage& Request);
+		static Elysium::Core::Utf8String ParseRequestMessage(HttpRequestMessage& Request);
 
-		static HttpResponseMessage ParseResponseMessageHeader(HttpRequestMessage& Request, const Elysium::Core::String& CompleteResponseHeader);
+		static HttpResponseMessage ParseResponseMessageHeader(HttpRequestMessage& Request, const Elysium::Core::Utf8String& CompleteResponseHeader);
 	private:
 		HttpMessageParser();
 	};

@@ -16,15 +16,15 @@ void Elysium::Communication::Service::Irc::IrcClient::Connect(const Elysium::Cor
 {
 	_Transport.Connect(RemoteEndPoint);
 
-	const Elysium::Core::String bsdf1 = _Protocol.ReadLine();
-	const Elysium::Core::String bsdf2 = _Protocol.ReadLine();
-	const Elysium::Core::String bsdf3 = _Protocol.ReadLine();
-	const Elysium::Core::String bsdf4 = _Protocol.ReadLine();
+	const Elysium::Core::Utf8String bsdf1 = _Protocol.ReadLine();
+	const Elysium::Core::Utf8String bsdf2 = _Protocol.ReadLine();
+	const Elysium::Core::Utf8String bsdf3 = _Protocol.ReadLine();
+	const Elysium::Core::Utf8String bsdf4 = _Protocol.ReadLine();
 }
 
 void Elysium::Communication::Service::Irc::IrcClient::Disconnect()
 {
-	static const Elysium::Core::String GoodbyeMessage = Elysium::Core::String(u8"");
+	static const Elysium::Core::Utf8String GoodbyeMessage = Elysium::Core::Utf8String(u8"");
 
 	_Protocol.WriteQuit(GoodbyeMessage);
 	_Transport.Close();
@@ -32,5 +32,5 @@ void Elysium::Communication::Service::Irc::IrcClient::Disconnect()
 
 void Elysium::Communication::Service::Irc::IrcClient::Test()
 {
-	const Elysium::Core::String Bla = _Protocol.WriteHelp();
+	const Elysium::Core::Utf8String Bla = _Protocol.WriteHelp();
 }

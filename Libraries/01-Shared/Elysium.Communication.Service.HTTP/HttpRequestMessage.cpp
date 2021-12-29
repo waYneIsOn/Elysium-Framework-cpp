@@ -10,7 +10,7 @@ Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(co
 	: _Method(Source._Method), _RequestUri(Source._RequestUri), _Version(Elysium::Core::Version(Source._Version)), _Content(nullptr)
 { }
 Elysium::Communication::Service::Http::HttpRequestMessage::HttpRequestMessage(HttpRequestMessage && Right) noexcept
-	: _Method(Elysium::Core::String()), _RequestUri(Right._RequestUri), _Content(nullptr)
+	: _Method(Elysium::Core::Utf8String()), _RequestUri(Right._RequestUri), _Content(nullptr)
 {
 	*this = std::move(Right);
 }

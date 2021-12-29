@@ -48,7 +48,7 @@ namespace Elysium::Communication::Service::Http
 		const HttpRequestMessage& GetRequest() const;
 		const Elysium::Core::Version& GetVersion() const;
 		const HttpStatusCode GetStatusCode() const;
-		const Elysium::Core::String& GetReasonPhase() const;
+		const Elysium::Core::Utf8String& GetReasonPhase() const;
 		const Headers::HttpResponseHeaders& GetHeaders() const;
 		const bool GetIsSuccessStatusCode() const;
 		const HttpContent* GetContent() const;
@@ -84,7 +84,7 @@ namespace Elysium::Communication::Service::Http
 
 		Elysium::Core::Version _Version;
 		HttpStatusCode _StatusCode;
-		Elysium::Core::String _ReasonPhrase;
+		Elysium::Core::Utf8String _ReasonPhrase;
 		Headers::HttpResponseHeaders _Headers;
 		HttpContent* _Content;
 	};

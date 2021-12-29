@@ -1,5 +1,9 @@
 #include "FtpServer.hpp"
 
+#ifndef ELYSIUM_CORE_TEMPLATE_CONTAINER_DELEGATE
+#include "../../../../Elysium-Core/Libraries/01-Shared/Elysium.Core.Template/Delegate.hpp"
+#endif
+
 #ifndef ELYSIUM_COMMUNICATION_SERVICE_FTP_FTPREQUESTMESSAGE
 #include "FtpRequestMessage.hpp"
 #endif
@@ -23,7 +27,7 @@ void Elysium::Communication::Service::Ftp::FtpServer::Start(const Elysium::Core:
 	{
 		_AcceptResetEvent.Reset();
 		const Elysium::Core::IAsyncResult* AcceptResult = _ControlTransport.BeginAcceptTcpClient(
-			Elysium::Core::Delegate<void, const Elysium::Core::IAsyncResult*>::Bind<FtpServer, &FtpServer::TcpClientAcceptCallback>(*this), nullptr);
+			Elysium::Core::Template::Container::Delegate<void, const Elysium::Core::IAsyncResult*>::Bind<FtpServer, &FtpServer::TcpClientAcceptCallback>(*this), nullptr);
 		_AcceptResetEvent.WaitOne();
 		delete AcceptResult;
 	}

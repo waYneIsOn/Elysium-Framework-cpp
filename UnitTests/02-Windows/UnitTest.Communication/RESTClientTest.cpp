@@ -19,7 +19,7 @@ namespace UnitTestCommunication
 		TEST_METHOD(GetData)
 		{
 			RestClient Client = RestClient();
-			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::String(u8"jsonplaceholder.typicode.com")));
+			Client.SetBaseAddress(Elysium::Core::Uri(Elysium::Core::Utf8String(u8"jsonplaceholder.typicode.com")));
 			Client.Connect();
 			
 			Client.TestGET(u8"/todos/1");

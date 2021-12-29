@@ -8,12 +8,12 @@ Elysium::Logging::Filter::Filter()
 	: _Scope(), _MinimumLogLevel(Events::LogLevel::Trace), _MaximumLogLevel(Events::LogLevel::Critical)
 {
 }
-Elysium::Logging::Filter::Filter(const Elysium::Core::String & Scope, const Events::LogLevel & MinimumLogLevel, const Events::LogLevel & MaximumLogLevel)
+Elysium::Logging::Filter::Filter(const Elysium::Core::Utf8String & Scope, const Events::LogLevel & MinimumLogLevel, const Events::LogLevel & MaximumLogLevel)
 	: _Scope(Scope), _MinimumLogLevel(MinimumLogLevel), _MaximumLogLevel(MaximumLogLevel)
 {
 }
 Elysium::Logging::Filter::Filter(const Filter & Source)
-	: _Scope(Elysium::Core::String(Source._Scope)), _MinimumLogLevel(Source._MinimumLogLevel), _MaximumLogLevel(Source._MaximumLogLevel)
+	: _Scope(Elysium::Core::Utf8String(Source._Scope)), _MinimumLogLevel(Source._MinimumLogLevel), _MaximumLogLevel(Source._MaximumLogLevel)
 {
 }
 Elysium::Logging::Filter::Filter(Filter && Right) noexcept

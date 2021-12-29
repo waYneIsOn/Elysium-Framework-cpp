@@ -36,90 +36,90 @@ namespace Elysium::Communication::Protocol::ApplicationLayer
 		FileTransferProtocol& operator=(FileTransferProtocol&& Right) noexcept = delete;
 
 		// Read the message sent by the server once connected
-		const Elysium::Core::String ReadWelcomeMessage();
+		const Elysium::Core::Utf8String ReadWelcomeMessage();
 
 		// ...
-		void WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::String& Message);
+		void WriteResponseMessage(const Elysium::Core::uint32_t StatusCode, const Elysium::Core::Utf8String& Message);
 
 		// Upgrade to SSL/TLS
-		const Elysium::Core::String WriteAuth(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteAuth(const Elysium::Core::Utf8String& Value);
 
 		// Authentication username
-		const Elysium::Core::String WriteUser(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteUser(const Elysium::Core::Utf8String& Value);
 
 		// Authentication password
-		const Elysium::Core::String WritePass(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WritePass(const Elysium::Core::Utf8String& Value);
 
 		// Returns usage documentation on a command if specified, else a general help document is returned.
-		const Elysium::Core::String WriteHelp(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteHelp(const Elysium::Core::Utf8String& Value);
 
 		// Identify desired virtual host on server, by name.
-		const Elysium::Core::String WriteHost();
+		const Elysium::Core::Utf8String WriteHost();
 
 		// Return system type.
-		const Elysium::Core::String WriteSyst();
+		const Elysium::Core::Utf8String WriteSyst();
 
 		// Get information about the server's features.
-		const Elysium::Core::String WriteFeat();
+		const Elysium::Core::Utf8String WriteFeat();
 
 		// Get account information.
-		const Elysium::Core::String WriteAcct();
+		const Elysium::Core::Utf8String WriteAcct();
 
 		// Get the available space.
-		const Elysium::Core::String WriteAvbl();
+		const Elysium::Core::Utf8String WriteAvbl();
 
 		// Inform the server about the client being used
-		const Elysium::Core::String WriteClnt(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteClnt(const Elysium::Core::Utf8String& Value);
 
 		// Sets the transfer mode (A = ASCII, I = Image/Binary)
-		const Elysium::Core::String WriteType(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteType(const Elysium::Core::Utf8String& Value);
 
 		// Enter passive mode
-		const Elysium::Core::String WritePasv();
+		const Elysium::Core::Utf8String WritePasv();
 
 		// Enter extended passive mode.
-		const Elysium::Core::String WriteEpsv();
+		const Elysium::Core::Utf8String WriteEpsv();
 
 		// Enter long passive mode.
-		const Elysium::Core::String WriteLpsv();
+		const Elysium::Core::Utf8String WriteLpsv();
 
 		// Print working directory. Returns the current directory of the host.
-		const Elysium::Core::String WritePwd();
+		const Elysium::Core::Utf8String WritePwd();
 
 		// Change working directory
-		const Elysium::Core::String WriteCwd(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteCwd(const Elysium::Core::Utf8String& Value);
 
 		// Change to upper directory
-		const Elysium::Core::String WriteCdup();
+		const Elysium::Core::Utf8String WriteCdup();
 
 		// Returns information of a file or directory if specified, else information of the current working directory is returned. 
-		const Elysium::Core::String WriteList(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::Utf8String WriteList(const Elysium::Core::Utf8String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// List the contents of a directory (if a directory is named)
-		const Elysium::Core::String WriteMlsd(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::Utf8String WriteMlsd(const Elysium::Core::Utf8String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Provides data about exactly the object named on its command line, and no others.
-		const Elysium::Core::String WriteMlst(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::Utf8String WriteMlst(const Elysium::Core::Utf8String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Returns a list of file names in a specified directory.
-		const Elysium::Core::String WriteNlst(const Elysium::Core::String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
+		const Elysium::Core::Utf8String WriteNlst(const Elysium::Core::Utf8String& Value, Protocol::ApplicationLayer::FileTransferProtocol& DataProtocol);
 
 		// Make directory. 
-		const Elysium::Core::String WriteMkd(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteMkd(const Elysium::Core::Utf8String& Value);
 
 		// Remove a directory. 
-		const Elysium::Core::String WriteRmd(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteRmd(const Elysium::Core::Utf8String& Value);
 
 		// Retrieve a copy of the file.
-		const Elysium::Core::String WriteRetr(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteRetr(const Elysium::Core::Utf8String& Value);
 
 		// Accept the data and to store the data as a file at the server site 
-		const Elysium::Core::String WriteStor(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String WriteStor(const Elysium::Core::Utf8String& Value);
 
 		// Tell the server that we're about to disconnect
-		const Elysium::Core::String WriteQuit();
+		const Elysium::Core::Utf8String WriteQuit();
 	private:
-		static const Elysium::Core::String NEWLINE;
+		static const Elysium::Core::Utf8String NEWLINE;
 
 		const bool ReadFirstLine(Elysium::Core::Text::StringBuilder& ResponseBuilder);
 		void ReadSubsequentLines(Elysium::Core::Text::StringBuilder& ResponseBuilder);

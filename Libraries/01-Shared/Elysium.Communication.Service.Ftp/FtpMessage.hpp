@@ -30,12 +30,12 @@ namespace Elysium::Communication::Service::Ftp
 		FtpMessage& operator=(const FtpMessage& Source) = delete;
 		FtpMessage& operator=(FtpMessage&& Right) noexcept = delete;
 
-		const Elysium::Core::String& GetContent() const;
+		const Elysium::Core::Utf8String& GetContent() const;
 	protected:
-		FtpMessage(const Elysium::Core::String& Content);
-		FtpMessage(Elysium::Core::String&& Content);
+		FtpMessage(const Elysium::Core::Utf8String& Content);
+		FtpMessage(Elysium::Core::Utf8String&& Content);
 
-		const Elysium::Core::String _Content;
+		const Elysium::Core::Utf8String _Content;
 	};
 }
 #endif

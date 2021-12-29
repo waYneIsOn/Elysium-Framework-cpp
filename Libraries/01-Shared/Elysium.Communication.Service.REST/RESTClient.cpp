@@ -42,13 +42,13 @@ using namespace Elysium::Core;
 using namespace Elysium::Core::IO;
 using namespace Elysium::Core::Json;
 
-void Elysium::Communication::Service::Rest::RestClient::TestGET(const Elysium::Core::String & Path)
+void Elysium::Communication::Service::Rest::RestClient::TestGET(const Elysium::Core::Utf8String & Path)
 {
 	HttpResponseMessage Response = _HttpClient.Get(Path);
 	const StringContent* Content = static_cast<const StringContent*>(Response.GetContent());
 	if (Content != nullptr)
 	{
-		String ContentAsString = Content->ReadAsString();
+		Elysium::Core::Utf8String ContentAsString = Content->ReadAsString();
 		StringReader Reader = StringReader(ContentAsString);
 		JsonIOSettings Settings = JsonIOSettings(u8" ", u8"\t", u8"\n");
 		JsonTextReader JsonReader = JsonTextReader(Settings, Reader);
@@ -67,19 +67,19 @@ void Elysium::Communication::Service::Rest::RestClient::TestGET(const Elysium::C
 					break;
 				}
 				JsonReader.Read();
-				const String UserId = JsonReader.GetNodeValue();
+				const Elysium::Core::Utf8String UserId = JsonReader.GetNodeValue();
 
 				JsonReader.Read();
 				JsonReader.Read();
-				const String Id = JsonReader.GetNodeValue();
+				const Elysium::Core::Utf8String Id = JsonReader.GetNodeValue();
 
 				JsonReader.Read();
 				JsonReader.Read();
-				const String Title = JsonReader.GetNodeValue();
+				const Elysium::Core::Utf8String Title = JsonReader.GetNodeValue();
 
 				JsonReader.Read();
 				JsonReader.Read();
-				const String Completed = JsonReader.GetNodeValue();
+				const Elysium::Core::Utf8String Completed = JsonReader.GetNodeValue();
 
 				JsonReader.Read();
 			}
@@ -88,19 +88,19 @@ void Elysium::Communication::Service::Rest::RestClient::TestGET(const Elysium::C
 		{
 			JsonReader.Read();
 			JsonReader.Read();
-			const String UserId = JsonReader.GetNodeValue();
+			const Elysium::Core::Utf8String UserId = JsonReader.GetNodeValue();
 
 			JsonReader.Read();
 			JsonReader.Read();
-			const String Id = JsonReader.GetNodeValue();
+			const Elysium::Core::Utf8String Id = JsonReader.GetNodeValue();
 
 			JsonReader.Read();
 			JsonReader.Read();
-			const String Title = JsonReader.GetNodeValue();
+			const Elysium::Core::Utf8String Title = JsonReader.GetNodeValue();
 
 			JsonReader.Read();
 			JsonReader.Read();
-			const String Completed = JsonReader.GetNodeValue();
+			const Elysium::Core::Utf8String Completed = JsonReader.GetNodeValue();
 		}
 	}
 }

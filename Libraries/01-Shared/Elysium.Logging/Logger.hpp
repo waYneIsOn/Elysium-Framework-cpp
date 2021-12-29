@@ -32,28 +32,28 @@ namespace Elysium::Logging
 	{
 	public:
 		Logger(const Elysium::Core::Reflection::Type& Type);
-		Logger(const Elysium::Core::String& Scope);
+		Logger(const Elysium::Core::Utf8String& Scope);
 		~Logger();
 
-		void Trace(const Elysium::Core::String& Message) const;
-		void Trace(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Trace(const Elysium::Core::Utf8String& Message) const;
+		void Trace(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 
-		void Debug(const Elysium::Core::String& Message) const;
-		void Debug(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Debug(const Elysium::Core::Utf8String& Message) const;
+		void Debug(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 
-		void Information(const Elysium::Core::String& Message) const;
-		void Information(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Information(const Elysium::Core::Utf8String& Message) const;
+		void Information(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 
-		void Warning(const Elysium::Core::String& Message) const;
-		void Warning(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Warning(const Elysium::Core::Utf8String& Message) const;
+		void Warning(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 
-		void Error(const Elysium::Core::String& Message) const;
-		void Error(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Error(const Elysium::Core::Utf8String& Message) const;
+		void Error(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 
-		void Critical(const Elysium::Core::String& Message) const;
-		void Critical(const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception) const;
+		void Critical(const Elysium::Core::Utf8String& Message) const;
+		void Critical(const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception) const;
 	private:
-		Elysium::Core::String _Scope;
+		Elysium::Core::Utf8String _Scope;
 	};
 }
 #endif

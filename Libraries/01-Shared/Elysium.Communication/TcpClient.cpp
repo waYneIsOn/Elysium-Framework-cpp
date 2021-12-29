@@ -26,7 +26,7 @@ const bool Elysium::Communication::Transport::TcpClient::GetIsOpen() const
 	return _Socket.GetIsConnected();
 }
 
-void Elysium::Communication::Transport::TcpClient::Connect(const Elysium::Core::String & Host, int Port)
+void Elysium::Communication::Transport::TcpClient::Connect(const Elysium::Core::Utf8String & Host, int Port)
 {
 	_Socket.Connect(Host, Port);
 }

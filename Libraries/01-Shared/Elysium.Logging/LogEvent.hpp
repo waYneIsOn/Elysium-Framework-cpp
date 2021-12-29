@@ -46,17 +46,17 @@ namespace Elysium::Logging::Events
 
 		const Elysium::Core::DateTime& GetTimestamp() const;
 		const LogLevel& GetLevel() const;
-		const Elysium::Core::String& GetScope() const;
-		const Elysium::Core::String& GetMessage() const;
+		const Elysium::Core::Utf8String& GetScope() const;
+		const Elysium::Core::Utf8String& GetMessage() const;
 		const Elysium::Core::Exception* GetException() const;
 	private:
-		LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message);
-		LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::String& Scope, const Elysium::Core::String& Message, const Elysium::Core::Exception& Exception);
+		LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::Utf8String& Scope, const Elysium::Core::Utf8String& Message);
+		LogEvent(const Elysium::Core::DateTime& Timestamp, const LogLevel& Level, const Elysium::Core::Utf8String& Scope, const Elysium::Core::Utf8String& Message, const Elysium::Core::Exception& Exception);
 
 		const Elysium::Core::DateTime _Timestamp;
 		const LogLevel _Level;
-		const Elysium::Core::String _Scope;
-		const Elysium::Core::String _Message;
+		const Elysium::Core::Utf8String _Scope;
+		const Elysium::Core::Utf8String _Message;
 		const Elysium::Core::Exception* _Exception;
 	};
 }

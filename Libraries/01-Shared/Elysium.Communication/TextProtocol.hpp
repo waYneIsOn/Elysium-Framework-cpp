@@ -39,9 +39,9 @@ namespace Elysium::Communication::Protocol
 		TextProtocol& operator=(const TextProtocol& Source) = delete;
 		TextProtocol& operator=(TextProtocol&& Right) noexcept = delete;
 
-		virtual void WriteString(const Elysium::Core::String& Value);
+		virtual void WriteString(const Elysium::Core::Utf8String& Value);
 
-		const Elysium::Core::String ReadLine();
+		const Elysium::Core::Utf8String ReadLine();
 	protected:
 		const Elysium::Core::Text::Encoding& _Encoding;
 		const static size_t _ReadBufferSize = 1024;

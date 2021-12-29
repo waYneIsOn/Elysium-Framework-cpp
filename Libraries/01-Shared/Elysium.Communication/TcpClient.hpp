@@ -46,7 +46,7 @@ namespace Elysium::Communication::Transport
 
 		virtual const bool GetIsOpen() const override;
 
-		void Connect(const Elysium::Core::String& Host, int Port);
+		void Connect(const Elysium::Core::Utf8String& Host, int Port);
 		void Connect(const Elysium::Core::Net::EndPoint& RemoteEndPoint);
 		void Close();
 	private:

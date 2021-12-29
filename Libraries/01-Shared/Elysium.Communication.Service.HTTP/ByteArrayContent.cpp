@@ -32,7 +32,7 @@ void Elysium::Communication::Service::Http::ByteArrayContent::ReadAsStream(Elysi
 {
 	TargetStream.Write(&_Content[0], _Content.GetLength());
 }
-Elysium::Core::String Elysium::Communication::Service::Http::ByteArrayContent::ReadAsString() const
+Elysium::Core::Utf8String Elysium::Communication::Service::Http::ByteArrayContent::ReadAsString() const
 {
 	return Elysium::Core::Text::Encoding::UTF8().GetString(&_Content[0], _Content.GetLength());
 }

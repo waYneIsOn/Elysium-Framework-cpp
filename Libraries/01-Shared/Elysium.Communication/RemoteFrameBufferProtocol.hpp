@@ -29,7 +29,9 @@ namespace Elysium::Communication::Protocol::ApplicationLayer
 		RemoteFrameBufferProtocol(RemoteFrameBufferProtocol&& Right) noexcept = delete;
 		virtual ~RemoteFrameBufferProtocol();
 
-		const Elysium::Core::String WriteProtocolVersionHandshake(const Elysium::Core::String& Value);
+		const Elysium::Core::Utf8String ReadAvailableProtocolVersions();
+
+		const Elysium::Core::Utf8String WriteProtocolVersionHandshake(const Elysium::Core::Utf8String& Value);
 	public:
 		RemoteFrameBufferProtocol& operator=(const RemoteFrameBufferProtocol& Source) = delete;
 		RemoteFrameBufferProtocol& operator=(RemoteFrameBufferProtocol&& Right) noexcept = delete;
